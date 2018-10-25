@@ -59,11 +59,17 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
+        var clazzId = getQueryString("clazzId");
+        getMoralEducationInfo(clazzId);
+     
+    }
+
+    function getMoralEducationInfo(clazzId){
         var classId = localStorage.getItem("clazzId");
         console.log(classId, "classId")
         const param = {
             "method": "getMoralEducationInfo",
-            "clazzId": 5447,
+            "clazzId": clazzId,
         }
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
@@ -90,6 +96,17 @@ $(function () {
                 // message.error(error);
             }
         });
+    }
+     /**
+     * 获取地址栏参数
+     * @param name
+     * @returns {null}
+     * @constructor
+     */
+    function getQueryString(parameterName){
+        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 
 })

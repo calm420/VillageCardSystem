@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>富文本编辑器</title>
+    <title>header</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/css/initStyle.css">
     <link rel="stylesheet" href="./asset/css/RichTextEditor.css">
@@ -11,11 +11,23 @@
 <body>
 
 <div>
-    <div>三年级二班</div>
-    <div>小雨 9:50:51</div>
+    <div id="a">三年级二班</div>
+    <div id="weather">
+        <span id="weather-today">
+            <div class="climate"></div>
+            <div class="temperature"></div>
+        </span>
+        <span id="weather-tomorrow">
+            <div>明天</div>
+            <div class="climate"></div>
+            <div class="temperature"></div>
+        </span>
+    </div>
+    <div id="watch"></div>
+    <div id="week"></div>
 </div>
-
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-<script src="./asset/js/header.js"/>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript" src="./asset/js/header.js"></script>
 </body>
 </html>
