@@ -4,6 +4,7 @@
 #classCardHomePage iframe {
   border: none;
   width: 100%;
+  display: block;
 }
 #classCardHomePage .home_right {
   width: 13.33rem;
