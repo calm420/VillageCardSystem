@@ -1,7 +1,7 @@
 /**
  * 本节考勤
  */
-var debug=true;
+var debug=false;
 var url =debug?"http://192.168.50.15:9006/Excoord_ApiServer/webservice": "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount=0;
 var timerFlag = false;
@@ -14,23 +14,30 @@ function init(){
     $("#classTableA").hide();
     $("#classTableB").show();
 }
-function gotoAttendDetail() {
-    parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
+// function gotoAttendDetail() {
+//     parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
+// }
+function gotoAttendDetail(classTableId){
+    $('#gotoAttendDetail').click(function () {
+        //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
+        var data = {
+            method: 'openNewPage',
+            url: "courseAttendanceDetail?classTableId=" + classTableId,
+        };
+
+        window.parent.postMessage(JSON.stringify(data), '*');
+    })
 }
-// function gotoAttendDetail(classTableId){
-//     $('#gotoAttendDetail').click(function () {
-//         parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
-//     })
-// }
-// function gotoAttendDetail(){
-//     $('#gotoAttendDetail').unbind("click");
-// }
+function unbindGotoAttendDetail(){
+    $('#gotoAttendDetail').unbind("click");
+}
 function checkCourseOpenHandle(data) {
     var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
         var classTableId=data.data.classTableId;
         //获取应到人数
         if (roomId == data.data.classroomId) {
+            gotoAttendDetail(classTableId);
             $("#classTableA").show();
             $("#classTableB").hide();
             getStudentByCourseTableItem(classTableId);
@@ -40,6 +47,7 @@ function checkCourseOpenHandle(data) {
         }
     } else if (data.command == 'brand_class_close') {
         if (roomId ==data.data.classroomId) {
+            unbindGotoAttendDetail();
             $("#classTableA").hide();
             $("#classTableB").show();
             clearInterval(timer)
@@ -52,6 +60,7 @@ function checkCourseOpenHandle(data) {
                 $("#classTableA").show();
                 $("#classTableB").hide();
                 this.getStudentByCourseTableItem(data.data.classTableId);
+                gotoAttendDetail(data.data.classTableId);
                 if (!timerFlag) {
                     this.openTimeInterVal(data.data.classTableId);
                 }
