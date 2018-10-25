@@ -39,7 +39,7 @@ $(function () {
 
                     var img = document.createElement("img");
                     img.src = result.response.teacher.avatar
-
+                    img.className = "terPic"
                     document.querySelector('#begin-class').insertBefore(img, document.querySelector('.ter_name'))
 
                     document.querySelector('.name').innerHTML = result.response.courseName
