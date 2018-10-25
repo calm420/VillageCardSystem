@@ -4,32 +4,31 @@ $(document).ready(function () {
 
     //监听接受消息
     window.addEventListener('message', (e) => {
-        var res = JSON.parse(e.data);
-        if (res.method == 'test') {
-            console.log(res, '测试的postMessage');
-        } else if (res.method == 'clearRichTestSign') {
-            //清空编辑器内容
-            window.location.reload();
-        } else if (res.method == 'closeMask') {
-
+        var clazzId = localStorage.getItem("clazzId");
+        if (e.command == 'classDemeanor') {
+            if (clazzId == e.command.data.cid) {
+                getClassDemeanorInfo(clazzId);
+                getClassRewardInfo(clazzId);
+            }
         }
     })
 
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+        localStorage.setItem("clazzId",clazzId);
         getClassDemeanorInfo(clazzId);
         getClassRewardInfo(clazzId);
         var mySwiper = new Swiper('.classDemeanor', {
             slidesPerView: 3,
             spaceBetween: 30,
-            preloadImages:false,
+            preloadImages:true,
             /*
             initialSlide :2,
             loop: true,
             loopedSlides:3,*/
             autoplay: {
-                delay: 1500,
+                delay: 2500,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -47,13 +46,13 @@ $(document).ready(function () {
         var mySwiper = new Swiper('.classReward', {
             slidesPerView: 3,
             spaceBetween: 30,
-            preloadImages:false,
+            preloadImages:true,
             /*
             initialSlide :2,
             loop: true,
             loopedSlides:3,*/
             autoplay: {
-                delay: 1500,
+                delay: 2500,
                 disableOnInteraction: false,
             },
             pagination: {
