@@ -34,6 +34,7 @@ function unbindGotoAttendDetail(){
 }
 function checkCourseOpenHandle(data) {
     var roomId =getQueryString("roomId");
+    var schoolId =getQueryString("schoolId");
     if (data.command == 'brand_class_open') {
         var classTableId=data.data.classTableId;
         //获取应到人数
@@ -66,6 +67,12 @@ function checkCourseOpenHandle(data) {
                     this.openTimeInterVal(data.data.classTableId);
                 }
             }
+        }
+    } else if (data.command == 'setSkin') {
+        //设置皮肤
+        if (schoolId == data.data.schoolId) {
+            var skin = data.data.skinName;
+            document.getElementsByName("courseAttendanceDiv")[0].id=skin;
         }
     }
 

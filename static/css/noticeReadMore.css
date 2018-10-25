@@ -5,14 +5,12 @@
   border-top: 0;
   border-bottom: 0 !important;
 }
-#noticeReadMore .ulBox {
-  padding: 0 0.83rem;
-}
-#noticeReadMore .ulBox li {
-  padding: 1.11rem 0 0.83rem;
+
+#noticeReadMore li {
+  padding: 1.11rem 0.83rem 0.83rem;
   border-bottom: 1px #e5ebf7 solid;
 }
-#noticeReadMore .ulBox li .title {
+#noticeReadMore li .title {
   font-size: 0.78rem;
   color: #2a3350;
   margin: 0;
@@ -20,8 +18,9 @@
   padding-left: 0.5rem;
   font-weight: bold;
   word-wrap: break-word;
+  font-style: normal;
 }
-#noticeReadMore .ulBox li .title::before {
+#noticeReadMore  li .title::before {
   content: '';
   width: 0.2rem;
   height: 0.2rem;
@@ -35,7 +34,7 @@
   left: 0;
   margin-top: -0.1rem;
 }
-#noticeReadMore .ulBox li .title .time {
+#noticeReadMore li .title .time {
   position: absolute;
   right: 0;
   top: 0;
@@ -43,7 +42,7 @@
   font-size: 0.67rem;
   font-weight: normal;
 }
-#noticeReadMore .ulBox li .noticeContent {
+#noticeReadMore li .noticeContent {
   font-size: 0.72rem;
   color: #565c72;
   position: relative;
