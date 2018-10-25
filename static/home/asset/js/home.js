@@ -15,7 +15,6 @@ $(document).ready(function () {
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
         var schoolId = getQueryString("schoolId");
-
         var pro = {
             "command": "braceletBoxConnect",
             "data": {
@@ -38,6 +37,7 @@ $(document).ready(function () {
             ms.connect(pro);
             msListener();
             simpleListener();
+            getBraceletBoxSkinBySchoolId(schoolId);
         }, 3000)
     }
 
@@ -70,6 +70,35 @@ $(document).ready(function () {
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
             }
         }
+    }
+
+    /**
+     * 获取当前学校选定的皮肤
+     * @param schoolId
+     */
+    function getBraceletBoxSkinBySchoolId(schoolId) {
+        var param = {
+            "method": 'getBraceletBoxSkinBySchoolId',
+            "schoolId": schoolId,
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (WebServiceUtil.isEmpty(result.response) == false) {
+                        console.log("===========>"+result.response.skinAttr);
+                        document.getElementsByName("homeDiv")[0].id=result.response.skinAttr;
+                        var dateJson = {skinName:result.response.skinAttr,schoolId:schoolId};
+                        var commandJson = {command:'setSkin',data:dateJson};
+                        document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                    }
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
     }
 
     /**

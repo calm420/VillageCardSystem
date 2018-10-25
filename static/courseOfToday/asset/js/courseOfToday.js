@@ -1,5 +1,6 @@
 $(function () {
     var roomId = getQueryString("roomId");
+    var schoolId = getQueryString("schoolId");
 
     document.querySelector('.home_titleMore').addEventListener('click', () => {
         var data = {
@@ -35,7 +36,14 @@ $(function () {
                 document.querySelector('#finish-class').style.display = 'none'
                 document.querySelector('#begin-class').style.display = 'block'
             }
+        } else if (res.command == 'setSkin') {
+            //设置皮肤
+            if (schoolId == res.data.schoolId) {
+                var skin = res.data.skinName;
+                document.getElementsByName("courseOfTodayDiv")[0].id=skin;
+            }
         }
+
     })
 
     /**
