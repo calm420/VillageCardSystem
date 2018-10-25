@@ -61,6 +61,19 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
 
+        // var clazzId = localStorage.getItem("clazzId");
+        // console.log(clazzId,"clazzId")
+        $.ajax({
+            type: "POST",
+            url: "https://www.maaee.com/Excoord_For_Education/webservice/getMoralEducationInfo?clazzId=819",
+            // data: "clazzId="+819,
+            success: function(data){
+                console.log(data,"data")
+                    //  $("#myDiv").html('<h2>'+data+'</h2>');
+               }
+         });
+        // $.ajax({ url: "https://www.maaee.com/Excoord_For_Education/webservice/getMoralEducationInfo", async: false });
+        // $("#myDiv").html(htmlobj.responseText);
     }
 
 })
