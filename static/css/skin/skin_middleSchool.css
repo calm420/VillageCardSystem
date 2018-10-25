@@ -95,3 +95,7 @@
 #skin_middleSchool.no_bg {
   background: none;
 }
+#skin_middleSchool #moralEducationScore.iframe-id-bg, #skin_middleSchool #courseOfToday.iframe-id-bg{
+  background: transparent !important;
+  height: 100%;
+}
