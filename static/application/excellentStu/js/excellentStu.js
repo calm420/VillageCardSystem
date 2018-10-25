@@ -100,24 +100,20 @@ $(function () {
                     </div>`)
                     } else {
                         result.response.forEach((v, i) => {
-                            $(".excellStu").append(
+                            $(".excellStu .left").append(
                                 `
-                                <div class="my_flex">
-                                    <div class="left">
+                                    <div class="my_flex">
                                         <span class="num">第${i + 1}名</span>
                                         <div class="info textOver">
                                             <img src=${v.user.avatar} />
                                             <span class="userName textOver">${v.user.userName}</span>
                                         </div>
                                         <span class="time">
-                                            <img src="" />
+                                            <img src="../../../images/clock.png" />
+                                            ${formatHM(v.attendTime)}
                                         </span>
-                                        ${formatHM(v.attendTime)}
                                     </div>
-                                    <div class="right">
-                                        <img class="icon_topLeft" src="" />
-                                    </div>
-                                </div>
+                                   
                                 `
                             )
                         })
