@@ -97,6 +97,10 @@ $(document).ready(function () {
             Bridge.callHandler(data, null, function (error) {
                 window.location.href = webserviceUrl + res.url;
             });
+        }else if("playVideo"==res.method){
+            if(WebServiceUtil.isEmpty(res.src)==false){
+                playVideo(res.src);
+            }
         }
     });
 
