@@ -1,0 +1,61 @@
+#courseOfToday .classTableA {
+    padding: 0.56rem 0.83rem;
+    text-align: center;
+    height: 9.9rem;
+    position: relative;
+}
+
+#courseOfToday .classTableB {
+    display: none;
+    padding: 0 0.83rem;
+    position: relative;
+    text-align: center;
+}
+
+#courseOfToday .classTableB .index {
+    font-size: 0.78rem;
+    margin: 0.56rem 0;
+}
+
+#courseOfToday .classTableB .timeNode {
+    font-size: 0.5rem;
+    color: #3672ed;
+    margin-bottom: 0.56rem;
+    margin-top: 0.58rem;
+}
+
+#courseOfToday .classTableB .time {
+    margin-bottom: 1.11rem;
+    font-size: 0.83rem;
+}
+
+#courseOfToday .classTableB .name {
+    color: #fff;
+    font-size: 0.83rem;
+    margin: 0 auto;
+    background-color: #2868ff;
+    border-radius: 25px;
+    padding: 0.33rem 0.78rem;
+    display: inline-block;
+}
+
+#courseOfToday .classTableB .terPic {
+    margin-top: 0.8rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#courseOfToday .classTableB .terPic_name {
+    margin-top: 3.7rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 0.61rem;
+}

@@ -57,7 +57,7 @@
   background: url("../../images/middleSchool_course.png") no-repeat!important;
   background-size: 100% 100%!important;
 }
-#skin_middleSchool #currentAttendance {
+#skin_middleSchool #courseAttendance {
   background: url("../../images/middleSchool_currentAttendance.png") no-repeat!important;
   background-size: 100% 100%!important;
 }
