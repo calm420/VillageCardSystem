@@ -55,7 +55,29 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
-        $("#studentOnDuty")[0].contentWindow.postMessage('test','*');
+        // clazzId=819&roomId=1&mac=14:1f:78:73:1e:c3&schoolId=9
+        //获取基本的地址栏参数,标识班牌的学校\班级等信息
+        var clazzId = getQueryString("clazzId");
+        var roomId = getQueryString("roomId");
+        var mac = getQueryString("mac");
+        var schoolId = getQueryString("schoolId");
+        console.log(clazzId+"\t"+roomId+"\t"+mac+"\t"+schoolId);
+        localStorage.setItem("clazzId",clazzId);
+        localStorage.setItem("roomId",roomId);
+        localStorage.setItem("mac",mac);
+        localStorage.setItem("schoolId",schoolId);
+    }
+
+    /**
+     * 获取地址栏参数
+     * @param name
+     * @returns {null}
+     * @constructor
+     */
+    function getQueryString(parameterName){
+        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
     }
 
 })
