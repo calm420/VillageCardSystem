@@ -15,11 +15,11 @@
   background: none;
 }
 #skin_middleSchool #header .headTitle {
-  background: url("../../images/middleSchool_head.png") no-repeat 0 center;
-  background-size: auto 100%;
+  background: url("../../images/middleSchool_head.png") no-repeat 0 center!important;
+  background-size: auto 100%!important;
 }
 #skin_middleSchool #header .headTitleT {
-  color: #fff;
+  color: #fff!important;
 }
 #skin_middleSchool .home_content {
   background: none;
@@ -34,63 +34,63 @@
   color: #fff !important;
 }
 #skin_middleSchool #studentOnDuty {
-  background: url("../../images/middleSchool_studentOnDuty.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_studentOnDuty.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #moralEducationScore {
-  background: url("../../images/middleSchool_moralEducationScore.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_moralEducationScore.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #classDemeanor {
-  background: url("../../images/middleSchool_classDemeanor.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_classDemeanor.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #notify {
-  background: url("../../images/middleSchool_notify.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_notify.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #application {
-  background: url("../../images/middleSchool_application.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_application.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #courseOfToday {
-  background: url("../../images/middleSchool_course.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_course.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool #currentAttendance {
-  background: url("../../images/middleSchool_currentAttendance.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_currentAttendance.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool i.titleMore {
-  background: url("../../images/middleSchool_nextIcon.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/middleSchool_nextIcon.png") no-repeat!important;
+  background-size: 100% 100%!important;
 }
 #skin_middleSchool .empty_text {
-  color: #fff;
+  color: #fff!important;
 }
 #skin_middleSchool .empty_currentAttendance {
-  background: url("../../images/middleSchool_empty_currentAttendance.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_currentAttendance.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool .empty_activity {
-  background: url("../../images/middleSchool_empty_activity.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_activity.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool .empty_honor {
-  background: url("../../images/middleSchool_empty_honor.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_honor.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool .empty_moralEducationScore {
-  background: url("../../images/middleSchool_empty_moralEducationScore.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_moralEducationScore.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool .empty_notify {
-  background: url("../../images/middleSchool_empty_notify.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_notify.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool .empty_course {
-  background: url("../../images/middleSchool_empty_course.png") no-repeat;
-  background-size: 100%;
+  background: url("../../images/middleSchool_empty_course.png") no-repeat!important;
+  background-size: 100%!important;
 }
 #skin_middleSchool.no_bg {
   background: none;
