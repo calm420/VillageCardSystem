@@ -41,12 +41,12 @@ function checkCourseOpenHandle(data) {
     } else if (data.command == 'braceletBoxConnect') {
         //重连开课
         if( data.data.classroomId!=null) {
-            if (roomId == data.classroomId) {
+            if (roomId == data.data.classroomId) {
                 $("#classTableA").show();
                 $("#classTableB").hide();
-                this.getStudentByCourseTableItem(data.classTableId);
+                this.getStudentByCourseTableItem(data.data.classTableId);
                 if (!timerFlag) {
-                    this.openTimeInterVal(data.classTableId);
+                    this.openTimeInterVal(data.data.classTableId);
                 }
             }
         }
