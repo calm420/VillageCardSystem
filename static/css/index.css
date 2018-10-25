@@ -6,6 +6,7 @@ body {
   font-family: "Helvetica Neue", "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial;
   margin: 0;
   padding: 0;
+  line-height: 1.15;
 }
 body {
   overflow: auto !important;
