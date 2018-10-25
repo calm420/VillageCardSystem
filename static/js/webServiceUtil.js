@@ -153,7 +153,7 @@ WebServiceUtil.createUUID = function () {
 };
 
 //获取地址栏参数
-WebServiceUtil.GetQueryString = function(name) {
+WebServiceUtil.GetQueryString = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);

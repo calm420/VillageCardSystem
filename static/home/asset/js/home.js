@@ -68,16 +68,19 @@ $(document).ready(function () {
         return null;
     }
 
-    //监听接受消息
     window.addEventListener('message', (e) => {
         var res = JSON.parse(e.data);
-        if (res.method == 'editor') {
-            article = res.article;
-            console.log(article, '编辑时候的data');
-        }else if(res.method="playVideo"){
-            if(WebServiceUtil.isEmpty(res.src)==false){
-                playVideo(res.src);
+        if (res.method == 'openNewPage') {
+
+            var data = {
+                method: 'openNewPage',
+                url: webserviceUrl + res.url,
             }
+
+            Bridge.callHandler(data, null, function (error) {
+                window.location.href = webserviceUrl + res.url;
+            });
         }
-    })
+    });
+
 });

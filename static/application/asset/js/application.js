@@ -21,6 +21,7 @@ $(function () {
                     // 告诉jQuery不要去设置Content-Type请求头
                     contentType: false,
                     success: function (res) {
+
                     }
                 });
             }
@@ -64,55 +65,65 @@ $(function () {
 
     //跳转蚁巢作业
     $('#toHomeWorkModule').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
-            url: "homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "homeworkModule/index.html?classId="+classId;
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
     //跳转步数
     $('#toStep').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
-            url: "homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=step";
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
 
     //跳转卡路里
     $('#toCalories').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
-            url: "healthStep/index.html?classId="+classId+"&healthType=calories",
+            url: "application/healthStep/index.html?classId="+classId+"&healthType=calories",
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=calories";
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
 
+
+
     //跳转早到之星
     $('#toExcellentStu').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
-            url: "excellentStu/index.html?clazzId="+classId,
+            url: "application/excellentStu/index.html?clazzId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "excellentStu/index.html?clazzId="+classId;
+            window.parent.postMessage(JSON.stringify(data), '*');
+        });
+    });
+
+
+    //跳转家校
+    $('#toExcellentStu').on('click',function(){
+        var data = {
+            method: 'gotoNFCbyKK',
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+
         });
     });
 
