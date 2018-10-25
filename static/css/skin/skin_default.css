@@ -4,16 +4,16 @@
   overflow: hidden;
 }
 #skin_default #header {
-  background: url("../../imgs/bg_web_top.jpg") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../imgs/bg_web_top.jpg") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default #header .headTitle {
-  background: url("../../imgs/headTittle_bg.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../imgs/headTittle_bg.png") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default .home_content {
-  background: url("../../imgs/bg_web.jpg") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../imgs/bg_web.jpg") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default #courseOfToday,
 #skin_default #courseAttendance,
