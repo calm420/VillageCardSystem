@@ -42,7 +42,16 @@ $(function () {
     function sendMessageTo(data) {
         window.parent.postMessage(JSON.stringify(data), '*');
     }
-
+    formatHM = function (nS) {
+        var da = new Date(parseInt(nS));
+        var hour = da.getHours() + ":";
+        var minutes = da.getMinutes();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        var hmStr = hour + minutes;
+        return hmStr;
+    };
     //监听接受消息
     window.addEventListener('message', (e) => {
         alert(e);
@@ -60,9 +69,14 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+<<<<<<< HEAD
 
         console.log(clazzId,"clazzId")
         getMoralEducationInfo(clazzId);
+=======
+        console.log(clazzId, "clazzId")
+        getMoralEducationInfo(5447);
+>>>>>>> b64d7c061dc82054721356511a59d977de21ad8c
     }
     function getMoralEducationInfo(clazzId) {
         var param = {
@@ -74,10 +88,10 @@ $(function () {
                 console.log(result, "result");
                 if (result.msg == '调用成功' || result.success == true) {
                     if (result.response == null) {
-                        $(".mEScoreInfo").replaceWith(`<div className="mEScoreInfo home_cardCont">
-                        <div className="empty_center">
-                            <div className="empty_icon empty_moralEducationScore"></div>
-                            <div className="empty_text">暂无通知</div>
+                        $(".mEScoreInfo").replaceWith(`<div class="mEScoreInfo home_cardCont">
+                        <div class="empty_center">
+                            <div class="empty_icon empty_moralEducationScore"></div>
+                            <div class="empty_text">暂无通知</div>
                         </div>
                     </div>`)
                     } else {
@@ -87,7 +101,6 @@ $(function () {
                         $(".ceremonyScore").html(result.response.politeness)
                         $(".healthSocre").html(result.response.health)
                     }
-
                 }
             },
             onError: function (error) {
