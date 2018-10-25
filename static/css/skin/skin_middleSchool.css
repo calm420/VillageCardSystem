@@ -92,3 +92,6 @@
   background: url("../../images/middleSchool_empty_course.png") no-repeat;
   background-size: 100%;
 }
+#skin_middleSchool.no_bg {
+  background: none;
+}
