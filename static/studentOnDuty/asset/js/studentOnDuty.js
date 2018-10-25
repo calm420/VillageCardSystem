@@ -22,7 +22,6 @@ $(document).ready(function () {
     }
 
     function getDutyInfo(clazzId) {
-        debugger
         var param = {
             "method": 'getClassBrandStudentDutyByToday',
             "clazzId": clazzId,

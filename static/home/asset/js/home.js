@@ -17,7 +17,7 @@ $(document).ready(function(){
         localStorage.setItem("schoolId",schoolId);
         var message = {clazzId:clazzId};
         $("#studentOnDuty")[0].src="http://127.0.0.1:7091/studentOnDuty?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#studentOnDuty")[0].contentWindow.postMessage(message,"*");
+        // $("#studentOnDuty")[0].contentWindow.postMessage(message,"*");
     }
 
     /**
