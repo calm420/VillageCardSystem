@@ -21,8 +21,8 @@ $(document).ready(function () {
         getDutyInfo(clazzId);
     }
 
+
     function getDutyInfo(clazzId) {
-        debugger
         var param = {
             "method": 'getClassBrandStudentDutyByToday',
             "clazzId": clazzId,
@@ -43,12 +43,12 @@ $(document).ready(function () {
                                     users.forEach(function (student) {
                                         if (student != null && student != undefined) {
                                             var stuName = student.userName;
-                                            var stuImgTag = "<li><div><img src="+student.avatar+"/></div><div>"+stuName+"</div></li>";
+                                            var stuImgTag = "<li><div><img src=" + student.avatar + "/></div><div>" + stuName + "</div></li>";
                                             if (clazzDutyWeek == weekOfTody) {
-                                                var currentInner = $("#todyDuty")[0].innerHTML+stuImgTag;
+                                                var currentInner = $("#todyDuty")[0].innerHTML + stuImgTag;
                                                 $("#todyDuty")[0].innerHTML = currentInner;
                                             } else {
-                                                var currentInner = $("#nextDuty")[0].innerHTML+stuImgTag;
+                                                var currentInner = $("#nextDuty")[0].innerHTML + stuImgTag;
                                                 $("#nextDuty")[0].innerHTML = currentInner;
                                             }
                                         }
@@ -71,10 +71,10 @@ $(document).ready(function () {
      * @returns {null}
      * @constructor
      */
-    function getQueryString(parameterName){
-        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]); return null;
     }
 
 });
