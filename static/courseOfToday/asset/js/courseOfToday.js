@@ -13,6 +13,24 @@ $(function () {
     })
 
 
+    function viewCourseTableItem(data) {
+        var param = {
+            "method": 'viewCourseTableItem',
+            "id": data.classTableId,
+        };
+        WebServiceUtil.requestLittleAntApi(JSON.stringify(param), {
+            onResponse: function (result) {
+                console.log(result);
+                if (result.msg == '调用成功' || result.success == true) {
+
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
+    }
+
     /**
      * 获取地址栏参数
      * @param name
