@@ -56,4 +56,14 @@ $(function(){
             }
         });
     }
+
+    $('#historyGoBack').on('click',function(){
+        var data = {
+            method: 'finish',
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = 'http://localhost:7091/home';
+        });
+    })
 })
