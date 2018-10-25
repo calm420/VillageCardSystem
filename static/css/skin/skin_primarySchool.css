@@ -4,43 +4,75 @@
   overflow: hidden;
 }
 #skin_primarySchool #header {
-  background: url("../../imgs/primarySchool_cloud.png") no-repeat center 1.8rem, #6ebdf4;
+  background: url("../../images/primarySchool_cloud.png") no-repeat center 1.8rem, #6ebdf4 !important;
 }
 #skin_primarySchool #header .headTitle {
-  background: url("../../imgs/primarySchool_headTittle.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/primarySchool_headTittle.png") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_primarySchool .home_content {
-  background: url("../../imgs/primarySchool_bgWeb.png") no-repeat center bottom, -webkit-linear-gradient(top, #6ebdf4, #0fa2cf), linear-gradient(top, #6ebdf4, #0fa2cf);
-  background-size: 100% auto ;
+  background: url("../../images/primarySchool_bgWeb.png") no-repeat center bottom, -webkit-linear-gradient(top, #6ebdf4, #0fa2cf) !important;
+  background: url("../../images/primarySchool_bgWeb.png") no-repeat center bottom, -o-linear-gradient(top, #6ebdf4, #0fa2cf) !important;
+  background: url("../../images/primarySchool_bgWeb.png") no-repeat center bottom, -moz-linear-gradient(top, #6ebdf4, #0fa2cf) !important;
+  background: url("../../images/primarySchool_bgWeb.png") no-repeat center bottom, -mos-linear-gradient(top, #6ebdf4, #0fa2cf) !important;
+  background: url("../../images/primarySchool_bgWeb.png") no-repeat center bottom, linear-gradient(top, #6ebdf4, #0fa2cf) !important;
+  background-size: 100% auto  !important;
 }
 #skin_primarySchool #courseOfToday {
-  background: url("../../imgs/primarySchool_course.png") no-repeat center bottom, -webkit-linear-gradient(top, #acffff, #b2eeff), linear-gradient(top, #acffff, #b2eeff);
-  background-size: 100% 100%;
+  background: url("../../images/primarySchool_course.png") no-repeat center bottom, -webkit-linear-gradient(top, #acffff, #b2eeff) !important;
+  background: url("../../images/primarySchool_course.png") no-repeat center bottom, -o-linear-gradient(top, #acffff, #b2eeff) !important;
+  background: url("../../images/primarySchool_course.png") no-repeat center bottom, -moz-linear-gradient(top, #acffff, #b2eeff) !important;
+  background: url("../../images/primarySchool_course.png") no-repeat center bottom, -mos-linear-gradient(top, #acffff, #b2eeff) !important;
+  background: url("../../images/primarySchool_course.png") no-repeat center bottom, linear-gradient(top, #acffff, #b2eeff) !important;
+  background-size: 100% 100% !important;
 }
 #skin_primarySchool #courseAttendance {
-  background: url("../../imgs/primarySchool_currentAttendance.png") no-repeat center bottom, -webkit-linear-gradient(top, #e4feb4, #9dee99), linear-gradient(top, #e4feb4, #9dee99);
-  background-size: 100% auto;
+  background: url("../../images/primarySchool_currentAttendance.png") no-repeat center bottom, -webkit-linear-gradient(top, #e4feb4, #9dee99) !important;
+  background: url("../../images/primarySchool_currentAttendance.png") no-repeat center bottom, -o-linear-gradient(top, #e4feb4, #9dee99) !important;
+  background: url("../../images/primarySchool_currentAttendance.png") no-repeat center bottom, -moz-linear-gradient(top, #e4feb4, #9dee99) !important;
+  background: url("../../images/primarySchool_currentAttendance.png") no-repeat center bottom, -mos-linear-gradient(top, #e4feb4, #9dee99) !important;
+  background: url("../../images/primarySchool_currentAttendance.png") no-repeat center bottom, linear-gradient(top, #e4feb4, #9dee99) !important;
+  background-size: 100% auto !important;
 }
 #skin_primarySchool #classDemeanor {
-  background: url("../../imgs/primarySchool_classDemeanor1.png") no-repeat center top, url("../../imgs/primarySchool_classDemeanor2.png") no-repeat center bottom, -webkit-linear-gradient(top, #7ee0ff, #b5bef7), linear-gradient(top, #7ee0ff, #b5bef7);
-  background-size: 100% auto;
+  background: url("../../images/primarySchool_classDemeanor1.png") no-repeat center top, url("../../images/primarySchool_classDemeanor2.png") no-repeat center bottom, -webkit-linear-gradient(top, #7ee0ff, #b5bef7) !important;
+  background: url("../../images/primarySchool_classDemeanor1.png") no-repeat center top, url("../../images/primarySchool_classDemeanor2.png") no-repeat center bottom, -o-linear-gradient(top, #7ee0ff, #b5bef7) !important;
+  background: url("../../images/primarySchool_classDemeanor1.png") no-repeat center top, url("../../images/primarySchool_classDemeanor2.png") no-repeat center bottom, -moz-linear-gradient(top, #7ee0ff, #b5bef7) !important;
+  background: url("../../images/primarySchool_classDemeanor1.png") no-repeat center top, url("../../images/primarySchool_classDemeanor2.png") no-repeat center bottom, -mos-linear-gradient(top, #7ee0ff, #b5bef7) !important;
+  background: url("../../images/primarySchool_classDemeanor1.png") no-repeat center top, url("../../images/primarySchool_classDemeanor2.png") no-repeat center bottom, linear-gradient(top, #7ee0ff, #b5bef7) !important;
+  background-size: 100% auto !important;
 }
 #skin_primarySchool #notify {
-  background: url("../../imgs/primarySchool_notify.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a), linear-gradient(top, #e0fdb3, #9fee9a);
-  background-size: 100% auto;
+  background: url("../../images/primarySchool_notify.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_notify.png") no-repeat center bottom, -o-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_notify.png") no-repeat center bottom, -moz-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_notify.png") no-repeat center bottom, -mos-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_notify.png") no-repeat center bottom, linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background-size: 100% auto !important;
 }
 #skin_primarySchool #application {
-  background: url("../../imgs/primarySchool_application.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a), linear-gradient(top, #e0fdb3, #9fee9a);
-  background-size: 100% auto;
+  background: url("../../images/primarySchool_application.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_application.png") no-repeat center bottom, -o-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_application.png") no-repeat center bottom, -moz-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_application.png") no-repeat center bottom, -mos-linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background: url("../../images/primarySchool_application.png") no-repeat center bottom, linear-gradient(top, #e0fdb3, #9fee9a) !important;
+  background-size: 100% auto !important;
 }
 #skin_primarySchool #moralEducationScore {
-  background: url("../../imgs/primarySchool_moralEducationScore.png") no-repeat center bottom, -webkit-linear-gradient(top, #a8ffe7, #c7e99d), linear-gradient(top, #a8ffe7, #c7e99d);
-  background-size: 100% auto;
+  background: url("../../images/primarySchool_moralEducationScore.png") no-repeat center bottom, -webkit-linear-gradient(top, #a8ffe7, #c7e99d) !important;
+  background: url("../../images/primarySchool_moralEducationScore.png") no-repeat center bottom, -o-linear-gradient(top, #a8ffe7, #c7e99d) !important;
+  background: url("../../images/primarySchool_moralEducationScore.png") no-repeat center bottom, -moz-linear-gradient(top, #a8ffe7, #c7e99d) !important;
+  background: url("../../images/primarySchool_moralEducationScore.png") no-repeat center bottom, -mos-linear-gradient(top, #a8ffe7, #c7e99d) !important;
+  background: url("../../images/primarySchool_moralEducationScore.png") no-repeat center bottom, linear-gradient(top, #a8ffe7, #c7e99d) !important;
+  background-size: 100% auto !important;
 }
 #skin_primarySchool #studentOnDuty {
-  background: url("../../imgs/primarySchool_studentOnDuty.png") no-repeat center bottom, -webkit-linear-gradient(top, #ffecfc, #ccffc4), linear-gradient(top, #ffecfc, #ccffc4);
-  background-size: 100% 100%;
+  background: url("../../images/primarySchool_studentOnDuty.png") no-repeat center bottom, -webkit-linear-gradient(top, #ffecfc, #ccffc4) !important;
+  background: url("../../images/primarySchool_studentOnDuty.png") no-repeat center bottom, -o-linear-gradient(top, #ffecfc, #ccffc4) !important;
+  background: url("../../images/primarySchool_studentOnDuty.png") no-repeat center bottom, -moz-linear-gradient(top, #ffecfc, #ccffc4) !important;
+  background: url("../../images/primarySchool_studentOnDuty.png") no-repeat center bottom, -mos-linear-gradient(top, #ffecfc, #ccffc4) !important;
+  background: url("../../images/primarySchool_studentOnDuty.png") no-repeat center bottom, linear-gradient(top, #ffecfc, #ccffc4) !important;
+  background-size: 100% 100% !important;
 }
 #skin_primarySchool #courseOfToday,
 #skin_primarySchool #courseAttendance,

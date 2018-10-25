@@ -92,6 +92,10 @@ $(document).ready(function () {
                         document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(commandJson), '*');
+                        document.querySelector('#application').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                     }
                 }
             },

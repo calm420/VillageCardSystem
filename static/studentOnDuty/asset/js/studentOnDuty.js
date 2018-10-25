@@ -1,17 +1,16 @@
 $(document).ready(function () {
 
     InitializePage();
+    var schoolId = getQueryString("schoolId");
 
     //监听接受消息
     window.addEventListener('message', (e) => {
-        var res = JSON.parse(e.data);
-        if (res.method == 'test') {
-            console.log(res, '测试的postMessage');
-        } else if (res.method == 'clearRichTestSign') {
-            //清空编辑器内容
-            window.location.reload();
-        } else if (res.method == 'closeMask') {
-
+        var commandInfo = JSON.parse(e.data);
+        if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+                var skin = commandInfo.data.skinName;
+                document.getElementsByName("studentOnDutyDiv")[0].id=skin;
+            }
         }
     })
 
