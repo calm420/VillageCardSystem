@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var ms = new MsgConnection();
+    var simpleMs = new SimpleConnection();
 
     var isDebug = true;
     var webserviceUrl = isDebug ? "http://127.0.0.1:7091/" : "http://jiaxue.maaee.com:7091/";
@@ -35,7 +36,8 @@ $(document).ready(function () {
         $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         setTimeout(function () {
             ms.connect(pro);
-            msListener()
+            msListener();
+            simpleListener();
         }, 3000)
     }
 
@@ -56,6 +58,21 @@ $(document).ready(function () {
     }
 
     /**
+     * message消息
+     */
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
+            }
+        }
+    }
+
+    /**
      * 获取地址栏参数
      * @param name
      * @returns {null}
@@ -68,16 +85,19 @@ $(document).ready(function () {
         return null;
     }
 
-    //监听接受消息
     window.addEventListener('message', (e) => {
         var res = JSON.parse(e.data);
-        if (res.method == 'editor') {
-            article = res.article;
-            console.log(article, '编辑时候的data');
-        }else if(res.method="playVideo"){
-            if(WebServiceUtil.isEmpty(res.src)==false){
-                playVideo(res.src);
+        if (res.method == 'openNewPage') {
+
+            var data = {
+                method: 'openNewPage',
+                url: webserviceUrl + res.url,
             }
+
+            Bridge.callHandler(data, null, function (error) {
+                window.location.href = webserviceUrl + res.url;
+            });
         }
-    })
+    });
+
 });

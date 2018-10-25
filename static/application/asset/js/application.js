@@ -21,6 +21,7 @@ $(function () {
                     // 告诉jQuery不要去设置Content-Type请求头
                     contentType: false,
                     success: function (res) {
+
                     }
                 });
             }
@@ -66,11 +67,11 @@ $(function () {
     $('#toHomeWorkModule').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "homeworkModule/index.html?classId="+classId;
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
@@ -78,11 +79,11 @@ $(function () {
     $('#toStep').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=step";
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
@@ -91,11 +92,11 @@ $(function () {
     $('#toCalories').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "healthStep/index.html?classId="+classId+"&healthType=calories",
+            url: "application/healthStep/index.html?classId="+classId+"&healthType=calories",
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=calories";
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 
@@ -106,11 +107,11 @@ $(function () {
     $('#toExcellentStu').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "excellentStu/index.html?clazzId="+classId,
+            url: "application/excellentStu/index.html?clazzId="+classId,
         };
 
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = "excellentStu/index.html?clazzId="+classId;
+            window.parent.postMessage(JSON.stringify(data), '*');
         });
     });
 

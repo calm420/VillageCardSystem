@@ -140,4 +140,16 @@ $(function(){
             }
         });
     }
+
+    $('#historyGoBack').on('click',function(){
+        console.log('返回首页');
+        var data = {
+            method: 'finish',
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = 'http://localhost:7091/home';
+        });
+
+    })
 })
