@@ -21,7 +21,6 @@ $(document).ready(function () {
         getDutyInfo(clazzId);
     }
 
-
     function getDutyInfo(clazzId) {
         var param = {
             "method": 'getClassBrandStudentDutyByToday',
@@ -45,10 +44,10 @@ $(document).ready(function () {
                                             var stuName = student.userName;
                                             var stuImgTag = "<li class='studentOnDuty_list'><div class='studentOnDuty_face'><img class='studentOnDuty_face' src=" + student.avatar + "/></div><div class='home_contfont text_hidden studentOnDuty_name'>" + stuName + "</div></li>";
                                             if (clazzDutyWeek == weekOfTody) {
-                                                var currentInner = $("#todyDuty")[0].innerHTML + stuImgTag;
+                                                var currentInner = $("#todyDuty")[0].innerHTML+stuImgTag;
                                                 $("#todyDuty")[0].innerHTML = currentInner;
                                             } else {
-                                                var currentInner = $("#nextDuty")[0].innerHTML + stuImgTag;
+                                                var currentInner = $("#nextDuty")[0].innerHTML+stuImgTag;
                                                 $("#nextDuty")[0].innerHTML = currentInner;
                                             }
                                         }
@@ -71,10 +70,10 @@ $(document).ready(function () {
      * @returns {null}
      * @constructor
      */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
+    function getQueryString(parameterName){
+        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
+        if(r!=null)return  unescape(r[2]); return null;
     }
 
 });

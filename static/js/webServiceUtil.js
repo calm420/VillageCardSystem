@@ -29,6 +29,10 @@ var apiWebServiceURL = isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRe
 const mobileURLOfLocal = "http://" + localUrl + ":8091/#/";
 const mobileURLOfRemote = "http://jiaoxue.maaee.com:8091/#/";
 
+WebServiceUtil.SMALL_IMG = 'size=100x100';
+WebServiceUtil.MIDDLE_IMG = 'size=300x300';
+WebServiceUtil.LARGE_IMG = 'size=500x500';
+
 
 function WebServiceUtil() {
 
