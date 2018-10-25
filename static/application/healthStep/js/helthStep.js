@@ -60,7 +60,7 @@ $(function(){
             method: 'finish',
         };
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = 'http://localhost:7091/home';
+            window.history.back(-1);
         });
     })
 })

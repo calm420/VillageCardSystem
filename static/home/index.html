@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>小蚂蚁智慧班牌</title>
-   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
@@ -62,15 +61,19 @@
             </div>
         </div>
         <div id='videoPlayerMask' style="display: none">
-            <span onClick="closePlayerMask()">关闭11111111111111111</span>
-            <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true"  webkit-playsinline="true" controlslist="nodownload nofullscreen" x5-video-player-type="h5" playsinline webkit-playsinline>
-                <source type="video/mp4" src=""/>
-            </video>
+            <div class="videoCont">
+                <span class="close" onClick="closePlayerMask()">关闭</span>
+                <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true"  webkit-playsinline="true" controlslist="nodownload nofullscreen" x5-video-player-type="h5" playsinline webkit-playsinline>
+                    <source type="video/mp4" src=""/>
+                </video>
+            </div>
+
         </div>
     </div>
 </div>
 </body>
 <script type="text/javascript" src="./asset/js/msg_websocket_connection.js"></script>
+<script type="text/javascript" src="../js/simple_websocket_connection.js"></script>
 <script src="./asset/js/home.js"></script>
 <script type="text/javascript">
 

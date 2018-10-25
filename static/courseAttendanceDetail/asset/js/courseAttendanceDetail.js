@@ -3,6 +3,7 @@
  */
 var url = "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount=0;
+var totalStudent=new Array();
 $(document).ready(function(){
     init();
 });
@@ -22,6 +23,16 @@ function openTimeInterVal(classTableId){
        getBraceletAttend(classTableId);
     }, 10000)
 }
+function goHomePage(){
+    var data = {
+        method: 'finish',
+    };
+
+    Bridge.callHandler(data, null, function (error) {
+        window.history.back(-1);
+    });
+
+}
 function getBraceletAttend(classTableId){
     var param = {
         "method": 'getBraceletAttend',
@@ -38,8 +49,22 @@ function getBraceletAttend(classTableId){
 }
 function getBraceletAttendHandle(response){
     console.log(response);
+    // $("#imageTip"+4004).show();
+    // $("#signTip"+4004).remove();
     $("#attendCount").text(response.length);
     $("#noAttendCount").text(totalCount-response.length);
+    if(response==null||response.length==0){
+        return
+    }
+    for (var i = 0; i < response.length; i++) {
+        var user=response[i];
+       for(var j=0;j<totalStudent.length;j++){
+           if(user.colUid==totalStudent[j].colUid){
+                $("#imageTip"+user.colUid).show();
+                $("#signTip"+user.colUid).remove();
+           }
+       }
+    }
 }
 function getStudentByCourseTableItem(classTableId){
     var param = {
@@ -64,8 +89,12 @@ function getStudentByCourseTableItemHandle(response,classTableId){
         var template = $("#student_template");
         template.find("#student_name").text(user.userName);
         template.find("#student_avatar").attr("src", user.avatar);
+        template.find(".signIcon_green").attr("id", "imageTip"+user.colUid);
+        template.find(".signIcon").attr("id", "signTip"+user.colUid);
         $("#student_list_container").append(template.html());
+        totalStudent.push(user.colUid);
     }
+    console.log(totalStudent);
     totalCount=response.length;
     $("#totalCount").text(response.length);
     getBraceletAttend(classTableId);

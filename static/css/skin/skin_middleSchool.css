@@ -41,7 +41,7 @@
   background: url("../../images/middleSchool_moralEducationScore.png") no-repeat!important;
   background-size: 100% 100%!important;
 }
-#skin_middleSchool #classDemeanor {
+#skin_middleSchool #classDemeanorWrap {
   background: url("../../images/middleSchool_classDemeanor.png") no-repeat!important;
   background-size: 100% 100%!important;
 }
@@ -94,4 +94,8 @@
 }
 #skin_middleSchool.no_bg {
   background: none;
+}
+#skin_middleSchool #moralEducationScore.iframe-id-bg, #skin_middleSchool #courseOfToday.iframe-id-bg{
+  background: transparent !important;
+  height: 100%;
 }

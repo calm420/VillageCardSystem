@@ -528,24 +528,6 @@ video::-webkit-media-controls-fullscreen-button {
   html {
     font-size: 36px !important;
   }
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 12px;
-  }
-  /* 这是针对缺省样式 (必须的) */
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 9px;
-    -webkit-border-radius: 9px;
-  }
-  /* 滑块颜色 */
-  ::-webkit-scrollbar-button {
-    background-color: initial;
-  }
-  /* 滑轨两头的监听按钮颜色 */
-  /* ::-webkit-scrollbar-corner {
-        background-color: none;
-  } 横向滚动条和纵向滚动条相交处尖角的颜色 */
 }
 .icon_pointer {
   cursor: pointer;
@@ -585,35 +567,4 @@ video::-webkit-media-controls-fullscreen-button {
   -ms-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
-.clazzDemeanor {
-  padding: 0.83rem 0 0 0;
-  height: 4.17rem !important;
-}
-.clazzDemeanor .slick-track,
-.clazzDemeanor .slick-slider,
-.clazzDemeanor .slick-list {
-  height: 100% !important;
-}
-.clazzDemeanor .slick-track img,
-.clazzDemeanor .slick-track .videoDiv {
-  margin: 0 6px;
-  object-fit: cover;
-  -o-object-fit: cover;
-  -webkit-object-fit: cover;
-}
-.classReward {
-  margin: 0.83rem 0 0 0;
-  height: 7.78rem !important;
-}
-.classReward img,
-.classReward .videoDiv {
-  margin: 0 6px;
-  object-fit: cover;
-  -o-object-fit: cover;
-  -webkit-object-fit: cover;
-}
-.classReward .slick-track,
-.classReward .slick-slider,
-.classReward .slick-list {
-  height: 100% !important;
-}
+
