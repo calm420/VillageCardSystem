@@ -19,7 +19,6 @@ function gotoAttendDetail() {
 }
 
 function checkCourseOpenHandle(data) {
-    debugger
     var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
         var classTableId=data.data.classTableId;
@@ -70,7 +69,6 @@ function getBraceletAttend(classTableId){
     }, function (result, status) {
         if (result.success == true) {
             var response=result.response;
-            debugger
             if(response!=null){
                 $("#attendCount").text(response.length);
             }else{
@@ -91,7 +89,6 @@ function getStudentByCourseTableItem(classTableId){
     }, function (result, status) {
         if (result.success == true) {
             var response=result.response;
-            debugger
             if(response!=null){
                 $("#totalCount").text(response.length);
             }else{
