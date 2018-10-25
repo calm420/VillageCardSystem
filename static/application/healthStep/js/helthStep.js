@@ -46,9 +46,7 @@ $(function(){
                                 "                            </div>"
                         }
                         $('#content').append(html);
-
                     }
-
                 }
             },
             onError: function (error) {
@@ -61,7 +59,6 @@ $(function(){
         var data = {
             method: 'finish',
         };
-
         Bridge.callHandler(data, null, function (error) {
             window.location.href = 'http://localhost:7091/home';
         });
