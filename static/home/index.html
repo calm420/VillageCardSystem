@@ -56,13 +56,16 @@
                 </div>
                 <!-- 本节考勤 -->
                 <div>
-                    <iframe id="courseAttendance" class="home_card currentAttendance_height" src="http://127.0.0.1:7091/courseAttendance"></iframe>
+                    <iframe id="courseAttendance" class="home_card currentAttendance_height"
+                            src="http://127.0.0.1:7091/courseAttendance"></iframe>
                 </div>
             </div>
         </div>
         <div id='videoPlayerMask' style="display: none">
             <span class="close" onClick="closePlayerMask()">关闭</span>
-            <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true"  webkit-playsinline="true" controlslist="nodownload nofullscreen" x5-video-player-type="h5" playsinline webkit-playsinline>
+            <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true"
+                   webkit-playsinline="true" controlslist="nodownload nofullscreen" x5-video-player-type="h5"
+                   playsinline webkit-playsinline>
                 <source type="video/mp4" src=""/>
             </video>
         </div>
@@ -74,20 +77,20 @@
 <script src="./asset/js/home.js"></script>
 <script type="text/javascript">
 
-    function playVideo(src){
+    function playVideo(src) {
         document.getElementById('videoPlayerMask').style.display = 'block'
         document.getElementById("videoPlayerAr").onended = function () {
             closePlayerMask()
         };
         setTimeout(function () {
-            document.getElementById('videoPlayerAr').src=src;
+            document.getElementById('videoPlayerAr').src = src;
             document.getElementById('videoPlayerAr').play();
         }, 300)
     }
 
-    function closePlayerMask(){
+    function closePlayerMask() {
         document.getElementById('videoPlayerAr').pause();
-        document.getElementById('videoPlayerAr').src="";
+        document.getElementById('videoPlayerAr').src = "";
         document.getElementById('videoPlayerMask').style.display = 'none'
     }
 

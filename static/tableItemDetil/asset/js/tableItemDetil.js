@@ -2,6 +2,16 @@ $(function () {
     var roomId = getQueryString("roomId");
     viewCourseTable(roomId)
 
+    document.querySelector('#goback-home').addEventListener('click', () => {
+        var data = {
+            method: 'finish',
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    })
+
 
     function viewCourseTable(roomId) {
         var param = {
