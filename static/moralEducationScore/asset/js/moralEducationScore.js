@@ -60,7 +60,7 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
-        getMoralEducationInfo(clazzId);
+        getMoralEducationInfo(5447);
      
     }
 
