@@ -1,66 +1,84 @@
 $(function () {
+    var roomId = getQueryString("roomId");
 
-    var article = {};
-    article.attacheMents = [];
-    InitializePage();
-
-    $('#changeImage').click(function () {
-        $("#upload").change(function () {
-            if (this.files[0]) {
-                var formData = new FormData();
-                formData.append("file" + 0, this.files[0]);
-                formData.append("name" + 0, this.files[0].name);
-                $.ajax({
-                    type: "POST",
-                    url: "https://jiaoxue.maaee.com:8890/Excoord_Upload_Server/file/upload",
-                    enctype: 'multipart/form-data',
-                    data: formData,
-                    // 告诉jQuery不要去处理发送的数据
-                    processData: false,
-                    // 告诉jQuery不要去设置Content-Type请求头
-                    contentType: false,
-                    success: function (res) {
-                    }
-                });
-            }
-        })
+    document.querySelector('.home_titleMore').addEventListener('click', () => {
+        // var data = {
+        //     method: 'openNewPage',
+        //     url: "homeworkModule/index.html?classId="+classId,
+        // };
+        //
+        // Bridge.callHandler(data, null, function (error) {
+        //     window.location.href = "homeworkModule/index.html?classId="+classId;
+        // });
     })
 
     /**
-     * 时间戳转年月日
-     * @param nS
-     * @returns {string}
+     * 消息监听
      */
-    formatYMD = function (nS) {
-        var da = new Date(parseInt(nS));
-        var year = da.getFullYear();
-        var month = da.getMonth() + 1;
-        var date = da.getDate();
-        var ymdStr = [year, month, date].join('-');
-        return ymdStr;
-    };
-
-    function sendMessageTo(data) {
-        window.parent.postMessage(JSON.stringify(data), '*');
-    }
-
-    //监听接受消息
     window.addEventListener('message', (e) => {
         var res = JSON.parse(e.data);
-        if (res.method == 'editor') {
-            article = res.article;
-            console.log(article, '编辑时候的data');
-        } else if (res.method == 'clearRichTestSign') {
-            //清空编辑器内容
-            window.location.reload();
-        } else if (res.method == 'closeMask') {
-
+        if (res.command == 'brand_class_open') {
+            //查看某个课表项(一接收到开课命令就获取当前开课)
+            if (roomId == res.data.classroomId) {
+                viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
+            }
+        } else if (res.command == 'brand_class_close') {
+            if (roomId == res.data.classroomId) {
+                //下课
+                document.querySelector('#finish-class').style.display = 'block'
+                document.querySelector('#begin-class').style.display = 'none'
+            }
+        } else if (res.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(res.data.classTableId) == false) {
+            //重连开课
+            if (roomId == res.data.classroomId) {
+                viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
+            }
         }
     })
 
-    //初始化页面元素
-    function InitializePage() {
+    /**
+     * 查看某个课表项
+     * @param data
+     */
+    function viewCourseTableItem(data) {
+        var param = {
+            "method": 'viewCourseTableItem',
+            "id": data.classTableId,
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    document.querySelector('.time').innerHTML = result.response.openTime + '-' + result.response.closeTime
 
+                    var img = document.createElement("img");
+                    img.src = result.response.teacher.avatar
+                    img.className = "terPic"
+                    document.querySelector('#begin-class').insertBefore(img, document.querySelector('.ter_name'))
+
+                    document.querySelector('.name').innerHTML = result.response.courseName
+                    document.querySelector('.ter_name').innerHTML = result.response.teacher.userName
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
     }
 
+    /**
+     * 获取地址栏参数
+     * @param name
+     * @returns {null}
+     * @constructor
+     */
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
 })

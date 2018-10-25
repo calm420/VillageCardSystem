@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>本节考勤</title>
-    <link rel="stylesheet" href="asset/css/courseAttendance.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/currentAttendance.css">
 </head>
-<body>
-本节考勤 <div>考勤详情</div>
+<body class="iframe-body">
+<div id="skin_middleSchool" class="no_bg">
+    <div id="classCardHomePage">
+        <h3 class="home_title">
+            <span>本节考勤</span>
+            <span class="home_titleMore" onclick="gotoAttendDetail()">
+                考勤详情
+                <i class="titleMore"></i>
+            </span>
+        </h3>
+        <div class="classTableA" id="classTableA" style="display: none;">
+            <div class="due">应到人数:<span id="totalCount" class="number"></span></div>
+            <div class="due">实到人数:<span id="attendCount" class="number"></span></div>
+        </div>
+        <div class="classTableA" id="classTableB" style="display: none;">
+            <div class="empty_center">
+                <div class="empty_icon empty_currentAttendance"></div>
+                <div class="empty_text">暂无考勤</div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="./asset/js/courseAttendance.js"></script>
 </body>

@@ -16,7 +16,7 @@
   background-size: 100% 100%;
 }
 #skin_default #courseOfToday,
-#skin_default #currentAttendance,
+#skin_default #courseAttendance,
 #skin_default #classDemeanor,
 #skin_default #notify,
 #skin_default #application,
@@ -25,7 +25,7 @@
   background: #fff;
 }
 #skin_default #courseOfToday .home_title,
-#skin_default #currentAttendance .home_title,
+#skin_default #courseAttendance .home_title,
 #skin_default #classDemeanor .home_title,
 #skin_default #notify .home_title,
 #skin_default #application .home_title,

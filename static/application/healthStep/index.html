@@ -2,46 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>蚁巢作业</title>
-    <link rel="stylesheet" href="../../css/index.css">
-    <link rel="stylesheet" href="../../css/homeworkModule.css">
+  <title>步数排行榜</title>
+   <link rel="stylesheet" href="../../css/index.css">
+   <link rel="stylesheet" href="./css/healthStep.css">
     <link rel="stylesheet" href="../../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_default.css">
-    <link rel="stylesheet" href="./css/pullLoad.css">
 </head>
 <body>
-
 <div id="skin_middleSchool">
-    <div id="homeworkModule" class="home_content">
+    <div id="health" class="home_content">
         <div class="inner_bg">
             <div class="navBar">
                 <span onClick={this.historyGoBack}>首页</span>
                 <span class="icon"></span>
-                <span>蚁巢作业</span>
+                <span id="typeTitle"></span>
             </div>
+            <div id="content" class="health_cont">
 
-            <!--分页-->
-            <div class="swiper">
-                <div class="preloader"> 加载中... </div>
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <!--填充数据 -->
-                    </div>
-                </div>
             </div>
         </div>
-
     </div>
-
 </div>
-
-
-
 
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../../js/webServiceUtil.js"></script>
-<script src="./js/pullLoad.js"></script>
-<script src="./js/homeworkModule.js"></script>
+<script src="./js/helthStep.js"></script>
 </html>

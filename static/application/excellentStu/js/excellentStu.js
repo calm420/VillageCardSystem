@@ -24,18 +24,15 @@ $(function () {
         })
     })
 
-    /**
-     * 时间戳转年月日
-     * @param nS
-     * @returns {string}
-     */
-    formatYMD = function (nS) {
+    formatHM = function (nS) {
         var da = new Date(parseInt(nS));
-        var year = da.getFullYear();
-        var month = da.getMonth() + 1;
-        var date = da.getDate();
-        var ymdStr = [year, month, date].join('-');
-        return ymdStr;
+        var hour = da.getHours() + ":";
+        var minutes = da.getMinutes();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        var hmStr = hour + minutes;
+        return hmStr;
     };
 
     function sendMessageTo(data) {
@@ -62,40 +59,85 @@ $(function () {
         getExcellentStu(clazzId);
     }
 
-    function getExcellentStu(classId){
+    function getExcellentStu(classId) {
         var param = {
             "method": 'getBraceletAttendTopStudentByClazzId',
             "clazzId": classId
         };
         console.log(param)
-        WebServiceUtil.requestLittleAntApi(JSON.stringify(param), {
+        WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
             onResponse: result => {
                 if (result.success) {
                     console.log(result.response);
-                    //var response = [{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.15:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}},{"attendTime":1530193673000,"user":{"avatar":"http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png","colAccount":"ST23993","colPasswd":"bd3adc44bd53e6473e81885d05252f38","colUid":23993,"colUtype":"STUD","colValid":1,"schoolId":9,"schoolName":"hzbtest","userName":"小兔兔"}}];
-                    this.setState({
-                        getExcellentStuData: result.response
-                    })
-                } else {
-                    Toast.fail('请求出错');
+                    // var arr = [
+                    //     {   "attendTime": 1530193673000, 
+                    //         "user": { "avatar": "http://192.168.50.15:8080/Excoord_For_Education/userPhoto/default_avatar.png", 
+                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38", 
+                    //         "colUid": 23993, 
+                    //         "colUtype": "STUD",
+                    //          "colValid": 1, 
+                    //          "schoolId": 9, 
+                    //          "schoolName":
+                    //           "hzbtest", 
+                    //           "userName": "小兔兔1" } }, 
+                    //     { "attendTime": 1530193673000, 
+                    //         "user": { "avatar": "http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png", 
+                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38", 
+                    //         "colUid": 23993, 
+                    //         "colUtype": 
+                    //         "STUD", 
+                    //         "colValid": 1, 
+                    //         "schoolId": 9, 
+                    //         "schoolName": "hzbtest", 
+                    //         "userName": "小兔兔2" } }
+                    // ]
+                    if (result.response == []) {
+                        $(".excellStu").replaceWith(`<div class="mEScoreInfo home_cardCont">
+                        <div class="empty_center">
+                            <div class="empty_icon empty_moralEducationScore"></div>
+                            <div class="empty_text">暂无通知</div>
+                        </div>
+                    </div>`)
+                    } else {
+                        result.response.forEach((v, i) => {
+                            $(".excellStu .left").append(
+                                `
+                                    <div class="my_flex">
+                                        <span class="num">第${i + 1}名</span>
+                                        <div class="info textOver">
+                                            <img src=${v.user.avatar} />
+                                            <span class="userName textOver">${v.user.userName}</span>
+                                        </div>
+                                        <span class="time">
+                                            <img src="../../../images/clock.png" />
+                                            ${formatHM(v.attendTime)}
+                                        </span>
+                                    </div>
+                                   
+                                `
+                            )
+                        })
+                    }
+
                 }
+
             },
             onError: function (error) {
-                Toast.fail(error, 1);
+                // Toast.fail(error, 1);
             }
         });
     }
 
-      /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName){
-        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+    /**
+   * 获取地址栏参数
+   * @param name
+   * @returns {null}
+   * @constructor
+   */
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]); return null;
     }
 
 })

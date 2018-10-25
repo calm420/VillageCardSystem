@@ -2,7 +2,8 @@ $(function () {
     let abcode = null;
     let timer = null;
     let timeOffset = null;
-
+    let roomId = getQueryString("roomId");
+    viewClassRoom(roomId)
     makeTime();
 
     /**
@@ -46,7 +47,7 @@ $(function () {
             img.src = "./asset/images/snow_icon.png";
         }
 
-        document.querySelector('#weather-today').insertBefore(img, document.querySelector('#weather-today .climate'));
+        document.querySelector('#weather-img').appendChild(img);
         document.querySelector('#weather-today .climate').innerHTML = data[0].dayweather
         document.querySelector('#weather-tomorrow .climate').innerHTML = data[1].dayweather
         document.querySelector('#weather-today .temperature').innerHTML = data[0].nighttemp + '℃~' + data[0].daytemp + '℃'
@@ -61,6 +62,16 @@ $(function () {
             time = date.getTime();
         timer = setInterval(function () {
             document.querySelector('#watch').innerText = set(time)
+            //每天刷新天气两次
+            if (set(time) == '00:10:00' || set(time) == '12:10:00') {
+                weatherInfo(abcode)
+            }
+            //更新日期
+            if (set(time) == '00:10:00') {
+                var date = new Date();
+                document.querySelector('#week').innerText = setTodayDate(date)
+            }
+
             time = Number(time);
             time += 1000;
         }, 1000);
@@ -122,6 +133,43 @@ $(function () {
         timeString = months + dates + weeks;
 
         return timeString;
+    }
+
+    /**
+     * 获取地址栏参数
+     * @param name
+     * @returns {null}
+     * @constructor
+     */
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    /**
+     * 获取班级名称
+     * @param id
+     */
+    function viewClassRoom(id) {
+        var param = {
+            "method": 'viewClassRoom',
+            "id": id,
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (WebServiceUtil.isEmpty(result.response) == false) {
+                        if (WebServiceUtil.isEmpty(result.response) == false && WebServiceUtil.isEmpty(result.response.defaultBindedClazz) == false) {
+                            document.querySelector('#class-name').innerHTML = result.response.defaultBindedClazz.name
+                        }
+                    }
+                }
+            },
+            onError: function (error) {
+            }
+        });
     }
 
 })

@@ -32,14 +32,15 @@
       <option name="outputFilters">
         <array>
           <FilterInfo>
-            <option name="description" value="lessc error format" />
-            <option name="name" value="lessc" />
+            <option name="description" value="" />
+            <option name="name" value="" />
             <option name="regExp" value="$MESSAGE$\Q in \E$FILE_PATH$\Q on line \E$LINE$\Q, column \E$COLUMN$" />
           </FilterInfo>
         </array>
       </option>
       <option name="outputFromStdout" value="true" />
-      <option name="program" value="/usr/local/bin/lessc" />
+      <option name="program" value="/opt/node-v8.11.1-linux-x64/bin/lessc" />
+      <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$FileDir$" />

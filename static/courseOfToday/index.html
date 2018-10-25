@@ -2,15 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>富文本编辑器</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/initStyle.css">
-    <link rel="stylesheet" href="./asset/css/RichTextEditor.css">
-    <link rel="stylesheet" href="./asset/css/generalStyle.css?v=2">
+    <title>courseOfToday</title>
+    <link rel="stylesheet" href="../css/index.css?v=4">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/courseOfToday.css">
+    <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
 </head>
-<body>
-班牌首页今日课程
-<script src="../js/jscolor.js"></script>
+<body class="iframe-body">
+<div id="skin_middleSchool" class="no_bg">
+    <div id="classCardHomePage">
+        <div id="courseOfToday" class="home_card">
+        <h3 class="home_title">
+            <span>今日课程</span>
+            <span class="home_titleMore">课程表
+        <i class="titleMore"></i>
+        </span>
+            </h3>
+            <div id="finish-class" class="classTableA">
+                <div class="empty_center">
+                    <div class="empty_icon empty_course"></div>
+                    <div class="empty_text">暂无课程</div>
+                </div>
+            </div>
+            <div id="begin-class" class="classTableB">
+                <div class='timeNode'>当前时段</div>
+                <div class='time'></div>
+                <div><span class='name'></span></div>
+                <div class="ter_name terPic_name"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/webServiceUtil.js"></script>
+<script type="text/javascript" src="./asset/js/courseOfToday.js"></script>
 </body>
 </html>

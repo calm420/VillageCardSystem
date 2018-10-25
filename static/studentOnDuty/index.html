@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <title>富文本编辑器</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/initStyle.css">
-    <link rel="stylesheet" href="./asset/css/RichTextEditor.css">
-    <link rel="stylesheet" href="./asset/css/generalStyle.css?v=2">
+    <link rel="stylesheet" href="../css/index.css?v=4">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
 </head>
-<body>
-<h3 className="home_title">值日生</h3>
-<div className="home_cardCont studentOnDuty_cont">
-    <h4>今日值日生</h4>
-    <div id="todyDuty"></div>
-    <h4>明日值日生</h4>
-    <div id="nextDuty"></div>
+<body class="iframe-body">
+<div id="skin_middleSchool" class="no_bg">
+    <div id="classCardHomePage">
+        <h3 class="home_title">值日生</h3>
+        <div class="home_cardCont studentOnDuty_cont">
+            <h4 class="studentOnDuty_today">今日值日生</h4>
+            <div id="todyDuty"></div>
+            <h4 class="studentOnDuty_today">明日值日生</h4>
+            <div id="nextDuty"></div>
+        </div>
+    </div>
 </div>
 <script src="../js/jscolor.js"></script>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>

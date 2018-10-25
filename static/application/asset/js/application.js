@@ -1,6 +1,7 @@
 $(function () {
 
     var article = {};
+    var classId = 5447;
     article.attacheMents = [];
     InitializePage();
 
@@ -56,7 +57,64 @@ $(function () {
         } else if (res.method == 'closeMask') {
 
         }
-    })
+    });
+
+
+
+
+    //跳转蚁巢作业
+    $('#toHomeWorkModule').on('click',function(){
+        console.log('点击事件')
+        var data = {
+            method: 'openNewPage',
+            url: "homeworkModule/index.html?classId="+classId,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "homeworkModule/index.html?classId="+classId;
+        });
+    });
+
+    //跳转步数
+    $('#toStep').on('click',function(){
+        console.log('点击事件')
+        var data = {
+            method: 'openNewPage',
+            url: "homeworkModule/index.html?classId="+classId,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=step";
+        });
+    });
+
+
+    //跳转卡路里
+    $('#toCalories').on('click',function(){
+        console.log('点击事件')
+        var data = {
+            method: 'openNewPage',
+            url: "healthStep/index.html?classId="+classId+"&healthType=calories",
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "healthStep/index.html?classId="+classId+"&healthType=calories";
+        });
+    });
+
+
+    //跳转早到之星
+    $('#toExcellentStu').on('click',function(){
+        console.log('点击事件')
+        var data = {
+            method: 'openNewPage',
+            url: "excellentStu/index.html?clazzId="+classId,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "excellentStu/index.html?clazzId="+classId;
+        });
+    });
 
     //初始化页面元素
     function InitializePage() {

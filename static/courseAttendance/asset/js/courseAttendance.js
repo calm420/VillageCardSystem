@@ -1,41 +1,110 @@
 /**
  * 本节考勤
  */
+var debug=true;
+var url =debug?"http://192.168.50.15:9006/Excoord_ApiServer/webservice": "https://www.maaee.com/Excoord_For_Education/webservice";
+var totalCount=0;
 var timerFlag = false;
 $(document).ready(function(){
     init();
+
 });
 function init(){
-
+    //getStudentByCourseTableItem(35)
+    $("#classTableA").hide();
+    $("#classTableB").show();
 }
-
-
+function gotoAttendDetail() {
+    parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
+}
+// function gotoAttendDetail(classTableId){
+//     $('#gotoAttendDetail').click(function () {
+//         parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
+//     })
+// }
+// function gotoAttendDetail(){
+//     $('#gotoAttendDetail').unbind("click");
+// }
 function checkCourseOpenHandle(data) {
-    var roomId = localStorage.getItem('roomId');
+    var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
+        var classTableId=data.data.classTableId;
         //获取应到人数
-        if (roomId == data.classroomId) {
-            this.getStudentByCourseTableItem(data);
+        if (roomId == data.data.classroomId) {
+            $("#classTableA").show();
+            $("#classTableB").hide();
+            getStudentByCourseTableItem(classTableId);
             if (!timerFlag) {
-                this.openTimeInterVal(ata);
+                this.openTimeInterVal(classTableId);
             }
         }
     } else if (data.command == 'brand_class_close') {
-        if (roomId ==data.classroomId) {
-            this.setState({openClass: false});
+        if (roomId ==data.data.classroomId) {
+            $("#classTableA").hide();
+            $("#classTableB").show();
             clearInterval(timer)
             timerFlag = false;
         }
-    } else if (data.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(data.classTableId) == false) {
+    } else if (data.command == 'braceletBoxConnect') {
         //重连开课
-        if (roomId ==data.classroomId) {
-            this.getStudentByCourseTableItem(data);
-            if (!timerFlag) {
-                this.openTimeInterVal(data);
+        if( data.data.classroomId!=null) {
+            if (roomId == data.data.classroomId) {
+                $("#classTableA").show();
+                $("#classTableB").hide();
+                this.getStudentByCourseTableItem(data.data.classTableId);
+                if (!timerFlag) {
+                    this.openTimeInterVal(data.data.classTableId);
+                }
             }
         }
     }
 
+}
+function openTimeInterVal(classTableId){
+    //开启定时器获取实到人数
+    timer = setInterval(function () {
+        getBraceletAttend(classTableId);
+    }, 10000)
+}
+function getBraceletAttend(classTableId){
+    var param = {
+        "method": 'getBraceletAttend',
+        "cid": classTableId
+    };
+    $.post(url, {
+        params: JSON.stringify(param)
+    }, function (result, status) {
+        if (result.success == true) {
+            var response=result.response;
+            if(response!=null){
+                $("#attendCount").text(response.length);
+            }else{
+                $("#attendCount").text(0);
+            }
+        }else{
+            $("#attendCount").text(0);
+        }
+    }, "json");
+}
+function getStudentByCourseTableItem(classTableId){
+    var param = {
+        "method": 'getStudentByCourseTableItem',
+        "id": classTableId
+    };
+    $.post(url, {
+        params: JSON.stringify(param)
+    }, function (result, status) {
+        if (result.success == true) {
+            var response=result.response;
+            if(response!=null){
+                $("#totalCount").text(response.length);
+            }else{
+                $("#totalCount").text(0);
+            }
+        }else{
+            $("#totalCount").text(0);
+        }
+    }, "json");
 }
 function sendMessageTo(data) {
     window.parent.postMessage(JSON.stringify(data), '*');
@@ -47,3 +116,11 @@ window.addEventListener('message', (e) => {
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);
 })
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
