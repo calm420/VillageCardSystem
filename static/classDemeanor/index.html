@@ -2,15 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>富文本编辑器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>班级风采</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/initStyle.css">
-    <link rel="stylesheet" href="./asset/css/RichTextEditor.css">
-    <link rel="stylesheet" href="./asset/css/generalStyle.css?v=2">
+    <link rel="stylesheet" href="./asset/js/swiper4.4.1/css/swiper.min.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./asset/js/classDemeanor.js"></script>
+    <script type="text/javascript" src="./asset/js/swiper4.4.1/js/swiper.min.js"></script>
+    <script type="text/javascript" src="../js/webServiceUtil.js"></script>
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function videoOnClick(src) {
+            console.log(src);
+            var data={"method":'playVideo',"src":src};
+            window.parent.postMessage(JSON.stringify(data), '*');
+        }
+    </script>
 </head>
 <body>
-班牌首页班级风采
-<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-<script src="./asset/js/classDemeanor.js"/>
+<div class="swiper-container classDemeanor">
+    <div class="swiper-wrapper" id="classDemeanor">
+
+    </div>
+    <!-- Add Pagination -->
+    <!--<div class="swiper-pagination"></div>-->
+</div>
+
+<div class="swiper-container classReward">
+    <div class="swiper-wrapper" id="classReward">
+
+    </div>
+    <!-- Add Pagination -->
+    <!--<div class="swiper-pagination"></div>-->
+</div>
 </body>
 </html>
