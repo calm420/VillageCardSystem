@@ -1,0 +1,120 @@
+#currentAttendanceList{
+  background-color: #fff;
+  .navBar{
+    position: relative;
+    .right{
+      top:50%;
+      position: absolute;
+      right:0;
+      font-weight: normal;
+      font-size: .67rem;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+      .blue{
+        color: #5091fe;
+        font-size: .72rem;
+        padding:  0 .33rem;
+      }
+      .white{
+        color: #fff;
+      }
+      .item{
+        padding-right: 1.67rem;
+      }
+      .btn{
+        padding: .15rem .6rem;
+        font-size: .56rem;
+        -webkit-border-radius: .6rem;
+        -moz-border-radius: .6rem;
+        border-radius: .6rem;
+        margin-right: .56rem;
+        display: inline;
+      }
+      .noSign{
+        margin-right: .56rem;
+        font-size: 1rem;
+        .btn{
+          background-color: #f13010;
+        }
+        .text{
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+  .content{
+    padding:.83rem 0 .83rem 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    height: calc(~"100% - 2.22rem");
+  }
+  .photoItem{
+    width: 4.61rem;
+    margin-right: .39rem;
+    margin-bottom: .22rem;
+    text-align: center;
+    padding: .67rem 0 .28rem;
+    position: relative;
+    float: left;
+    .signIcon_green{    //已签到图标样式
+      position: absolute;
+      right: 13%;
+      top:3.95rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      z-index:2;
+      border-radius: 50%;
+    }
+    .imgDiv{
+      width: 3.33rem;
+      height: 3.33rem;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      margin: .67rem auto .56rem;
+      border: .06rem #fff solid;
+      overflow: hidden;
+      &.no{
+        -webkit-box-shadow: 0 0 0.44rem 0.11rem rgba(255,103,103,0.66);
+        -moz-box-shadow: 0 0 0.44rem 0.11rem rgba(255,103,103,0.66);
+        box-shadow: 0 0 0.44rem 0.11rem rgba(255,103,103,0.66);
+      }
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .studentName{
+      font-size: .72rem;
+      color: #565c72;
+      padding-top: .28rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: block;
+    }
+    .signIcon{
+      font-size: .61rem;
+      color: #fff;
+      padding: .15rem 0;
+      -webkit-border-radius: .6rem;
+      -moz-border-radius: .6rem;
+      border-radius: .6rem;
+      position: absolute;
+      top: 4rem;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      background-color: #f13010;
+      width: 3rem;
+    }
+  }
+}

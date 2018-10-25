@@ -1,0 +1,21 @@
+#workAttendance {
+  color: skyblue;
+  display: flex;
+  padding: 40px;
+}
+#workAttendance .workAttendanceL,
+#workAttendance .workAttendanceM,
+#workAttendance .workAttendanceR {
+  background-color: #ccc;
+  flex: 1;
+  height: 400px;
+  margin-right: 40px;
+}
+#workAttendance .workAttendanceL h1,
+#workAttendance .workAttendanceM h1,
+#workAttendance .workAttendanceR h1 {
+  text-align: center;
+}
+#workAttendance .workAttendanceR {
+  margin: 0;
+}
