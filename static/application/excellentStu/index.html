@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>早到之星</title>
+    <link rel="stylesheet" href="./css/excellentStu.css">
+</head>
+
+<body>
+    <div id="excellentStu" class="home_content">
+        <div class="inner_bg">
+            <div class="navBar">
+                <span onClick={this.historyGoBack}>首页</span>
+                <span class="icon"></span>
+                <span>早到之星</span>
+            </div>
+            <div class="cont my_flex">
+                <div class="left">
+                    { topStu.state.getExcellentStuData.map((v, i) => { console.log(v); return (
+                    <div class="my_flex">
+                        <span class="num">第{i + 1}名</span>
+                        <div class="info textOver">
+                            <img src=""/>
+                            <span class="userName textOver">{v.user.userName}</span>
+                        </div>
+                        <span class="time">
+                            <img src="../imgs/clock.png"/> {WebServiceUtil.formatHM(v.attendTime)}
+                        </span>
+
+                    </div>
+                    ) }) }
+                </div>
+                <div class="right">
+                    <img class="icon_topLeft" src="../imgs/rightPic.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="../../js/webServiceUtil.js"></script>
+<script src="./js/excellentStu.js"></script>
+
+</html>
