@@ -5,7 +5,6 @@ $(function(){
 //页码
     var slideNumber = 1;
     var loadingMore = true;
-
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
     //
@@ -130,13 +129,12 @@ $(function(){
                     $('.preloader').removeClass('visible');
                     //一个小bug 暂未查出原因。
                     $('.swiper-wrapper').css({height:$('.swiper-wrapper').height() - 1});
-
                     slideNumber++;
                 }
 
             },
             onError: function (error) {
-                $('body').html("查询出错:"+JSON.stringify(responseStr))
+                $('body').html("查询出错:"+JSON.stringify(error))
             }
         });
     }
