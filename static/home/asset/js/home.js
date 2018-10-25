@@ -1,6 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    var ms = new MsgConnection();
+
     var isDebug = true;
-    var webserviceUrl = isDebug?"http://127.0.0.1:7091/":"http://jiaxue.maaee.com:7091/";
+    var webserviceUrl = isDebug ? "http://127.0.0.1:7091/" : "http://jiaxue.maaee.com:7091/";
 
     InitializePage();
 
@@ -12,14 +14,44 @@ $(document).ready(function(){
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
         var schoolId = getQueryString("schoolId");
-        console.log(clazzId+"\t"+roomId+"\t"+mac+"\t"+schoolId);
-        $("#studentOnDuty")[0].src=webserviceUrl+"studentOnDuty?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#moralEducationScore")[0].src=webserviceUrl+"moralEducationScore?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#classDemeanor")[0].src=webserviceUrl+"classDemeanor?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#notify")[0].src=webserviceUrl+"notify?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#application")[0].src=webserviceUrl+"application?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#courseOfToday")[0].src=webserviceUrl+"courseOfToday?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#currentAttendance")[0].src=webserviceUrl+"currentAttendance?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+
+        var pro = {
+            "command": "braceletBoxConnect",
+            "data": {
+                "type": "web",
+                "machine": mac,
+                "version": '1.0',
+                "webDevice": WebServiceUtil.createUUID()
+            }
+        };
+
+        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#moralEducationScore")[0].src = webserviceUrl + "moralEducationScore?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#application")[0].src = webserviceUrl + "application?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#courseOfToday")[0].src = webserviceUrl + "courseOfToday?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#currentAttendance")[0].src = webserviceUrl + "currentAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        setTimeout(function () {
+            ms.connect(pro);
+            msListener()
+        }, 3000)
+    }
+
+    /**
+     * message消息
+     */
+    function msListener() {
+        ms.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
+                document.querySelector('#currentAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
+            }
+        }
     }
 
     /**
@@ -28,10 +60,11 @@ $(document).ready(function(){
      * @returns {null}
      * @constructor
      */
-    function getQueryString(parameterName){
-        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]);
+        return null;
     }
 
 });
@@ -90,7 +123,6 @@ $(function () {
             console.log(article, '编辑时候的data');
         }
     })
-
 
 
 })
