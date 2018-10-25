@@ -46,7 +46,7 @@ $(function () {
             img.src = "./asset/images/snow_icon.png";
         }
 
-        document.querySelector('#weather-today').insertBefore(img, document.querySelector('#weather-today .climate'));
+        document.querySelector('#weather-img').appendChild(img);
         document.querySelector('#weather-today .climate').innerHTML = data[0].dayweather
         document.querySelector('#weather-tomorrow .climate').innerHTML = data[1].dayweather
         document.querySelector('#weather-today .temperature').innerHTML = data[0].nighttemp + '℃~' + data[0].daytemp + '℃'

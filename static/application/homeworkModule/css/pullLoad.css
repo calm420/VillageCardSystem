@@ -3,7 +3,7 @@ html {
 }
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     /*font-size: 13px;*/
     /*line-height: 1.5;*/
     /*position: relative;*/
@@ -12,35 +12,35 @@ body {
     /*box-shadow: 0px 0px 100px #000 inset;*/
 }
 .swiper{
+    height: 800px;
     overflow: hidden;
-    height: 100%;
     position: relative;
 }
-/*loading*/
+/*加载状态*/
 .preloader {
     position: absolute;
     left: 0;
     bottom: -100px;
     z-index: 0;
-    color: #fff;
+    color: #000;
     text-align: center;
     line-height: 100px;
     height: 100px;
     width: 100%;
-    /*opacity: 0;*/
+    opacity: 1;
     font-size: 25px;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
     -ms-transition: 300ms;
     -o-transition: 300ms;
     transition: 300ms;
-    background: rgba(0,0,0,1);
-    display: none;
+    /*background: rgba(f,f,0,1);*/
+    /*background: #cccccc;*/
+    display:none
 }
-/*loading*/
 .preloader.visible {
     bottom: 0;
-    /*opacity: 1;*/
+    opacity: 1;
     display: block;
 }
 .swiper-container {
@@ -51,22 +51,37 @@ body {
     position: relative;
     z-index: 10;
 }
+/*.red-slide {*/
+    /*!*background: #ca4040;*!*/
+/*}*/
+/*.blue-slide {*/
+    /*background: #4390ee;*/
+/*}*/
+/*.orange-slide {*/
+    /*background: #ff8604;*/
+/*}*/
+/*.green-slide {*/
+    /*background: #49a430;*/
+/*}*/
+/*.pink-slide {*/
+    /*background: #973e76;*/
+/*}*/
 .swiper-slide {
     /*height: 100px;*/
-    width: 100%;
+    /*width: 100%;*/
     /*line-height: 100px;*/
-    /*后期解决阴影问题*/
+    /*//后期解决*/
     /*opacity: 0.2;*/
-    -webkit-transition: 300ms;
-    -moz-transition: 300ms;
-    -ms-transition: 300ms;
-    -o-transition: 300ms;
+    /*-webkit-transition: 300ms;*/
+    /*-moz-transition: 300ms;*/
+    /*-ms-transition: 300ms;*/
+    /*-o-transition: 300ms;*/
     transition: 300ms;
 }
 .swiper-slide-visible {
-    opacity: 1;
+    /*opacity: 1;*/
 }
 .swiper-slide .title {
-    /*font-style: italic;*/
-    /*font-size: 42px;*/
+    font-style: italic;
+    font-size: 42px;
 }
