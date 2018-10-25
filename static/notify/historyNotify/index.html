@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>历史通知</title>
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="../../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_default.css">
+    <link rel="stylesheet" href="./css/pullLoad.css">
 </head>
+
 <body>
     <div id="skin_middleSchool">
         <div id="excellentStu" class="home_content">
@@ -17,14 +20,23 @@
                     <span class="icon"></span>
                     <span>通知</span>
                 </div>
-                <div class="notify_list">
-                    
+                <!--分页-->
+                <div class="swiper">
+                    <div class="preloader"> 加载中... </div>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <!--填充数据 -->
+                        </div>
+                    </div>
                 </div>
+               
             </div>
         </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="../../js/webServiceUtil.js"></script>
-<script src="./js/excellentStu.js"></script>
+<script  type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script  type="text/javascript" src="../../js/webServiceUtil.js"></script>
+<script  type="text/javascript" src="./js/pullLoad.js"></script>
+<script  type="text/javascript" src="./js/historyNotify.js"></script>
+
 </html>

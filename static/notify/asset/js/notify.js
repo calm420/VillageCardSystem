@@ -57,6 +57,22 @@ $(function () {
 
         }
     })
+
+    notifySeeMore = function(){
+        parent.location.href="http://localhost:7091/notify/historyNotify/index.html?roomId=1";
+    }
+    $('#notifySeeMore').on('click',function(){
+        var data = {
+            method: 'openNewPage',
+            url: "notify/historyNotify/index.html?roomId="+1,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.parent.postMessage(JSON.stringify(data), '*');
+        });
+    });
+
+
     getIndex = function (index) {
         $(".modal").hide();
         $(".modal").eq(index).show();
