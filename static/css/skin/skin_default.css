@@ -4,16 +4,16 @@
   overflow: hidden;
 }
 #skin_default #header {
-  background: url("../../imgs/bg_web_top.jpg") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/bg_web_top.jpg") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default #header .headTitle {
-  background: url("../../imgs/headTittle_bg.png") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/headTittle_bg.png") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default .home_content {
-  background: url("../../imgs/bg_web.jpg") no-repeat;
-  background-size: 100% 100%;
+  background: url("../../images/bg_web.jpg") no-repeat !important;
+  background-size: 100% 100% !important;
 }
 #skin_default #courseOfToday,
 #skin_default #courseAttendance,
@@ -22,14 +22,8 @@
 #skin_default #application,
 #skin_default #moralEducationScore,
 #skin_default #studentOnDuty {
-  background: #fff;
+  background: #fff !important;
 }
-#skin_default #courseOfToday .home_title,
-#skin_default #courseAttendance .home_title,
-#skin_default #classDemeanor .home_title,
-#skin_default #notify .home_title,
-#skin_default #application .home_title,
-#skin_default #moralEducationScore .home_title,
-#skin_default #studentOnDuty .home_title {
-  border-bottom: 1px solid #e5ebf7;
+#skin_default .home_title{
+  border-bottom: 1px solid #e5ebf7 !important;
 }
