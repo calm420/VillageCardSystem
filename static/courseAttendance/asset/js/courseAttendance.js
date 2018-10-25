@@ -18,6 +18,7 @@ function init(){
 //     parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
 // }
 function gotoAttendDetail(classTableId){
+    $('#gotoAttendDetail').unbind("click");
     $('#gotoAttendDetail').click(function () {
         //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
         var data = {
