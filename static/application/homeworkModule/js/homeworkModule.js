@@ -6,6 +6,7 @@ $(function(){
     var slideNumber = 1;
     var loadingMore = true;
 
+    $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
     getHomeworkData();
 
     var mySwiper = new Swiper('.swiper-container',{
@@ -23,21 +24,39 @@ $(function(){
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function(s,pos){
-            holdPosition = '上拉加载更多';
+            console.log(pos,'pospospospospospos');
+            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
+            if(pos > 300){
+                holdPosition = '上拉加载更多';
+            }else{
+                mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height());
+
+            }
         },
         //结束回调
         onTouchEnd: function(){
-            console.log(holdPosition,'holdPosition')
+            console.log(holdPosition,'holdPosition');
+            console.log($(window).height(),'height')
+
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             }else if(holdPosition == '上拉加载更多'){
                 if(loadingMore){
-                    console.log('上拉加载');
-                    if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
-                        console.log('进入');
-                        //100为loading高度
-                        mySwiper.setWrapperTranslate(0,$(".swiper").height() - $(".swiper-wrapper").height() - 100,0)
+                    if(slideNumber == 2){
+                        $('.swiper-wrapper').css({transform:'translate3d(0px, -2150.2px, 0px)'})
                     }
+                    console.log('上拉加载');
+                    // if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
+                    //     console.log('进入');
+                        //100为loading高度
+                    console.log('回弹')
+                    //规避第二页下拉位置偏差问题
+                    if(slideNumber == 3){
+                        mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 180);
+                    }else{
+                        mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 100);
+                    }
+                    // }
                     //禁止拖动
                     mySwiper.params.onlyExternal=true;
                     //loading显示
@@ -45,8 +64,7 @@ $(function(){
                     //调用增加数据方法
                     setTimeout(function(){
                         getHomeworkData();
-
-                    },1000000)
+                    },slideNumber == 3?500:500)
                 }
 
             }else{
@@ -79,9 +97,9 @@ $(function(){
                     }
                     //循环渲染
                     for(var k in rowData){
-                        console.log(rowData[k].attachMents.address,'rowData[k].attachMents.address');
+                        // console.log(rowData[k].attachMents.address,'rowData[k].attachMents.address');
                         let attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
-                        console.log(attachMents,'attachMents');
+                        // console.log(attachMents,'attachMents');
                         mySwiper.appendSlide("<div class=\"homeworkInfo\">\n" +
                             "         <div class=\"homeworkL\">\n" +
                             "            <div class=\"imgInfo\">\n" +
@@ -97,17 +115,19 @@ $(function(){
                             "                  <p>"+WebServiceUtil.formatYMD(rowData[k].createTime)+"</p>\n" +
                             "                   <img src='"+attachMents+"'/>\n" +
                             "             </div>\n" +
-                            "      </div>", 'swiper-slide');
+                            "      </div>", 'swiper-slide swiper-slide-visible');
                     }
-                    // if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
-                    //     mySwiper.setWrapperTranslate(0,$(".swiper").height() - $(".swiper-wrapper").height(),0)
-                    // }
+                    if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
+                        // console.log('触发二次')
+                        // mySwiper.setWrapperTranslate(0,$(".swiper").height() - $(".swiper-wrapper").height(),0)
+                    }
                     //释放拖动
                     mySwiper.params.onlyExternal=false;
                     mySwiper.updateActiveSlide(0);
                     $('.preloader').removeClass('visible');
                     //一个小bug 暂未查出原因。
                     $('.swiper-wrapper').css({height:$('.swiper-wrapper').height() - 1});
+
                     slideNumber++;
                 }
 
