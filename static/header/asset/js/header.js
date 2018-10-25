@@ -5,6 +5,7 @@ $(function () {
     let roomId = getQueryString("roomId");
     viewClassRoom(roomId)
     makeTime();
+    // getCurrentTimeMillis();
 
     /**
      * 根据IP地址获取adcode
@@ -14,6 +15,21 @@ $(function () {
         abcode = res.adcode
         weatherInfo(res.adcode)
     })
+
+    function getCurrentTimeMillis() {
+        var param = {
+            "method": 'getCurrentTimeMillis',
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    console.log(result.response);
+                }
+            },
+            onError: function (error) {
+            }
+        });
+    }
 
     /**
      * 查询天气
