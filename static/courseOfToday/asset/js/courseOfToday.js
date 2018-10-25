@@ -1,6 +1,17 @@
 $(function () {
     var roomId = getQueryString("roomId");
 
+    document.querySelector('.home_titleMore').addEventListener('click', () => {
+        var data = {
+            method: 'openNewPage',
+            url: "homeworkModule/index.html?classId="+classId,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "homeworkModule/index.html?classId="+classId;
+        });
+    })
+
     /**
      * 消息监听
      */
