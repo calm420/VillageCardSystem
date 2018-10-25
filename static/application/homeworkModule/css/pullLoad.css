@@ -36,12 +36,12 @@ body {
     transition: 300ms;
     /*background: rgba(f,f,0,1);*/
     /*background: #cccccc;*/
-    display:none
+    /*display:none*/
 }
 .preloader.visible {
     bottom: 0;
     opacity: 1;
-    display: block;
+    /*display: block;*/
 }
 .swiper-container {
     width: 100%;
