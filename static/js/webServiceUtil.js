@@ -29,6 +29,10 @@ var apiWebServiceURL = isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRe
 const mobileURLOfLocal = "http://" + localUrl + ":8091/#/";
 const mobileURLOfRemote = "http://jiaoxue.maaee.com:8091/#/";
 
+WebServiceUtil.SMALL_IMG = 'size=100x100';
+WebServiceUtil.MIDDLE_IMG = 'size=300x300';
+WebServiceUtil.LARGE_IMG = 'size=500x500';
+
 
 function WebServiceUtil() {
 
@@ -149,7 +153,7 @@ WebServiceUtil.createUUID = function () {
 };
 
 //获取地址栏参数
-WebServiceUtil.GetQueryString = function(name) {
+WebServiceUtil.GetQueryString = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);

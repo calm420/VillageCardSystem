@@ -64,7 +64,6 @@ $(function () {
 
     //跳转蚁巢作业
     $('#toHomeWorkModule').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
             url: "homeworkModule/index.html?classId="+classId,
@@ -77,7 +76,6 @@ $(function () {
 
     //跳转步数
     $('#toStep').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
             url: "homeworkModule/index.html?classId="+classId,
@@ -91,7 +89,6 @@ $(function () {
 
     //跳转卡路里
     $('#toCalories').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
             url: "healthStep/index.html?classId="+classId+"&healthType=calories",
@@ -103,9 +100,10 @@ $(function () {
     });
 
 
+
+
     //跳转早到之星
     $('#toExcellentStu').on('click',function(){
-        console.log('点击事件')
         var data = {
             method: 'openNewPage',
             url: "excellentStu/index.html?clazzId="+classId,
@@ -113,6 +111,18 @@ $(function () {
 
         Bridge.callHandler(data, null, function (error) {
             window.location.href = "excellentStu/index.html?clazzId="+classId;
+        });
+    });
+
+
+    //跳转家校
+    $('#toExcellentStu').on('click',function(){
+        var data = {
+            method: 'gotoNFCbyKK',
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+
         });
     });
 
