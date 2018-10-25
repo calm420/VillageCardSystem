@@ -11,6 +11,8 @@ $(document).ready(function(){
 });
 function init(){
     //getStudentByCourseTableItem(35)
+    $("#classTableA").hide();
+    $("#classTableB").show();
 }
 function gotoAttendDetail() {
     parent.location.href="http://localhost:7091/courseAttendanceDetail/";
@@ -23,6 +25,8 @@ function checkCourseOpenHandle(data) {
         var classTableId=data.data.classTableId;
         //获取应到人数
         if (roomId == data.data.classroomId) {
+            $("#classTableA").show();
+            $("#classTableB").hide();
             getStudentByCourseTableItem(classTableId);
             if (!timerFlag) {
                 this.openTimeInterVal(classTableId);
@@ -30,6 +34,8 @@ function checkCourseOpenHandle(data) {
         }
     } else if (data.command == 'brand_class_close') {
         if (roomId ==data.data.classroomId) {
+            $("#classTableA").hide();
+            $("#classTableB").show();
             clearInterval(timer)
             timerFlag = false;
         }
@@ -37,6 +43,8 @@ function checkCourseOpenHandle(data) {
         //重连开课
         if( data.data.classroomId!=null) {
             if (roomId == data.classroomId) {
+                $("#classTableA").show();
+                $("#classTableB").hide();
                 this.getStudentByCourseTableItem(data.classTableId);
                 if (!timerFlag) {
                     this.openTimeInterVal(data.classTableId);
