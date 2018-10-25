@@ -1,0 +1,94 @@
+#skin_middleSchool {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: -webkit-linear-gradient(#1053a4, #049adc);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#1053a4, #049adc);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#1053a4, #049adc);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(#1053a4, #049adc);
+  /* 标准的语法 */
+}
+#skin_middleSchool #header {
+  background: none;
+}
+#skin_middleSchool #header .headTitle {
+  background: url("../../imgs/middleSchool_head.png") no-repeat 0 center;
+  background-size: auto 100%;
+}
+#skin_middleSchool #header .headTitleT {
+  color: #fff;
+}
+#skin_middleSchool .home_content {
+  background: none;
+}
+#skin_middleSchool .home_card,
+#skin_middleSchool .home_title,
+#skin_middleSchool .studentOnDuty_today,
+#skin_middleSchool .home_contfont,
+#skin_middleSchool .font_title2,
+#skin_middleSchool .blue_text,
+#skin_middleSchool .blue_big {
+  color: #fff;
+}
+#skin_middleSchool #studentOnDuty {
+  background: url("../../imgs/middleSchool_studentOnDuty.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #moralEducationScore {
+  background: url("../../imgs/middleSchool_moralEducationScore.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #classDemeanor {
+  background: url("../../imgs/middleSchool_classDemeanor.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #notify {
+  background: url("../../imgs/middleSchool_notify.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #application {
+  background: url("../../imgs/middleSchool_application.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #course {
+  background: url("../../imgs/middleSchool_course.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool #currentAttendance {
+  background: url("../../imgs/middleSchool_currentAttendance.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool i.titleMore {
+  background: url("../../imgs/middleSchool_nextIcon.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_middleSchool .empty_text {
+  color: #fff;
+}
+#skin_middleSchool .empty_currentAttendance {
+  background: url("../../imgs/middleSchool_empty_currentAttendance.png") no-repeat;
+  background-size: 100%;
+}
+#skin_middleSchool .empty_activity {
+  background: url("../../imgs/middleSchool_empty_activity.png") no-repeat;
+  background-size: 100%;
+}
+#skin_middleSchool .empty_honor {
+  background: url("../../imgs/middleSchool_empty_honor.png") no-repeat;
+  background-size: 100%;
+}
+#skin_middleSchool .empty_moralEducationScore {
+  background: url("../../imgs/middleSchool_empty_moralEducationScore.png") no-repeat;
+  background-size: 100%;
+}
+#skin_middleSchool .empty_notify {
+  background: url("../../imgs/middleSchool_empty_notify.png") no-repeat;
+  background-size: 100%;
+}
+#skin_middleSchool .empty_course {
+  background: url("../../imgs/middleSchool_empty_course.png") no-repeat;
+  background-size: 100%;
+}

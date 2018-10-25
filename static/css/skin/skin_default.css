@@ -1,0 +1,35 @@
+#skin_default {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#skin_default #header {
+  background: url("../../imgs/bg_web_top.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_default #header .headTitle {
+  background: url("../../imgs/headTittle_bg.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_default .home_content {
+  background: url("../../imgs/bg_web.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_default #course,
+#skin_default #currentAttendance,
+#skin_default #classDemeanor,
+#skin_default #notify,
+#skin_default #application,
+#skin_default #moralEducationScore,
+#skin_default #studentOnDuty {
+  background: #fff;
+}
+#skin_default #course .home_title,
+#skin_default #currentAttendance .home_title,
+#skin_default #classDemeanor .home_title,
+#skin_default #notify .home_title,
+#skin_default #application .home_title,
+#skin_default #moralEducationScore .home_title,
+#skin_default #studentOnDuty .home_title {
+  border-bottom: 1px solid #e5ebf7;
+}
