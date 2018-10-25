@@ -470,7 +470,7 @@
   height: 7.78rem !important;
 }
 
-#classDemeanorWrap .swiper-slide img,video{
+#classDemeanorWrap .swiper-slide img,#classDemeanorWrap video{
   width: 100% !important;
   height: 100%!important;
   object-fit: cover!important;

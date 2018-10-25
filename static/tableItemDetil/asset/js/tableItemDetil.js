@@ -27,7 +27,7 @@ $(function () {
             var tr = '';
             data[k].forEach((e) => {
                 if (!!e.courseName) {
-                    td = '<td><span>' + e.courseName + '</span><span>' + e.classRoom.name + '</span> <span>(' + e.openTime + '-' + e.closeTime + ')</span> </td>'
+                    td = '<td><span class="class_name">' + e.courseName + '</span><span>' + e.classRoom.name + '</span> <span>(' + e.openTime + '-' + e.closeTime + ')</span> </td>'
                 } else {
                     td = '<td></td>'
                 }
