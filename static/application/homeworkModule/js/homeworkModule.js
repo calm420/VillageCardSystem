@@ -6,9 +6,12 @@ $(function(){
     var slideNumber = 1;
     var loadingMore = true;
 
+    //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
+    //
     getHomeworkData();
 
+    //创建swiper对象
     var mySwiper = new Swiper('.swiper-container',{
         //显示数据的条数
         slidesPerView:'auto',
