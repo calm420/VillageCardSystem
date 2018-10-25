@@ -1,0 +1,109 @@
+#homeworkModule {
+    color: green;
+}
+.am-list-body {
+    border: none;
+}
+.am-list-view-scrollview-content {
+    width: 100%;
+}
+.am-list-body::before {
+    background: none;
+}
+.am-list-view-scrollview {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+.am-list-view-scrollview::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+.textOver {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+.homeworkInfo {
+    padding: 0 .83rem .83rem 1.11rem;
+    display: -webkit-flex;
+    display: flex;
+    border-bottom: .05rem #e5ebf7 solid;
+}
+.homeworkL {
+    width: 3.33rem;
+}
+.subject {
+    margin-top: 0.56rem;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    width: 3.33rem;
+    padding: .3rem 0;
+    color: #fff;
+    font-size: .83rem;
+    -webkit-border-radius: 1.8rem;
+    -moz-border-radius: 1.8rem;
+    border-radius: 1.8rem;
+    background: -webkit-linear-gradient(#4f90fd, #3773ee);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#4f90fd, #3773ee);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#4f90fd, #3773ee);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(#4f90fd, #3773ee);
+}
+.imgInfo {
+    text-align: center;
+}
+.imgInfo img {
+    width: 2.5rem;
+    height: 2.5rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1rem 0 .5rem;
+}
+.imgInfo span {
+    color: #565c72;
+    font-size: .78rem;
+}
+.homeworkM {
+    width: calc(100% - 15rem);
+    padding: 0 2.5rem;
+    word-wrap: break-word;
+}
+.homeworkM h3 {
+    color: #2a3350;
+    font-size: .78rem;
+    margin-bottom: .83rem;
+    line-height: 1.1rem;
+}
+.homeworkM p {
+    color: #565c72;
+    font-size: .72rem;
+    line-height: 1.1rem;
+    word-wrap: break-word;
+}
+.homeworkR {
+    margin-top: .8rem;
+    color: #2a3350;
+    font-size: .67rem;
+    width: 8rem ;
+    text-align: right;
+    overflow: hidden;
+}
+.homeworkR p {
+    margin: 0;
+}
+.homeworkR img {
+    max-width: 7.78rem;
+    max-height: 4.39rem;
+    margin-top: .4rem;
+    display: block;
+    float: right;
+}
+.am-list-footer {
+    height: 75px;
+}

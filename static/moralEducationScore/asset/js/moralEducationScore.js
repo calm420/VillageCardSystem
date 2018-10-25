@@ -1,5 +1,4 @@
 $(function () {
-
     var article = {};
     article.attacheMents = [];
     InitializePage();
@@ -60,7 +59,37 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
+        var classId = localStorage.getItem("clazzId");
+        console.log(classId, "classId")
+        const param = {
+            "method": "getMoralEducationInfo",
+            "clazzId": 5447,
+        }
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                console.log(result, "result");
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (result.response == null) {
+                        $(".mEScoreInfo").replaceWith(`<div className="mEScoreInfo home_cardCont">
+                        <div className="empty_center">
+                            <div className="empty_icon empty_moralEducationScore"></div>
+                            <div className="empty_text">暂无通知</div>
+                        </div>
+                    </div>`)
+                    } else {
+                        $(".schoolScore").html(result.response.schoolRank)
+                        $(".gradeScore").html(result.response.clazzRank)
+                        $(".sumSocre").html(result.response.totalScore)
+                        $(".ceremonyScore").html(result.response.politeness)
+                        $(".healthSocre").html(result.response.health)
+                    }
 
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
     }
 
 })
