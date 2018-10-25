@@ -4,11 +4,14 @@
 var timerFlag = false;
 $(document).ready(function(){
     init();
+
 });
 function init(){
 
 }
-
+function gotoAttendDetail() {
+    window.location.href="http://localhost:7091/courseAttendanceDetail/";
+}
 
 function checkCourseOpenHandle(data) {
     var roomId = localStorage.getItem('roomId');

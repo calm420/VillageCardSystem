@@ -12,51 +12,57 @@
     <link rel="stylesheet" href="../css/classCardHomePage.css">
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/webServiceUtil.js"></script>
 </head>
 <body>
 <div id="skin_middleSchool">
     <div id="classCardHomePage">
-    <div>
-        <iframe id="header" src="http://127.0.0.1:7091/header"></iframe>
+        <div>
+            <iframe id="header" src="http://127.0.0.1:7091/header"></iframe>
+        </div>
+        <div class="home_content home_content_index">
+            <div class="home_left">
+                <!-- 今日值日 -->
+                <div class="studentOnDuty-wrap">
+                    <iframe id="studentOnDuty" class="home_card studentOnDuty_height" src=""></iframe>
+                </div>
+                <!-- 德育评分 -->
+                <div class="moralEducationScore-wrap">
+                    <iframe id="moralEducationScore" class="home_card moralEducationScore_height"
+                            src="http://127.0.0.1:7091/moralEducationScore"></iframe>
+                </div>
+            </div>
+            <div class="home_center">
+                <!-- 班级风采 -->
+                <div>
+                    <iframe id="classDemeanor" class="home_card classDemeanor_height"
+                            src="http://127.0.0.1:7091/classDemeanor"></iframe>
+                </div>
+                <!-- 通知 -->
+                <div>
+                    <iframe id="notify" class="home_card notify_height" src="http://127.0.0.1:7091/notify"></iframe>
+                </div>
+                <!-- 应用 -->
+                <div>
+                    <iframe id="application" class="application_height home_card"
+                            src="http://127.0.0.1:7091/application"></iframe>
+                </div>
+            </div>
+            <div class="home_right">
+                <!-- 今日课程 -->
+                <div>
+                    <iframe id="courseOfToday" class="home_card course_height"
+                            src="http://127.0.0.1:7091/courseOfToday"></iframe>
+                </div>
+                <!-- 本节考勤 -->
+                <div>
+                    <iframe id="currentAttendance" class="home_card currentAttendance_height" src="http://127.0.0.1:7091/courseAttendance"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="home_content home_content_index">
-        <div class="home_left">
-            <!-- 今日值日 -->
-            <div class="studentOnDuty-wrap">
-                <iframe id="studentOnDuty" class="home_card studentOnDuty_height" src=""></iframe>
-            </div>
-            <!-- 德育评分 -->
-            <div class="moralEducationScore-wrap">
-                <iframe id="moralEducationScore" class="home_card moralEducationScore_height" src="http://127.0.0.1:7091/moralEducationScore"></iframe>
-            </div>
-        </div>
-        <div class="home_center">
-            <!-- 班级风采 -->
-            <div>
-                <iframe id="classDemeanor" class="home_card classDemeanor_height" src="http://127.0.0.1:7091/classDemeanor"></iframe>
-            </div>
-            <!-- 通知 -->
-            <div>
-                <iframe id="notify" class="home_card notify_height" src="http://127.0.0.1:7091/notify"></iframe>
-            </div>
-            <!-- 应用 -->
-            <div>
-                <iframe id="application" class="application_height home_card" src="http://127.0.0.1:7091/application"></iframe>
-            </div>
-        </div>
-        <div class="home_right">
-            <!-- 今日课程 -->
-            <div>
-                <iframe id="courseOfToday" class="home_card course_height" src="http://127.0.0.1:7091/courseOfToday"></iframe>
-            </div>
-            <!-- 本节考勤 -->
-            <div>
-                <iframe id="currentAttendance" class="home_card currentAttendance_height" src="http://127.0.0.1:7091/currentAttendance"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 </body>
+<script type="text/javascript" src="./asset/js/msg_websocket_connection.js"></script>
 <script src="./asset/js/home.js"></script>
 </html>
