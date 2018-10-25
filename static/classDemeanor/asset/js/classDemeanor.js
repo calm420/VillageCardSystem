@@ -24,6 +24,7 @@ $(document).ready(function () {
             spaceBetween: 30,
             preloadImages:true,
             updateOnImagesReady : true,
+            autoplayDisableOnInteraction : false,
             /*
             initialSlide :2,
             loop: true,
@@ -39,20 +40,23 @@ $(document).ready(function () {
             loopFillGroupWithBlank: true,
             observer:true,//修改swiper自己或子元素时，自动初始化swiper
             observeParents:false,//修改swiper的父元素时，自动初始化swiper
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
         });
-        var mySwiper = new Swiper('.classReward', {
+        //鼠标覆盖停止自动切换
+        mySwiper.el.onmouseover = function(){
+            mySwiper.autoplay.stop();
+        }
+
+        //鼠标覆盖停止自动切换
+        mySwiper.el.onmouseout = function(){
+            mySwiper.autoplay.start();
+        }
+
+        var mySwiperOfClassReward = new Swiper('.classReward', {
             slidesPerView: 3,
             spaceBetween: 30,
             preloadImages:true,
             updateOnImagesReady : true,
-            /*
-            initialSlide :2,
-            loop: true,
-            loopedSlides:3,*/
+            autoplayDisableOnInteraction : false,
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
@@ -64,11 +68,16 @@ $(document).ready(function () {
             loopFillGroupWithBlank: true,
             observer:true,//修改swiper自己或子元素时，自动初始化swiper
             observeParents:false,//修改swiper的父元素时，自动初始化swiper
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
         });
+        //鼠标覆盖停止自动切换
+        mySwiperOfClassReward.el.onmouseover = function(){
+            mySwiperOfClassReward.autoplay.stop();
+        }
+
+        //鼠标覆盖停止自动切换
+        mySwiperOfClassReward.el.onmouseout = function(){
+            mySwiperOfClassReward.autoplay.start();
+        }
     }
 
     function getClassDemeanorInfo(clazzId) {
