@@ -68,10 +68,10 @@ $(function(){
                     let rowData = result.response;
                     //数据为空
                     if(rowData.length == 0 && slideNumber == 1){
-                        mySwiper.appendSlide("<div>数据为空</div>", 'swiper-slide');
+                        mySwiper.appendSlide("<div class='noMoreData'>数据为空</div>", 'swiper-slide');
                     }
                     if(rowData.length == 0 && slideNumber != 1){
-                        mySwiper.appendSlide("<div>无更多数据</div>", 'swiper-slide');
+                        mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
                         loadingMore = false;
                     }
                     //循环渲染
