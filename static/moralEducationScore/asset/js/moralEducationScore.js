@@ -70,6 +70,7 @@ $(function () {
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
         console.log(clazzId,"clazzId")
+        // getMoralEducationInfo(5447);
         getMoralEducationInfo(clazzId);
     }
     function getMoralEducationInfo(clazzId) {

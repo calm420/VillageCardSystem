@@ -3,6 +3,7 @@
 }
 #classCardHomePage iframe {
   border: none;
+  width: 100%;
 }
 #classCardHomePage .home_right {
   width: 13.33rem;
