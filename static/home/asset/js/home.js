@@ -31,7 +31,7 @@ $(document).ready(function () {
         $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         $("#application")[0].src = webserviceUrl + "application?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         $("#courseOfToday")[0].src = webserviceUrl + "courseOfToday?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
-        $("#courseAttendance")[0].src = webserviceUrl + "currentAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#courseAttendance")[0].src = webserviceUrl + "courseAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         setTimeout(function () {
             ms.connect(pro);
@@ -50,7 +50,7 @@ $(document).ready(function () {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
                 document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#currentAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
+                document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
             }
         }
     }
