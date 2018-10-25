@@ -8,28 +8,31 @@
     <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/courseOfToday.css">
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
 </head>
 <body class="iframe-body">
 <div id="skin_middleSchool" class="no_bg">
     <div id="classCardHomePage">
-        <h3 class="home_title">
-            <span>今日课程</span>
-            <span class="home_titleMore">课程表
+        <div id="courseOfToday">
+            <h3 class="home_title">
+                <span>今日课程</span>
+                <span class="home_titleMore">课程表
         <i class="titleMore"></i>
         </span>
-        </h3>
-        <div id="finish-class" class="classTableA">
-            <div class="empty_center">
-                <div class="empty_icon empty_course"></div>
-                <div class="empty_text">暂无课程</div>
+            </h3>
+            <div id="finish-class" class="classTableA">
+                <div class="empty_center">
+                    <div class="empty_icon empty_course"></div>
+                    <div class="empty_text">暂无课程</div>
+                </div>
             </div>
-        </div>
-        <div id="begin-class">
-            <div class='timeNode'>当前时段</div>
-            <div class='time'></div>
-            <div><span class='name'></span></div>
-            <div class="ter_name"></div>
+            <div id="begin-class" class="classTableB">
+                <div class='timeNode'>当前时段</div>
+                <div class='time'></div>
+                <div><span class='name'></span></div>
+                <div class="ter_name terPic_name"></div>
+            </div>
         </div>
     </div>
 </div>
