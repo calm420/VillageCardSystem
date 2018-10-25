@@ -9,6 +9,20 @@ $(function () {
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
     InitializePage();
+    var schoolId =getQueryString("schoolId");
+    console.log("schoolId",schoolId);
+
+    //监听接受消息
+    window.addEventListener('message', (e) => {
+        var commandInfo = JSON.parse(e.data);
+        if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+                var skin = commandInfo.data.skinName;
+                document.getElementsByName("notifyDiv")[0].id=skin;
+            }
+        }
+    })
+
     //创建swiper对象
     var mySwiper = new Swiper('.swiper-container', {
         //显示数据的条数
@@ -31,7 +45,6 @@ $(function () {
                 holdPosition = '上拉加载更多';
             } else {
                 mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height());
-
             }
         },
         //结束回调
@@ -84,7 +97,6 @@ $(function () {
             method: 'openNewPage',
             url: "notify/historyNotify/index.html?roomId=" + 1,
         };
-
         Bridge.callHandler(data, null, function (error) {
             window.parent.postMessage(JSON.stringify(data), '*');
         });
@@ -188,6 +200,7 @@ $(function () {
             }
         });
     }
+
     /**
     * 获取地址栏参数
     * @param name

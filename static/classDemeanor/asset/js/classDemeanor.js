@@ -5,10 +5,18 @@ $(document).ready(function () {
     //监听接受消息
     window.addEventListener('message', (e) => {
         var clazzId = localStorage.getItem("clazzId");
-        if (e.command == 'classDemeanor') {
-            if (clazzId == e.command.data.cid) {
+        var schoolId = localStorage.getItem("schoolId");
+        var commandInfo = JSON.parse(e.data);
+        console.log("eeeeeeeeeeeeeeeeeeeee>>>>>>"+e);
+        if (commandInfo.command == 'classDemeanor') {
+            if (clazzId == e.data.cid) {
                 getClassDemeanorInfo(clazzId);
                 getClassRewardInfo(clazzId);
+            }
+        }else if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+                var skin = commandInfo.data.skinName;
+                document.getElementsByName("classDemeanorDiv")[0].id=skin;
             }
         }
     })
@@ -16,7 +24,9 @@ $(document).ready(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+        var schoolId = getQueryString("schoolId");
         localStorage.setItem("clazzId",clazzId);
+        localStorage.setItem("schoolId",schoolId);
         getClassDemeanorInfo(clazzId);
         getClassRewardInfo(clazzId);
         var mySwiper = new Swiper('.classDemeanor', {
