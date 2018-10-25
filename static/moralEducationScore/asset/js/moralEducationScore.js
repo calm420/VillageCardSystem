@@ -60,14 +60,11 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+        console.log(clazzId,"clazzId")
         getMoralEducationInfo(clazzId);
-     
     }
-
-    function getMoralEducationInfo(clazzId){
-        var classId = localStorage.getItem("clazzId");
-        console.log(classId, "classId")
-        const param = {
+    function getMoralEducationInfo(clazzId) {
+        var param = {
             "method": "getMoralEducationInfo",
             "clazzId": clazzId,
         }
@@ -97,16 +94,16 @@ $(function () {
             }
         });
     }
-     /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName){
-        var reg = new RegExp("(^|&)"+ parameterName +"=([^&]*)(&|$)");
+    /**
+    * 获取地址栏参数
+    * @param name
+    * @returns {null}
+    * @constructor
+    */
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]); return null;
     }
 
 })
