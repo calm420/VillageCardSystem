@@ -13,7 +13,7 @@ function init(){
     //getStudentByCourseTableItem(35)
 }
 function gotoAttendDetail() {
-    window.location.href="http://localhost:7091/courseAttendanceDetail/";
+    parent.location.href="http://localhost:7091/courseAttendanceDetail/";
 }
 
 function checkCourseOpenHandle(data) {
