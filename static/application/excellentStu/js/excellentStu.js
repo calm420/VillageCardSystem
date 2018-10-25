@@ -24,20 +24,16 @@ $(function () {
         })
     })
 
-    /**
-     * 时间戳转年月日
-     * @param nS
-     * @returns {string}
-     */
-    formatYMD = function (nS) {
+    formatHM = function (nS) {
         var da = new Date(parseInt(nS));
-        var year = da.getFullYear();
-        var month = da.getMonth() + 1;
-        var date = da.getDate();
-        var ymdStr = [year, month, date].join('-');
-        return ymdStr;
+        var hour = da.getHours() + ":";
+        var minutes = da.getMinutes();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        var hmStr = hour + minutes;
+        return hmStr;
     };
-
 
     function sendMessageTo(data) {
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -69,7 +65,7 @@ $(function () {
             "clazzId": classId
         };
         console.log(param)
-        WebServiceUtil.requestLittleAntApi(JSON.stringify(param), {
+        WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
             onResponse: result => {
                 if (result.success) {
                     console.log(result.response);
