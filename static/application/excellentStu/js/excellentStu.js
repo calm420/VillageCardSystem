@@ -127,7 +127,7 @@ $(function () {
 
             },
             onError: function (error) {
-                Toast.fail(error, 1);
+                // Toast.fail(error, 1);
             }
         });
     }
