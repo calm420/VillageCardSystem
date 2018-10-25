@@ -1,0 +1,86 @@
+#skin_primarySchool {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#skin_primarySchool #header {
+  background: url("../../imgs/primarySchool_cloud.png") no-repeat center 1.8rem, #6ebdf4;
+}
+#skin_primarySchool #header .headTitle {
+  background: url("../../imgs/primarySchool_headTittle.png") no-repeat;
+  background-size: 100% 100%;
+}
+#skin_primarySchool .home_content {
+  background: url("../../imgs/primarySchool_bgWeb.png") no-repeat center bottom, -webkit-linear-gradient(top, #6ebdf4, #0fa2cf), linear-gradient(top, #6ebdf4, #0fa2cf);
+  background-size: 100% auto ;
+}
+#skin_primarySchool #courseOfToday {
+  background: url("../../imgs/primarySchool_course.png") no-repeat center bottom, -webkit-linear-gradient(top, #acffff, #b2eeff), linear-gradient(top, #acffff, #b2eeff);
+  background-size: 100% 100%;
+}
+#skin_primarySchool #currentAttendance {
+  background: url("../../imgs/primarySchool_currentAttendance.png") no-repeat center bottom, -webkit-linear-gradient(top, #e4feb4, #9dee99), linear-gradient(top, #e4feb4, #9dee99);
+  background-size: 100% auto;
+}
+#skin_primarySchool #classDemeanor {
+  background: url("../../imgs/primarySchool_classDemeanor1.png") no-repeat center top, url("../../imgs/primarySchool_classDemeanor2.png") no-repeat center bottom, -webkit-linear-gradient(top, #7ee0ff, #b5bef7), linear-gradient(top, #7ee0ff, #b5bef7);
+  background-size: 100% auto;
+}
+#skin_primarySchool #notify {
+  background: url("../../imgs/primarySchool_notify.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a), linear-gradient(top, #e0fdb3, #9fee9a);
+  background-size: 100% auto;
+}
+#skin_primarySchool #application {
+  background: url("../../imgs/primarySchool_application.png") no-repeat center bottom, -webkit-linear-gradient(top, #e0fdb3, #9fee9a), linear-gradient(top, #e0fdb3, #9fee9a);
+  background-size: 100% auto;
+}
+#skin_primarySchool #moralEducationScore {
+  background: url("../../imgs/primarySchool_moralEducationScore.png") no-repeat center bottom, -webkit-linear-gradient(top, #a8ffe7, #c7e99d), linear-gradient(top, #a8ffe7, #c7e99d);
+  background-size: 100% auto;
+}
+#skin_primarySchool #studentOnDuty {
+  background: url("../../imgs/primarySchool_studentOnDuty.png") no-repeat center bottom, -webkit-linear-gradient(top, #ffecfc, #ccffc4), linear-gradient(top, #ffecfc, #ccffc4);
+  background-size: 100% 100%;
+}
+#skin_primarySchool #courseOfToday,
+#skin_primarySchool #currentAttendance,
+#skin_primarySchool #classDemeanor,
+#skin_primarySchool #notify,
+#skin_primarySchool #application,
+#skin_primarySchool #moralEducationScore,
+#skin_primarySchool #studentOnDuty {
+  box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.2);
+}
+#skin_primarySchool #courseOfToday .home_title,
+#skin_primarySchool #currentAttendance .home_title,
+#skin_primarySchool #classDemeanor .home_title,
+#skin_primarySchool #notify .home_title,
+#skin_primarySchool #application .home_title,
+#skin_primarySchool #moralEducationScore .home_title,
+#skin_primarySchool #studentOnDuty .home_title {
+  border-bottom: 1px solid transparent;
+}
+#skin_primarySchool .blue_text,
+#skin_primarySchool .blue_big {
+  color: #0361fe;
+}
+#skin_primarySchool #classCardHomePage {
+  /* 这是针对缺省样式 (必须的) */
+  /* 滑块颜色 */
+  /* 滑轨两头的监听按钮颜色 */
+}
+#skin_primarySchool #classCardHomePage ::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+#skin_primarySchool #classCardHomePage ::-webkit-scrollbar-thumb {
+  background-color: #73d448;
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+}
+#skin_primarySchool #classCardHomePage ::-webkit-scrollbar-button {
+  background-color: initial;
+}
+#skin_primarySchool .demeanor_list2 {
+  border-top: 1px solid #a0dbfc;
+}
