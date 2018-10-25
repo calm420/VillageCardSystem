@@ -50,7 +50,7 @@ $(document).ready(function () {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
                 document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#currentAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
+                document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
             }
         }
     }

@@ -62,6 +62,16 @@ $(function () {
             time = date.getTime();
         timer = setInterval(function () {
             document.querySelector('#watch').innerText = set(time)
+            //每天刷新天气两次
+            if (set(time) == '00:10:00' || set(time) == '12:10:00') {
+                weatherInfo(abcode)
+            }
+            //更新日期
+            if (set(time) == '00:10:00') {
+                var date = new Date();
+                document.querySelector('#week').innerText = setTodayDate(date)
+            }
+
             time = Number(time);
             time += 1000;
         }, 1000);
