@@ -4,6 +4,7 @@
   padding-bottom: 0.28rem;
   overflow: hidden;
   color: #fff;
+  width: 100%;
 }
 #header .header_date {
   text-align: right;

@@ -1,3 +1,10 @@
+#classCardHomePage {
+  height: 100%;
+}
+#classCardHomePage iframe {
+  border: none;
+  width: 100%;
+}
 #classCardHomePage .home_right {
   width: 13.33rem;
   float: right;
@@ -24,7 +31,7 @@
   font-weight: normal;
 }
 #classCardHomePage i.titleMore {
-  background: url("../imgs/next_s_icon.png") no-repeat;
+  background: url("../images/next_s_icon.png") no-repeat;
   width: 0.83rem;
   height: 0.83rem;
   display: inline-block;
@@ -193,35 +200,35 @@
 #classCardHomePage .app_list_img .task {
   width: 1.75rem;
   height: 1.75rem;
-  background: url("../imgs/icon_task.png");
+  background: url("../images/icon_task.png");
   display: inline-block;
   background-size: 100% 100%;
 }
 #classCardHomePage .app_list_img .stepNumber {
   width: 1.75rem;
   height: 1.75rem;
-  background: url("../imgs/icon_stepNumber.png");
+  background: url("../images/icon_stepNumber.png");
   display: inline-block;
   background-size: 100% 100%;
 }
 #classCardHomePage .app_list_img .calorie {
   width: 1.75rem;
   height: 1.75rem;
-  background: url("../imgs/icon_calorie.png");
+  background: url("../images/icon_calorie.png");
   display: inline-block;
   background-size: 100% 100%;
 }
 #classCardHomePage .app_list_img .message {
   width: 1.75rem;
   height: 1.75rem;
-  background: url("../imgs/icon_message.png");
+  background: url("../images/icon_message.png");
   display: inline-block;
   background-size: 100% 100%;
 }
 #classCardHomePage .app_list_img .i-excellentStu {
   width: 1.75rem;
   height: 1.75rem;
-  background: url("../imgs/i-excellentStu.png");
+  background: url("../images/i-excellentStu.png");
   display: inline-block;
   background-size: 100% 100%;
 }
@@ -296,27 +303,27 @@
   text-align: center;
 }
 #classCardHomePage .empty_currentAttendance {
-  background: url("../imgs/empty_currentAttendance.png") no-repeat;
+  background: url("../images/empty_currentAttendance.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .empty_activity {
-  background: url("../imgs/empty_activity.png") no-repeat;
+  background: url("../images/empty_activity.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .empty_honor {
-  background: url("../imgs/empty_honor.png") no-repeat;
+  background: url("../images/empty_honor.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .empty_moralEducationScore {
-  background: url("../imgs/empty_moralEducationScore.png") no-repeat;
+  background: url("../images/empty_moralEducationScore.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .empty_notify {
-  background: url("../imgs/empty_notify.png") no-repeat;
+  background: url("../images/empty_notify.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .empty_course {
-  background: url("../imgs/empty_course.png") no-repeat;
+  background: url("../images/empty_course.png") no-repeat;
   background-size: 100%;
 }
 #classCardHomePage .publicempty_icon {
@@ -433,7 +440,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: url("../imgs/icon_closeVideo.png") no-repeat;
+  background: url("../images/icon_closeVideo.png") no-repeat;
   background-size: 100%;
   width: 30px;
   height: 30px;
@@ -458,7 +465,7 @@
   transform: translate(-50%, -50%);
 }
 #classCardHomePage #classDemeanor .videoDiv i {
-  background: url("../imgs/videoClick.png") no-repeat;
+  background: url("../images/videoClick.png") no-repeat;
   background-size: 100%;
   width: 36px;
   height: 36px;
@@ -472,4 +479,11 @@
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 10;
+}
+#classCardHomePage .studentOnDuty-wrap {
+  height: 12.78rem;
+  width: 100%;
+}
+#classCardHomePage .moralEducationScore-wrap {
+  height: 11.67rem;
 }

@@ -15,7 +15,7 @@
   background: url("../../imgs/bg_web.jpg") no-repeat;
   background-size: 100% 100%;
 }
-#skin_default #course,
+#skin_default #courseOfToday,
 #skin_default #currentAttendance,
 #skin_default #classDemeanor,
 #skin_default #notify,
@@ -24,7 +24,7 @@
 #skin_default #studentOnDuty {
   background: #fff;
 }
-#skin_default #course .home_title,
+#skin_default #courseOfToday .home_title,
 #skin_default #currentAttendance .home_title,
 #skin_default #classDemeanor .home_title,
 #skin_default #notify .home_title,

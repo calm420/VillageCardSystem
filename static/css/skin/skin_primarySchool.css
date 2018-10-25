@@ -14,7 +14,7 @@
   background: url("../../imgs/primarySchool_bgWeb.png") no-repeat center bottom, -webkit-linear-gradient(top, #6ebdf4, #0fa2cf), linear-gradient(top, #6ebdf4, #0fa2cf);
   background-size: 100% auto ;
 }
-#skin_primarySchool #course {
+#skin_primarySchool #courseOfToday {
   background: url("../../imgs/primarySchool_course.png") no-repeat center bottom, -webkit-linear-gradient(top, #acffff, #b2eeff), linear-gradient(top, #acffff, #b2eeff);
   background-size: 100% 100%;
 }
@@ -42,7 +42,7 @@
   background: url("../../imgs/primarySchool_studentOnDuty.png") no-repeat center bottom, -webkit-linear-gradient(top, #ffecfc, #ccffc4), linear-gradient(top, #ffecfc, #ccffc4);
   background-size: 100% 100%;
 }
-#skin_primarySchool #course,
+#skin_primarySchool #courseOfToday,
 #skin_primarySchool #currentAttendance,
 #skin_primarySchool #classDemeanor,
 #skin_primarySchool #notify,
@@ -51,7 +51,7 @@
 #skin_primarySchool #studentOnDuty {
   box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.2);
 }
-#skin_primarySchool #course .home_title,
+#skin_primarySchool #courseOfToday .home_title,
 #skin_primarySchool #currentAttendance .home_title,
 #skin_primarySchool #classDemeanor .home_title,
 #skin_primarySchool #notify .home_title,
