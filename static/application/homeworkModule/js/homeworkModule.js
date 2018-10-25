@@ -6,6 +6,8 @@ $(function(){
     var slideNumber = 1;
     var loadingMore = true;
 
+    getHomeworkData();
+
     var mySwiper = new Swiper('.swiper-container',{
         //显示数据的条数
         slidesPerView:'auto',
@@ -51,7 +53,6 @@ $(function(){
     });
 
 
-    getHomeworkData();
 
 
     function getHomeworkData(){
@@ -61,7 +62,7 @@ $(function(){
             "clazzIds": 819,
             "pageNo": slideNumber
         };
-        WebServiceUtil.requestLittleAntApi(JSON.stringify(param), {
+        WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
             onResponse: result => {
                 if (result.success) {
                     let rowData = result.response;
