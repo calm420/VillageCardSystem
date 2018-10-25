@@ -35,7 +35,15 @@ $(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
-                    console.log(result);
+                    document.querySelector('.time').innerHTML = result.response.openTime + '-' + result.response.closeTime
+
+                    var img = document.createElement("img");
+                    img.src = result.response.teacher.avatar
+
+                    document.querySelector('#begin-class').insertBefore(img, document.querySelector('.ter_name'))
+
+                    document.querySelector('.name').innerHTML = result.response.courseName
+                    document.querySelector('.ter_name').innerHTML = result.response.teacher.userName
                 }
             },
             onError: function (error) {

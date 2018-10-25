@@ -102,6 +102,20 @@ $(function () {
         });
     });
 
+
+    //跳转早到之星
+    $('#toExcellentStu').on('click',function(){
+        console.log('点击事件')
+        var data = {
+            method: 'openNewPage',
+            url: "excellentStu/index.html?clazzId="+classId,
+        };
+
+        Bridge.callHandler(data, null, function (error) {
+            window.location.href = "excellentStu/index.html?clazzId="+classId;
+        });
+    });
+
     //初始化页面元素
     function InitializePage() {
 
