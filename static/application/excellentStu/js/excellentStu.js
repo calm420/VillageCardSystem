@@ -96,7 +96,7 @@ $(function () {
                     //         "userName": "小兔兔2" } }
                     // ]
                     if (result.response == []) {
-                        $(".earlyStar").replaceWith(`<div class="mEScoreInfo home_cardCont">
+                        $(".excellStu").replaceWith(`<div class="mEScoreInfo home_cardCont">
                         <div class="empty_center">
                             <div class="empty_icon empty_moralEducationScore"></div>
                             <div class="empty_text">暂无通知</div>
