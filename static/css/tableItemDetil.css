@@ -33,10 +33,12 @@
   font-size: 0.56rem;
   padding-top: 0.28rem;
   line-height: 0.8rem;
+  display: block;
 }
 #tableItemDetil .tableItem td span.class_name {
   font-size: 0.72rem;
   padding-top: 0;
   padding-bottom: 0.39rem;
   line-height: 1.2rem;
+
 }
