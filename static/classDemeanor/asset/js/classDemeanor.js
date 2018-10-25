@@ -23,6 +23,7 @@ $(document).ready(function () {
             slidesPerView: 3,
             spaceBetween: 30,
             preloadImages:true,
+            updateOnImagesReady : true,
             /*
             initialSlide :2,
             loop: true,
@@ -47,6 +48,7 @@ $(document).ready(function () {
             slidesPerView: 3,
             spaceBetween: 30,
             preloadImages:true,
+            updateOnImagesReady : true,
             /*
             initialSlide :2,
             loop: true,

@@ -97,6 +97,7 @@ $(function () {
 
         Bridge.callHandler(data, null, function (error) {
             window.parent.postMessage(JSON.stringify(data), '*');
+            // window.location.href = "homeworkModule/index.html?classId="+classId;
         });
     });
 
