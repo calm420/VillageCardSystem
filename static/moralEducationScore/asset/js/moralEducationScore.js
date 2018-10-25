@@ -69,14 +69,8 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
-<<<<<<< HEAD
-
         console.log(clazzId,"clazzId")
         getMoralEducationInfo(clazzId);
-=======
-        console.log(clazzId, "clazzId")
-        getMoralEducationInfo(5447);
->>>>>>> b64d7c061dc82054721356511a59d977de21ad8c
     }
     function getMoralEducationInfo(clazzId) {
         var param = {
