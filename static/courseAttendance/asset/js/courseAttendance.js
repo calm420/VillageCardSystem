@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 });
 function init(){
-    getStudentByCourseTableItem(35)
+    //getStudentByCourseTableItem(35)
 }
 function gotoAttendDetail() {
     window.location.href="http://localhost:7091/courseAttendanceDetail/";
@@ -18,28 +18,28 @@ function gotoAttendDetail() {
 
 function checkCourseOpenHandle(data) {
     debugger
-    var roomId = localStorage.getItem('roomId');
+    var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
+        var classTableId=data.data.classTableId;
         //获取应到人数
-        if (roomId == data.classroomId) {
-            this.getStudentByCourseTableItem(data);
+        if (roomId == data.data.classroomId) {
+            getStudentByCourseTableItem(classTableId);
             if (!timerFlag) {
-                this.openTimeInterVal(ata);
+                this.openTimeInterVal(classTableId);
             }
         }
     } else if (data.command == 'brand_class_close') {
-        if (roomId ==data.classroomId) {
-            this.setState({openClass: false});
+        if (roomId ==data.data.classroomId) {
             clearInterval(timer)
             timerFlag = false;
         }
     } else if (data.command == 'braceletBoxConnect') {
         //重连开课
-        if( data.classroomId!=null) {
+        if( data.data.classroomId!=null) {
             if (roomId == data.classroomId) {
-                this.getStudentByCourseTableItem(data);
+                this.getStudentByCourseTableItem(data.classTableId);
                 if (!timerFlag) {
-                    this.openTimeInterVal(data);
+                    this.openTimeInterVal(data.classTableId);
                 }
             }
         }
@@ -60,9 +60,16 @@ function getBraceletAttend(classTableId){
     $.post(url, {
         params: JSON.stringify(param)
     }, function (result, status) {
-        if (status == "success") {
+        if (result.success == true) {
             var response=result.response;
-            getBraceletAttendHandle(response);
+            debugger
+            if(response!=null){
+                $("#attendCount").text(response.length);
+            }else{
+                $("#attendCount").text(0);
+            }
+        }else{
+            $("#attendCount").text(0);
         }
     }, "json");
 }
@@ -97,3 +104,11 @@ window.addEventListener('message', (e) => {
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);
 })
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
