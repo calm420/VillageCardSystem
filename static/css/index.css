@@ -2,6 +2,8 @@ html,
 body {
   height: 100%;
   font-family: "Helvetica Neue", "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial;
+  margin: 0;
+  padding: 0;
 }
 body {
   overflow: auto !important;

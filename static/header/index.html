@@ -8,24 +8,32 @@
     <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/header.css">
 </head>
-<body>
-
+<body style="background: bisque">
 <div id="skin_middleSchool" class="no_bg">
-    <div id="a">三年级二班</div>
-    <div id="weather">
-        <span id="weather-today">
-            <div class="climate"></div>
-            <div class="temperature"></div>
-        </span>
-        <span id="weather-tomorrow">
-            <div>明天</div>
-            <div class="climate"></div>
-            <div class="temperature"></div>
-        </span>
+    <div id="classCardHomePage">
+        <div id="header">
+        <div class="headTitle">
+            <div class="headTitleT text_hidden" id="a">三年级二班</div>
+        </div>
+        <div class="header_date float_ri">
+            <div id="watch" class="weatherColor2 space_high4"></div>
+            <div id="week"></div>
+        </div>
+        <div id="weather" class="header_weather float_ri">
+            <span id="weather-today" class="header_date3">
+                <div class="climate weatherColor1 space_high"></div>
+                <div class="temperature"></div>
+            </span>
+            <span id="weather-tomorrow" class="header_date2">
+                <div class="space_high2">明天</div>
+                <div class="climate space_high3"></div>
+                <div class="temperature"></div>
+            </span>
+        </div>
     </div>
-    <div id="watch"></div>
-    <div id="week"></div>
+    </div>
 </div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
