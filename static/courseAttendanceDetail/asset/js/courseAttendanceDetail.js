@@ -23,14 +23,15 @@ function openTimeInterVal(classTableId){
        getBraceletAttend(classTableId);
     }, 10000)
 }
-function goHomePage(classTableId){
-        //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
-        var data = {
-            method: 'openNewPage',
-            url: "courseAttendanceDetail?classTableId=" + classTableId,
-        };
+function goHomePage(){
+    var data = {
+        method: 'finish',
+    };
 
-        window.parent.postMessage(JSON.stringify(data), '*');
+    Bridge.callHandler(data, null, function (error) {
+        window.history.back(-1);
+    });
+
 }
 function getBraceletAttend(classTableId){
     var param = {
