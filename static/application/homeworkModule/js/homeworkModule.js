@@ -43,7 +43,10 @@ $(function(){
                     //loading显示
                     $('.preloader').addClass('visible');
                     //调用增加数据方法
-                    getHomeworkData();
+                    setTimeout(function(){
+                        getHomeworkData();
+
+                    },1000000)
                 }
 
             }else{
@@ -91,7 +94,7 @@ $(function(){
                             "                   <p>"+rowData[k].content+"</p>\n" +
                             "                    </div>\n" +
                             "                   <div class=\"homeworkR\">\n" +
-                            "                  <p>"+rowData[k].createTime+"</p>\n" +
+                            "                  <p>"+WebServiceUtil.formatYMD(rowData[k].createTime)+"</p>\n" +
                             "                   <img src='"+attachMents+"'/>\n" +
                             "             </div>\n" +
                             "      </div>", 'swiper-slide');
