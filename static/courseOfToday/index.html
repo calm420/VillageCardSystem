@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>富文本编辑器</title>
+    <title>courseOfToday</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/css/initStyle.css">
     <link rel="stylesheet" href="./asset/css/RichTextEditor.css">
@@ -13,9 +13,19 @@
     <h3>
         <span>今日课程</span>
         <span>课程表></span>
+        <div id="finish-class">
+            <div>暂无课程</div>
+        </div>
+        <div id="begin-class">
+            <div className='timeNode'>当前时段</div>
+            <div className='time'></div>
+            <div><span className='name'></span></div>
+            <div className="ter_name"></div>
+        </div>
     </h3>
 </div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/webServiceUtil.js"></script>
 <script type="text/javascript" src="./asset/js/courseOfToday.js"></script>
 </body>
 </html>

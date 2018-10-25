@@ -1,28 +1,41 @@
 $(function () {
-    var clazzId = getQueryString("clazzId");
     var roomId = getQueryString("roomId");
-    console.log(clazzId);
-    console.log(roomId);
 
     /**
      * 消息监听
      */
     window.addEventListener('message', (e) => {
         var res = JSON.parse(e.data);
-        console.log(res);
+        if (res.command == 'brand_class_open') {
+            //查看某个课表项(一接收到开课命令就获取当前开课)
+            if (roomId == res.data.classroomId) {
+                viewCourseTableItem(res.data)
+            }
+        } else if (res.command == 'brand_class_close') {
+            if (roomId == res.data.classroomId) {
+                //下课
+            }
+        } else if (res.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(res.data.classTableId) == false) {
+            //重连开课
+            if (roomId == res.data.classroomId) {
+                viewCourseTableItem(res.data)
+            }
+        }
     })
 
-
+    /**
+     * 查看某个课表项
+     * @param data
+     */
     function viewCourseTableItem(data) {
         var param = {
             "method": 'viewCourseTableItem',
             "id": data.classTableId,
         };
-        WebServiceUtil.requestLittleAntApi(JSON.stringify(param), {
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result);
                 if (result.msg == '调用成功' || result.success == true) {
-
+                    console.log(result);
                 }
             },
             onError: function (error) {
