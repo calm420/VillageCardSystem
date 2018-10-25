@@ -2,7 +2,8 @@ $(function () {
     let abcode = null;
     let timer = null;
     let timeOffset = null;
-
+    let roomId = getQueryString("roomId");
+    viewClassRoom(roomId)
     makeTime();
 
     /**
@@ -122,6 +123,43 @@ $(function () {
         timeString = months + dates + weeks;
 
         return timeString;
+    }
+
+    /**
+     * 获取地址栏参数
+     * @param name
+     * @returns {null}
+     * @constructor
+     */
+    function getQueryString(parameterName) {
+        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    /**
+     * 获取班级名称
+     * @param id
+     */
+    function viewClassRoom(id) {
+        var param = {
+            "method": 'viewClassRoom',
+            "id": id,
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (WebServiceUtil.isEmpty(result.response) == false) {
+                        if (WebServiceUtil.isEmpty(result.response) == false && WebServiceUtil.isEmpty(result.response.defaultBindedClazz) == false) {
+                            document.querySelector('#class-name').innerHTML = result.response.defaultBindedClazz.name
+                        }
+                    }
+                }
+            },
+            onError: function (error) {
+            }
+        });
     }
 
 })
