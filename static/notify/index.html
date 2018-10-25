@@ -12,10 +12,17 @@
 <body>
 <div id="skin_middleSchool" class="no_bg">
     <div id="classCardHomePage">
-        <h3 class="home_title">班牌首页通知</h3>
+            <h3 class="home_title" onClick={this.notifySeeMore}>
+                    <span>通知</span>
+                    <span class="home_titleMore">历史通知<i class="titleMore"></i></span>
+                </h3>
+                <div class="notify_cont notifyData">
+
+                </div>
     </div>
 </div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-<script src="./asset/js/notify.js"/>
+<script type="text/javascript" src="../js/webServiceUtil.js"></script>
+<script type="text/javascript" src="./asset/js/notify.js"></script>
 </body>
 </html>

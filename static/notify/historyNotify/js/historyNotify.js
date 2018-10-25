@@ -1,9 +1,7 @@
 $(function () {
-
     var article = {};
     article.attacheMents = [];
     InitializePage();
-
     $('#changeImage').click(function () {
         $("#upload").change(function () {
             if (this.files[0]) {
@@ -26,18 +24,15 @@ $(function () {
         })
     })
 
-    /**
-     * 时间戳转年月日
-     * @param nS
-     * @returns {string}
-     */
-    formatYMD = function (nS) {
+    formatHM = function (nS) {
         var da = new Date(parseInt(nS));
-        var year = da.getFullYear();
-        var month = da.getMonth() + 1;
-        var date = da.getDate();
-        var ymdStr = [year, month, date].join('-');
-        return ymdStr;
+        var hour = da.getHours() + ":";
+        var minutes = da.getMinutes();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        var hmStr = hour + minutes;
+        return hmStr;
     };
 
     function sendMessageTo(data) {
@@ -57,15 +52,19 @@ $(function () {
 
         }
     })
-    getIndex = function (index) {
-        $(".modal").hide();
-        $(".modal").eq(index).show();
-        console.log(index, "index")
-    }
-    closeModal = function (index) {
-        $(".modal").hide();
-        $(".modal").eq(index).hide();
-        console.log(index, "index")
+
+     /**
+     * getTimeFormat时间戳转换格式
+     */
+    getTimeFormat = function(t) {
+        var _time = new Date(t);
+        // var   year=_time.getFullYear();//年
+        var month = (_time.getMonth() + 1) < 10 ? ("0" + (_time.getMonth() + 1)) : (_time.getMonth() + 1);//月
+        var date = _time.getDate() < 10 ? "0" + _time.getDate() : _time.getDate();//日
+        var hour = _time.getHours() < 10 ? "0" + _time.getHours() : _time.getHours();//时
+        var minute = _time.getMinutes() < 10 ? "0" + _time.getMinutes() : _time.getMinutes();//分
+        // var   second=_time.getSeconds();//秒
+        return month + "/" + date + " " + hour + ":" + minute;
     }
 
     //初始化页面元素
@@ -104,7 +103,7 @@ $(function () {
                     }]
                     if (result.response.length == 0) {
                         console.log("12")
-                        $(".notifyData").replaceWith(`<div class="mEScoreInfo home_cardCont">
+                        $(".notify_list").replaceWith(`<div class="mEScoreInfo home_cardCont">
                         <div class="empty_center">
                             <div class="empty_icon empty_moralEducationScore"></div>
                             <div class="empty_text">暂无通知</div>
@@ -112,20 +111,19 @@ $(function () {
                     </div>`)
                     } else {
                         result.response.forEach((v, i) => {
-                            $(".notifyData").append(
+                            $(".notify_list").append(
                                 `
-                                <div>
-                                    <li>
-                                        <span class="notify_list text_hidden"
-                                                onClick="getIndex(${i})">${v.noticeTitle}</span>
-                                        <i class="titleMore notify_titleMore"></i>
+                                <div class="divBox">
+                                <ul class="ulBox">
+                                    <li onClick={this.onClick}>
+                                        <p class="title">${v.noticeTitle}<span
+                                        class="time">getTimeFormat(${v.createTime})</span></p>
+                                        <div class="noticeContent" style={{display: ${i} == '0' ? "block" : "none"}}>
+                                            ${v.noticeContent}
+                                        </div>
                                     </li>
-                                    <div class="modal" style="display:none">
-                                        <span onClick="closeModal(${i})">关闭</span>
-                                        <div>扫除</div>
-                                        ${v.noticeContent}
-                                    </div>
-                                </div>
+                                </ul>
+                            </div>
                                 `
                             )
                         })
@@ -138,12 +136,13 @@ $(function () {
             }
         });
     }
+
     /**
-    * 获取地址栏参数
-    * @param name
-    * @returns {null}
-    * @constructor
-    */
+   * 获取地址栏参数
+   * @param name
+   * @returns {null}
+   * @constructor
+   */
     function getQueryString(parameterName) {
         var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
