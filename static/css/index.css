@@ -285,7 +285,7 @@ video::-webkit-media-controls-fullscreen-button {
 }
 .navBar .icon {
   margin: 0 0.56rem;
-  background: url("components/classCardSystem/imgs/backArrow.png") no-repeat;
+  background: url("../images/backArrow.png") no-repeat;
   width: 0.47rem;
   height: 0.81rem;
   background-size: 100% 100%;
@@ -346,7 +346,7 @@ video::-webkit-media-controls-fullscreen-button {
   display: block;
   width: 14px;
   height: 14px;
-  background: url("components/classCardSystemBackstage/imgs/icon_delete.png") no-repeat center center;
+  background: url("../images/icon_delete.png") no-repeat center center;
   background-size: 14px;
   padding: 0 8px;
   margin-right: 4px;
@@ -356,7 +356,7 @@ video::-webkit-media-controls-fullscreen-button {
   display: block;
   width: 14px;
   height: 14px;
-  background: url("components/classCardSystemBackstage/imgs/icon_modify.png") no-repeat center center;
+  background: url("../images/icon_modify.png") no-repeat center center;
   background-size: 14px;
   padding: 0 8px;
 }
@@ -434,7 +434,7 @@ video::-webkit-media-controls-fullscreen-button {
   transform: scaleY(0.5);
 }
 .noticeMsg_common {
-  background: #eee url("components/classCardSystemBackstage/imgs/noticeIcon.png") no-repeat 30px 9px;
+  background: #eee url("../images/noticeIcon.png") no-repeat 30px 9px;
   background-size: 18px;
   font-size: 15px;
   color: #666;
@@ -496,7 +496,7 @@ video::-webkit-media-controls-fullscreen-button {
   text-align: center;
 }
 .emptyPage_publicImg {
-  background: url("components/classCardSystem/imgs/icon_emptypage.png") no-repeat;
+  background: url("../images/icon_emptypage.png") no-repeat;
   background-size: 100%;
 }
 /* 公共空页面图end */
@@ -581,25 +581,6 @@ video::-webkit-media-controls-fullscreen-button {
   -webkit-transform: scaleY(0.5);
   -ms-transform: scaleY(0.5);
   transform: scaleY(0.5);
-}
-.contactsListNav .nav-left,
-.contactsListNav .nav-right {
-  box-sizing: border-box;
-  display: inline-block;
-  width: 10px;
-  height: 18px;
-  margin-top: 15px;
-}
-.contactsListNav .nav-left {
-  background: url("components/mobileChat/img/left-back.png") no-repeat;
-  background-size: 100% 100%;
-  margin-left: 33.333%;
-}
-.contactsListNav .nav-right {
-  background: url("components/mobileChat/img/right-forward.png") no-repeat;
-  background-size: 100% 100%;
-  margin-right: 33.333%;
-  float: right;
 }
 .clazzDemeanor {
   padding: 0.83rem 0 0 0;

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    var isDebug = true;
+    var webserviceUrl = isDebug?"http://127.0.0.1:7091/":"http://jiaxue.maaee.com:7091/";
+
     InitializePage();
 
     //初始化页面元素
@@ -10,14 +13,13 @@ $(document).ready(function(){
         var mac = getQueryString("mac");
         var schoolId = getQueryString("schoolId");
         console.log(clazzId+"\t"+roomId+"\t"+mac+"\t"+schoolId);
-        localStorage.setItem("clazzId",clazzId);
-        sessionStorage.setItem("clazzId",clazzId);
-        localStorage.setItem("roomId",roomId);
-        localStorage.setItem("mac",mac);
-        localStorage.setItem("schoolId",schoolId);
-        var message = {clazzId:clazzId};
-        $("#studentOnDuty")[0].src="http://127.0.0.1:7091/studentOnDuty?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
-        $("#studentOnDuty")[0].contentWindow.postMessage(message,"*");
+        $("#studentOnDuty")[0].src=webserviceUrl+"studentOnDuty?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#moralEducationScore")[0].src=webserviceUrl+"moralEducationScore?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#classDemeanor")[0].src=webserviceUrl+"classDemeanor?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#notify")[0].src=webserviceUrl+"notify?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#application")[0].src=webserviceUrl+"application?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#courseOfToday")[0].src=webserviceUrl+"courseOfToday?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
+        $("#currentAttendance")[0].src=webserviceUrl+"currentAttendance?clazzId="+clazzId+"&roomId="+roomId+"&mac="+mac+"&schoolId="+schoolId;
     }
 
     /**
