@@ -3,17 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>步数排行榜</title>
-  <link rel="stylesheet" href="./css/healthStep.css">
+   <link rel="stylesheet" href="../../css/index.css">
+   <link rel="stylesheet" href="./css/healthStep.css">
+    <link rel="stylesheet" href="../../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../../css/skin/skin_default.css">
 </head>
 <body>
-<div class="navBar">
-                        <span onClick={this.historyGoBack}>首页</span>
-                        <span class="icon"></span>
-                        <span id="typeTitle"></span>
-                    </div>
-<div id="content">
+<div id="skin_middleSchool">
+    <div id="health" class="home_content">
+        <div class="inner_bg">
+            <div class="navBar">
+                <span onClick={this.historyGoBack}>首页</span>
+                <span class="icon"></span>
+                <span id="typeTitle"></span>
+            </div>
+            <div id="content" class="health_cont">
 
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../../js/webServiceUtil.js"></script>

@@ -46,7 +46,7 @@ $(function(){
                     setTimeout(function(){
                         getHomeworkData();
 
-                    },10000)
+                    },1000000)
                 }
 
             }else{
