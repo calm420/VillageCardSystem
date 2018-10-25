@@ -15,9 +15,16 @@ function init(){
     $("#classTableB").show();
 }
 function gotoAttendDetail() {
-    parent.location.href="http://localhost:7091/courseAttendanceDetail/";
+    parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
 }
-
+// function gotoAttendDetail(classTableId){
+//     $('#gotoAttendDetail').click(function () {
+//         parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
+//     })
+// }
+// function gotoAttendDetail(){
+//     $('#gotoAttendDetail').unbind("click");
+// }
 function checkCourseOpenHandle(data) {
     var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
