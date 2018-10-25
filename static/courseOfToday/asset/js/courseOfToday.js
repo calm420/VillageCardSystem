@@ -2,14 +2,14 @@ $(function () {
     var roomId = getQueryString("roomId");
 
     document.querySelector('.home_titleMore').addEventListener('click', () => {
-        var data = {
-            method: 'openNewPage',
-            url: "homeworkModule/index.html?classId="+classId,
-        };
-
-        Bridge.callHandler(data, null, function (error) {
-            window.location.href = "homeworkModule/index.html?classId="+classId;
-        });
+        // var data = {
+        //     method: 'openNewPage',
+        //     url: "homeworkModule/index.html?classId="+classId,
+        // };
+        //
+        // Bridge.callHandler(data, null, function (error) {
+        //     window.location.href = "homeworkModule/index.html?classId="+classId;
+        // });
     })
 
     /**
@@ -21,15 +21,21 @@ $(function () {
             //查看某个课表项(一接收到开课命令就获取当前开课)
             if (roomId == res.data.classroomId) {
                 viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
             }
         } else if (res.command == 'brand_class_close') {
             if (roomId == res.data.classroomId) {
                 //下课
+                document.querySelector('#finish-class').style.display = 'block'
+                document.querySelector('#begin-class').style.display = 'none'
             }
         } else if (res.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(res.data.classTableId) == false) {
             //重连开课
             if (roomId == res.data.classroomId) {
                 viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
             }
         }
     })
