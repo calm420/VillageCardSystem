@@ -1,4 +1,4 @@
-var isDebug = false;
+var isDebug = true;
 
 function MsgConnection() {
     this.msgWsListener = null;
