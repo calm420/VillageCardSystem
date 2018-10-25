@@ -1,0 +1,109 @@
+#homeworkModule {
+  color: green;
+}
+#homeworkModule .am-list-body {
+  border: none;
+}
+#homeworkModule .am-list-view-scrollview-content {
+  width: 100%;
+}
+#homeworkModule .am-list-body::before {
+  background: none;
+}
+#homeworkModule .am-list-view-scrollview {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+#homeworkModule .am-list-view-scrollview::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
+#homeworkModule .textOver {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+#homeworkModule .homeworkInfo {
+  padding: 0 0.83rem 0.83rem 1.11rem;
+  display: -webkit-flex;
+  display: flex;
+  border-bottom: 0.05rem #e5ebf7 solid;
+}
+#homeworkModule .homeworkInfo .homeworkL {
+  width: 3.33rem;
+}
+#homeworkModule .homeworkInfo .homeworkL .subject {
+  margin-top: 0.56rem;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  width: 3.33rem;
+  padding: 0.3rem 0;
+  color: #fff;
+  font-size: 0.83rem;
+  -webkit-border-radius: 1.8rem;
+  -moz-border-radius: 1.8rem;
+  border-radius: 1.8rem;
+  background: -webkit-linear-gradient(#4f90fd, #3773ee);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#4f90fd, #3773ee);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#4f90fd, #3773ee);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(#4f90fd, #3773ee);
+}
+#homeworkModule .homeworkInfo .homeworkL .imgInfo {
+  text-align: center;
+}
+#homeworkModule .homeworkInfo .homeworkL .imgInfo img {
+  width: 2.5rem;
+  height: 2.5rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 1rem 0 0.5rem;
+}
+#homeworkModule .homeworkInfo .homeworkL .imgInfo span {
+  color: #565c72;
+  font-size: 0.78rem;
+}
+#homeworkModule .homeworkM {
+  width: calc(100% - 15rem);
+  padding: 0 2.5rem;
+  word-wrap: break-word;
+}
+#homeworkModule .homeworkM h3 {
+  color: #2a3350;
+  font-size: 0.78rem;
+  margin-bottom: 0.83rem;
+  line-height: 1.1rem;
+}
+#homeworkModule .homeworkM p {
+  color: #565c72;
+  font-size: 0.72rem;
+  line-height: 1.1rem;
+  word-wrap: break-word;
+}
+#homeworkModule .homeworkR {
+  margin-top: 0.8rem;
+  color: #2a3350;
+  font-size: 0.67rem;
+  width: 8rem ;
+  text-align: right;
+  overflow: hidden;
+}
+#homeworkModule .homeworkR p {
+  margin: 0;
+}
+#homeworkModule .homeworkR img {
+  max-width: 7.78rem;
+  max-height: 4.39rem;
+  margin-top: 0.4rem;
+  display: block;
+  float: right;
+}
+#homeworkModule .am-list-footer {
+  height: 75px;
+}

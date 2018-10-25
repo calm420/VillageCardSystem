@@ -1,0 +1,119 @@
+#currentAttendanceList {
+  background-color: #fff;
+}
+#currentAttendanceList .navBar {
+  position: relative;
+}
+#currentAttendanceList .navBar .right {
+  top: 50%;
+  position: absolute;
+  right: 0;
+  font-weight: normal;
+  font-size: 0.67rem;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#currentAttendanceList .navBar .right .blue {
+  color: #5091fe;
+  font-size: 0.72rem;
+  padding: 0 0.33rem;
+}
+#currentAttendanceList .navBar .right .white {
+  color: #fff;
+}
+#currentAttendanceList .navBar .right .item {
+  padding-right: 1.67rem;
+}
+#currentAttendanceList .navBar .right .btn {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.56rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  border-radius: 0.6rem;
+  margin-right: 0.56rem;
+  display: inline;
+}
+#currentAttendanceList .navBar .right .noSign {
+  margin-right: 0.56rem;
+  font-size: 1rem;
+}
+#currentAttendanceList .navBar .right .noSign .btn {
+  background-color: #f13010;
+}
+#currentAttendanceList .navBar .right .noSign .text {
+  vertical-align: bottom;
+}
+#currentAttendanceList .content {
+  padding: 0.83rem 0 0.83rem 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  height: calc(100% - 2.22rem);
+}
+#currentAttendanceList .photoItem {
+  width: 4.61rem;
+  margin-right: 0.39rem;
+  margin-bottom: 0.22rem;
+  text-align: center;
+  padding: 0.67rem 0 0.28rem;
+  position: relative;
+  float: left;
+}
+#currentAttendanceList .photoItem .signIcon_green {
+  position: absolute;
+  right: 13%;
+  top: 3.95rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  z-index: 2;
+  border-radius: 50%;
+}
+#currentAttendanceList .photoItem .imgDiv {
+  width: 3.33rem;
+  height: 3.33rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0.67rem auto 0.56rem;
+  border: 0.06rem #fff solid;
+  overflow: hidden;
+}
+#currentAttendanceList .photoItem .imgDiv.no {
+  -webkit-box-shadow: 0 0 0.44rem 0.11rem rgba(255, 103, 103, 0.66);
+  -moz-box-shadow: 0 0 0.44rem 0.11rem rgba(255, 103, 103, 0.66);
+  box-shadow: 0 0 0.44rem 0.11rem rgba(255, 103, 103, 0.66);
+}
+#currentAttendanceList .photoItem img {
+  width: 100%;
+  height: 100%;
+}
+#currentAttendanceList .photoItem .studentName {
+  font-size: 0.72rem;
+  color: #565c72;
+  padding-top: 0.28rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+#currentAttendanceList .photoItem .signIcon {
+  font-size: 0.61rem;
+  color: #fff;
+  padding: 0.15rem 0;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  border-radius: 0.6rem;
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #f13010;
+  width: 3rem;
+}
