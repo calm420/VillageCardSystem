@@ -42,7 +42,7 @@ $(document).ready(function () {
                                     users.forEach(function (student) {
                                         if (student != null && student != undefined) {
                                             var stuName = student.userName;
-                                            var stuImgTag = "<li class='studentOnDuty_list'><div class='studentOnDuty_face'><img class='studentOnDuty_face' src=" + student.avatar + "/></div><div class='home_contfont text_hidden studentOnDuty_name'>" + stuName + "</div></li>";
+                                            var stuImgTag = "<li class='studentOnDuty_list'><div class='studentOnDuty_face'><img class='studentOnDuty_face' src=" + student.avatar + "></div><div class='home_contfont text_hidden studentOnDuty_name'>" + stuName + "</div></li>";
                                             if (clazzDutyWeek == weekOfTody) {
                                                 var currentInner = $("#todyDuty")[0].innerHTML+stuImgTag;
                                                 $("#todyDuty")[0].innerHTML = currentInner;
