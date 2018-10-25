@@ -107,7 +107,7 @@
 #homeworkModule .am-list-footer {
   height: 75px;
 }
-.noMoreData{
+.noMoreData,.preloader.visible{
   color: #565c72;
   font-size: 0.72rem;
   text-align: center;
