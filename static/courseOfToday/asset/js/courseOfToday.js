@@ -1,6 +1,15 @@
 $(function () {
     var roomId = getQueryString("roomId");
 
+    document.querySelector('.home_titleMore').addEventListener('click', () => {
+        var data = {
+            method: 'openNewPage',
+            url: "tableItemDetil?roomId=" + roomId,
+        };
+
+        window.parent.postMessage(JSON.stringify(data), '*');
+    })
+
     /**
      * 消息监听
      */
@@ -10,15 +19,21 @@ $(function () {
             //查看某个课表项(一接收到开课命令就获取当前开课)
             if (roomId == res.data.classroomId) {
                 viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
             }
         } else if (res.command == 'brand_class_close') {
             if (roomId == res.data.classroomId) {
                 //下课
+                document.querySelector('#finish-class').style.display = 'block'
+                document.querySelector('#begin-class').style.display = 'none'
             }
         } else if (res.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(res.data.classTableId) == false) {
             //重连开课
             if (roomId == res.data.classroomId) {
                 viewCourseTableItem(res.data)
+                document.querySelector('#finish-class').style.display = 'none'
+                document.querySelector('#begin-class').style.display = 'block'
             }
         }
     })
@@ -39,7 +54,7 @@ $(function () {
 
                     var img = document.createElement("img");
                     img.src = result.response.teacher.avatar
-
+                    img.className = "terPic"
                     document.querySelector('#begin-class').insertBefore(img, document.querySelector('.ter_name'))
 
                     document.querySelector('.name').innerHTML = result.response.courseName

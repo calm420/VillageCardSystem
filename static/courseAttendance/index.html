@@ -15,16 +15,16 @@
     <div id="classCardHomePage">
         <h3 class="home_title">
             <span>本节考勤</span>
-            <span class="home_titleMore"  onclick="gotoAttendDetail()">
+            <span class="home_titleMore" onclick="gotoAttendDetail()">
                 考勤详情
                 <i class="titleMore"></i>
             </span>
         </h3>
-        <div class="classTableA">
+        <div class="classTableA" id="classTableA" style="display: none;">
             <div class="due">应到人数:<span id="totalCount" class="number"></span></div>
             <div class="due">实到人数:<span id="attendCount" class="number"></span></div>
         </div>
-        <div class="classTableA">
+        <div class="classTableA" id="classTableB" style="display: none;">
             <div class="empty_center">
                 <div class="empty_icon empty_currentAttendance"></div>
                 <div class="empty_text">暂无考勤</div>

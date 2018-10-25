@@ -11,17 +11,28 @@ $(document).ready(function(){
 });
 function init(){
     //getStudentByCourseTableItem(35)
+    $("#classTableA").hide();
+    $("#classTableB").show();
 }
 function gotoAttendDetail() {
-    parent.location.href="http://localhost:7091/courseAttendanceDetail/";
+    parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
 }
-
+// function gotoAttendDetail(classTableId){
+//     $('#gotoAttendDetail').click(function () {
+//         parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
+//     })
+// }
+// function gotoAttendDetail(){
+//     $('#gotoAttendDetail').unbind("click");
+// }
 function checkCourseOpenHandle(data) {
     var roomId =getQueryString("roomId");
     if (data.command == 'brand_class_open') {
         var classTableId=data.data.classTableId;
         //获取应到人数
         if (roomId == data.data.classroomId) {
+            $("#classTableA").show();
+            $("#classTableB").hide();
             getStudentByCourseTableItem(classTableId);
             if (!timerFlag) {
                 this.openTimeInterVal(classTableId);
@@ -29,16 +40,20 @@ function checkCourseOpenHandle(data) {
         }
     } else if (data.command == 'brand_class_close') {
         if (roomId ==data.data.classroomId) {
+            $("#classTableA").hide();
+            $("#classTableB").show();
             clearInterval(timer)
             timerFlag = false;
         }
     } else if (data.command == 'braceletBoxConnect') {
         //重连开课
         if( data.data.classroomId!=null) {
-            if (roomId == data.classroomId) {
-                this.getStudentByCourseTableItem(data.classTableId);
+            if (roomId == data.data.classroomId) {
+                $("#classTableA").show();
+                $("#classTableB").hide();
+                this.getStudentByCourseTableItem(data.data.classTableId);
                 if (!timerFlag) {
-                    this.openTimeInterVal(data.classTableId);
+                    this.openTimeInterVal(data.data.classTableId);
                 }
             }
         }
