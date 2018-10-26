@@ -12,3 +12,16 @@
   color: #5091fe;
   font-size: 2.22rem;
 }
+.classTableA .due2 .font_title2 {
+  font-size: 0.67rem;
+  color: #2a3350;
+}
+.classTableA .due3 {
+  font-size: 0.67rem;
+  margin-top: 3rem;
+}
+.classTableA .due3 .number {
+  color: #5091fe;
+  font-size: 2.22rem;
+  margin: 0 0.4rem;
+}
