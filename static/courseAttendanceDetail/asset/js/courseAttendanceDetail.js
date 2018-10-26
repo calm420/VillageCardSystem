@@ -16,6 +16,9 @@ function init(){
    // var defaultId = searchArray[1].split('=')[1];
     getStudentByCourseTableItem(classTableId);
     openTimeInterVal(classTableId);
+
+    var skin =getQueryString("skin");
+    document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
 }
 function openTimeInterVal(classTableId){
     //开启定时器获取实到人数
@@ -102,7 +105,14 @@ function getStudentByCourseTableItemHandle(response,classTableId){
 function sendMessageTo(data) {
     window.parent.postMessage(JSON.stringify(data), '*');
 }
-
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
 //监听接受消息
 window.addEventListener('message', (e) => {
     console.log(e);

@@ -2,27 +2,6 @@ $(function () {
     var article = {};
     article.attacheMents = [];
     InitializePage();
-    $('#changeImage').click(function () {
-        $("#upload").change(function () {
-            if (this.files[0]) {
-                var formData = new FormData();
-                formData.append("file" + 0, this.files[0]);
-                formData.append("name" + 0, this.files[0].name);
-                $.ajax({
-                    type: "POST",
-                    url: "https://jiaoxue.maaee.com:8890/Excoord_Upload_Server/file/upload",
-                    enctype: 'multipart/form-data',
-                    data: formData,
-                    // 告诉jQuery不要去处理发送的数据
-                    processData: false,
-                    // 告诉jQuery不要去设置Content-Type请求头
-                    contentType: false,
-                    success: function (res) {
-                    }
-                });
-            }
-        })
-    })
 
     formatHM = function (nS) {
         var da = new Date(parseInt(nS));
@@ -56,6 +35,9 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+        var skin = WebServiceUtil.GetQueryString("skin");
+        console.log(skin,'skin');
+        document.getElementsByName("excellentStuDiv")[0].id= skin;
         getExcellentStu(clazzId);
     }
 
