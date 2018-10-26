@@ -13,6 +13,7 @@ function init(){
     //getStudentByCourseTableItem(35)
     $("#classTableA").hide();
     $("#classTableB").show();
+    unbindGotoAttendDetail();
 }
 // function gotoAttendDetail() {
 //     parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
@@ -31,6 +32,9 @@ function gotoAttendDetail(classTableId){
 }
 function unbindGotoAttendDetail(){
     $('#gotoAttendDetail').unbind("click");
+    $('#gotoAttendDetail').click(function () {
+        UiUtils.toast("还没上课呢...");
+    })
 }
 function checkCourseOpenHandle(data) {
     var roomId =getQueryString("roomId");
