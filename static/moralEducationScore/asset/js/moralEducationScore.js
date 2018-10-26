@@ -1,5 +1,6 @@
 $(function () {
     var schoolId = getQueryString("schoolId");
+    var clazzId = getQueryString("clazzId");
     var font = getQueryString('font')
     $('html').css('font-size', font)
     InitializePage();
@@ -24,13 +25,13 @@ $(function () {
                 document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
+        if (commandInfo.command == "moralEducation" && commandInfo.data.cid == clazzId) {
+            InitializePage();
+        }
     })
 
     //初始化页面元素
     function InitializePage() {
-        var clazzId = getQueryString("clazzId");
-        console.log(clazzId,"clazzId")
-        // getMoralEducationInfo(5447);
         getMoralEducationInfo(clazzId);
     }
     function getMoralEducationInfo(clazzId) {
