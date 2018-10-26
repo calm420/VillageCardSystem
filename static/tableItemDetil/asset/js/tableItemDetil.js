@@ -1,5 +1,7 @@
 $(function () {
     var roomId = getQueryString("roomId");
+    var skin = getQueryString("skin");
+    document.getElementsByName("tableItemDetil")[0].id = skin;
     viewCourseTable(roomId)
 
     document.querySelector('#goback-home').addEventListener('click', () => {

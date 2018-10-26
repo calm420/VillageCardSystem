@@ -5,7 +5,7 @@ $(function () {
     let roomId = getQueryString("roomId");
     viewClassRoom(roomId)
     makeTime();
-    // getCurrentTimeMillis();
+
 
     /**
      * 根据IP地址获取adcode
@@ -16,14 +16,19 @@ $(function () {
         weatherInfo(res.adcode)
     })
 
-    function getCurrentTimeMillis() {
+    /**
+     * 获取网络时间
+     */
+    function getCurrentTimeMillis(resolve) {
         var param = {
             "method": 'getCurrentTimeMillis',
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
-                    console.log(result.response);
+                    resolve(result.response)
+                } else {
+                    resolve(new Date().getTime())
                 }
             },
             onError: function (error) {
@@ -74,6 +79,26 @@ $(function () {
      * 制作电子表
      */
     function makeTime() {
+        getCurrentTimeMillis(function (time) {
+            timer = setInterval(function () {
+                document.querySelector('#watch').innerText = set(time)
+                //每天刷新天气两次
+                if (set(time) == '00:10:00' || set(time) == '12:10:00') {
+                    weatherInfo(abcode)
+                }
+                //更新日期
+                if (set(time) == '00:10:00') {
+                    document.querySelector('#week').innerText = setTodayDate(new Date(time))
+                }
+
+                time = Number(time);
+                time += 1000;
+            }, 1000);
+            document.querySelector('#week').innerText = setTodayDate(new Date(time))
+        })
+    }
+
+    /*function makeTime() {
         var date = new Date(),
             time = date.getTime();
         timer = setInterval(function () {
@@ -92,7 +117,7 @@ $(function () {
             time += 1000;
         }, 1000);
         document.querySelector('#week').innerText = setTodayDate(date)
-    }
+    }*/
 
     /**
      * 设置北京时间的方法，针对时分秒的显示
