@@ -99,6 +99,21 @@ $(function () {
 
     }
 
+     /**
+     * getTimeFormat时间戳转换格式
+     */
+    getTimeFormat=function(t) {
+        var _time = new Date(t);
+        // var   year=_time.getFullYear();//年
+        var month = (_time.getMonth() + 1) < 10 ? ("0" + (_time.getMonth() + 1)) : (_time.getMonth() + 1);//月
+        var date = _time.getDate() < 10 ? "0" + _time.getDate() : _time.getDate();//日
+        var hour = _time.getHours() < 10 ? "0" + _time.getHours() : _time.getHours();//时
+        var minute = _time.getMinutes() < 10 ? "0" + _time.getMinutes() : _time.getMinutes();//分
+        // var   second=_time.getSeconds();//秒
+        return month + "/" + date + " " + hour + ":" + minute;
+    }
+
+
     //初始化页面元素
     function InitializePage() {
         var roomId = getQueryString("roomId");
@@ -112,8 +127,13 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result, "2345678");
-                let rowData = result.response;
+
+                var newArr = []
+                result.response.forEach((v,i)=>{
+                    v.createTime = getTimeFormat(v.createTime);
+                    newArr.push(v);
+                })
+                let rowData = newArr;
                 //数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
                     mySwiper.appendSlide("<div class='noMoreData'>数据为空</div>", 'swiper-slide');
