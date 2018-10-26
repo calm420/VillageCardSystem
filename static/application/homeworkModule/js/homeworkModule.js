@@ -91,9 +91,9 @@ $(function(){
             "pageNo": slideNumber
         };
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: result => {
+            onResponse: function(result) {
                 if (result.success) {
-                    let rowData = result.response;
+                    var rowData = result.response;
                     //数据为空
                     if(rowData.length == 0 && slideNumber == 1){
                         mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>数据为空</div></div></div>", 'swiper-slide');
@@ -105,7 +105,7 @@ $(function(){
                     //循环渲染
                     for(var k in rowData){
                         // console.log(rowData[k].attachMents.address,'rowData[k].attachMents.address');
-                        let attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
+                        var attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
                         // console.log(attachMents,'attachMents');
                         mySwiper.appendSlide("<div class=\"homeworkInfo\">\n" +
                             "         <div class=\"homeworkL\">\n" +
