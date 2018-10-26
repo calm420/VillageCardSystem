@@ -4,7 +4,7 @@ $(function () {
     document.getElementsByName("tableItemDetil")[0].id = skin;
     viewCourseTable(roomId)
 
-    document.querySelector('#goback-home').addEventListener('click', () => {
+    document.querySelector('#goback-home').addEventListener('click', function () {
         var data = {
             method: 'finish',
         };
@@ -37,7 +37,7 @@ $(function () {
         var td;
         for (var k in data) {
             var tr = '';
-            data[k].forEach((e) => {
+            data[k].forEach(function (e) {
                 if (!!e.courseName) {
                     td = '<td><span class="class_name">' + e.courseName + '</span><span>' + e.classRoom.name + '</span> <span>(' + e.openTime + '-' + e.closeTime + ')</span> </td>'
                 } else {

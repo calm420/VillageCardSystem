@@ -1,7 +1,7 @@
 $(function(){
     var html = '';
     var type = WebServiceUtil.GetQueryString('healthType');
-    var classId = WebServiceUtil.GetQueryString('classId');
+    var classId = WebServiceUtil.GetQueryString('clazzId');
     var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin,'skin');
     document.getElementsByName("helthStepDiv")[0].id= skin;
@@ -17,7 +17,7 @@ $(function(){
             "pageNo": -1,
         };
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: result => {
+            onResponse: function(result) {
                 console.log(result,'班级和卡路里');
                 if (result.msg == '调用成功' || result.success) {
                     //数据为空
@@ -33,9 +33,9 @@ $(function(){
                             "                    </div>")
                     }else{
                         for(var k in res){
-                            let className = k == 0 ?'firstClass' : k == 1 ? 'secondClass' : k == 2 ? 'thirdClass' : 'otherClass';
-                            let dataForm = type == 'step' ? res[k].sportStep : res[k].calorie.toFixed(2);
-                            let dataType = type == 'step' ? '步' : '卡路里';
+                            var className = k == 0 ?'firstClass' : k == 1 ? 'secondClass' : k == 2 ? 'thirdClass' : 'otherClass';
+                            var dataForm = type == 'step' ? res[k].sportStep : res[k].calorie.toFixed(2);
+                            var dataType = type == 'step' ? '步' : '卡路里';
                             html += "<div class=\"photoItem\">\n" +
                                 "                                <div class=\"imgDiv\">\n" +
                                 "                                <img class=\"noomImg\" src="+res[k].users.avatar+" alt=\"\"/>\n" +

@@ -19,8 +19,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
-        alert(e);
+    window.addEventListener('message', function(e) {
         var res = JSON.parse(e.data);
         if (res.method == 'test') {
             console.log(res, '测试的postMessage');
@@ -48,7 +47,7 @@ $(function () {
         };
         console.log(param)
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: result => {
+            onResponse: function(result) {
                 if (result.success) {
                     console.log(result.response);
                     // var arr = [

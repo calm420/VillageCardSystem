@@ -5,10 +5,8 @@ $(function(){
 //页码
     var slideNumber = 1;
     var loadingMore = true;
-
-
+    var classId = WebServiceUtil.GetQueryString("classId");
     var skin = WebServiceUtil.GetQueryString("skin");
-    console.log(skin,'skin');
     document.getElementsByName("homeworkModuleDiv")[0].id= skin;
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
@@ -27,12 +25,10 @@ $(function(){
         },
         //抵抗下拉反弹事件回调
         onResistanceBefore: function(s, pos){
-            holdPosition = '下拉刷新';
+            holdPosition= '下拉刷新';
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function(s,pos){
-            console.log(pos,'pospospospospospos');
-            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
             if(pos > 300){
                 holdPosition = '上拉加载更多';
             }else{
@@ -42,9 +38,6 @@ $(function(){
         },
         //结束回调
         onTouchEnd: function(){
-            console.log(holdPosition,'holdPosition');
-            console.log($(window).height(),'height')
-
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             }else if(holdPosition == '上拉加载更多'){
@@ -84,16 +77,16 @@ $(function(){
 
 
     function getHomeworkData(){
-        console.log(slideNumber,'slideNumber');
         var param = {
             "method": 'getTopicsByClazzId',
-            "clazzIds": 819,
+            "clazzIds": classId,
             "pageNo": slideNumber
         };
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: result => {
+            onResponse: function(result) {
+                console.log(result,'result')
                 if (result.success) {
-                    let rowData = result.response;
+                    var rowData = result.response;
                     //数据为空
                     if(rowData.length == 0 && slideNumber == 1){
                         mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>数据为空</div></div></div>", 'swiper-slide');
@@ -105,8 +98,9 @@ $(function(){
                     //循环渲染
                     for(var k in rowData){
                         // console.log(rowData[k].attachMents.address,'rowData[k].attachMents.address');
-                        let attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
+                        var attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
                         // console.log(attachMents,'attachMents');
+                        var title = rowData[k].title?rowData[k].title:'';
                         mySwiper.appendSlide("<div class=\"homeworkInfo\">\n" +
                             "         <div class=\"homeworkL\">\n" +
                             "            <div class=\"imgInfo\">\n" +
@@ -115,7 +109,7 @@ $(function(){
                             "                                               </div>\n" +
                             "                           </div>\n" +
                             "                             <div class=\"homeworkM\">\n" +
-                            "                   <h3>"+rowData[k].title+"</h3>\n" +
+                            "                   <h3>"+title+"</h3>\n" +
                             "                   <p>"+rowData[k].content+"</p>\n" +
                             "                    </div>\n" +
                             "                   <div class=\"homeworkR\">\n" +

@@ -27,8 +27,6 @@ $(function () {
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function (s, pos) {
-            console.log(pos, 'pospospospospospos');
-            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
             if (pos > 300) {
                 holdPosition = '上拉加载更多';
             } else {
@@ -38,9 +36,6 @@ $(function () {
         },
         //结束回调
         onTouchEnd: function () {
-            console.log(holdPosition, 'holdPosition');
-            console.log($(window).height(), 'height')
-
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             } else if (holdPosition == '上拉加载更多') {
