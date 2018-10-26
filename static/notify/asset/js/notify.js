@@ -1,4 +1,6 @@
 $(function () {
+    var  skin;
+    var roomId = getQueryString("roomId");
     //拖动偏移量
     var holdPosition = 0;
     // var holdPosition =
@@ -10,14 +12,12 @@ $(function () {
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
     InitializePage();
     var schoolId =getQueryString("schoolId");
-    console.log("schoolId",schoolId);
-
     //监听接受消息
     window.addEventListener('message', (e) => {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
-                var skin = commandInfo.data.skinName;
+              skin = commandInfo.data.skinName;
                 document.getElementsByName("notifyDiv")[0].id=skin;
             }
         }
@@ -39,8 +39,6 @@ $(function () {
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function (s, pos) {
-            console.log(pos, 'pospospospospospos');
-            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
             if (pos > 300) {
                 holdPosition = '上拉加载更多';
             } else {
@@ -51,7 +49,6 @@ $(function () {
         onTouchEnd: function () {
             console.log(holdPosition, 'holdPosition');
             console.log($(window).height(), 'height')
-
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             } else if (holdPosition == '上拉加载更多') {
@@ -87,15 +84,14 @@ $(function () {
         }
     });
 
-
-
-    notifySeeMore = function () {
-        parent.location.href = "http://localhost:7091/notify/historyNotify/index.html?roomId=1";
-    }
+    //历史通知
+    // notifySeeMore = function () {
+    //     parent.location.href = "http://192.168.50.72:7091/notify/historyNotify/index.html?roomId=1&skin="+skin;
+    // }
     $('#notifySeeMore').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "notify/historyNotify/index.html?roomId=" + 1,
+            url: "notify/historyNotify/index.html?roomId=" + roomId+"&skin="+skin,
         };
         Bridge.callHandler(data, null, function (error) {
             window.parent.postMessage(JSON.stringify(data), '*');
@@ -103,23 +99,10 @@ $(function () {
     });
 
 
-    getIndex = function (index) {
-        $(".modal").hide();
-        $(".modal").eq(index).show();
-        console.log(index, "index")
-    }
-    closeModal = function (index) {
-        $(".modal").hide();
-        $(".modal").eq(index).hide();
-        console.log(index, "index")
-    }
 
     //初始化页面元素
     function InitializePage() {
-        var roomId = getQueryString("roomId");
-        console.log(roomId, "roomId")
-        getNotifyInfo(1);
-        // getNotifyInfo(roomId);
+        getNotifyInfo(roomId);
     }
     function getNotifyInfo(roomId) {
         var param = {
@@ -129,25 +112,7 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result, "2345678");
                 if (result.msg == '调用成功' || result.success == true) {
-                    // result.response = [{
-                    //     classroomId: 1,
-                    //     createTime: "2018-05-31",
-                    //     id: 141,
-                    //     noticeContent: "今日",
-                    //     noticeTitle: "扫除",
-                    //     type: 1,
-                    //     uid: 0
-                    // }, {
-                    //     classroomId: 1,
-                    //     createTime: "2018-05-31",
-                    //     id: 141,
-                    //     noticeContent: "今日2",
-                    //     noticeTitle: "扫除扫除扫除",
-                    //     type: 1,
-                    //     uid: 0
-                    // }]
                     let rowData = result.response;
                     //数据为空
                     if (rowData.length == 0 && slideNumber == 1) {
@@ -164,25 +129,16 @@ $(function () {
                                 <div>
                                     <li>
                                         <span class="notify_list text_hidden"
-                                                onClick="getIndex(${i})">${v.noticeTitle}</span>
+                                                onClick="getContent('${v.noticeTitle}','${v.noticeContent}')">${v.noticeTitle}</span>
                                         <i class="titleMore notify_titleMore"></i>
                                     </li>
-                                    <div class="modal" style="display:none">
-                                        <span onClick="closeModal(${i})">关闭</span>
-                                        <div>扫除</div>
-                                        ${v.noticeContent}
-                                    </div>
                                 </div>
                                 `
                                 , 'swiper-slide swiper-slide-visible')
 
                     })
 
-                    // }
-
                     if ($(".swiper").height() - $(".swiper-wrapper").height() <= 0) {
-                        // console.log('触发二次')
-                        // mySwiper.setWrapperTranslate(0,$(".swiper").height() - $(".swiper-wrapper").height(),0)
                     }
                     //释放拖动
                     mySwiper.params.onlyExternal = false;
@@ -190,9 +146,7 @@ $(function () {
                     $('.preloader').removeClass('visible');
                     //一个小bug 暂未查出原因。
                     $('.swiper-wrapper').css({ height: $('.swiper-wrapper').height() - 1 });
-
                     slideNumber++;
-
                 }
             },
             onError: function (error) {

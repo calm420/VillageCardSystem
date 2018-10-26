@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>小蚂蚁智慧班牌</title>
@@ -14,6 +15,7 @@
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../js/webServiceUtil.js"></script>
 </head>
+
 <body>
 <div id="skin_default" name="homeDiv">
     <div id="classCardHomePage">
@@ -32,51 +34,61 @@
                             src="http://127.0.0.1:7091/moralEducationScore"></iframe>
                 </div>
             </div>
-            <div class="home_center">
-                <!-- 班级风采 -->
-                <div>
-                    <iframe id="classDemeanor" class="home_card classDemeanor_height"
-                            src="http://127.0.0.1:7091/classDemeanor"></iframe>
+            <div class="home_content home_content_index">
+                <div class="home_left">
+                    <!-- 今日值日 -->
+                    <div class="studentOnDuty-wrap">
+                        <iframe id="studentOnDuty" class="home_card studentOnDuty_height" src=""></iframe>
+                    </div>
+                    <!-- 德育评分 -->
+                    <div class="moralEducationScore-wrap">
+                        <iframe id="moralEducationScore" class="home_card moralEducationScore_height" src="http://127.0.0.1:7091/moralEducationScore"></iframe>
+                    </div>
                 </div>
-                <!-- 通知 -->
-                <div>
-                    <iframe id="notify" class="home_card notify_height" src="http://127.0.0.1:7091/notify"></iframe>
+                <div class="home_center">
+                    <!-- 班级风采 -->
+                    <div>
+                        <iframe id="classDemeanor" class="home_card classDemeanor_height" src="http://127.0.0.1:7091/classDemeanor"></iframe>
+                    </div>
+                    <!-- 通知 -->
+                    <div>
+                        <iframe id="notify" class="home_card notify_height" src="http://127.0.0.1:7091/notify"></iframe>
+                    </div>
+                    <!-- 应用 -->
+                    <div>
+                        <iframe id="application" class="application_height home_card" src="http://127.0.0.1:7091/application"></iframe>
+                    </div>
                 </div>
-                <!-- 应用 -->
-                <div>
-                    <iframe id="application" class="application_height home_card"
-                            src="http://127.0.0.1:7091/application"></iframe>
+                <div class="home_right">
+                    <!-- 今日课程 -->
+                    <div>
+                        <iframe id="courseOfToday" class="home_card course_height" src="http://127.0.0.1:7091/courseOfToday"></iframe>
+                    </div>
+                    <!-- 本节考勤 -->
+                    <div>
+                        <iframe id="courseAttendance" class="home_card currentAttendance_height" src="http://127.0.0.1:7091/courseAttendance"></iframe>
+                    </div>
                 </div>
             </div>
-            <div class="home_right">
-                <!-- 今日课程 -->
-                <div>
-                    <iframe id="courseOfToday" class="home_card course_height"
-                            src="http://127.0.0.1:7091/courseOfToday"></iframe>
-                </div>
-                <!-- 本节考勤 -->
-                <div>
-                    <iframe id="courseAttendance" class="home_card currentAttendance_height"
-                            src="http://127.0.0.1:7091/courseAttendance"></iframe>
-                </div>
+            <div id='videoPlayerMask' style="display: none">
+                <span class="close" onClick="closePlayerMask()">关闭</span>
+                <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true" webkit-playsinline="true" controlslist="nodownload nofullscreen"
+                    x5-video-player-type="h5" playsinline webkit-playsinline>
+                    <source type="video/mp4" src="" />
+                </video>
             </div>
-        </div>
-        <div id='videoPlayerMask' style="display: none">
-            <span class="close" onClick="closePlayerMask()">关闭</span>
-            <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true"
-                   webkit-playsinline="true" controlslist="nodownload nofullscreen" x5-video-player-type="h5"
-                   playsinline webkit-playsinline>
-                <source type="video/mp4" src=""/>
-            </video>
+            <div id='notifyMask' style="display: none">
+                <span class="closeNotify" onClick="closeNotifyMask()">关闭</span>
+                <div class="notifyTitle"></div>
+                <div class="notifyContent"></div>
+            </div>
         </div>
     </div>
-</div>
 </body>
 <script type="text/javascript" src="./asset/js/msg_websocket_connection.js"></script>
 <script type="text/javascript" src="../js/simple_websocket_connection.js"></script>
 <script src="./asset/js/home.js"></script>
 <script type="text/javascript">
-
     function playVideo(src) {
         document.getElementById('videoPlayerMask').style.display = 'block'
         document.getElementById("videoPlayerAr").onended = function () {
@@ -94,5 +106,15 @@
         document.getElementById('videoPlayerMask').style.display = 'none'
     }
 
+    function getNotifyData(notifyTitle,notifyContent){
+        document.getElementById('notifyMask').style.display = 'block';
+        $(".notifyTitle").html(notifyTitle)
+        $(".notifyContent").html(notifyContent)
+    }
+
+    function closeNotifyMask(){
+        document.getElementById('notifyMask').style.display = 'none';
+    }
 </script>
+
 </html>
