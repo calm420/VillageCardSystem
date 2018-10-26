@@ -1,11 +1,12 @@
 $(function () {
     var roomId = getQueryString("roomId");
     var schoolId = getQueryString("schoolId");
+    var skin;
 
     document.querySelector('.home_titleMore').addEventListener('click', () => {
         var data = {
             method: 'openNewPage',
-            url: "tableItemDetil?roomId=" + roomId,
+            url: "tableItemDetil?roomId=" + roomId + "&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -39,8 +40,8 @@ $(function () {
         } else if (res.command == 'setSkin') {
             //设置皮肤
             if (schoolId == res.data.schoolId) {
-                var skin = res.data.skinName;
-                document.getElementsByName("courseOfTodayDiv")[0].id=skin;
+                skin = res.data.skinName;
+                document.getElementsByName("courseOfTodayDiv")[0].id = skin;
             }
         }
 
