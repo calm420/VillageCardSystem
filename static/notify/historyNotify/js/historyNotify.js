@@ -129,7 +129,6 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-
                 var newArr = []
                 result.response.forEach(function(v,i){
                     v.createTime = getTimeFormat(v.createTime);
@@ -138,7 +137,7 @@ $(function () {
                 let rowData = newArr;
                 //数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
-                    mySwiper.appendSlide("<div class='noMoreData'>数据为空</div>", 'swiper-slide');
+                    mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>", 'swiper-slide');
                 }
                 if (rowData.length == 0 && slideNumber != 1) {
                     mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');

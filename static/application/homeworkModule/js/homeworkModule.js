@@ -96,7 +96,7 @@ $(function(){
                     let rowData = result.response;
                     //数据为空
                     if(rowData.length == 0 && slideNumber == 1){
-                        mySwiper.appendSlide("<div class='noMoreData'>数据为空</div>", 'swiper-slide');
+                        mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>数据为空</div></div></div>", 'swiper-slide');
                     }
                     if(rowData.length == 0 && slideNumber != 1){
                         mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');

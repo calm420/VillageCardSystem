@@ -1,10 +1,14 @@
 $(function () {
 
     var article = {};
+
     var classId = 5447;
     article.attacheMents = [];
     InitializePage();
     var schoolId = getQueryString("schoolId");
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
+    classId = getQueryString("classId");
     var skin = 'skin_middleSchool';
 
     $('#changeImage').click(function () {
@@ -61,40 +65,37 @@ $(function () {
 
     //跳转蚁巢作业
     $('#toHomeWorkModule').on('click',function(){
+
         var data = {
             method: 'openNewPage',
             url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
         };
-
-        Bridge.callHandler(data, null, function (error) {
-            window.parent.postMessage(JSON.stringify(data), '*');
-        });
+        window.parent.postMessage(JSON.stringify(data), '*');
     });
 
     //跳转步数
     $('#toStep').on('click',function(){
+
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
+            url: "application/healthStep/index.html?classId="+classId+"&healthType=step&skin="+skin,
         };
 
-        Bridge.callHandler(data, null, function (error) {
-            window.parent.postMessage(JSON.stringify(data), '*');
-        });
+        window.parent.postMessage(JSON.stringify(data), '*');
+
     });
 
 
     //跳转卡路里
     $('#toCalories').on('click',function(){
+
         var data = {
             method: 'openNewPage',
             url: "application/healthStep/index.html?classId="+classId+"&healthType=calories&skin="+skin,
         };
 
-        Bridge.callHandler(data, null, function (error) {
-            window.parent.postMessage(JSON.stringify(data), '*');
-            // window.location.href = "homeworkModule/index.html?classId="+classId;
-        });
+        window.parent.postMessage(JSON.stringify(data), '*');
+
     });
 
 
@@ -107,14 +108,13 @@ $(function () {
             url: "application/excellentStu/index.html?clazzId="+classId+"&skin="+skin,
         };
 
-        Bridge.callHandler(data, null, function (error) {
-            window.parent.postMessage(JSON.stringify(data), '*');
-        });
+        window.parent.postMessage(JSON.stringify(data), '*');
+
     });
 
 
     //跳转家校
-    $('#toExcellentStu').on('click',function(){
+    $('#toSchoolHome').on('click',function(){
         var data = {
             method: 'gotoNFCbyKK',
         };

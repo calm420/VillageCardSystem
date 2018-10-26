@@ -25,6 +25,8 @@ $(document).ready(function () {
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
         var schoolId = getQueryString("schoolId");
+        var font = getQueryString('font')
+        $('html').css('font-size', font)
         localStorage.setItem("clazzId",clazzId);
         localStorage.setItem("schoolId",schoolId);
         getClassDemeanorInfo(clazzId);

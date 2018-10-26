@@ -1,5 +1,7 @@
 $(function () {
     var schoolId = getQueryString("schoolId");
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
     InitializePage();
 
     formatHM = function (nS) {
