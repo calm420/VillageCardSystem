@@ -81,7 +81,7 @@
 #skin_primarySchool #application,
 #skin_primarySchool #moralEducationScore,
 #skin_primarySchool #studentOnDuty {
-  box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.2) !important;
 }
 #skin_primarySchool #courseOfToday .home_title,
 #skin_primarySchool #courseAttendance .home_title,
@@ -94,7 +94,7 @@
 }
 #skin_primarySchool .blue_text,
 #skin_primarySchool .blue_big {
-  color: #0361fe;
+  color: #0361fe !important;
 }
 #skin_primarySchool #classCardHomePage {
   /* 这是针对缺省样式 (必须的) */
@@ -114,7 +114,7 @@
   background-color: initial;
 }
 #skin_primarySchool .demeanor_list2 {
-  border-top: 1px solid #a0dbfc;
+  border-top: 1px solid #a0dbfc !important;
 }
 #skin_primarySchool #moralEducationScore.iframe-id-bg, #skin_primarySchool #courseOfToday.iframe-id-bg{
   background: transparent !important;
