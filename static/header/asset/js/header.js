@@ -1,9 +1,9 @@
 $(function () {
-    let abcode = null;
-    let timer = null;
-    let timeOffset = null;
-    let roomId = getQueryString("roomId");
-    let schoolId = getQueryString("schoolId");
+    var abcode = null;
+    var timer = null;
+    var timeOffset = null;
+    var roomId = getQueryString("roomId");
+    var schoolId = getQueryString("schoolId");
     viewClassRoom(roomId)
     makeTime();
 
@@ -215,7 +215,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {

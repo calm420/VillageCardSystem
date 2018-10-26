@@ -115,7 +115,7 @@ $(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
-                    let rowData = result.response;
+                    var rowData = result.response;
                     //数据为空
                     if (rowData.length == 0 && slideNumber == 1) {
                         mySwiper.appendSlide("<div class='empty_center'><div class='empty_icon empty_notify'></div><div class='empty_text'>暂无通知</div></div>", 'swiper-slide');

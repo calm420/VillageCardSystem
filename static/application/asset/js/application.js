@@ -8,7 +8,7 @@ $(function () {
     var schoolId = getQueryString("schoolId");
     var font = getQueryString('font')
     $('html').css('font-size', font)
-    classId = getQueryString("classId");
+    classId = getQueryString("clazzId");
     var skin = 'skin_middleSchool';
 
     // $('#changeImage').click(function () {

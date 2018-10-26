@@ -5,10 +5,10 @@ $(function () {
     $('html').css('font-size', font)
     var skin;
 
-    document.querySelector('.home_titleMore').addEventListener('click', () => {
+    document.querySelector('.home_titleMore').addEventListener('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "tableItemDetil?roomId=" + roomId + "&skin=" + skin,
+            url: "courseOfToday/tableItemDetil/index.html?roomId=" + roomId + "&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -17,8 +17,7 @@ $(function () {
     /**
      * 消息监听
      */
-    window.addEventListener('message', (e) => {
-        debugger
+    window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
         if (res.command == 'brand_class_open') {
             //查看某个课表项(一接收到开课命令就获取当前开课)
@@ -47,7 +46,6 @@ $(function () {
                 document.getElementsByName("courseOfTodayDiv")[0].id = skin;
             }
         }
-
     })
 
     /**

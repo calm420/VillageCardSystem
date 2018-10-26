@@ -51,7 +51,6 @@ function getBraceletAttend(classTableId){
     }, "json");
 }
 function getBraceletAttendHandle(response){
-    console.log(response);
     // $("#imageTip"+4004).show();
     // $("#signTip"+4004).remove();
     $("#attendCount").text(response.length);
@@ -97,7 +96,6 @@ function getStudentByCourseTableItemHandle(response,classTableId){
         $("#student_list_container").append(template.html());
         totalStudent.push(user.colUid);
     }
-    console.log(totalStudent);
     totalCount=response.length;
     $("#totalCount").text(response.length);
     getBraceletAttend(classTableId);
@@ -114,7 +112,7 @@ function getQueryString(name){
     return null;
 }
 //监听接受消息
-window.addEventListener('message', (e) => {
+window.addEventListener('message', function (e) {
     console.log(e);
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);
