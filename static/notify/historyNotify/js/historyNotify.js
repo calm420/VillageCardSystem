@@ -138,7 +138,7 @@ $(function () {
                 let rowData = newArr;
                 //数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
-                    mySwiper.appendSlide("<div class='empty_center'><div class='empty_icon empty_notify'></div><div class='empty_text'>暂无通知</div></div>", 'swiper-slide');
+                    mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>", 'swiper-slide');
                 }
                 if (rowData.length == 0 && slideNumber != 1) {
                     mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
