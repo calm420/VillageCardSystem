@@ -3,7 +3,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "http://jiaxue.maaee.com:7091/";
+    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "http://jiaxue.maaee.com:7091/";
 
     InitializePage();
 
