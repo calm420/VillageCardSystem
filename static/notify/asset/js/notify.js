@@ -1,7 +1,6 @@
 $(function () {
     var  skin;
     var roomId = getQueryString("roomId");
-    console.log(roomId,"")
     //拖动偏移量
     var holdPosition = 0;
     // var holdPosition =
@@ -13,14 +12,12 @@ $(function () {
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
     InitializePage();
     var schoolId =getQueryString("schoolId");
-    console.log("schoolId",schoolId);
     //监听接受消息
     window.addEventListener('message', (e) => {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
               skin = commandInfo.data.skinName;
-              console.log(skin,"skin")
                 document.getElementsByName("notifyDiv")[0].id=skin;
             }
         }
@@ -42,8 +39,6 @@ $(function () {
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function (s, pos) {
-            console.log(pos, 'pospospospospospos');
-            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
             if (pos > 300) {
                 holdPosition = '上拉加载更多';
             } else {
@@ -54,7 +49,6 @@ $(function () {
         onTouchEnd: function () {
             console.log(holdPosition, 'holdPosition');
             console.log($(window).height(), 'height')
-
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             } else if (holdPosition == '上拉加载更多') {
@@ -108,8 +102,6 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
-      
-        console.log(roomId, "roomId")
         getNotifyInfo(roomId);
     }
     function getNotifyInfo(roomId) {
@@ -120,7 +112,6 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result, "2345678");
                 if (result.msg == '调用成功' || result.success == true) {
                     let rowData = result.response;
                     //数据为空
