@@ -87,7 +87,9 @@ $(document).ready(function () {
                     if (WebServiceUtil.isEmpty(result.response) == false) {
                         console.log("===========>"+result.response.skinAttr);
                         document.getElementsByName("homeDiv")[0].id=result.response.skinAttr;
-                        var dateJson = {skinName:result.response.skinAttr,schoolId:schoolId};
+                        var clientWidth = document.body.clientWidth;
+                        console.log("clientWidth",clientWidth);
+                        var dateJson = {skinName:result.response.skinAttr,schoolId:schoolId,clientWidth:clientWidth};
                         var commandJson = {command:'setSkin',data:dateJson};
                         document.querySelector('#header').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');

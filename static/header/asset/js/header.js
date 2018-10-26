@@ -4,7 +4,6 @@ $(function () {
     let timeOffset = null;
     let roomId = getQueryString("roomId");
     let schoolId = getQueryString("schoolId");
-    console.log("clientWidthp",parent.clientWidth);
     viewClassRoom(roomId)
     makeTime();
 
