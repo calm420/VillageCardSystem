@@ -1,9 +1,9 @@
 $(function () {
-    let abcode = null;
-    let timer = null;
-    let timeOffset = null;
-    let roomId = getQueryString("roomId");
-    let schoolId = getQueryString("schoolId");
+    var abcode = null;
+    var timer = null;
+    var timeOffset = null;
+    var roomId = getQueryString("roomId");
+    var schoolId = getQueryString("schoolId");
     viewClassRoom(roomId)
     makeTime();
 
@@ -220,6 +220,7 @@ $(function () {
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
+                alert(skin);
                 document.getElementsByName("headerDiv")[0].id= skin;
             }
         }

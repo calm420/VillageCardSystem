@@ -20,7 +20,7 @@ $(function () {
 
     //监听接受消息
     window.addEventListener('message', function(e) {
-        alert(e);
+        // alert(e);
         var res = JSON.parse(e.data);
         if (res.method == 'test') {
             console.log(res, '测试的postMessage');

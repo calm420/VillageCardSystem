@@ -1,8 +1,8 @@
 
 
 $(document).ready(function () {
-    alert("AAAA");
-    alert("iopu444666677788899990000");
+    // alert("AAAA");
+    // alert("iopu444666677788899990000");
 
 
     var ms = new MsgConnection();

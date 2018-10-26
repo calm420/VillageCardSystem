@@ -5,8 +5,7 @@ $(function(){
 //页码
     var slideNumber = 1;
     var loadingMore = true;
-
-
+    var classId = WebServiceUtil.GetQueryString("classId");
     var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin,'skin');
     document.getElementsByName("homeworkModuleDiv")[0].id= skin;
@@ -27,7 +26,7 @@ $(function(){
         },
         //抵抗下拉反弹事件回调
         onResistanceBefore: function(s, pos){
-            holdPosition = '下拉刷新';
+            holdPosition= '下拉刷新';
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function(s,pos){
@@ -87,11 +86,12 @@ $(function(){
         console.log(slideNumber,'slideNumber');
         var param = {
             "method": 'getTopicsByClazzId',
-            "clazzIds": 819,
+            "clazzIds": classId,
             "pageNo": slideNumber
         };
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
             onResponse: function(result) {
+                console.log(result,'result')
                 if (result.success) {
                     var rowData = result.response;
                     //数据为空
@@ -107,6 +107,7 @@ $(function(){
                         // console.log(rowData[k].attachMents.address,'rowData[k].attachMents.address');
                         var attachMents = rowData[k].attachMents.length == 0?'':rowData[k].attachMents[0].address;
                         // console.log(attachMents,'attachMents');
+                        var title = rowData[k].title?rowData[k].title:'';
                         mySwiper.appendSlide("<div class=\"homeworkInfo\">\n" +
                             "         <div class=\"homeworkL\">\n" +
                             "            <div class=\"imgInfo\">\n" +
@@ -115,7 +116,7 @@ $(function(){
                             "                                               </div>\n" +
                             "                           </div>\n" +
                             "                             <div class=\"homeworkM\">\n" +
-                            "                   <h3>"+rowData[k].title+"</h3>\n" +
+                            "                   <h3>"+title+"</h3>\n" +
                             "                   <p>"+rowData[k].content+"</p>\n" +
                             "                    </div>\n" +
                             "                   <div class=\"homeworkR\">\n" +
