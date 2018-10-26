@@ -103,9 +103,11 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
-                            var emptyDiv=`<div>
-                                   <div>暂无班级风采</div>
-                                </div>`;
+                            var emptyDiv=`
+                                   <div class='empty_center'>
+                                     <div class='empty_icon empty_honor'></div>
+                                     <div class='empty_text'>暂无荣誉</div>
+                                    </div>`;
                             $("#classDemeanor")[0].innerHTML = emptyDiv;
                         } else {
                             var classDemeanors = result.response;
@@ -148,9 +150,10 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
-                            var emptyDiv=`<div>
-                                   暂无班级荣誉
-                                </div>`;
+                            var emptyDiv=`<div class='empty_center'>
+                                     <div class='empty_icon empty_honor'></div>
+                                     <div class='empty_text'>暂无班级风采</div>
+                                    </div>`;
                             $("#classReward")[0].innerHTML = emptyDiv;
                         } else {
                             var classRewards = result.response;

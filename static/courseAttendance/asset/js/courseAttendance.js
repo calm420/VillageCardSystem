@@ -18,6 +18,7 @@ function init() {
     var font = getQueryString('font')
     $('html').css('font-size', font)
     unbindGotoAttendDetail();
+   // gotoAttendDetail(1);
 }
 
 // function gotoAttendDetail() {
@@ -29,7 +30,7 @@ function gotoAttendDetail(classTableId) {
         //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
         var data = {
             method: 'openNewPage',
-            url: "courseAttendanceDetail?classTableId=" + classTableId + "&skin=" + skin,
+            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
