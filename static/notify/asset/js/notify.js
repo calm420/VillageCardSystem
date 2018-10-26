@@ -79,7 +79,7 @@ $(function () {
                     $('.preloader').addClass('visible');
                     //调用增加数据方法
                     setTimeout(function () {
-                        getHomeworkData();
+                        InitializePage();
                     }, slideNumber == 3 ? 500 : 500)
                 }
 
