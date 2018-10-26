@@ -9,6 +9,7 @@ $(document).ready(function () {
     //监听接受消息
     window.addEventListener('message',function (e) {
         var commandInfo = JSON.parse(e.data);
+        console.log("studentDuty",commandInfo);
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
