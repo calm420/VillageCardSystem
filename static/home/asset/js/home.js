@@ -1,9 +1,10 @@
 $(document).ready(function () {
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "http://jiaxue.maaee.com:7091/";
+    var webserviceUrl = isDebug ? "http://192.168.50.139:7091/" : "http://jiaxue.maaee.com:7091/";
 
     InitializePage();
 

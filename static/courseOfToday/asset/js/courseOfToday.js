@@ -18,7 +18,6 @@ $(function () {
      * 消息监听
      */
     window.addEventListener('message', (e) => {
-        debugger
         var res = JSON.parse(e.data);
         if (res.command == 'brand_class_open') {
             //查看某个课表项(一接收到开课命令就获取当前开课)

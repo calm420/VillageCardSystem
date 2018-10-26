@@ -7,7 +7,6 @@ $(document).ready(function () {
         var clazzId = localStorage.getItem("clazzId");
         var schoolId = localStorage.getItem("schoolId");
         var commandInfo = JSON.parse(e.data);
-        console.log("eeeeeeeeeeeeeeeeeeeee>>>>>>"+e);
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == e.data.cid) {
                 getClassDemeanorInfo(clazzId);
@@ -104,6 +103,10 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
+                            var emptyDiv=`<div>
+                                   <div>暂无班级风采</div>
+                                </div>`;
+                            $("#classDemeanor")[0].innerHTML = emptyDiv;
                         } else {
                             var classDemeanors = result.response;
                             classDemeanors.forEach(function (classDemeanor) {
@@ -145,6 +148,10 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
+                            var emptyDiv=`<div>
+                                   暂无班级荣誉
+                                </div>`;
+                            $("#classReward")[0].innerHTML = emptyDiv;
                         } else {
                             var classRewards = result.response;
                             classRewards.forEach(function (classDemeanor) {
