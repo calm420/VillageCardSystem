@@ -6,6 +6,7 @@ var url = debug ? "http://192.168.50.15:9006/Excoord_ApiServer/webservice" : "ht
 var totalCount = 0;
 var timerFlag = false;
 var skin;
+var timer;
 $(document).ready(function () {
     init();
 
