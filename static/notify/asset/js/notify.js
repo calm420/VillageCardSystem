@@ -23,6 +23,9 @@ $(function () {
                 document.getElementsByName("notifyDiv")[0].id=skin;
             }
         }
+        if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
+            InitializePage();
+        }
     })
 
     //创建swiper对象
