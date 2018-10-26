@@ -15,7 +15,7 @@ $(function () {
     InitializePage();
     var schoolId =getQueryString("schoolId");
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
@@ -125,7 +125,7 @@ $(function () {
                         loadingMore = false;
                     }
 
-                    rowData.forEach((v, i) => {
+                    rowData.forEach(function(v, i){
                             mySwiper.appendSlide(
                                 `
                                 <div>

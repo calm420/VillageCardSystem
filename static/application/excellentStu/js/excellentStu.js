@@ -19,7 +19,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function(e) {
         alert(e);
         var res = JSON.parse(e.data);
         if (res.method == 'test') {
@@ -48,7 +48,7 @@ $(function () {
         };
         console.log(param)
         WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: result => {
+            onResponse: function(result) {
                 if (result.success) {
                     console.log(result.response);
                     // var arr = [

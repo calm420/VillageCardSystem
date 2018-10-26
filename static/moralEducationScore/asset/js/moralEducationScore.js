@@ -3,9 +3,20 @@ $(function () {
     var font = getQueryString('font')
     $('html').css('font-size', font)
     InitializePage();
-   
+
+    formatHM = function (nS) {
+        var da = new Date(parseInt(nS));
+        var hour = da.getHours() + ":";
+        var minutes = da.getMinutes();
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        var hmStr = hour + minutes;
+        return hmStr;
+    };
+
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
@@ -18,6 +29,8 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
+        console.log(clazzId,"clazzId")
+        // getMoralEducationInfo(5447);
         getMoralEducationInfo(clazzId);
     }
     function getMoralEducationInfo(clazzId) {
@@ -27,6 +40,7 @@ $(function () {
         }
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
+                console.log(result, "result");
                 if (result.msg == '调用成功' || result.success == true) {
                     if (result.response == null) {
                         $(".mEScoreInfo").replaceWith(`<div class="mEScoreInfo home_cardCont">
