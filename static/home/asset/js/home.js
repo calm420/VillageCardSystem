@@ -8,10 +8,10 @@ $(document).ready(function () {
     var ms = new MsgConnection();
 
     var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 
     var isDebug = true;
     var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaxue.maaee.com:8092/";
-
 
     InitializePage();
 

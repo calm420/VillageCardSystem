@@ -220,7 +220,6 @@ $(function () {
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
-                alert(skin);
                 document.getElementsByName("headerDiv")[0].id= skin;
             }
         }

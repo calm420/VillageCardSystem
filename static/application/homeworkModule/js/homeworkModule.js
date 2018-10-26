@@ -7,7 +7,6 @@ $(function(){
     var loadingMore = true;
     var classId = WebServiceUtil.GetQueryString("classId");
     var skin = WebServiceUtil.GetQueryString("skin");
-    console.log(skin,'skin');
     document.getElementsByName("homeworkModuleDiv")[0].id= skin;
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
@@ -30,8 +29,6 @@ $(function(){
         },
         //上拉刷新事件抵抗反弹回调
         onResistanceAfter: function(s,pos){
-            console.log(pos,'pospospospospospos');
-            // console.log($('.swiper-wrapper').height(),'swiper-wrapper')
             if(pos > 300){
                 holdPosition = '上拉加载更多';
             }else{
@@ -41,9 +38,6 @@ $(function(){
         },
         //结束回调
         onTouchEnd: function(){
-            console.log(holdPosition,'holdPosition');
-            console.log($(window).height(),'height')
-
             if (holdPosition == '下拉刷新') {
                 console.log('下拉刷新');
             }else if(holdPosition == '上拉加载更多'){
@@ -83,7 +77,6 @@ $(function(){
 
 
     function getHomeworkData(){
-        console.log(slideNumber,'slideNumber');
         var param = {
             "method": 'getTopicsByClazzId',
             "clazzIds": classId,
