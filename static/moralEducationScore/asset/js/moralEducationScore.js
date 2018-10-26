@@ -1,60 +1,7 @@
 $(function () {
-    var article = {};
-    article.attacheMents = [];
     var schoolId = getQueryString("schoolId");
-
     InitializePage();
-
-    $('#changeImage').click(function () {
-        $("#upload").change(function () {
-            if (this.files[0]) {
-                var formData = new FormData();
-                formData.append("file" + 0, this.files[0]);
-                formData.append("name" + 0, this.files[0].name);
-                $.ajax({
-                    type: "POST",
-                    url: "https://jiaoxue.maaee.com:8890/Excoord_Upload_Server/file/upload",
-                    enctype: 'multipart/form-data',
-                    data: formData,
-                    // 告诉jQuery不要去处理发送的数据
-                    processData: false,
-                    // 告诉jQuery不要去设置Content-Type请求头
-                    contentType: false,
-                    success: function (res) {
-                    }
-                });
-            }
-        })
-    })
-
-    /**
-     * 时间戳转年月日
-     * @param nS
-     * @returns {string}
-     */
-    formatYMD = function (nS) {
-        var da = new Date(parseInt(nS));
-        var year = da.getFullYear();
-        var month = da.getMonth() + 1;
-        var date = da.getDate();
-        var ymdStr = [year, month, date].join('-');
-        return ymdStr;
-    };
-
-    function sendMessageTo(data) {
-        window.parent.postMessage(JSON.stringify(data), '*');
-    }
-    formatHM = function (nS) {
-        var da = new Date(parseInt(nS));
-        var hour = da.getHours() + ":";
-        var minutes = da.getMinutes();
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        var hmStr = hour + minutes;
-        return hmStr;
-    };
-
+   
     //监听接受消息
     window.addEventListener('message', (e) => {
         var commandInfo = JSON.parse(e.data);
@@ -69,8 +16,6 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
-        console.log(clazzId,"clazzId")
-        // getMoralEducationInfo(5447);
         getMoralEducationInfo(clazzId);
     }
     function getMoralEducationInfo(clazzId) {
@@ -80,7 +25,6 @@ $(function () {
         }
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result, "result");
                 if (result.msg == '调用成功' || result.success == true) {
                     if (result.response == null) {
                         $(".mEScoreInfo").replaceWith(`<div class="mEScoreInfo home_cardCont">
