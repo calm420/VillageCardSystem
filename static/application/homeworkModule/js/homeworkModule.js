@@ -7,7 +7,7 @@ $(function(){
     var loadingMore = true;
 
 
-    var skin = getQueryString("skin");
+    var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin,'skin');
     document.getElementsByName("homeworkModuleDiv")[0].id= skin;
     //给定swiper固定高度
