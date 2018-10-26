@@ -93,7 +93,8 @@
   border-bottom: 1px solid transparent;
 }
 #skin_primarySchool .blue_text,
-#skin_primarySchool .blue_big {
+#skin_primarySchool .blue_big,
+#skin_primarySchool .classTableA .due3 .number{
   color: #0361fe !important;
 }
 #skin_primarySchool #classCardHomePage {
