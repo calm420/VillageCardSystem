@@ -121,3 +121,6 @@
   height: 100%;
   box-shadow: none !important;
 }
+#skin_primarySchool #classDemeanor.no_bg,#skin_primarySchool #classReward.no_bg{
+  background: none!important;
+}
