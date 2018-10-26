@@ -531,12 +531,12 @@ video::-webkit-media-controls-fullscreen-button {
     font-size: 20px;
   }
 }
-@media only screen and (min-width: 1500px) and (max-width: 1919px) {
+@media only screen and (min-width: 1500px) and (max-width: 1600px) {
   html {
     font-size: 28px;
   }
 }
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 1600px) {
   html {
     font-size: 36px;
   }
