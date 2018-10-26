@@ -12,10 +12,14 @@ $(function () {
      * 根据IP地址获取adcode
      * 调用查询天气函数
      */
-    $.get('http://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
-        abcode = res.adcode
-        weatherInfo(res.adcode)
-    })
+    try{
+        $.get('http://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
+            abcode = res.adcode
+            weatherInfo(res.adcode)
+        })
+    } catch (e){
+        console.log(e);
+    }
 
     /**
      * 获取网络时间
