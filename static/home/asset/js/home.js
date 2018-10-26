@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    alert("ready");
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
 
@@ -15,6 +16,7 @@ $(document).ready(function () {
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
         var schoolId = getQueryString("schoolId");
+        alert(clazzId+"\t"+roomId+"\t"+mac+"\t"+schoolId);
         var pro = {
             "command": "braceletBoxConnect",
             "data": {
