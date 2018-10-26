@@ -11,7 +11,7 @@ $(document).ready(function () {
     simpleMs.connect();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaxue.maaee.com:8092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.139:7091/" : "https://jiaxue.maaee.com:8092/";
 
     InitializePage();
 
@@ -72,7 +72,11 @@ $(document).ready(function () {
                   }, onWarn: function (warnMsg) {
                       // Toast.fail(warnMsg)
                   }, onMessage: function (info) {
+                      console.log("info",info);
                       document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
+                      document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
+                      document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
+                      document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
                   }
               }
           }
