@@ -65,10 +65,22 @@
                     <source type="video/mp4" src="" />
                 </video>
             </div>
-            <div id='notifyMask' style="display: none">
-                <span class="closeNotify" onClick="closeNotifyMask()">关闭</span>
-                <div class="notifyTitle"></div>
-                <div class="notifyContent"></div>
+            <div id='notifyMask' class="notifyMask" style="display: none">
+                <div class="am-modal-wrap ">
+                    <div class="notify_contModal">
+                        <div class="am-modal-content">
+                            <span class="closeNotify am-modal-close" onClick="closeNotifyMask()">
+                                <span class="am-modal-close-x"></span>
+                            </span>
+                            <div class="am-modal-header">
+                                <div class="am-modal-title notifyTitle"></div>
+                            </div>
+                            <div class="am-modal-body">
+                                <div class="cont notifyContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
