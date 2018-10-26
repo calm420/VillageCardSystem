@@ -31,7 +31,7 @@ $(document).ready(function () {
         getClassRewardInfo(clazzId);
         var mySwiper = new Swiper('.classDemeanor', {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 12,
             preloadImages:true,
             updateOnImagesReady : true,
             autoplayDisableOnInteraction : false,
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
         var mySwiperOfClassReward = new Swiper('.classReward', {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 12,
             preloadImages:true,
             updateOnImagesReady : true,
             autoplayDisableOnInteraction : false,

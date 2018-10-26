@@ -5,6 +5,7 @@ $(function () {
     article.attacheMents = [];
     InitializePage();
     var schoolId = getQueryString("schoolId");
+    var skin = 'skin_middleSchool';
 
     $('#changeImage').click(function () {
         $("#upload").change(function () {
@@ -52,8 +53,8 @@ $(function () {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
-                var skin = commandInfo.data.skinName;
-                document.getElementsByName("applicationDiv")[0].id=skin;
+                skin = commandInfo.data.skinName;
+                document.getElementsByName("applicationDiv")[0].id= skin;
             }
         }
     })
@@ -62,7 +63,7 @@ $(function () {
     $('#toHomeWorkModule').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
         };
 
         Bridge.callHandler(data, null, function (error) {
@@ -74,7 +75,7 @@ $(function () {
     $('#toStep').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId="+classId,
+            url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
         };
 
         Bridge.callHandler(data, null, function (error) {
@@ -87,7 +88,7 @@ $(function () {
     $('#toCalories').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "application/healthStep/index.html?classId="+classId+"&healthType=calories",
+            url: "application/healthStep/index.html?classId="+classId+"&healthType=calories&skin="+skin,
         };
 
         Bridge.callHandler(data, null, function (error) {
@@ -103,7 +104,7 @@ $(function () {
     $('#toExcellentStu').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "application/excellentStu/index.html?clazzId="+classId,
+            url: "application/excellentStu/index.html?clazzId="+classId+"&skin="+skin,
         };
 
         Bridge.callHandler(data, null, function (error) {
