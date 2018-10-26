@@ -114,7 +114,7 @@ function getQueryString(name){
     return null;
 }
 //监听接受消息
-window.addEventListener('message', (e) => {
+window.addEventListener('message', function (e) {
     console.log(e);
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);

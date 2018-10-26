@@ -3,11 +3,10 @@ $(document).ready(function () {
     InitializePage();
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function (e) {
         var clazzId = localStorage.getItem("clazzId");
         var schoolId = localStorage.getItem("schoolId");
         var commandInfo = JSON.parse(e.data);
-        console.log("eeeeeeeeeeeeeeeeeeeee>>>>>>"+e);
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == e.data.cid) {
                 getClassDemeanorInfo(clazzId);

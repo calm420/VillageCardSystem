@@ -215,7 +215,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
