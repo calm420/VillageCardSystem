@@ -8,7 +8,7 @@ $(function () {
     document.querySelector('.home_titleMore').addEventListener('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "tableItemDetil?roomId=" + roomId + "&skin=" + skin,
+            url: "courseOfToday/tableItemDetil/index.html?roomId=" + roomId + "&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
