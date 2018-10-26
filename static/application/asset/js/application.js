@@ -1,10 +1,12 @@
 $(function () {
 
     var article = {};
+
     var classId = 5447;
     article.attacheMents = [];
     InitializePage();
     var schoolId = getQueryString("schoolId");
+    classId = getQueryString("classId");
     var skin = 'skin_middleSchool';
 
     $('#changeImage').click(function () {
