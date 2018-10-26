@@ -134,7 +134,13 @@ $(document).ready(function () {
             if(WebServiceUtil.isEmpty(res.src)==false){
                 playVideo(res.src);
             }
+        }else if("notifyContentShow" == res.method){
+            if(WebServiceUtil.isEmpty(res)==false){
+                getNotifyData(res.notifyTitle,res.notifyContent);
+            }
         }
     });
+
+
 
 });

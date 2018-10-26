@@ -79,9 +79,6 @@ $(function () {
    * li元素的点击事件
    */
     onClick = (index) => {
-        // console.log(index, "index")
-        // console.log($('li').eq(index).find(".noticeContent").css("display"), "index")
-
         if ($('li').eq(index).find(".noticeContent").css("display") == "none") {
             $("li").find(".noticeContent").css({
                 display: 'none'
@@ -105,9 +102,7 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var roomId = getQueryString("roomId");
-        console.log(roomId, "roomId")
-        getNotifyInfo(3);
-        // getNotifyInfo(roomId);
+        getNotifyInfo(roomId);
     }
     function getNotifyInfo(roomId) {
         var param = {
@@ -128,32 +123,6 @@ $(function () {
                     loadingMore = false;
                 }
                 if (result.msg == '调用成功' || result.success == true) {
-                    // rowData = [{
-                    //     classroomId: 1,
-                    //     createTime: "2018-05-31",
-                    //     id: 141,
-                    //     noticeContent: "今日",
-                    //     noticeTitle: "扫除",
-                    //     type: 1,
-                    //     uid: 0
-                    // }, {
-                    //     classroomId: 1,
-                    //     createTime: "2018-05-31",
-                    //     id: 141,
-                    //     noticeContent: "今日2",
-                    //     noticeTitle: "扫除扫除扫除",
-                    //     type: 1,
-                    //     uid: 0
-                    // }]
-                    // if (rowData.length == 0) {
-                    //     console.log("12")
-                    //     $(".notify_list").replaceWith(`<div class="mEScoreInfo home_cardCont">
-                    //     <div class="empty_center">
-                    //         <div class="empty_icon empty_moralEducationScore"></div>
-                    //         <div class="empty_text">暂无通知</div>
-                    //     </div>
-                    // </div>`)
-                    // } else {
                     rowData.forEach((v, i) => {
                         if (i == 0) {
                             mySwiper.appendSlide(
@@ -182,8 +151,6 @@ $(function () {
                         }
 
                     })
-
-                    // }
 
                     if ($(".swiper").height() - $(".swiper-wrapper").height() <= 0) {
                         // console.log('触发二次')
