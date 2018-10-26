@@ -125,7 +125,6 @@ $(document).ready(function () {
                       window.addEventListener('message', function (e) {
                           var res = JSON.parse(e.data);
                           if (res.method == 'openNewPage') {
-                              alert(webserviceUrl + res.url)
                               var data = {
                                   method: 'openNewPage',
                                   url: webserviceUrl + res.url,

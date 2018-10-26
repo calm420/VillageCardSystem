@@ -18,7 +18,7 @@ function init() {
     var font = getQueryString('font')
     $('html').css('font-size', font)
     unbindGotoAttendDetail();
-    gotoAttendDetail(1);
+   // gotoAttendDetail(1);
 }
 
 // function gotoAttendDetail() {
