@@ -77,7 +77,7 @@ $(function () {
     $('#toStep').on('click',function(){
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
+            url: "application/healthStep/index.html?classId="+classId+"&healthType=step&skin="+skin,
         };
 
         Bridge.callHandler(data, null, function (error) {
