@@ -6,6 +6,8 @@ $(function () {
     article.attacheMents = [];
     InitializePage();
     var schoolId = getQueryString("schoolId");
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
     classId = getQueryString("classId");
     var skin = 'skin_middleSchool';
 

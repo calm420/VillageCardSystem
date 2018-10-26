@@ -3,7 +3,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://127.0.0.1:7091/" : "http://jiaxue.maaee.com:7091/";
+    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "http://jiaxue.maaee.com:7091/";
 
     InitializePage();
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
             }
         };
 
-        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#moralEducationScore")[0].src = webserviceUrl + "moralEducationScore?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
@@ -85,12 +85,16 @@ $(document).ready(function () {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
                     if (WebServiceUtil.isEmpty(result.response) == false) {
-                        console.log("===========>"+result.response.skinAttr);
-                        document.getElementsByName("homeDiv")[0].id=result.response.skinAttr;
+                        console.log("===========>" + result.response.skinAttr);
+                        document.getElementsByName("homeDiv")[0].id = result.response.skinAttr;
                         var clientWidth = document.body.clientWidth;
-                        console.log("clientWidth",clientWidth);
-                        var dateJson = {skinName:result.response.skinAttr,schoolId:schoolId,clientWidth:clientWidth};
-                        var commandJson = {command:'setSkin',data:dateJson};
+                        console.log("clientWidth", clientWidth);
+                        var dateJson = {
+                            skinName: result.response.skinAttr,
+                            schoolId: schoolId,
+                            clientWidth: clientWidth
+                        };
+                        var commandJson = {command: 'setSkin', data: dateJson};
                         document.querySelector('#header').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(commandJson), '*');
@@ -133,17 +137,16 @@ $(document).ready(function () {
             Bridge.callHandler(data, null, function (error) {
                 window.location.href = webserviceUrl + res.url;
             });
-        }else if("playVideo"==res.method){
-            if(WebServiceUtil.isEmpty(res.src)==false){
+        } else if ("playVideo" == res.method) {
+            if (WebServiceUtil.isEmpty(res.src) == false) {
                 playVideo(res.src);
             }
-        }else if("notifyContentShow" == res.method){
-            if(WebServiceUtil.isEmpty(res)==false){
-                getNotifyData(res.notifyTitle,res.notifyContent);
+        } else if ("notifyContentShow" == res.method) {
+            if (WebServiceUtil.isEmpty(res) == false) {
+                getNotifyData(res.notifyTitle, res.notifyContent);
             }
         }
     });
-
 
 
 });

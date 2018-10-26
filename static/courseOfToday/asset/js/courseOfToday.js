@@ -1,6 +1,8 @@
 $(function () {
     var roomId = getQueryString("roomId");
     var schoolId = getQueryString("schoolId");
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
     var skin;
 
     document.querySelector('.home_titleMore').addEventListener('click', () => {

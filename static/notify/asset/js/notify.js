@@ -1,6 +1,8 @@
 $(function () {
     var  skin;
     var roomId = getQueryString("roomId");
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
     //拖动偏移量
     var holdPosition = 0;
     // var holdPosition =

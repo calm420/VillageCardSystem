@@ -14,6 +14,8 @@ function init(){
     //getStudentByCourseTableItem(35)
     $("#classTableA").hide();
     $("#classTableB").show();
+    var font = getQueryString('font')
+    $('html').css('font-size', font)
     unbindGotoAttendDetail();
 }
 // function gotoAttendDetail() {
