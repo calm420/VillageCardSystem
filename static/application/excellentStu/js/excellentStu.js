@@ -33,7 +33,7 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
-        var clazzId = getQueryString("clazzId");
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var skin = WebServiceUtil.GetQueryString("skin");
         console.log(skin,'skin');
         document.getElementsByName("excellentStuDiv")[0].id= skin;

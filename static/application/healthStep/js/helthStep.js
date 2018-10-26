@@ -1,4 +1,5 @@
 $(function(){
+    alert('1111111111111111111111111111111111');
     var html = '';
     var type = WebServiceUtil.GetQueryString('healthType');
     var classId = WebServiceUtil.GetQueryString('clazzId');
