@@ -80,7 +80,7 @@ $(function () {
     /**
    * li元素的点击事件
    */
-    onClick = (index) => {
+    onClick = function(index){
         if ($('li').eq(index).find(".noticeContent").css("display") == "none") {
             $("li").find(".noticeContent").css({
                 display: 'none'
@@ -129,9 +129,8 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-
                 var newArr = []
-                result.response.forEach((v,i)=>{
+                result.response.forEach(function(v,i){
                     v.createTime = getTimeFormat(v.createTime);
                     newArr.push(v);
                 })
@@ -145,7 +144,7 @@ $(function () {
                     loadingMore = false;
                 }
                 if (result.msg == '调用成功' || result.success == true) {
-                    rowData.forEach((v, i) => {
+                    rowData.forEach(function(v, i){
                         if (i == 0) {
                             mySwiper.appendSlide(
                                 `

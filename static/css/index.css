@@ -11,6 +11,13 @@ body {
   -webkit-overflow-scrolling: touch;
   height: 100%;
 }
+*{
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
 ul,
 li {
   margin: 0;
@@ -488,7 +495,7 @@ video::-webkit-media-controls-fullscreen-button {
 /* 公共空页面图start */
 .emptyPage_content {
   position: relative;
-  height: calc(100% - 4rem);
+  height: calc(100vh - 6rem);
 }
 .emptyPage_icon {
   width: 10.86rem;

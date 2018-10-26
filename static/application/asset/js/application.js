@@ -11,28 +11,28 @@ $(function () {
     classId = getQueryString("classId");
     var skin = 'skin_middleSchool';
 
-    $('#changeImage').click(function () {
-        $("#upload").change(function () {
-            if (this.files[0]) {
-                var formData = new FormData();
-                formData.append("file" + 0, this.files[0]);
-                formData.append("name" + 0, this.files[0].name);
-                $.ajax({
-                    type: "POST",
-                    url: "https://jiaoxue.maaee.com:8890/Excoord_Upload_Server/file/upload",
-                    enctype: 'multipart/form-data',
-                    data: formData,
-                    // 告诉jQuery不要去处理发送的数据
-                    processData: false,
-                    // 告诉jQuery不要去设置Content-Type请求头
-                    contentType: false,
-                    success: function (res) {
-
-                    }
-                });
-            }
-        })
-    })
+    // $('#changeImage').click(function () {
+    //     $("#upload").change(function () {
+    //         if (this.files[0]) {
+    //             var formData = new FormData();
+    //             formData.append("file" + 0, this.files[0]);
+    //             formData.append("name" + 0, this.files[0].name);
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "https://jiaoxue.maaee.com:8890/Excoord_Upload_Server/file/upload",
+    //                 enctype: 'multipart/form-data',
+    //                 data: formData,
+    //                 // 告诉jQuery不要去处理发送的数据
+    //                 processData: false,
+    //                 // 告诉jQuery不要去设置Content-Type请求头
+    //                 contentType: false,
+    //                 success: function (res) {
+    //
+    //                 }
+    //             });
+    //         }
+    //     })
+    // })
 
     /**
      * 时间戳转年月日
@@ -53,7 +53,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function(e) {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {

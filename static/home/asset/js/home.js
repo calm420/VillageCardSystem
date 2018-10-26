@@ -9,13 +9,11 @@ $(document).ready(function () {
 
     var simpleMs = new SimpleConnection();
 
+    var isDebug = true;
+    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaxue.maaee.com:8092/";
 
 
-       var isDebug = true;
-        var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaxue.maaee.com:8092/";
-
-
-   InitializePage();
+    InitializePage();
 
 
    //初始化页面元素
