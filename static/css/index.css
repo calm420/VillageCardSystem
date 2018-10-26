@@ -567,10 +567,9 @@ video::-webkit-media-controls-fullscreen-button {
   -ms-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
-.noMoreData,.preloader.visible{
-  color: #565c72;
-  font-size: 0.72rem;
-  text-align: center;
-  padding: .5rem 0;
+.noMoreData,.preloader{
+  color: #565c72 !important;
+  font-size: 0.72rem!important;
+  text-align: center!important;
+  padding: .5rem 0!important;
 }
-

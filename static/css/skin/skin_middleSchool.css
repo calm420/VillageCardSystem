@@ -30,7 +30,7 @@
 #skin_middleSchool .home_contfont,
 #skin_middleSchool .font_title2,
 #skin_middleSchool .blue_text,
-#skin_middleSchool .blue_big {
+#skin_middleSchool .blue_big,#skin_middleSchool .classTableA .due {
   color: #fff !important;
 }
 #skin_middleSchool #studentOnDuty {

@@ -92,7 +92,7 @@
   height: 8.94rem;
 }
 #classCardHomePage .classDemeanor_height{
-  height: 15.309rem;
+  height: 16.139rem;
 }
 #classCardHomePage .health_height {
   padding-bottom: 0.83rem;
@@ -130,7 +130,7 @@
   border-bottom: 1px solid #e5ebf7;
   padding: 0 0.83rem;
 }
-#classCardHomePage .notify_cont li:last-child {
+#classCardHomePage .notify_cont .swiper-slide:last-child>div li{
   border-bottom: none;
 }
 #classCardHomePage .moralEducationScore .blue_text {

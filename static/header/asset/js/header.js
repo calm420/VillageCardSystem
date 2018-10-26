@@ -3,6 +3,7 @@ $(function () {
     let timer = null;
     let timeOffset = null;
     let roomId = getQueryString("roomId");
+    let schoolId = getQueryString("schoolId");
     viewClassRoom(roomId)
     makeTime();
 
@@ -212,5 +213,16 @@ $(function () {
             }
         });
     }
+
+    //监听接受消息
+    window.addEventListener('message', (e) => {
+        var commandInfo = JSON.parse(e.data);
+        if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+                var skin = commandInfo.data.skinName;
+                document.getElementsByName("headerDiv")[0].id= skin;
+            }
+        }
+    })
 
 })
