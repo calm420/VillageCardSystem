@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     InitializePage();
     var schoolId = getQueryString("schoolId");
+    var clazzId = getQueryString("clazzId");
     var font = getQueryString('font')
     $('html').css('font-size', font)
 
@@ -11,9 +12,11 @@ $(document).ready(function () {
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
-                var clientWidth = commandInfo.data.clientWidth;
-                // document.body.clientWidth = clientWidth;
                 document.getElementsByName("studentOnDutyDiv")[0].id = skin;
+            }
+        }else if (commandInfo.command == "studentDuty") {
+            if (clazzId == commandInfo.data.cid) {
+                getDutyInfo(clazzId);
             }
         }
     })
