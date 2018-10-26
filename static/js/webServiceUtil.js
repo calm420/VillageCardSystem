@@ -21,7 +21,7 @@ const apiWebServiceURLOfRemoteY = "http://www.maaee.com:6012/Excoord_LittleVideo
 var youYangWebServiceURL = isDebugYou ? apiWebServiceURLOfLocalsY : apiWebServiceURLOfRemoteY;
 
 //小蚂蚁webService地址
-const apiWebServiceURLOfLocals = "http://" + localDomain + "/Excoord_ApiServer/webservice";
+const apiWebServiceURLOfLocals = "http://" + localDomain + ":9006/Excoord_ApiServer/webservice";
 const apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";
 var apiWebServiceURL = isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
 

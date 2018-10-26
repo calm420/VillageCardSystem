@@ -5,6 +5,7 @@ var debug=false;
 var url =debug?"http://192.168.50.15:9006/Excoord_ApiServer/webservice": "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount=0;
 var timerFlag = false;
+var skin;
 $(document).ready(function(){
     init();
 
@@ -24,7 +25,7 @@ function gotoAttendDetail(classTableId){
         //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
         var data = {
             method: 'openNewPage',
-            url: "courseAttendanceDetail?classTableId=" + classTableId,
+            url: "courseAttendanceDetail?classTableId=" + classTableId+"&skin="+skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -75,7 +76,7 @@ function checkCourseOpenHandle(data) {
     } else if (data.command == 'setSkin') {
         //设置皮肤
         if (schoolId == data.data.schoolId) {
-            var skin = data.data.skinName;
+            skin = data.data.skinName;
             document.getElementsByName("courseAttendanceDiv")[0].id=skin;
         }
     }
