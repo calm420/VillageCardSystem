@@ -9,6 +9,8 @@ $(document).ready(function () {
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
+                var clientWidth = commandInfo.data.clientWidth;
+                // document.body.clientWidth = clientWidth;
                 document.getElementsByName("studentOnDutyDiv")[0].id=skin;
             }
         }
