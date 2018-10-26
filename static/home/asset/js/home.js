@@ -3,7 +3,7 @@
 $(document).ready(function () {
     // alert("AAAA");
     // alert("iopu444666677788899990000");
-
+    //alert(window.location.href);
 
     var ms = new MsgConnection();
 
@@ -11,7 +11,7 @@ $(document).ready(function () {
     simpleMs.connect();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaxue.maaee.com:8092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaxue.maaee.com:8092/";
 
     InitializePage();
 
