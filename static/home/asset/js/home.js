@@ -11,7 +11,7 @@ $(document).ready(function () {
     simpleMs.connect();
 
     var isDebug = true;
-    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaxue.maaee.com:8092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaxue.maaee.com:8092/";
 
     InitializePage();
 
@@ -125,7 +125,6 @@ $(document).ready(function () {
                       window.addEventListener('message', function (e) {
                           var res = JSON.parse(e.data);
                           if (res.method == 'openNewPage') {
-
                               var data = {
                                   method: 'openNewPage',
                                   url: webserviceUrl + res.url,
