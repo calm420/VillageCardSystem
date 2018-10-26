@@ -2,8 +2,12 @@ $(function(){
     var html = '';
     var type = WebServiceUtil.GetQueryString('healthType');
     var classId = WebServiceUtil.GetQueryString('classId');
+    var skin = getQueryString("skin");
+    console.log(skin,'skin');
+    document.getElementsByName("helthStepDiv")[0].id= skin;
 
     $('#typeTitle').text(type == 'step' ? '步数排行榜' : '卡路里排行榜');
+
     getBraceletSportStepByClazzId(classId);
     //根据班级获取卡路里和步数
     function getBraceletSportStepByClazzId(clazzId) {
