@@ -118,7 +118,7 @@ $(function () {
                     let rowData = result.response;
                     //数据为空
                     if (rowData.length == 0 && slideNumber == 1) {
-                        mySwiper.appendSlide("<div class='noMoreData'>数据为空</div>", 'swiper-slide');
+                        mySwiper.appendSlide("<div class='empty_center'><div class='empty_icon empty_notify'></div><div class='empty_text'>暂无通知</div></div>", 'swiper-slide');
                     }
                     if (rowData.length == 0 && slideNumber != 1) {
                         mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
