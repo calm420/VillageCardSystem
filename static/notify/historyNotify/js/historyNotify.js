@@ -5,6 +5,8 @@ $(function () {
     //页码
     var slideNumber = 1;
     var loadingMore = true;
+    var skin = getQueryString("skin");
+    document.getElementsByName("historyNotify")[0].id=skin;
 
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
