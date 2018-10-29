@@ -1,7 +1,7 @@
 $(function(){
     var html = '';
     var type = WebServiceUtil.GetQueryString('healthType');
-    var classId = WebServiceUtil.GetQueryString('clazzId');
+    var classId = WebServiceUtil.GetQueryString('classId');
     var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin,'skin');
     document.getElementsByName("helthStepDiv")[0].id= skin;

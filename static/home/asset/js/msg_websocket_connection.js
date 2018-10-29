@@ -2,7 +2,7 @@ var isDebug = false;
 
 function MsgConnection() {
     this.msgWsListener = null;
-    this.REMOTE_URL = "ws://www.maaee.com:8887/Excoord_MessageServer/message";
+    this.REMOTE_URL = "wss://www.maaee.com:7887/Excoord_MessageServer/message";
     this.LOCAL_URL = "ws://192.168.50.15:8887/Excoord_MessageServer/message";
     this.WS_URL = isDebug ? this.LOCAL_URL: this.REMOTE_URL;
     this.ws = null;

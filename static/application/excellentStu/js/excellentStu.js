@@ -3,7 +3,7 @@ $(function () {
     article.attacheMents = [];
     InitializePage();
 
-    formatHM = function (nS) {
+    function formatHM(nS) {
         var da = new Date(parseInt(nS));
         var hour = da.getHours() + ":";
         var minutes = da.getMinutes();
@@ -51,25 +51,25 @@ $(function () {
                 if (result.success) {
                     console.log(result.response);
                     // var arr = [
-                    //     {   "attendTime": 1530193673000, 
-                    //         "user": { "avatar": "http://192.168.50.15:8080/Excoord_For_Education/userPhoto/default_avatar.png", 
-                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38", 
-                    //         "colUid": 23993, 
+                    //     {   "attendTime": 1530193673000,
+                    //         "user": { "avatar": "http://192.168.50.15:8080/Excoord_For_Education/userPhoto/default_avatar.png",
+                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38",
+                    //         "colUid": 23993,
                     //         "colUtype": "STUD",
-                    //          "colValid": 1, 
-                    //          "schoolId": 9, 
+                    //          "colValid": 1,
+                    //          "schoolId": 9,
                     //          "schoolName":
-                    //           "hzbtest", 
-                    //           "userName": "小兔兔1" } }, 
-                    //     { "attendTime": 1530193673000, 
-                    //         "user": { "avatar": "http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png", 
-                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38", 
-                    //         "colUid": 23993, 
-                    //         "colUtype": 
-                    //         "STUD", 
-                    //         "colValid": 1, 
-                    //         "schoolId": 9, 
-                    //         "schoolName": "hzbtest", 
+                    //           "hzbtest",
+                    //           "userName": "小兔兔1" } },
+                    //     { "attendTime": 1530193673000,
+                    //         "user": { "avatar": "http://192.168.50.34:8080/Excoord_For_Education/userPhoto/default_avatar.png",
+                    //         "colAccount": "ST23993", "colPasswd": "bd3adc44bd53e6473e81885d05252f38",
+                    //         "colUid": 23993,
+                    //         "colUtype":
+                    //         "STUD",
+                    //         "colValid": 1,
+                    //         "schoolId": 9,
+                    //         "schoolName": "hzbtest",
                     //         "userName": "小兔兔2" } }
                     // ]
                     if (result.response == []) {
@@ -80,7 +80,7 @@ $(function () {
                         </div>
                     </div>`)
                     } else {
-                        result.response.forEach((v, i) => {
+                        result.response.forEach(function(v, i){
                             $(".excellStu .left").append(
                                 `
                                     <div class="my_flex">

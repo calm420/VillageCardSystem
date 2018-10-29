@@ -9,7 +9,6 @@ $(document).ready(function () {
     //监听接受消息
     window.addEventListener('message',function (e) {
         var commandInfo = JSON.parse(e.data);
-        console.log("studentDuty",commandInfo);
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
@@ -36,6 +35,8 @@ $(document).ready(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 var weekOfTody = new Date().getDay();
+                $("#todyDuty")[0].innerHTML="";
+                $("#nextDuty")[0].innerHTML="";
                 if (result.success == true && result.msg == "调用成功") {
                     var response = result.response;
                     if (response != null && response != undefined) {

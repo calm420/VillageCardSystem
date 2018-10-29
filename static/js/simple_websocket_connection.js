@@ -22,11 +22,11 @@ function SimpleConnection() {
             //如果服务器在发送ping命令,则赶紧回复PONG命令
             if (event.data == connection.PING_COMMAND) {
                 connection.send(connection.PONG_COMMAND);
-                console.log("收到服务器的 ping , 给服务器回复 pong...");
+                // console.log("收到服务器的 ping , 给服务器回复 pong...");
                 return;
             }
             if (event.data == connection.PONG_COMMAND) {
-                console.log("收到服务器的 pong");
+                // console.log("收到服务器的 pong");
                 return;
             }
             if (connection.msgWsListener != null) {
