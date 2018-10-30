@@ -140,31 +140,32 @@ $(function () {
                 }
                 if (result.msg == '调用成功' || result.success == true) {
                     rowData.forEach(function(v, i){
-                        if (i == 0) {
-                            mySwiper.appendSlide(
-                                `
-                                        <li onClick="onClick(${i})">
-                                            <p class="title">${v.noticeTitle}<span
-                                            class="time">${v.createTime}</span></p>
-                                            <div class="noticeContent" style="display:block">
-                                                ${v.noticeContent}
-                                            </div>
-                                        </li>
-                                    `
-                                , 'swiper-slide swiper-slide-visible')
-                        } else {
-                            mySwiper.appendSlide(
-                                `
-                                        <li onClick="onClick(${i})">
-                                            <p class="title">${v.noticeTitle}<span
-                                            class="time">${v.createTime}</span></p>
-                                            <div class="noticeContent" style="display:none">
-                                                ${v.noticeContent}
-                                            </div>
-                                        </li>
-                                    `
-                                , 'swiper-slide swiper-slide-visible')
-                        }
+                        mySwiper.appendSlide('<div>sssss</div>', 'swiper-slide swiper-slide-visible')
+                        // if (i == 0) {
+                        //     mySwiper.appendSlide(
+                        //         `
+                        //                 <li onClick="onClick(${i})">
+                        //                     <p class="title">${v.noticeTitle}<span
+                        //                     class="time">${v.createTime}</span></p>
+                        //                     <div class="noticeContent" style="display:block">
+                        //                         ${v.noticeContent}
+                        //                     </div>
+                        //                 </li>
+                        //             `
+                        //         , 'swiper-slide swiper-slide-visible')
+                        // } else {
+                        //     mySwiper.appendSlide(
+                        //         `
+                        //                 <li onClick="onClick(${i})">
+                        //                     <p class="title">${v.noticeTitle}<span
+                        //                     class="time">${v.createTime}</span></p>
+                        //                     <div class="noticeContent" style="display:none">
+                        //                         ${v.noticeContent}
+                        //                     </div>
+                        //                 </li>
+                        //             `
+                        //         , 'swiper-slide swiper-slide-visible')
+                        // }
 
                     })
 
