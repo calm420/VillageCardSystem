@@ -62,6 +62,7 @@ function getBraceletAttendHandle(response){
         var user=response[i];
        for(var j=0;j<totalStudent.length;j++){
            if(user.colUid==totalStudent[j].colUid){
+               alert("");
                 $("#imageTip"+user.colUid).show();
                 $("#signTip"+user.colUid).remove();
            }
@@ -115,5 +116,5 @@ function getQueryString(name){
 window.addEventListener('message', function (e) {
     console.log(e);
     var res = JSON.parse(e.data);
-    checkCourseOpenHandle(res);
+   // checkCourseOpenHandle(res);
 })

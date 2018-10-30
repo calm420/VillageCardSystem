@@ -119,11 +119,11 @@ $(document).ready(function () {
                                     $("#classDemeanor")[0].innerHTML = currentInner;
                                 } else {
                                     if (classDemeanor.imagePath.indexOf('?') == -1) {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.LARGE_IMG+"/></div>";
+                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div>";
                                         var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                                         $("#classDemeanor")[0].innerHTML = currentInner;
                                     } else {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.LARGE_IMG+"/></div>";
+                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div>";
                                         var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                                         $("#classDemeanor")[0].innerHTML = currentInner;
                                     }
@@ -166,11 +166,11 @@ $(document).ready(function () {
                                     $("#classReward")[0].innerHTML = currentInner;
                                 } else {
                                     if (classDemeanor.imagePath.indexOf('?') == -1) {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.LARGE_IMG+"/></div>";
+                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div>";
                                         var currentInner = $("#classReward")[0].innerHTML + imgTag;
                                         $("#classReward")[0].innerHTML = currentInner;
                                     } else {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.LARGE_IMG+"/></div>";
+                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div>";
                                         var currentInner = $("#classReward")[0].innerHTML + imgTag;
                                         $("#classReward")[0].innerHTML = currentInner;
                                     }
