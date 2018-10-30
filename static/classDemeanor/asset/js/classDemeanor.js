@@ -8,7 +8,7 @@ $(document).ready(function () {
         var schoolId = localStorage.getItem("schoolId");
         var commandInfo = JSON.parse(e.data);
         if (commandInfo.command == 'classDemeanor') {
-            if (clazzId == e.data.cid) {
+            if (clazzId == commandInfo.data.cid) {
                 getClassDemeanorInfo(clazzId);
                 getClassRewardInfo(clazzId);
             }
@@ -100,6 +100,7 @@ $(document).ready(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.success == true && result.msg == "调用成功") {
+                    $("#classDemeanor")[0].innerHTML="";
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
@@ -147,6 +148,7 @@ $(document).ready(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.success == true && result.msg == "调用成功") {
+                    $("#classReward")[0].innerHTML="";
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {

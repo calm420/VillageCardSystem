@@ -61,7 +61,11 @@ $(function () {
                     $('.preloader').addClass('visible');
                     //调用增加数据方法
                     setTimeout(function () {
+<<<<<<< HEAD
                         InitializePage();
+=======
+                        getNotifyInfo(roomId);
+>>>>>>> 646fc2e41458366b99c08ea55b0a4bd3ae0b128c
                     }, slideNumber == 3 ? 500 : 500)
                 }
 

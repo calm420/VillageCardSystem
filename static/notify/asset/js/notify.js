@@ -9,26 +9,12 @@ $(function () {
     //页码
     var slideNumber = 1;
     var loadingMore = true;
+    var schoolId =getQueryString("schoolId");
 
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
-    InitializePage();
-    var schoolId =getQueryString("schoolId");
-    //监听接受消息
-    window.addEventListener('message', function(e){
-        var commandInfo = JSON.parse(e.data);
-        if(commandInfo.command == "setSkin"){
-            if (schoolId == commandInfo.data.schoolId) {
-              skin = commandInfo.data.skinName;
-                document.getElementsByName("notifyDiv")[0].id=skin;
-            }
-        }
-        if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
-            InitializePage();
-        }
-    })
 
-    //创建swiper对象
+//创建swiper对象
     var mySwiper = new Swiper('.swiper-container', {
         //显示数据的条数
         slidesPerView: 'auto',
@@ -79,7 +65,7 @@ $(function () {
                     $('.preloader').addClass('visible');
                     //调用增加数据方法
                     setTimeout(function () {
-                        InitializePage();
+                        getNotifyInfo(roomId);
                     }, slideNumber == 3 ? 500 : 500)
                 }
 
@@ -88,6 +74,25 @@ $(function () {
             }
         }
     });
+
+
+    InitializePage();
+    //监听接受消息
+    window.addEventListener('message', function(e){
+        var commandInfo = JSON.parse(e.data);
+        console.log("notify",commandInfo);
+        if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+              skin = commandInfo.data.skinName;
+                document.getElementsByName("notifyDiv")[0].id=skin;
+            }
+        }else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
+            slideNumber = 1;
+            InitializePage();
+        }
+    })
+
+
 
     //历史通知
     // notifySeeMore = function () {
@@ -107,7 +112,12 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
-        getNotifyInfo(roomId);
+        // $(".swiper-wrapper").empty();
+        mySwiper.removeAllSlides();
+        // setTimeout(function(){
+            getNotifyInfo(roomId);
+
+        // },1000)
     }
     function getNotifyInfo(roomId) {
         var param = {
