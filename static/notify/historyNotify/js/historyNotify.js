@@ -206,7 +206,6 @@ $(function () {
         var data = {
             method: 'finish',
         };
-
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });

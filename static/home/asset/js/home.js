@@ -11,7 +11,7 @@ $(document).ready(function () {
     simpleMs.connect();
 
     var isDebug = false;
-    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.72:7091/" : "https://jiaoxue.maaee.com:9092/";
 
     InitializePage();
 
@@ -136,9 +136,9 @@ $(document).ready(function () {
 
                               console.log(data,'hh')
 
-                            //   Bridge.callHandler(data, null, function (error) {
-                            //       window.location.href = webserviceUrl + res.url;
-                            //   });
+                              Bridge.callHandler(data, null, function (error) {
+                                  window.location.href = webserviceUrl + res.url;
+                              });
                           } else if ("playVideo" == res.method) {
                               if (WebServiceUtil.isEmpty(res.src) == false) {
                                   playVideo(res.src);
