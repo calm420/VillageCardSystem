@@ -113,7 +113,7 @@ $(document).ready(function () {
                         } else {
                             var classDemeanors = result.response;
                             classDemeanors.forEach(function (classDemeanor) {
-                                let imagePath = classDemeanor.imagePath.split('&');
+                                var imagePath = classDemeanor.imagePath.split('&');
                                 classDemeanor.imagePath = imagePath[0];
                                 if (classDemeanor.imagePath.substr(classDemeanor.imagePath.length - 3, 3) == 'mp4') {
                                     // console.log(classDemeanor.imagePath,'mp4');
@@ -169,7 +169,7 @@ $(document).ready(function () {
                             var classRewards = result.response;
                             classRewards.forEach(function (classDemeanor) {
 
-                                let imagePath = classDemeanor.imagePath.split('&');
+                                var imagePath = classDemeanor.imagePath.split('&');
                                 classDemeanor.imagePath = imagePath[0];
                                 if (classDemeanor.imagePath.substr(classDemeanor.imagePath.length - 3, 3) == 'mp4') {
                                     var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video poster='"+imagePath[1]+"' style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
