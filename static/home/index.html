@@ -72,6 +72,7 @@
                     x5-video-player-type="h5" playsinline webkit-playsinline>
                     <source type="video/mp4" src="" />
                 </video>
+                <img id="imagePlayerAr" src="" alt="">
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
@@ -96,8 +97,22 @@
 
 <script type="text/javascript">
 //    alert(888888);
+
+    function playImage(src){
+        console.log(src,'home');
+        document.getElementById('videoPlayerMask').style.display = 'block';
+//        document.getElementById("videoPlayerAr").onended = function () {
+//            closePlayerMask()
+//        };
+        document.getElementById('videoPlayerAr').style.display = 'none';
+//        setTimeout(function () {
+            document.getElementById('imagePlayerAr').src = src;
+//        }, 300)
+    }
+
     function playVideo(src) {
-        document.getElementById('videoPlayerMask').style.display = 'block'
+        document.getElementById('videoPlayerMask').style.display = 'block';
+        document.getElementById('videoPlayerAr').style.display = 'block';
         document.getElementById("videoPlayerAr").onended = function () {
             closePlayerMask()
         };
@@ -110,7 +125,8 @@
     function closePlayerMask() {
         document.getElementById('videoPlayerAr').pause();
         document.getElementById('videoPlayerAr').src = "";
-        document.getElementById('videoPlayerMask').style.display = 'none'
+        document.getElementById('videoPlayerMask').style.display = 'none';
+        document.getElementById('imagePlayerAr').src = "";
     }
 
     function getNotifyData(notifyTitle,notifyContent){
