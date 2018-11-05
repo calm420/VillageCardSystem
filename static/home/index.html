@@ -74,14 +74,14 @@
                 </video>
                 <img id="imagePlayerAr" src="" alt="">
             </div>
-            <div id='pushVideoPlay' style="display: none;position: absolute;
-            top: 0;
-            left: 0;">
+        <div id="pushVideoPlay-mask" class="pushVideoPlay-mask" style="display:none">
+            <div id='pushVideoPlay' class="pushVideoPlay" >
                 <video id="videoPlayBox"  minLength={100} autoplay playsinline="true" webkit-playsinline="true" controlslist="nodownload nofullscreen"
                     x5-video-player-type="h5" playsinline webkit-playsinline>
                     <source type="video/mp4" src="" />
                 </video>
             </div>
+        </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
                     <div class="notify_contModal">
@@ -129,9 +129,12 @@
             document.getElementById('videoPlayerAr').play();
         }, 300)
     }
+    
+    
     function playPushVideo(src) {
         console.log("调用了",src)
         document.getElementById('pushVideoPlay').style.display = 'block'
+        document.getElementById('pushVideoPlay-mask').style.display = 'block'
         // document.getElementById("videoPlayBox").onended = function () {
         //     closePushVideoMask()
         // };
@@ -145,6 +148,7 @@
         document.getElementById('videoPlayBox').pause();
         document.getElementById('videoPlayBox').src = "";
         document.getElementById('pushVideoPlay').style.display = 'none'
+        document.getElementById('pushVideoPlay-mask').style.display = 'none'
     }
 
     function closePlayerMask() {
