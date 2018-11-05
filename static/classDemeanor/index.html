@@ -48,6 +48,11 @@
             var data={"method":'playVideo',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
+        function imageOnClick(src){
+//            alert(src);
+            var data={"method":'playImage',"src":src};
+            window.parent.postMessage(JSON.stringify(data), '*');
+        }
     </script>
 </head>
 <body>

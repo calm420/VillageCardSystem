@@ -113,17 +113,20 @@ $(document).ready(function () {
                         } else {
                             var classDemeanors = result.response;
                             classDemeanors.forEach(function (classDemeanor) {
+                                var imagePath = classDemeanor.imagePath.split('&');
+                                classDemeanor.imagePath = imagePath[0];
                                 if (classDemeanor.imagePath.substr(classDemeanor.imagePath.length - 3, 3) == 'mp4') {
-                                    var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
+                                    // console.log(classDemeanor.imagePath,'mp4');
+                                    var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video poster="+imagePath[1]+" style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
                                     var currentInner = $("#classDemeanor")[0].innerHTML + videoTag;
                                     $("#classDemeanor")[0].innerHTML = currentInner;
                                 } else {
                                     if (classDemeanor.imagePath.indexOf('?') == -1) {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div>";
+                                        var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img class='imageOnClick' style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
                                         var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                                         $("#classDemeanor")[0].innerHTML = currentInner;
                                     } else {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div>";
+                                        var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img class='imageOnClick' style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
                                         var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                                         $("#classDemeanor")[0].innerHTML = currentInner;
                                     }
@@ -138,6 +141,11 @@ $(document).ready(function () {
             }
         });
     }
+
+
+    $(".imageOnClick").on("click", "body", function() {
+        alert('这里是动态元素添加的事件');
+    });
 
     function getClassRewardInfo(clazzId) {
         var param = {
@@ -160,21 +168,41 @@ $(document).ready(function () {
                         } else {
                             var classRewards = result.response;
                             classRewards.forEach(function (classDemeanor) {
+
+                                var imagePath = classDemeanor.imagePath.split('&');
+                                classDemeanor.imagePath = imagePath[0];
                                 if (classDemeanor.imagePath.substr(classDemeanor.imagePath.length - 3, 3) == 'mp4') {
-                                    var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
+                                    var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video poster='"+imagePath[1]+"' style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
                                     var currentInner = $("#classReward")[0].innerHTML + videoTag;
                                     $("#classReward")[0].innerHTML = currentInner;
                                 } else {
                                     if (classDemeanor.imagePath.indexOf('?') == -1) {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div>";
+                                        var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
                                         var currentInner = $("#classReward")[0].innerHTML + imgTag;
                                         $("#classReward")[0].innerHTML = currentInner;
                                     } else {
-                                        var imgTag = "<div class='swiper-slide'><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div>";
+                                        var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
                                         var currentInner = $("#classReward")[0].innerHTML + imgTag;
                                         $("#classReward")[0].innerHTML = currentInner;
                                     }
                                 }
+
+
+                                // if (classDemeanor.imagePath.substr(classDemeanor.imagePath.length - 3, 3) == 'mp4') {
+                                //     var videoTag = "<div class='swiper-slide'><i onClick=videoOnClick('"+classDemeanor.imagePath.split('?')[0]+"')>"+12312+"</i><video poster='' style='width:350px;height: 350px;' src="+classDemeanor.imagePath.split('?')[0]+"></video></div>";
+                                //     var currentInner = $("#classReward")[0].innerHTML + videoTag;
+                                //     $("#classReward")[0].innerHTML = currentInner;
+                                // } else {
+                                //     if (classDemeanor.imagePath.indexOf('?') == -1) {
+                                //         var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '?' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
+                                //         var currentInner = $("#classReward")[0].innerHTML + imgTag;
+                                //         $("#classReward")[0].innerHTML = currentInner;
+                                //     } else {
+                                //         var imgTag = "<div class='swiper-slide'><div onClick=imageOnClick('"+classDemeanor.imagePath.split('?')[0]+"')><img style='width:350px;height: 350px;' id='"+classDemeanor.id+"' src="+classDemeanor.imagePath + '&' + WebServiceUtil.MIDDLE_IMG+"></div></div>";
+                                //         var currentInner = $("#classReward")[0].innerHTML + imgTag;
+                                //         $("#classReward")[0].innerHTML = currentInner;
+                                //     }
+                                // }
                             })
                         }
                     }

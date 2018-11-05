@@ -129,7 +129,7 @@ $(function () {
                     v.createTime = getTimeFormat(v.createTime);
                     newArr.push(v);
                 })
-                let rowData = newArr;
+                var rowData = newArr;
                 //数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
                     mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>", 'swiper-slide');
