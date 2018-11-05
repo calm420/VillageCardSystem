@@ -10,8 +10,13 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
+<<<<<<< HEAD
+    var isDebug = true;
+    var webserviceUrl = isDebug ? "http://192.168.50.72:7091/" : "https://jiaoxue.maaee.com:9092/";
+=======
     var isDebug = false;
-    var webserviceUrl = isDebug ? "http://192.168.50.29:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.188:7091/" : "https://jiaoxue.maaee.com:9092/";
+>>>>>>> ba91093f60dd4c161f0e0b250c95809383355023
 
     InitializePage();
 
@@ -72,7 +77,12 @@ $(document).ready(function () {
                   }, onWarn: function (warnMsg) {
                       // Toast.fail(warnMsg)
                   }, onMessage: function (info) {
-                      console.log("info",info);
+                      if(info.command == "playPushVideo"){
+                        playPushVideo(info.data.videoPath)
+                      }
+                      if(info.command == "stopPushVideo"){
+                        closePushVideoMask()
+                      }
                       document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                       document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                       document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
@@ -134,6 +144,8 @@ $(document).ready(function () {
                                   url: webserviceUrl + res.url,
                               }
 
+                              console.log(data,'hh')
+
                               Bridge.callHandler(data, null, function (error) {
                                   window.location.href = webserviceUrl + res.url;
                               });
@@ -144,6 +156,10 @@ $(document).ready(function () {
                           } else if ("notifyContentShow" == res.method) {
                               if (WebServiceUtil.isEmpty(res) == false) {
                                   getNotifyData(res.notifyTitle, res.notifyContent);
+                              }
+                          }else if ("playImage" == res.method){
+                              if (WebServiceUtil.isEmpty(res.src) == false) {
+                                  playImage(res.src);
                               }
                           }
                       });

@@ -103,9 +103,7 @@ $(function () {
             method: 'openNewPage',
             url: "notify/historyNotify/index.html?roomId=" + roomId+"&skin="+skin,
         };
-        Bridge.callHandler(data, null, function (error) {
-            window.parent.postMessage(JSON.stringify(data), '*');
-        });
+        window.parent.postMessage(JSON.stringify(data), '*');
     });
 
 

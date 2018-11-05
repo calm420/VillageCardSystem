@@ -61,7 +61,7 @@ function getBraceletAttendHandle(response){
     for (var i = 0; i < response.length; i++) {
         var user=response[i];
        for(var j=0;j<totalStudent.length;j++){
-           if(user.colUid==totalStudent[j].colUid){
+           if(user.colUid==totalStudent[j]){
                 $("#imageTip"+user.colUid).show();
                 $("#signTip"+user.colUid).remove();
            }

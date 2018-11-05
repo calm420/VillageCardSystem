@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/skin/skin_default.css">
     <link rel="stylesheet" href="../css/homePage/header.css">
     <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script type="text/javascript" src="../js/webServiceUtil.js"></script>
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
@@ -71,6 +72,15 @@
                     x5-video-player-type="h5" playsinline webkit-playsinline>
                     <source type="video/mp4" src="" />
                 </video>
+                <img id="imagePlayerAr" src="" alt="">
+            </div>
+            <div id='pushVideoPlay' style="display: none;position: absolute;
+            top: 0;
+            left: 0;">
+                <video id="videoPlayBox"  minLength={100} autoplay playsinline="true" webkit-playsinline="true" controlslist="nodownload nofullscreen"
+                    x5-video-player-type="h5" playsinline webkit-playsinline>
+                    <source type="video/mp4" src="" />
+                </video>
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
@@ -95,8 +105,22 @@
 
 <script type="text/javascript">
 //    alert(888888);
+
+    function playImage(src){
+        console.log(src,'home');
+        document.getElementById('videoPlayerMask').style.display = 'block';
+//        document.getElementById("videoPlayerAr").onended = function () {
+//            closePlayerMask()
+//        };
+        document.getElementById('videoPlayerAr').style.display = 'none';
+//        setTimeout(function () {
+            document.getElementById('imagePlayerAr').src = src;
+//        }, 300)
+    }
+
     function playVideo(src) {
-        document.getElementById('videoPlayerMask').style.display = 'block'
+        document.getElementById('videoPlayerMask').style.display = 'block';
+        document.getElementById('videoPlayerAr').style.display = 'block';
         document.getElementById("videoPlayerAr").onended = function () {
             closePlayerMask()
         };
@@ -105,12 +129,31 @@
             document.getElementById('videoPlayerAr').play();
         }, 300)
     }
+    function playPushVideo(src) {
+        console.log("调用了",src)
+        document.getElementById('pushVideoPlay').style.display = 'block'
+        // document.getElementById("videoPlayBox").onended = function () {
+        //     closePushVideoMask()
+        // };
+        setTimeout(function () {
+            document.getElementById('videoPlayBox').src = src;
+            document.getElementById('videoPlayBox').play();
+        }, 300)
+    }
+
+    function closePushVideoMask() {
+        document.getElementById('videoPlayBox').pause();
+        document.getElementById('videoPlayBox').src = "";
+        document.getElementById('pushVideoPlay').style.display = 'none'
+    }
 
     function closePlayerMask() {
         document.getElementById('videoPlayerAr').pause();
         document.getElementById('videoPlayerAr').src = "";
-        document.getElementById('videoPlayerMask').style.display = 'none'
+        document.getElementById('videoPlayerMask').style.display = 'none';
+        document.getElementById('imagePlayerAr').src = "";
     }
+    
 
     function getNotifyData(notifyTitle,notifyContent){
         document.getElementById('notifyMask').style.display = 'block';

@@ -129,7 +129,7 @@ $(function () {
                     v.createTime = getTimeFormat(v.createTime);
                     newArr.push(v);
                 })
-                let rowData = newArr;
+                var rowData = newArr;
                 //数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
                     mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>", 'swiper-slide');
@@ -140,31 +140,32 @@ $(function () {
                 }
                 if (result.msg == '调用成功' || result.success == true) {
                     rowData.forEach(function(v, i){
-                        if (i == 0) {
-                            mySwiper.appendSlide(
-                                `
-                                        <li onClick="onClick(${i})">
-                                            <p class="title">${v.noticeTitle}<span
-                                            class="time">${v.createTime}</span></p>
-                                            <div class="noticeContent" style="display:block">
-                                                ${v.noticeContent}
-                                            </div>
-                                        </li>
-                                    `
-                                , 'swiper-slide swiper-slide-visible')
-                        } else {
-                            mySwiper.appendSlide(
-                                `
-                                        <li onClick="onClick(${i})">
-                                            <p class="title">${v.noticeTitle}<span
-                                            class="time">${v.createTime}</span></p>
-                                            <div class="noticeContent" style="display:none">
-                                                ${v.noticeContent}
-                                            </div>
-                                        </li>
-                                    `
-                                , 'swiper-slide swiper-slide-visible')
-                        }
+                        mySwiper.appendSlide('<div>sssss</div>', 'swiper-slide swiper-slide-visible')
+                        // if (i == 0) {
+                        //     mySwiper.appendSlide(
+                        //         `
+                        //                 <li onClick="onClick(${i})">
+                        //                     <p class="title">${v.noticeTitle}<span
+                        //                     class="time">${v.createTime}</span></p>
+                        //                     <div class="noticeContent" style="display:block">
+                        //                         ${v.noticeContent}
+                        //                     </div>
+                        //                 </li>
+                        //             `
+                        //         , 'swiper-slide swiper-slide-visible')
+                        // } else {
+                        //     mySwiper.appendSlide(
+                        //         `
+                        //                 <li onClick="onClick(${i})">
+                        //                     <p class="title">${v.noticeTitle}<span
+                        //                     class="time">${v.createTime}</span></p>
+                        //                     <div class="noticeContent" style="display:none">
+                        //                         ${v.noticeContent}
+                        //                     </div>
+                        //                 </li>
+                        //             `
+                        //         , 'swiper-slide swiper-slide-visible')
+                        // }
 
                     })
 
@@ -201,14 +202,13 @@ $(function () {
         if (r != null) return unescape(r[2]); return null;
     }
 
-
-    $('#historyGoBack').on('click', function () {
+    $('#historyGoBack').on('click',function(){
         console.log('返回首页');
         var data = {
             method: 'finish',
         };
         Bridge.callHandler(data, null, function (error) {
-            window.location.href = 'http://localhost:7091/home';
+            window.history.back(-1);
         });
 
     })

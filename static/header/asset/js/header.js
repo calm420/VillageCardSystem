@@ -56,7 +56,6 @@ $(function () {
      * @param data
      */
     function buildWether(data) {
-
         var img = document.createElement("img");
 
         if (data[0].dayweather.indexOf('阴') != -1) {
