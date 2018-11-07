@@ -76,8 +76,9 @@
                 <img id="imagePlayerAr" src="" alt="">
             </div>
             <div id="pushVideoPlay-mask" class="pushVideoPlay-mask" style="display:none">
-                <div id='pushVideoPlay'>
-                    <video id="videoPlayBox" minLength={100} muted autoplay loop preload>
+                <div id='pushVideoPlay' class="pushVideoPlay" style="display:none">
+                    <video id="videoPlayBox"  minLength={100} muted loop autoplay >
+                    <!-- <video id="videoPlayBox" minLength={100} autoplay preload loop controls> -->
                     </video>
                 </div>
             </div>
@@ -123,40 +124,23 @@
             closePlayerMask()
         };
         setTimeout(function () {
-            // document.getElementById('videoPlayerAr').src = src;
+            document.getElementById('videoPlayerAr').src = src;
             document.getElementById('videoPlayerAr').play();
         }, 300)
     }
 
 
     function playPushVideo(src) {
-        // alert("1333")
-        // alert(JSON.stringify(src));
         document.getElementById('pushVideoPlay-mask').style.display = 'block'
         document.getElementById('pushVideoPlay').style.display = 'block'
         setTimeout(function () {
-            
             document.getElementById('videoPlayBox').src = src;
-            // document.getElementById('videoPlayBox').muted = false;
-            // playPromise = document.getElementById('videoPlayBox').play();
-            // // alert(JSON.stringify(playPromise));
-            // // console.log("done.",playPromise);
-            // if(playPromise){
-            //     playPromise.then(() => {
-            //         // 音频加载成功
-            //         // 音频的播放需要耗时
-            //         // alert("音频加载成功");
-            //         setTimeout(() => {
-            //             // 后续操作
-            //             console.log("done.");
-            //         }, 1000); // audio.duration 为音频的时长单位为秒
-            //     }).catch((e) => {
-            //         // 音频加载失败
-            //         alert("音频加载失败");
-            //     });
-            // }
-            // document.getElementById('videoPlayBox').pause();
-            // document.getElementById('videoPlayBox').play();
+            // document.getElementById("videoPlayBox").addEventListener("ended",function(){
+            //     document.getElementById('videoPlayBox').muted = false;
+            // })
+            setTimeout(function(){
+                document.getElementById('videoPlayBox').muted = false;
+            },300)
         }, 300)
     }
     function closePushVideoMask() {
@@ -183,10 +167,7 @@
     function closeNotifyMask() {
         document.getElementById('notifyMask').style.display = 'none';
     }
-
-    function palyTest(){
-        document.getElementById("videoPlayBox").play();
-    }
+    
 </script>
 
 </html>

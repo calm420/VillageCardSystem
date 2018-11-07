@@ -21,9 +21,7 @@ $(document).ready(function () {
         //获取基本的地址栏参数,标识班牌的学校\班级等信息
         var clazzId = getQueryString("clazzId");
         var roomId = getQueryString("roomId");
-        // var mac = getQueryString("mac");
-        var mac = "14:1f:78:73:1c:bd";
-        // layer.msg(mac)
+        var mac = getQueryString("mac");
         var schoolId = getQueryString("schoolId");
         var pro = {
             "command": "braceletBoxConnect",
@@ -60,6 +58,7 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
+                console.log(info,"info")
                 if(info.command == "braceletBoxConnect"){
                     if(info.data.playPushVideoStatus != undefined) {
                         var videoData = JSON.parse(info.data.playPushVideoStatus);
@@ -69,7 +68,6 @@ $(document).ready(function () {
                     }
                 }
                 if (info.command == "playPushVideoStatus" && info.data.playStatus == "open" && info.data.schoolId == schoolId) {
-                    // alert(JSON.stringify(info.data.videoPath));
                     playPushVideo(info.data.videoPath)
                 } else if (info.command == "playPushVideoStatus" && info.data.playStatus == "close" && info.data.schoolId == schoolId) {
                     closePushVideoMask()
