@@ -3,7 +3,7 @@ var cookieParser = require('cookie-parser')
 var express = require('express');
 var session = require('express-session')
 var minimist = require('minimist');
-var debug = true;
+var debug = false;
 var http = require('http');
 var https = require('https');
 var fs = require("fs");
@@ -22,19 +22,15 @@ var options =
         cert: fs.readFileSync('keys/server.crt')
     };
 
-
 var app = express();
 app.use(cookieParser());
-
 var sessionHandler = session({
     secret: 'none',
     rolling: true,
     resave: true,
     saveUninitialized: true
 });
-
 app.use(sessionHandler);
-
 
 var asUrl = url.parse(argv.as_uri);
 var port = asUrl.port;
