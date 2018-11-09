@@ -60,19 +60,19 @@ $(document).ready(function () {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
                 console.log(info,"info")
-                if(info.command == "braceletBoxConnect"){
-                    if(info.data.playPushVideoStatus != undefined) {
-                        var videoData = JSON.parse(info.data.playPushVideoStatus);
-                        if(videoData.playStatus == "open"){
-                            playPushVideo(videoData.videoPath)
-                        }
-                    }
-                }
-                if (info.command == "playPushVideoStatus" && info.data.playStatus == "open" && info.data.schoolId == schoolId) {
-                    playPushVideo(info.data.videoPath)
-                } else if (info.command == "playPushVideoStatus" && info.data.playStatus == "close" && info.data.schoolId == schoolId) {
-                    closePushVideoMask()
-                }
+                // if(info.command == "braceletBoxConnect"){
+                //     if(info.data.playPushVideoStatus != undefined) {
+                //         var videoData = JSON.parse(info.data.playPushVideoStatus);
+                //         if(videoData.playStatus == "open"){
+                //             playPushVideo(videoData.videoPath)
+                //         }
+                //     }
+                // }
+                // if (info.command == "playPushVideoStatus" && info.data.playStatus == "open" && info.data.schoolId == schoolId) {
+                //     playPushVideo(info.data.videoPath)
+                // } else if (info.command == "playPushVideoStatus" && info.data.playStatus == "close" && info.data.schoolId == schoolId) {
+                //     closePushVideoMask()
+                // }
                 document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
             }
@@ -143,11 +143,13 @@ $(document).ready(function () {
 
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
+        console.log("res111",res)
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',
                 url: webserviceUrl + res.url,
             }
+            console.log(data, 'hh')
             Bridge.callHandler(data, null, function (error) {
                 window.location.href = webserviceUrl + res.url;
             });

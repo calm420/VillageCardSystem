@@ -12,6 +12,7 @@ var path = require('path');
 
 var argv = minimist(process.argv.slice(2), {
     default: {
+        // as_uri: debug ? "http://localhost:7091" : 'https://jiaoxue.maaee.com:9092'
         as_uri: debug ? "http://localhost:7091" : 'https://jiaoxue.maaee.com:9092'
     }
 });
