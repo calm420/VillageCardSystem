@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var isDebug = true;
+    var isDebug = false;
     var webserviceUrl = isDebug ? "http://192.168.50.72:7091/" : "https://jiaoxue.maaee.com:9092/";
     // var webserviceUrl = isDebug ? "http://192.168.1.100:7091/" : "https://jiaoxue.maaee.com:9092/";
 
@@ -63,7 +63,7 @@ $(document).ready(function () {
                 if(info.command == "braceletBoxConnect"){
                     if(info.data.playPushVideoStatus != undefined) {
                         var videoData = JSON.parse(info.data.playPushVideoStatus);
-                        if(videoData.playStatus == "open"){
+                        if(videoData.playStatus == "open" && videoData.schoolId == schoolId){
                             playPushVideo(videoData.videoPath)
                         }
                     }

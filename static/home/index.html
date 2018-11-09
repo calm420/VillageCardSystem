@@ -43,6 +43,7 @@
                         <iframe id="moralEducationScore" class="home_card moralEducationScore_height" src=""></iframe>
                     </div>
                 </div>
+               
                 <div class="home_center">
                     <!-- 班级风采 -->
                     <div>
@@ -67,6 +68,11 @@
                         <iframe id="courseAttendance" class="home_card currentAttendance_height" src=""></iframe>
                     </div>
                 </div>
+            </div>
+
+            <div id='videoPlayerMask' style="display: none">
+                <span class="close" onClick="closePlayerMask()">关闭</span>
+                <img id="imagePlayerAr" src="" alt="">
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
@@ -93,8 +99,12 @@
 
     function playImage(src) {
         document.getElementById('videoPlayerMask').style.display = 'block';
-        document.getElementById('videoPlayerAr').style.display = 'none';
         document.getElementById('imagePlayerAr').src = src;
+    }
+
+    function closePlayerMask() {
+        document.getElementById('imagePlayerAr').src = "";
+        document.getElementById('videoPlayerMask').style.display = 'none';
     }
 
     //班级风采点击播放视频

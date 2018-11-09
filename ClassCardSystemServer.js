@@ -3,12 +3,11 @@ var cookieParser = require('cookie-parser')
 var express = require('express');
 var session = require('express-session')
 var minimist = require('minimist');
-var debug = true;
+var debug = false;
 var http = require('http');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
-
 
 var argv = minimist(process.argv.slice(2), {
     default: {
