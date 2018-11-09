@@ -13,7 +13,7 @@ $(function () {
      * 调用查询天气函数
      */
     try{
-        $.get('http://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
+        $.get('https://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
             abcode = res.adcode
             weatherInfo(res.adcode)
         })
