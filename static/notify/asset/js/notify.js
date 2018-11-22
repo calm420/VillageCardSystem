@@ -38,10 +38,10 @@ $(function () {
         },
         //结束回调
         onTouchEnd: function () {
-            console.log(holdPosition, 'holdPosition');
-            console.log($(window).height(), 'height')
+            // console.log(holdPosition, 'holdPosition');
+            // console.log($(window).height(), 'height')
             if (holdPosition == '下拉刷新') {
-                console.log('下拉刷新');
+                // console.log('下拉刷新');
             } else if (holdPosition == '上拉加载更多') {
                 if (loadingMore) {
                     if (slideNumber == 2) {
@@ -80,7 +80,7 @@ $(function () {
     //监听接受消息
     window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
-        console.log("notify",commandInfo);
+        // console.log("notify",commandInfo);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
               skin = commandInfo.data.skinName;

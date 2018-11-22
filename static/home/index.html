@@ -71,7 +71,7 @@
             </div>
 
             <div id='videoPlayerMask' style="display: none">
-                <span class="close" onClick="closePlayerMask()">关闭</span>
+                <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
                 <img id="imagePlayerAr" src="" alt="">
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
@@ -109,6 +109,7 @@
 
     //班级风采点击播放视频
     function playVideo(src) {
+//        console.log('播放视频');
         var data = {
             method: "startPlayer",
             url:src,

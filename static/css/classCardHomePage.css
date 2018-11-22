@@ -192,7 +192,7 @@
 #classCardHomePage .app_list {
   width: 2.56rem;
   display: inline-block;
-  margin-left: 0.13rem;
+  margin-left: 0.28rem;
   text-align: center;
   margin-bottom: 0.17rem;
 }
@@ -452,6 +452,15 @@
   height: 30px;
   font-size: 0;
   cursor: pointer;
+}
+.close_box{
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  padding: 15px 15px;
 }
 #classDemeanorWrap{
   height: 100%;

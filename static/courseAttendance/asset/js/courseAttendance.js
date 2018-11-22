@@ -144,7 +144,7 @@ function sendMessageTo(data) {
 
 //监听接受消息
 window.addEventListener('message', function (e) {
-    console.log(e);
+    // console.log(e);
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);
 })
