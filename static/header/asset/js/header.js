@@ -13,7 +13,7 @@ $(function () {
      * 调用查询天气函数
      */
     try{
-        $.get('http://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
+        $.get('https://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
             abcode = res.adcode
             weatherInfo(res.adcode)
         })
@@ -46,7 +46,7 @@ $(function () {
      * @param adcode
      */
     function weatherInfo(adcode) {
-        $.get('http://restapi.amap.com/v3/weather/weatherInfo?key=fce57f3f5ed99a1b7925992439e5a224&city=' + adcode + '&extensions=all', function (res) {
+        $.get('https://restapi.amap.com/v3/weather/weatherInfo?key=fce57f3f5ed99a1b7925992439e5a224&city=' + adcode + '&extensions=all', function (res) {
             buildWether(res.forecasts[0].casts.splice(0, 2))
         })
     }
@@ -56,7 +56,6 @@ $(function () {
      * @param data
      */
     function buildWether(data) {
-
         var img = document.createElement("img");
 
         if (data[0].dayweather.indexOf('阴') != -1) {

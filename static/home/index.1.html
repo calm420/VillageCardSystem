@@ -43,7 +43,6 @@
                         <iframe id="moralEducationScore" class="home_card moralEducationScore_height" src=""></iframe>
                     </div>
                 </div>
-               
                 <div class="home_center">
                     <!-- 班级风采 -->
                     <div>
@@ -69,10 +68,21 @@
                     </div>
                 </div>
             </div>
-
             <div id='videoPlayerMask' style="display: none">
-                <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
+                <span class="close" onClick="closePlayerMask()">关闭</span>
+                <!-- <div id="video_container"></div> -->
+                <video id="videoPlayerAr" controls="controls" minLength={100} autoplay playsinline="true" webkit-playsinline="true" controlslist="nodownload nofullscreen"
+                    x5-video-player-type="h5" playsinline webkit-playsinline>
+                    <source type="video/mp4" src="" />
+                </video>
                 <img id="imagePlayerAr" src="" alt="">
+            </div>
+            <div id="pushVideoPlay-mask" class="pushVideoPlay-mask" style="display:none">
+                <div id='pushVideoPlay' class="pushVideoPlay" style="display:none">
+                    <video id="videoPlayBox" minLength={100} muted loop autoplay controls preload metadata>
+                        <!-- <video id="videoPlayBox" minLength={100} autoplay preload loop controls> -->
+                    </video>
+                </div>
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
@@ -98,58 +108,109 @@
 <script type="text/javascript">
 
     function playImage(src) {
+
+      
+        console.log(src, 'home');
         document.getElementById('videoPlayerMask').style.display = 'block';
+        //        document.getElementById("videoPlayerAr").onended = function () {
+        //            closePlayerMask()
+        //        };
+        document.getElementById('videoPlayerAr').style.display = 'none';
+        //        setTimeout(function () {
         document.getElementById('imagePlayerAr').src = src;
+        //        }, 300)
     }
+
+    // function playVideo(url) {
+        
+    //     // event.stopPropagation();
+    //     var data = {
+    //         method: 'playChatVideo',
+    //         playUrl: url
+    //     };
+    //     window.parent.Bridge.callHandler(data, function () {
+    //     }, function (error) {
+    //         // Toast.info('开启视频失败!');
+    //     });
+    // }
+
+    function playVideo(src) {
+        document.getElementById('videoPlayerMask').style.display = 'block';
+        // var player = jwplayer("video_container");
+        // player.setup( {
+        //         flashplayer : "jwplayer-7.1.4/jwplayer.flash.swf",
+        //         file:src,
+        //         height : "640px",
+        //         width : "480px",
+        //         autostart: "true",
+        //         key:"SDnkHp5Hi4XisjVuu98zy21MC6ZasMZdMazMFw=="
+        //    });
+        document.getElementById('videoPlayerAr').style.display = 'block';
+        document.getElementById("videoPlayerAr").onended = function () {
+            closePlayerMask()
+        };
+        setTimeout(function () {
+            document.getElementById('videoPlayerAr').src = src;
+            document.getElementById('videoPlayerAr').play();
+        }, 300)
+    }
+
+
+    // function playPushVideo(src) {
+    //     document.getElementById('pushVideoPlay-mask').style.display = 'block'
+    //     document.getElementById('pushVideoPlay').style.display = 'block'
+    //     setTimeout(function () {
+    //         document.getElementById('videoPlayBox').src = src;
+    //         // document.getElementById("videoPlayBox").addEventListener("ended",function(){
+    //         //     document.getElementById('videoPlayBox').muted = false;
+    //         // })
+    //         setTimeout(function () {
+    //             console.log(document.getElementById('videoPlayBox').duration, "duration")
+    //             document.getElementById('videoPlayBox').muted = false;
+    //             document.getElementById('videoPlayBox').addEventListener("timeupdate", function () {
+    //                 var timeDisplay;
+    //                 //用秒数来显示当前播放进度
+    //                 timeDisplay = Math.floor(document.getElementById('videoPlayBox').currentTime);
+    //                 // alert(Math.floor(document.getElementById('videoPlayBox').currentTime))
+    //                 console.log(Math.floor(document.getElementById('videoPlayBox').currentTime), "duration")
+    //                 // console.log(Math.floor(document.getElementById('videoPlayBox').duration,"duration"))
+    //                 //当视频播放到 4s的时候做处理
+    //                 if (timeDisplay == 4) {
+    //                     //处理代码
+    //                 }
+    //             }, false);
+    //         }, 300)
+
+    //     }, 300)
+    //     // document.getElementById("videoPlayBox").onended = function () {
+    //     //     alert("3456")
+    //     //     document.getElementById("videoPlayBox").play();
+    //     // };
+
+
+    // }
+
+    // function closePushVideoMask() {
+    //     document.getElementById('videoPlayBox').pause();
+    //     document.getElementById('videoPlayBox').src = "";
+    //     document.getElementById('pushVideoPlay').style.display = 'none'
+    //     document.getElementById('pushVideoPlay-mask').style.display = 'none'
+    // }
 
     function closePlayerMask() {
-        document.getElementById('imagePlayerAr').src = "";
+        document.getElementById('videoPlayerAr').pause();
+        document.getElementById('videoPlayerAr').src = "";
         document.getElementById('videoPlayerMask').style.display = 'none';
-    }
-
-    //班级风采点击播放视频
-    function playVideo(src) {
-//        console.log('播放视频');
-        var data = {
-            method: "startPlayer",
-            url:src,
-            isClick:true
-        };
-        Bridge.callHandler(data, null, function (error) {
-            console.log(error);
-        });
-    }
-
-    //推送视频播放
-    function playPushVideo(src) {
-        var data = {
-            method:"startPlayer",
-            url:src,
-            isClick:false
-        };
-        Bridge.callHandler(data, null, function (error) {
-            console.log(error);
-        });
-    }
-
-    //推送视频关闭
-    function closePushVideoMask() {
-        var data = {
-            method:"closePlayer",
-        };
-        Bridge.callHandler(data, null, function (error) {
-            console.log(error);
-        });
+        document.getElementById('imagePlayerAr').src = "";
     }
 
 
-    //通知弹框
     function getNotifyData(notifyTitle, notifyContent) {
         document.getElementById('notifyMask').style.display = 'block';
         $(".notifyTitle").html(notifyTitle)
         $(".notifyContent").html(notifyContent)
     }
-    //通知关闭
+
     function closeNotifyMask() {
         document.getElementById('notifyMask').style.display = 'none';
     }

@@ -52,17 +52,17 @@ function SimpleConnection() {
             connection.connecting = false;
             connection.connected = false;
             connection.reconnect();
-            	console.log("收到服务器的 onclose .");
+            	// console.log("收到服务器的 onclose .");
         };
         // 打开WebSocket
         connection.ws.onopen = function (event) {
             connection.connecting = false;
             connection.connected = true;
-            	console.log("连接到服务器 ....");
+            	// console.log("连接到服务器 ....");
         };
         connection.ws.onerror = function (event) {
             connection.connecting = false;
-            	console.log("收到服务器的 onerror ....");
+            	// console.log("收到服务器的 onerror ....");
         };
     };
 
@@ -80,7 +80,7 @@ function SimpleConnection() {
             connection.reconnectTimeout = setTimeout(function () {
                 connection.connect();
                 connection.reconnect();
-                console.log("重连中 ...");
+                // console.log("重连中 ...");
             }, 1000 * 10);
         }
     };
@@ -98,7 +98,7 @@ function SimpleConnection() {
         var pingCommand = connection.PING_COMMAND;
         connection.heartBeatTimeout = setTimeout(function () {
             connection.send(pingCommand);
-            console.log("客户端发送ping命令 , 希望服务器回答pong...");
+            // console.log("客户端发送ping命令 , 希望服务器回答pong...");
             connection.heartBeat();
         }, 1000 * 10);
     };
