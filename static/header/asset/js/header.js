@@ -46,7 +46,7 @@ $(function () {
      * @param adcode
      */
     function weatherInfo(adcode) {
-        $.get('http://restapi.amap.com/v3/weather/weatherInfo?key=fce57f3f5ed99a1b7925992439e5a224&city=' + adcode + '&extensions=all', function (res) {
+        $.get('https://restapi.amap.com/v3/weather/weatherInfo?key=fce57f3f5ed99a1b7925992439e5a224&city=' + adcode + '&extensions=all', function (res) {
             buildWether(res.forecasts[0].casts.splice(0, 2))
         })
     }
