@@ -284,7 +284,7 @@
   margin-top: 0;
 }
 #classCardHomePage .studentOnDuty_cont {
-  height: 9.9rem;
+  height: calc(100% - 2.88rem);
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0.56rem 0 0.56rem 0.83rem;

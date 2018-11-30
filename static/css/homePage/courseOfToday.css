@@ -1,7 +1,7 @@
 #courseOfToday .classTableA {
     padding: 0.56rem 0.83rem;
     text-align: center;
-    height: 9.9rem;
+    height: calc(100% - 2.88rem);
     position: relative;
 }
 

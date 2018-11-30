@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     var isDebug = true;
 
-    var webserviceUrl = isDebug ? "http://192.168.50.188:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaoxue.maaee.com:9092/";
     // var webserviceUrl = isDebug ? "http://192.168.1.100:7091/" : "https://jiaoxue.maaee.com:9092/";
 
 
