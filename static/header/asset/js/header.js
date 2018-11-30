@@ -7,12 +7,13 @@ $(function () {
     var font = getQueryString("font");
     var screenWidth = getQueryString('screenWidth')
     var screenHeight = getQueryString('screenHeight')
+    var vertical = getQueryString('vertical')
     if(!!font) {
         $('html').css('font-size', font)
     }
     viewClassRoom(roomId)
     makeTime();
-    if(screenHeight>screenWidth) {
+    if(!!vertical) {
         $('.headTitle').width('70%')
         $('#weather').css('display','none')
     }

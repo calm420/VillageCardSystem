@@ -5,6 +5,7 @@ $(document).ready(function () {
     var font = getQueryString('font')
     var screenWidth = getQueryString('screenWidth')
     var screenHeight = getQueryString('screenHeight')
+    var vertical = getQueryString('vertical')
     $('html').css('font-size', font)
 
     //监听接受消息
@@ -27,7 +28,7 @@ $(document).ready(function () {
         var clazzId = getQueryString("clazzId");
         getDutyInfo(clazzId);
         setTimeout(function () {
-            if(screenHeight>screenWidth) {
+            if(!!vertical) {
                 $('.studentOnDuty_list').width('2.73rem')
             }
         },1000)

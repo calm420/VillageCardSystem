@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var isDebug = true;
+    var isDebug = false;
 
     var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaoxue.maaee.com:9092/";
     // var webserviceUrl = isDebug ? "http://192.168.1.100:7091/" : "https://jiaoxue.maaee.com:9092/";
@@ -39,14 +39,14 @@ $(document).ready(function () {
         console.log(window.screen.width);
         console.log(window.screen.height);
 
-        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size')+"&screenWidth="+window.screen.width+"&screenHeight="+window.screen.height;
+        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size')+"&screenWidth="+window.screen.width+"&screenHeight="+window.screen.height+"&vertical=true";
         $("#moralEducationScore")[0].src = webserviceUrl + "moralEducationScore?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#application")[0].src = webserviceUrl + "application?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#courseOfToday")[0].src = webserviceUrl + "courseOfToday?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#courseAttendance")[0].src = webserviceUrl + "courseAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1"+ "&font=" + $('html').css('font-size')+"&screenWidth="+window.screen.width+"&screenHeight="+window.screen.height;
+        $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1"+ "&font=" + $('html').css('font-size')+"&screenWidth="+window.screen.width+"&screenHeight="+window.screen.height+"&vertical=true";
         setTimeout(function () {
             ms.connect(pro);
             msListener();

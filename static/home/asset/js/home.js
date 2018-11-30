@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var isDebug = true;
+    var isDebug = false;
 
     var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaoxue.maaee.com:9092/";
     // var webserviceUrl = isDebug ? "http://192.168.1.100:7091/" : "https://jiaoxue.maaee.com:9092/";
