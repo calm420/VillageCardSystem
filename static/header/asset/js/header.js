@@ -4,8 +4,18 @@ $(function () {
     var timeOffset = null;
     var roomId = getQueryString("roomId");
     var schoolId = getQueryString("schoolId");
+    var font = getQueryString("font");
+    var screenWidth = getQueryString('screenWidth')
+    var screenHeight = getQueryString('screenHeight')
+    if(!!font) {
+        $('html').css('font-size', font)
+    }
     viewClassRoom(roomId)
     makeTime();
+    if(screenHeight>screenWidth) {
+        $('.headTitle').width('70%')
+        $('#weather').css('display','none')
+    }
 
 
     /**

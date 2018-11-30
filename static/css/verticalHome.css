@@ -22,7 +22,7 @@
     height: 9.9rem !important;
 }
 .vertical-thirdLine{
-    height:12.61rem
+    height:10rem
 }
 .vertical-fourLine{
     height: 9.16rem;
@@ -30,6 +30,10 @@
 .vertical-courseOfToday{
     height: 100%;
 }
+.verticalHome .currentAttendance_height, .verticalHome .moralEducationScore_height, .verticalHome .moralEducationScore-wrap{
+    height: 9.17rem !important;
+}
+
 
 /*班牌屏幕适配*/
 @media only screen and (min-width: 768px) and (max-width: 799px) {

@@ -142,13 +142,36 @@
   color: #5091fe;
 }
 #classCardHomePage .mEScoreInfo {
-  height: 8.25rem;
+  height: calc(100% - 3.42rem);
   position: relative;
 }
 #classCardHomePage .mEScoreInfoM {
   text-align: center;
-  margin: 2rem 0 2.1rem 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
+#classCardHomePage .mEScoreInfoT {
+  width: calc(100% - 1.66rem);
+  position: absolute;
+  top: 0.83rem;
+}
+/*#classCardHomePage .mEScoreInfoT > span{
+  width: 50%;
+  display: inline-block;
+  position: relative;
+}
+#classCardHomePage .mEScoreInfoT span:nth-child(2){
+  text-align: right;
+}*/
+#classCardHomePage .mEScoreInfoB {
+  width: calc(100% - 1.66rem);
+  position: absolute;
+  bottom: 0.83rem;
+}
+
 #classCardHomePage .blue_big {
   font-size: 2.22rem;
   color: #5091fe;
