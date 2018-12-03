@@ -238,6 +238,13 @@
   display: inline-block;
   background-size: 100% 100%;
 }
+#classCardHomePage .app_list_img .i-adminManage {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: url("../images/icon_admin.png");
+  display: inline-block;
+  background-size: 100% 100%;
+}
 #classCardHomePage .app_list_text {
   font-size: 0.61rem;
   width: 100%;

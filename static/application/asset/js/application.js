@@ -124,6 +124,19 @@ $(function () {
         });
     });
 
+
+     //跳转管理员登录页面
+     $('#toAdmin').on('click',function(){
+        var data = {
+            method: 'adminentrance',
+        };
+        console.log(data,"data")
+        Bridge.callHandler(data, null, function (error) {
+
+        });
+    });
+
+
     //初始化页面元素
     function InitializePage() {
 
