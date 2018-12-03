@@ -11,8 +11,8 @@ $(document).ready(function () {
 
     var isDebug = false;
 
-    // var webserviceUrl = isDebug ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
-    var webserviceUrl = isDebug ? "http://192.168.50.72:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = isDebug ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
+    // var webserviceUrl = isDebug ? "http://192.168.50.72:7091/" : "https://jiaoxue.maaee.com:9092/";
 
 
     InitializePage();
