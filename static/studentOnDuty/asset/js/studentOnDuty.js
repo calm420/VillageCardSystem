@@ -1,9 +1,11 @@
 $(document).ready(function () {
-
     InitializePage();
     var schoolId = getQueryString("schoolId");
     var clazzId = getQueryString("clazzId");
     var font = getQueryString('font')
+    var screenWidth = getQueryString('screenWidth')
+    var screenHeight = getQueryString('screenHeight')
+    var vertical = getQueryString('vertical')
     $('html').css('font-size', font)
 
     //监听接受消息
@@ -25,6 +27,11 @@ $(document).ready(function () {
     function InitializePage() {
         var clazzId = getQueryString("clazzId");
         getDutyInfo(clazzId);
+        setTimeout(function () {
+            if(!!vertical) {
+                $('.studentOnDuty_list').width('2.73rem')
+            }
+        },1000)
     }
 
     function getDutyInfo(clazzId) {

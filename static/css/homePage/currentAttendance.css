@@ -1,7 +1,7 @@
 .classTableA {
   padding: 0.56rem 0.83rem;
   text-align: center;
-  height: 8.8rem;
+  height: calc(100% - 2.85rem);
   position: relative;
 }
 .classTableA .due {
@@ -18,7 +18,13 @@
 }
 .classTableA .due3 {
   font-size: 0.67rem;
-  margin-top: 3rem;
+  line-height:1;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 .classTableA .due3 .number {
   color: #5091fe;

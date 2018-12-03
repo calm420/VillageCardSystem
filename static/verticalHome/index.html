@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>小蚂蚁智慧班牌</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/header.css">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <link rel="stylesheet" href="../css/verticalHome.css">
+    <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript" src="../js/webServiceUtil.js"></script>
+    <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./layer/layer.js"></script>
+    <script type="text/javascript" src="../js/webServiceUtil.js"></script>
+    <script type="text/javascript" src="./asset/js/msg_websocket_connection.js?v=0.0.1"></script>
+    <script type="text/javascript" src="../js/simple_websocket_connection.js"></script>
+    <script type="text/javascript" src="./asset/js/home.js?v=0.0.3"></script>
+    <script type="text/javascript" src="http://maaee.com/Excoord_For_Education/jwplayer-7.1.4/jwplayer.js"></script>
+
+</head>
+
+<body>
+    <div id="skin_default" name="homeDiv">
+        <div id="classCardHomePage">
+            <div>
+                <iframe id="header" src=""></iframe>
+            </div>
+            <div class="home_content home_content_index verticalHome">
+                <div class="vertical-firstLine">
+                    <!-- 今日值日 -->
+                    <div class="studentOnDuty-wrap">
+                        <iframe id="studentOnDuty" class="home_card studentOnDuty_height" src=""></iframe>
+                    </div>
+                    <!-- 今日课程 -->
+                    <div class="vertical-Today-course">
+                        <iframe id="courseOfToday" class="home_card course_height" src=""></iframe>
+                    </div>
+                </div>
+                <!-- 班级风采 -->
+                <div class="vertical-classStyle">
+                    <iframe id="classDemeanor" class="home_card classDemeanor_height" src=""></iframe>
+                </div>
+                <div class="vertical-thirdLine">
+                    <!-- 德育评分 -->
+                    <div class="moralEducationScore-wrap">
+                        <iframe id="moralEducationScore" class="home_card moralEducationScore_height" src=""></iframe>
+                    </div>
+                    <!-- 本节考勤 -->
+                    <div class="vertical-attendance">
+                        <iframe id="courseAttendance" class="home_card currentAttendance_height" src=""></iframe>
+                    </div>
+                </div>
+                <div class="vertical-fourLine">
+                    <!-- 通知 -->
+                    <div>
+                        <iframe id="notify" class="home_card notify_height" src=""></iframe>
+                    </div>
+                    <!-- 应用 -->
+                    <div>
+                        <iframe id="application" class="application_height home_card" src=""></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id='videoPlayerMask' style="display: none">
+                <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
+                <img id="imagePlayerAr" src="" alt="">
+            </div>
+            <div id='notifyMask' class="notifyMask" style="display: none">
+                <div class="am-modal-wrap ">
+                    <div class="notify_contModal">
+                        <div class="am-modal-content">
+                            <span class="closeNotify am-modal-close" onClick="closeNotifyMask()">
+                                <span class="am-modal-close-x"></span>
+                            </span>
+                            <div class="am-modal-header">
+                                <div class="am-modal-title notifyTitle"></div>
+                            </div>
+                            <div class="am-modal-body">
+                                <div class="cont notifyContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    function playImage(src) {
+        document.getElementById('videoPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayerAr').src = src;
+    }
+
+    function closePlayerMask() {
+        document.getElementById('imagePlayerAr').src = "";
+        document.getElementById('videoPlayerMask').style.display = 'none';
+    }
+
+    //班级风采点击播放视频
+    function playVideo(src) {
+//        console.log('播放视频');
+        var data = {
+            method: "startPlayer",
+            url:src,
+            isClick:true
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
+    //推送视频播放
+    function playPushVideo(src) {
+        var data = {
+            method:"startPlayer",
+            url:src,
+            isClick:false
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
+    //推送视频关闭
+    function closePushVideoMask() {
+        var data = {
+            method:"closePlayer",
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
+
+    //通知弹框
+    function getNotifyData(notifyTitle, notifyContent) {
+        document.getElementById('notifyMask').style.display = 'block';
+        $(".notifyTitle").html(notifyTitle)
+        $(".notifyContent").html(notifyContent)
+    }
+    //通知关闭
+    function closeNotifyMask() {
+        document.getElementById('notifyMask').style.display = 'none';
+    }
+
+</script>
+
+</html>
