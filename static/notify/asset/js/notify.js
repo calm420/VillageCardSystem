@@ -139,15 +139,13 @@ $(function () {
                     rowData.forEach(function(v, i){
                         console.log(v,"vvvv")
                             mySwiper.appendSlide(
-                                `
-                                <div>
-                                    <li>
-                                        <span class="notify_list text_hidden"
-                                                onClick="getContent('${v.noticeTitle}','${v.noticeContent}')">${v.type == 2 ? "[全校通知] ":""}${v.noticeTitle}</span>
-                                        <i class="titleMore notify_titleMore"></i>
-                                    </li>
-                                </div>
-                                `
+                                '<div>
+                                <li>
+                                    <span class="notify_list text_hidden"
+                                            onClick="getContent('${v.noticeTitle}','${v.noticeContent}')">${v.type == 2 ? "[全校通知] ":""}${v.noticeTitle}</span>
+                                    <i class="titleMore notify_titleMore"></i>
+                                </li>
+                            </div>'
                                 , 'swiper-slide swiper-slide-visible')
 
                     })

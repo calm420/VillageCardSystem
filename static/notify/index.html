@@ -39,6 +39,7 @@
 <script type="text/javascript">
     function getContent(title,content) {
         var data={"method":'notifyContentShow',"notifyTitle":title,"notifyContent":content};
+        console.log(data,"data")
         window.parent.postMessage(JSON.stringify(data), '*');
     }
 </script>
