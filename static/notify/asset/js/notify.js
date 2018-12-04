@@ -138,15 +138,13 @@ $(function () {
 
                     rowData.forEach(function(v, i){
                             mySwiper.appendSlide(
-                                `
-                                <div>
-                                    <li>
-                                        <span class="notify_list text_hidden"
-                                                onClick="getContent('${v.noticeTitle}','${v.noticeContent}')">${v.noticeTitle}</span>
-                                        <i class="titleMore notify_titleMore"></i>
-                                    </li>
-                                </div>
-                                `
+                                '<div>\n' +
+                                '                                    <li>\n' +
+                                '                                        <span class="notify_list text_hidden"\n' +
+                                '                                                onClick="getContent('+v.noticeTitle+','+v.noticeContent+')">'+v.noticeTitle+'</span>\n' +
+                                '                                        <i class="titleMore notify_titleMore"></i>\n' +
+                                '                                    </li>\n' +
+                                '                                </div>'
                                 , 'swiper-slide swiper-slide-visible')
 
                     })
