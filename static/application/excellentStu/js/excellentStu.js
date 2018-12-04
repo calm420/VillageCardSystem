@@ -19,7 +19,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', function(e) {
+    window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
         if (res.method == 'test') {
             console.log(res, '测试的postMessage');
@@ -35,8 +35,8 @@ $(function () {
     function InitializePage() {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var skin = WebServiceUtil.GetQueryString("skin");
-        console.log(skin,'skin');
-        document.getElementsByName("excellentStuDiv")[0].id= skin;
+        console.log(skin, 'skin');
+        document.getElementsByName("excellentStuDiv")[0].id = skin;
         getExcellentStu(clazzId);
     }
 
@@ -46,8 +46,8 @@ $(function () {
             "clazzId": classId
         };
         console.log(param)
-        WebServiceUtil.requestLittleAntApi(true,JSON.stringify(param), {
-            onResponse: function(result) {
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
                 if (result.success) {
                     console.log(result.response);
                     // var arr = [
@@ -73,29 +73,26 @@ $(function () {
                     //         "userName": "小兔兔2" } }
                     // ]
                     if (result.response == []) {
-                        $(".excellStu").replaceWith(`<div class="mEScoreInfo home_cardCont">
-                        <div class="empty_center">
-                            <div class="empty_icon empty_moralEducationScore"></div>
-                            <div class="empty_text">暂无通知</div>
-                        </div>
-                    </div>`)
+                        $(".excellStu").replaceWith('<div class="mEScoreInfo home_cardCont">' +
+                            '<div class="empty_center">' +
+                            '<div class="empty_icon empty_moralEducationScore"></div>' +
+                            '<div class="empty_text">暂无通知</div>' +
+                            '</div>' +
+                            '</div>')
                     } else {
-                        result.response.forEach(function(v, i){
+                        result.response.forEach(function (v, i) {
                             $(".excellStu .left").append(
-                                `
-                                    <div class="my_flex">
-                                        <span class="num">第${i + 1}名</span>
-                                        <div class="info textOver">
-                                            <img src=${v.user.avatar} />
-                                            <span class="userName textOver">${v.user.userName}</span>
-                                        </div>
-                                        <span class="time">
-                                            <img src="../../../images/clock.png" />
-                                            ${formatHM(v.attendTime)}
-                                        </span>
-                                    </div>
-                                   
-                                `
+                                '<div class="my_flex">' +
+                                '<span class="num">第' + (i + 1) + '名</span>' +
+                                '<div class="info textOver">' +
+                                '<img src="' + v.user.avatar + '"/>' +
+                                '<span class="userName textOver">' + v.user.userName + '</span>' +
+                                '</div>' +
+                                '<span class="time">' +
+                                '<img src="../../../images/clock.png" />'+
+                                    formatHM(v.attendTime)+
+                                '</span>' +
+                                '</div>'
                             )
                         })
                     }
@@ -122,7 +119,7 @@ $(function () {
     }
 
 
-    $('#historyGoBack').on('click',function(){
+    $('#historyGoBack').on('click', function () {
         var data = {
             method: 'finish',
         };
