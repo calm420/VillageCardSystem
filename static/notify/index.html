@@ -38,8 +38,6 @@
 <script type="text/javascript" src="./asset/js/notify.js"></script>
 <script type="text/javascript">
     function getContent(title,content) {
-        console.log(title,"yuio");
-        console.log(content,"yuio");
         var data={"method":'notifyContentShow',"notifyTitle":title,"notifyContent":content};
         window.parent.postMessage(JSON.stringify(data), '*');
     }
