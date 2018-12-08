@@ -1,5 +1,5 @@
 $(function () {
-    var  skin;
+    var skin;
     var roomId = getQueryString("roomId");
     var font = getQueryString('font')
     $('html').css('font-size', font)
@@ -9,12 +9,12 @@ $(function () {
     //页码
     var slideNumber = 1;
     var loadingMore = true;
-    var schoolId =getQueryString("schoolId");
+    var schoolId = getQueryString("schoolId");
 
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
 
-//创建swiper对象
+    //创建swiper对象
     var mySwiper = new Swiper('.swiper-container', {
         //显示数据的条数
         slidesPerView: 'auto',
@@ -78,15 +78,15 @@ $(function () {
 
     InitializePage();
     //监听接受消息
-    window.addEventListener('message', function(e){
+    window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
         // console.log("notify",commandInfo);
-        if(commandInfo.command == "setSkin"){
+        if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
-              skin = commandInfo.data.skinName;
-                document.getElementsByName("notifyDiv")[0].id=skin;
+                skin = commandInfo.data.skinName;
+                document.getElementsByName("notifyDiv")[0].id = skin;
             }
-        }else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
+        } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
             slideNumber = 1;
             InitializePage();
         }
@@ -101,7 +101,7 @@ $(function () {
     $('#notifySeeMore').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "notify/historyNotify/index.html?roomId=" + roomId+"&skin="+skin,
+            url: "notify/historyNotify/index.html?roomId=" + roomId + "&skin=" + skin,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
@@ -113,7 +113,7 @@ $(function () {
         // $(".swiper-wrapper").empty();
         mySwiper.removeAllSlides();
         // setTimeout(function(){
-            getNotifyInfo(roomId);
+        getNotifyInfo(roomId);
 
         // },1000)
     }
@@ -136,16 +136,22 @@ $(function () {
                         loadingMore = false;
                     }
 
-                    rowData.forEach(function(v, i){
-                            mySwiper.appendSlide(
-                                '<div>' +
-                                '                                    <li>' +
-                                '                                        <span class="notify_list text_hidden"\n' +
-                                '                                                onClick="getContent(\''+v.noticeTitle+'\',\''+v.noticeContent+'\')">'+(v.type == 2 ? "[全校通知] ":'')+v.noticeTitle+'</span>' +
-                                '                                        <i class="titleMore notify_titleMore"></i>' +
-                                '                                    </li>' +
-                                '                                </div>'
-                                , 'swiper-slide swiper-slide-visible')
+                    rowData.forEach(function (v, i) {
+                        var title = v.noticeTitle;
+                        var content = v.noticeContent;
+                        title = title.replace(/[ ]/g, "");
+                        title = title.replace(/[\r\n]/g, "");
+                        content = content.replace(/[ ]/g, "");
+                        content = content.replace(/[\r\n]/g, "");//去掉回车换行
+                        mySwiper.appendSlide(
+                            '<div>' +
+                            '                                    <li>' +
+                            '                                        <span class="notify_list text_hidden"\n' +
+                            '                                                onClick="getContent(\'' + title + '\',\'' + content + '\')">' + (v.type == 2 ? "[全校通知] " : '') + v.noticeTitle + '</span>' +
+                            '                                        <i class="titleMore notify_titleMore"></i>' +
+                            '                                    </li>' +
+                            '                                </div>'
+                            , 'swiper-slide swiper-slide-visible')
 
                     })
 
