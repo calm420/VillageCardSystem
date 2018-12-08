@@ -137,7 +137,6 @@ $(function () {
                     }
 
                     rowData.forEach(function(v, i){
-                        console.log(v,"vvvv")
                             mySwiper.appendSlide(
                                 '<div>' +
                                 '                                    <li>' +
