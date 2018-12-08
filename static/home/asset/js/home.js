@@ -24,6 +24,8 @@ $(document).ready(function () {
         var clazzId = getQueryString("clazzId");
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
+        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+        mac = mac.toLowerCase();
         var schoolId = getQueryString("schoolId");
         var pro = {
             "command": "braceletBoxConnect",
@@ -56,11 +58,11 @@ $(document).ready(function () {
         var schoolId = getQueryString("schoolId");
         ms.msgWsListener = {
             onError: function (errorMsg) {
-                // Toast.fail(errorMsg)
+                console.log("error at msListener:"+errorMsg);
             }, onWarn: function (warnMsg) {
-                // Toast.fail(warnMsg)
+                console.log("warnMsg at msListener:"+warnMsg);
             }, onMessage: function (info) {
-                console.log(info,"info")
+                console.log("info at msListener",info);
                 if(info.command == "braceletBoxConnect"){
                     if(info.data.playPushVideoStatus != undefined) {
                         var videoData = JSON.parse(info.data.playPushVideoStatus);
