@@ -97,6 +97,7 @@ function getStudentByCourseTableItemHandle(response,classTableId){
         totalStudent.push(user.colUid);
         template.find(".signIcon_green").attr("id", "imageTip"+-1);
         template.find(".signIcon").attr("id", "signTip"+-1);
+
     }
     totalCount=response.length;
     $("#totalCount").text(response.length);
