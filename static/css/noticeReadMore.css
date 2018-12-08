@@ -50,7 +50,11 @@
   padding-top: 0.5rem;
   line-height: 1.1rem;
   word-wrap: break-word;
+  overflow: hidden;
 }
 #noticeReadMore .swiper-container{
   overflow-y: auto;
+}
+#noticeReadMore  pre{
+  white-space: pre-wrap;
 }
