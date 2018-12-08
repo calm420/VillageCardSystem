@@ -25,6 +25,8 @@ $(document).ready(function () {
         var clazzId = getQueryString("clazzId");
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
+        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+        mac = mac.toLowerCase();
         var schoolId = getQueryString("schoolId");
         var pro = {
             "command": "braceletBoxConnect",
