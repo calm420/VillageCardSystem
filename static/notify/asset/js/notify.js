@@ -23,8 +23,8 @@ $(function () {
         console.log(container);
         var scorllTop = container.scrollTop;
         var maxScroll = container.scrollHeight - container.offsetHeight;
-        console.log(scorllTop,'scrollTop');
-        console.log(maxScroll,'maxScroll');
+        // console.log(scorllTop,'scrollTop');
+        // console.log(maxScroll,'maxScroll');
         if (scorllTop >= maxScroll) {
             // console.log('开始上拉');
             // $('.swiper-container').css({transform: 'translate(0,-100px)'});
