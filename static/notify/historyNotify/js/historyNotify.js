@@ -7,6 +7,8 @@ $(function () {
     var loadingMore = true;
     var skin = getQueryString("skin");
     document.getElementsByName("historyNotify")[0].id=skin;
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
@@ -96,6 +98,21 @@ $(function () {
 
     }
 
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
+
      /**
      * getTimeFormat时间戳转换格式
      */
@@ -114,6 +131,7 @@ $(function () {
     //初始化页面元素
     function InitializePage() {
         var roomId = getQueryString("roomId");
+        simpleListener();
         getNotifyInfo(roomId);
     }
     function getNotifyInfo(roomId) {
@@ -203,6 +221,10 @@ $(function () {
     }
 
     $('#historyGoBack').on('click',function(){
+        goHome();
+    })
+
+    function goHome() {
         console.log('返回首页');
         var data = {
             method: 'finish',
@@ -210,7 +232,6 @@ $(function () {
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });
-
-    })
+    }
 
 })

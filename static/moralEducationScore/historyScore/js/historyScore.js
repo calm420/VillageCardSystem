@@ -5,11 +5,14 @@ $(function () {
     var skin = getQueryString("skin");
     var events=[];
     document.getElementsByName("historyScore")[0].id=skin;
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 
     InitializePage();
 
     //初始化页面元素
     function InitializePage() {
+        simpleListener();
         $('#calendar').fullCalendar({
             defaultView: 'month',
             height: 'auto',
@@ -28,7 +31,7 @@ $(function () {
             eventOrder:'index',
             viewRender:function (view) {//动态把数据查出，按照月份动态查询
                 console.log(view.start._i,view.end._i);
-                getHistoryMoralEducationInfo(view.start._i,view.end._i);
+                //getHistoryMoralEducationInfo(view.start._i,view.end._i);
             },
             /*dayClick: function() {
                 alert('a day has been clicked!');
@@ -66,6 +69,21 @@ $(function () {
                 $('body').html("查询出错:" + JSON.stringify(responseStr))
             }
         });
+    }
+
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    window.history.back(-1);
+                }
+            }
+        }
     }
 
     /**

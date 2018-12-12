@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../../js/webServiceUtil.js"></script>
     <script type="text/javascript" src="./js/pullLoad.js"></script>
+    <script type="text/javascript" src="../../js/simple_websocket_connection.js"></script>
 </head>
 
 <body>
@@ -50,7 +51,8 @@
     var loadingMore = true;
     var skin = getQueryString("skin");
     document.getElementsByName("historyNotify")[0].id = skin;
-
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 
     //给定swiper固定高度
 
@@ -117,6 +119,21 @@
         }
     });
 
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
+
 
     /**
    * li元素的点击事件
@@ -161,6 +178,7 @@
     function InitializePage() {
         var roomId = getQueryString("roomId");
         getNotifyInfo(roomId);
+        simpleListener();
     }
     function getNotifyInfo(roomId) {
         var param = {
@@ -240,6 +258,10 @@
     }
 
     $('#historyGoBack').on('click', function () {
+        goHome();
+    })
+
+    function goHome() {
         console.log('返回首页');
         var data = {
             method: 'finish',
@@ -247,8 +269,8 @@
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });
+    }
 
-    })
 </script>
 
 <!-- <script type="text/javascript" src="./js/historyNotify.js"></script> -->
