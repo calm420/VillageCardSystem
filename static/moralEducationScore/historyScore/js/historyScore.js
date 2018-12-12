@@ -97,7 +97,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "#666",
         };
         events.push(schoolOrderItem);
 
@@ -109,8 +109,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
-            eventTextColor:'#000'
+            backgroundColor : "#666",
         };
         events.push(gradeOrderItem);
 
@@ -122,8 +121,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
-            eventTextColor:'#000'
+            backgroundColor : "#666",
         };
         events.push(etiquetteItem);
 
@@ -135,7 +133,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "#666",
         };
         events.push(healthyItem);
 
