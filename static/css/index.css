@@ -493,6 +493,9 @@ video::-webkit-media-controls-fullscreen-button {
   overflow-y: auto;
   line-height: 1.3rem;
 }
+.notify_contModal .editor_image{
+  max-width: 100% !important;
+}
 /*首页通知end*/
 /* 公共空页面图start */
 .emptyPage_content {
