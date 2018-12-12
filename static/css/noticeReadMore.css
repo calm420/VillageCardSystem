@@ -62,3 +62,24 @@
 #noticeReadMore  pre{
   white-space: pre-wrap;
 }
+
+.swiper-wrapper{
+  /* transform: translate(0,0)!important; */
+}
+
+.preloader {
+  color: #000;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+  opacity: 1;
+  font-size: 25px;
+  /* background: red; */
+  /*background: rgba(f,f,0,1);*/
+  /*background: #cccccc;*/
+  /*display:none*/
+}
+.swiper-container{
+  overflow: auto;
+}
