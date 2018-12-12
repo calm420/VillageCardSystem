@@ -137,12 +137,15 @@ $(function () {
                     }
 
                     rowData.forEach(function (v, i) {
+                        console.log(v,"yui")
                         var title = v.noticeTitle;
                         var content = v.noticeContent;
-                        title = title.replace(/[ ]/g, "");
-                        title = title.replace(/[\r\n]/g, "</br>");
-                        content = content.replace(/[ ]/g, "");
-                        content = content.replace(/[\r\n]/g, "</br>");//去掉回车换行
+                        content=content.replace(/\"/g,"");
+                        console.log(content)
+                        // title = title.replace(/[ ]/g, "");
+                        // title = title.replace(/[\r\n]/g, "</br>");
+                        // content = content.replace(/[ ]/g, "");
+                        // content = content.replace(/[\r\n]/g, "</br>");//去掉回车换行
                         mySwiper.appendSlide(
                             '<div>' +
                             '                                    <li>' +
