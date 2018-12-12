@@ -74,7 +74,6 @@ $(function () {
     }
 
     $('#seeMoreHistory').on('click', function () {
-        alert("seeMore");
         var data = {
             method: 'openNewPage',
             url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin,

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../../css/skin/skin_default.css">
-    <link rel="stylesheet" href="./css/pullLoad.css">
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
     <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../../js/webServiceUtil.js"></script>
@@ -28,11 +27,11 @@
                 </div>
                 <!--分页-->
                 <div class="swiper">
-                    <div class="preloader"> 加载中... </div>
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <!--填充数据 -->
                         </div>
+                        <div class="preloader"> 上拉加载数据 </div>
                     </div>
                 </div>
 
@@ -44,80 +43,44 @@
 
     //拖动偏移量
     var holdPosition = 0;
-
+    //截流阀
+    var loadFilter = true;
     // var holdPosition =
     //页码
     var slideNumber = 1;
-    var loadingMore = true;
     var skin = getQueryString("skin");
+    var roomId;
     document.getElementsByName("historyNotify")[0].id = skin;
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
-
     //给定swiper固定高度
-
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
-
+    $(".swiper-container").height($('.inner_bg').height() - $('.navBar').height())
     InitializePage();
-    // 创建swiper对象
-    var mySwiper = new Swiper('.swiper-container', {
-        //显示数据的条数
-        slidesPerView: 'auto',
-        mode: 'vertical',
-        //swipe拖动时的即时更新
-        watchActiveIndex: true,
-        onTouchStart: function () {
-            holdPosition = 0;
-        },
-        //抵抗下拉反弹事件回调
-        onResistanceBefore: function (s, pos) {
-            holdPosition = '下拉刷新';
-        },
-        //上拉刷新事件抵抗反弹回调
-        onResistanceAfter: function (s, pos) {
-            if (pos > 300) {
-                holdPosition = '上拉加载更多';
-            } else {
-                mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height());
 
+    $('.swiper-container').on('scroll', function (e) {
+        var container = document.getElementsByClassName('swiper-container')[0];
+        // console.log(container);
+        var scorllTop = container.scrollTop;
+        var maxScroll = container.scrollHeight - container.offsetHeight;
+        // console.log(scorllTop,'scrollTop');
+        // console.log(maxScroll,'maxScroll');
+        if (scorllTop >= maxScroll) {
+            // console.log('开始上拉');
+            // $('.swiper-container').css({transform: 'translate(0,-100px)'});
+            if (loadFilter) {
+                loadFilter = false;
+                $('.preloader').text('正在加载...');
+                setTimeout(function () {
+                    getNotifyInfo(roomId);
+                }, 500)
             }
-        },
-        //结束回调
-        onTouchEnd: function () {
-            if (holdPosition == '下拉刷新') {
-                console.log('下拉刷新');
-            } else if (holdPosition == '上拉加载更多') {
-                if (loadingMore) {
-                    if (slideNumber == 2) {
-                        $('.swiper-wrapper').css({ transform: 'translate3d(0px, -2150.2px, 0px)' })
-                    }
-                    console.log('上拉加载');
-                    // if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
-                    //     console.log('进入');
-                    //100为loading高度
-                    console.log('回弹')
-                    //规避第二页下拉位置偏差问题
-                    if (slideNumber == 3) {
-                        mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 180);
-                    } else {
-                        mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 100);
-                    }
-                    // }
-                    //禁止拖动
-                    mySwiper.params.onlyExternal = true;
-                    //loading显示
-                    $('.preloader').addClass('visible');
-                    //调用增加数据方法
-                    setTimeout(function () {
-                        getNotifyInfo(roomId);
-                    }, slideNumber == 3 ? 500 : 500)
-                }
 
-            } else {
-                console.log('进入未知空间');
-            }
         }
-    });
+
+    })
+
+
 
     function simpleListener() {
         simpleMs.msgWsListener = {
@@ -176,7 +139,7 @@
 
     //初始化页面元素
     function InitializePage() {
-        var roomId = getQueryString("roomId");
+        roomId = getQueryString("roomId");
         getNotifyInfo(roomId);
         simpleListener();
     }
@@ -188,54 +151,47 @@
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                var newArr = []
+                var newArr = [];
                 result.response.forEach(function (v, i) {
                     v.createTime = getTimeFormat(v.createTime);
                     newArr.push(v);
                 })
                 var rowData = newArr;
-                //数据为空
+                var wrapper = $('.swiper-wrapper');
+                // 数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
-                    mySwiper.appendSlide("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>", 'swiper-slide');
-                }
-                if (rowData.length == 0 && slideNumber != 1) {
-                    mySwiper.appendSlide("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
-                    loadingMore = false;
+                    wrapper.append("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>");
                 }
                 if (result.msg == '调用成功' || result.success == true) {
-                    rowData.forEach(function (v, i) {
-                        if (i == 0) {
-                            mySwiper.appendSlide(
-                                '<li onClick = "onClick(' + i + ')" >' +
-                                '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
-                                '</p>' +
-                                '<div class="noticeContent" style="display:block"><pre>' + v.noticeContent + '</pre></div>' +
-                                '</li >'
-                                , 'swiper-slide swiper-slide-visible')
-                        } else {
-                            mySwiper.appendSlide(
-                                '<li onClick = "onClick(' + i + ')" >' +
-                                '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
-                                '</p>' +
-                                '<div class="noticeContent" style="display:none"><pre>' + v.noticeContent + '</pre></div>' +
-                                '</li >'
-                                , 'swiper-slide swiper-slide-visible')
-                        }
+                    if (rowData.length == 0 && slideNumber != 1) {
+                        $('.preloader').text('无更多数据');
+                        // wrapper.append("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
+                        loadFilter = false;
+                    } else {
+                        rowData.forEach(function (v, i) {
+                            if (i == 0) {
+                                wrapper.append(
+                                    '<li onClick = "onClick(' + i + ')" >' +
+                                    '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
+                                    '</p>' +
+                                    '<div class="noticeContent" style="display:block"><pre>' + v.noticeContent + '</pre></div>' +
+                                    '</li >'
+                                )
+                            } else {
+                                wrapper.append(
+                                    '<li onClick = "onClick(' + i + ')" >' +
+                                    '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
+                                    '</p>' +
+                                    '<div class="noticeContent" style="display:none"><pre>' + v.noticeContent + '</pre></div>' +
+                                    '</li >'
+                                )
+                            }
 
-                    })
-
-                    if ($(".swiper").height() - $(".swiper-wrapper").height() <= 0) {
-                        // console.log('触发二次')
-                        // mySwiper.setWrapperTranslate(0,$(".swiper").height() - $(".swiper-wrapper").height(),0)
+                        })
+                        slideNumber++;
+                        loadFilter = true;
                     }
-                    //释放拖动
-                    mySwiper.params.onlyExternal = false;
-                    mySwiper.updateActiveSlide(0);
-                    $('.preloader').removeClass('visible');
-                    //一个小bug 暂未查出原因。
-                    $('.swiper-wrapper').css({ height: $('.swiper-wrapper').height() - 1 });
 
-                    slideNumber++;
                 }
             },
             onError: function (error) {
@@ -272,7 +228,4 @@
     }
 
 </script>
-
-<!-- <script type="text/javascript" src="./js/historyNotify.js"></script> -->
-
 </html>

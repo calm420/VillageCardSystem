@@ -31,7 +31,7 @@ $(function () {
             eventOrder:'index',
             viewRender:function (view) {//动态把数据查出，按照月份动态查询
                 console.log(view.start._i,view.end._i);
-                //getHistoryMoralEducationInfo(view.start._i,view.end._i);
+                getHistoryMoralEducationInfo(view.start._i,view.end._i);
             },
             /*dayClick: function() {
                 alert('a day has been clicked!');
@@ -97,7 +97,7 @@ $(function () {
         var date = WebServiceUtil.formatYMD(scoreData.createTime);
         //总分
         var totalScoreItem={
-            title : "总分 "+scoreData.totalScore,
+            title : "总分： "+scoreData.totalScore,
             index:1,
             start : date,
             className : "event-bar",
@@ -109,49 +109,49 @@ $(function () {
 
         //全校排名
         var schoolOrderItem={
-            title : "全校排名 "+scoreData.schoolRank,
+            title : "全校排名： "+scoreData.schoolRank,
             index:2,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(schoolOrderItem);
 
         //年级排名
         var gradeOrderItem={
-            title : "年级排名 "+scoreData.clazzRank,
+            title : "年级排名： "+scoreData.clazzRank,
             index:3,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(gradeOrderItem);
 
         //礼仪
         var etiquetteItem={
-            title : "礼仪 "+scoreData.politeness,
+            title : "礼仪： "+scoreData.politeness,
             index:4,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(etiquetteItem);
 
         //健康
         var healthyItem={
-            title : "健康 "+scoreData.health,
+            title : "健康： "+scoreData.health,
             index:5,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(healthyItem);
 
