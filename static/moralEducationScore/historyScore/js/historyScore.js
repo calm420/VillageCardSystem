@@ -25,6 +25,7 @@ $(function () {
             allDaySlot:false,
             timeFormat: 'HH:mm',
             locale:'zh-cn',
+            eventOrder:'index',
             viewRender:function (view) {//动态把数据查出，按照月份动态查询
                 console.log(view.start._i,view.end._i);
                 getHistoryMoralEducationInfo(view.start._i,view.end._i);
@@ -79,7 +80,7 @@ $(function () {
         //总分
         var totalScoreItem={
             title : "总分 "+scoreData.totalScore,
-            order:1,
+            index:1,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -91,6 +92,7 @@ $(function () {
         //全校排名
         var schoolOrderItem={
             title : "全校排名 "+scoreData.schoolRank,
+            index:2,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -102,6 +104,7 @@ $(function () {
         //年级排名
         var gradeOrderItem={
             title : "年级排名 "+scoreData.clazzRank,
+            index:3,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -114,6 +117,7 @@ $(function () {
         //礼仪
         var etiquetteItem={
             title : "礼仪 "+scoreData.politeness,
+            index:4,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -126,6 +130,7 @@ $(function () {
         //健康
         var healthyItem={
             title : "健康 "+scoreData.health,
+            index:5,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
