@@ -57,6 +57,7 @@
 }
 #noticeReadMore .editor_image{
   max-width: 100% !important;
+  border: none !important;
 }
 #noticeReadMore  pre{
   white-space: pre-wrap;
