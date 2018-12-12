@@ -13,9 +13,9 @@ $(function () {
             defaultView: 'month',
             height: 'auto',
             header: {
-                left: 'title',
+                left: '',
                 center: '',
-                right: 'today prev,next'
+                right: 'prev,title,next today'
             },
             displayEventTime:true,
             displayEventEnd:true,
@@ -76,7 +76,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666666",
+            backgroundColor : "#fff",
         };
         events.push(totalScoreItem);
 
@@ -87,7 +87,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666666",
+            backgroundColor : "#fff",
         };
         events.push(schoolOrderItem);
 
@@ -98,7 +98,8 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666666",
+            backgroundColor : "#fff",
+            eventTextColor:'#000'
         };
         events.push(gradeOrderItem);
 
@@ -109,7 +110,8 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666666",
+            backgroundColor : "#fff",
+            eventTextColor:'#000'
         };
         events.push(etiquetteItem);
 
@@ -120,7 +122,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666666",
+            backgroundColor : "#fff",
         };
         events.push(healthyItem);
 
