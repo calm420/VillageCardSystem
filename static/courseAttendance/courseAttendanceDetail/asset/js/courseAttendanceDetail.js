@@ -6,6 +6,7 @@ var totalCount=0;
 var totalStudent=new Array();
 $(document).ready(function(){
     init();
+    simpleListener();
 });
 function init(){
     var locationHref = decodeURI(window.location.href);
@@ -19,7 +20,25 @@ function init(){
 
     var skin =getQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
 }
+
+function simpleListener() {
+    simpleMs.msgWsListener = {
+        onError: function (errorMsg) {
+            // Toast.fail(errorMsg)
+        }, onWarn: function (warnMsg) {
+            // Toast.fail(warnMsg)
+        }, onMessage: function (info) {
+            console.log("info",info);
+            if(info.command=="refreshClassCardPage"){
+                goHomePage();
+            }
+        }
+    }
+}
+
 function openTimeInterVal(classTableId){
     //开启定时器获取实到人数
     timer = setInterval(function () {
