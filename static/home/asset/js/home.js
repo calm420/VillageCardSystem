@@ -90,11 +90,13 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
+                if(info.command=="refreshClassCardPage"){
+                    window.location.reload();
+                }
             }
         }
     }

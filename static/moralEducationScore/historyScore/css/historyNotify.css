@@ -1,0 +1,53 @@
+#calendar{
+    color: #2A3350;
+    font-size: .78rem;
+    line-height: initial;
+}
+#calendar .fc-right{
+    height: 1.11rem;
+    padding: 0.44rem 0.92rem;
+}
+#calendar .fc-right>div{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+#calendar .fc-right>div h2{
+    font-size: .78rem;
+    padding: 0 0.58rem;
+}
+#calendar .fc-button{
+    height: 100% !important;
+    padding: 0 .42rem;
+    font-size: .67rem;
+    color: #485D9E;
+}
+#calendar .fc-button .fc-icon{
+    margin: 0;
+    height: .5em;
+    line-height: .5em;
+}
+#calendar .fc-button .fc-icon-left-single-arrow:after ,#calendar .fc-icon-right-single-arrow:after{
+    font-weight: normal;
+    font-size: 100%;
+    top: -7%;
+}
+#calendar .fc-right .fc-prev-button{
+    padding: 0 0.2rem 0 .35rem;
+}
+#calendar .fc-right .fc-next-button{
+    padding: 0 .35rem 0 0.2rem;
+}
+#calendar .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 0;
+}
+#calendar .fc-row th{
+    padding: 0.58rem 0;
+}
+#calendar .fc-row th span
+{
+    line-height: initial;
+}
+#calendar .fc-day-number{
+    color: #A9A9A9;
+}
