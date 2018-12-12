@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div id="skin_default" name="historyNotify">
+    <div id="skin_default" name="historyNotify" style="height: 100%">
         <div id="noticeReadMore" class="home_content">
             <div class="inner_bg">
                 <div class="navBar">
@@ -191,7 +191,7 @@
                                 '<li onClick = "onClick(' + i + ')" >' +
                                 '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
                                 '</p>' +
-                                '<div class="noticeContent" style="display:block">' + v.noticeContent + '</div>' +
+                                '<div class="noticeContent" style="display:block"><pre>' + v.noticeContent + '</pre></div>' +
                                 '</li >'
                                 , 'swiper-slide swiper-slide-visible')
                         } else {
@@ -199,7 +199,7 @@
                                 '<li onClick = "onClick(' + i + ')" >' +
                                 '<p class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
                                 '</p>' +
-                                '<div class="noticeContent" style="display:none">' + v.noticeContent + '</div>' +
+                                '<div class="noticeContent" style="display:none"><pre>' + v.noticeContent + '</pre></div>' +
                                 '</li >'
                                 , 'swiper-slide swiper-slide-visible')
                         }
