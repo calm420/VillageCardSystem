@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var isDebug = false;
+    var isDebug = true;
     // var webserviceUrl = isDebug ? "http://192.168.50.188:7091/" : "https://jiaoxue.maaee.com:9092/";
     var webserviceUrl = isDebug ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
 
@@ -90,11 +90,13 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
+                if(info.command=="refreshClassCardPage"){
+                    window.location.reload();
+                }
             }
         }
     }
