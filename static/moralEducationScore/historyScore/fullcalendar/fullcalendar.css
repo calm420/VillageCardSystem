@@ -346,7 +346,8 @@ temporary rendered events).
 
 .fc-event,
 .fc-event:hover {
-  color: #fff;
+  color: #444E6F;
+  font-size: 0.72rem;
   /* default TEXT color */
   text-decoration: none;
   /* if <a> has an href */ }
@@ -613,7 +614,7 @@ TODO: more distinction between this file and common.css
   color: #666; }
 
 .fc-unthemed td.fc-today {
-  background: #fcf8e3; }
+  background: #ecf0ff; }
 
 .fc-unthemed .fc-disabled-day {
   background: #d7d7d7;

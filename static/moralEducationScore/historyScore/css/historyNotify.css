@@ -2,6 +2,8 @@
     color: #2A3350;
     font-size: .78rem;
     line-height: initial;
+    height: calc(100% - 2.22rem);
+    overflow: hidden;
 }
 #calendar .fc-right{
     height: 1.11rem;
@@ -51,3 +53,21 @@
 #calendar .fc-day-number{
     color: #A9A9A9;
 }
+#calendar .fc-day-grid-event{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#calendar .fc-day-grid-event .fc-content{
+    margin-bottom: .72rem;
+}
+#calendar .fc-row .fc-content-skeleton td, #calendar .fc-row .fc-helper-skeleton td{
+    padding: 0 0.89rem;
+}
+#calendar .fc-view-container{
+    height: calc(100% - 2rem) !important;
+}
+#calendar .fc-view{
+     height: 100% !important;
+    overflow-y: auto;
+ }

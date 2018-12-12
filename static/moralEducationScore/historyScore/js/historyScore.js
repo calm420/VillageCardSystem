@@ -78,7 +78,7 @@ $(function () {
         var date = WebServiceUtil.formatYMD(scoreData.createTime);
         //总分
         var totalScoreItem={
-            title : "总分 "+scoreData.totalScore,
+            title : "总分： "+scoreData.totalScore,
             order:1,
             start : date,
             className : "event-bar",
@@ -90,45 +90,45 @@ $(function () {
 
         //全校排名
         var schoolOrderItem={
-            title : "全校排名 "+scoreData.schoolRank,
+            title : "全校排名： "+scoreData.schoolRank,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(schoolOrderItem);
 
         //年级排名
         var gradeOrderItem={
-            title : "年级排名 "+scoreData.clazzRank,
+            title : "年级排名： "+scoreData.clazzRank,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(gradeOrderItem);
 
         //礼仪
         var etiquetteItem={
-            title : "礼仪 "+scoreData.politeness,
+            title : "礼仪： "+scoreData.politeness,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(etiquetteItem);
 
         //健康
         var healthyItem={
-            title : "健康 "+scoreData.health,
+            title : "健康： "+scoreData.health,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "#fff",
         };
         events.push(healthyItem);
 
