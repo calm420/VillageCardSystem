@@ -3,6 +3,7 @@ $(function () {
     var clazzId = getQueryString("clazzId");
     var roomId = getQueryString("roomId");
     var skin = getQueryString("skin");
+    var events=[];
     document.getElementsByName("historyScore")[0].id=skin;
 
     InitializePage();
@@ -37,8 +38,6 @@ $(function () {
             }*/
         });
         $('#calendar').fullCalendar( 'removeEvents');
-        drawCalendar(null,"2018-12-03");
-        drawCalendar(null,"2018-12-04");
     }
     function getHistoryMoralEducationInfo(startTime,endTime) {
         var param = {
@@ -50,6 +49,16 @@ $(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 console.log(result);
+                if(result.success==true && result.msg=="调用成功"){
+                    $('#calendar').fullCalendar( 'removeEvents');
+                    var response = result.response;
+                    if(response != null && typeof(response)!=undefined){
+                        for(var i=0;i<response.length;i++){
+                            var scoreData = response[i];
+                            drawCalendar(scoreData);
+                        }
+                    }
+                }
             },
             onError: function (error) {
                 // message.error(error);
@@ -63,14 +72,13 @@ $(function () {
      * @param scoreData
      * @param date
      */
-    function drawCalendar(scoreData,date) {
-
-        var events=[];
+    function drawCalendar(scoreData) {
         var isallDay=true;
-        // var date = "2018-12-03";
+        events.splice(0);
+        var date = WebServiceUtil.formatYMD(scoreData.createTime);
         //总分
         var totalScoreItem={
-            title : "总分 "+109,
+            title : "总分 "+scoreData.totalScore,
             order:1,
             start : date,
             className : "event-bar",
@@ -82,7 +90,7 @@ $(function () {
 
         //全校排名
         var schoolOrderItem={
-            title : "全校排名 21",
+            title : "全校排名 "+scoreData.schoolRank,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -93,7 +101,7 @@ $(function () {
 
         //年级排名
         var gradeOrderItem={
-            title : "年级排名 11",
+            title : "年级排名 "+scoreData.clazzRank,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -105,7 +113,7 @@ $(function () {
 
         //礼仪
         var etiquetteItem={
-            title : "礼仪 88",
+            title : "礼仪 "+scoreData.politeness,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
@@ -117,7 +125,7 @@ $(function () {
 
         //健康
         var healthyItem={
-            title : "健康 99",
+            title : "健康 "+scoreData.health,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
