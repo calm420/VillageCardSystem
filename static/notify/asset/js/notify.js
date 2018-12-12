@@ -42,69 +42,6 @@ $(function () {
 
     })
 
-
-    // //创建swiper对象
-    // var mySwiper = new Swiper('.swiper-container', {
-    //     //显示数据的条数
-    //     slidesPerView: 'auto',
-    //     mode: 'vertical',
-    //     //swipe拖动时的即时更新
-    //     watchActiveIndex: true,
-    //     onTouchStart: function () {
-    //         holdPosition = 0;
-    //     },
-    //     //抵抗下拉反弹事件回调
-    //     onResistanceBefore: function (s, pos) {
-    //         holdPosition = '下拉刷新';
-    //     },
-    //     //上拉刷新事件抵抗反弹回调
-    //     onResistanceAfter: function (s, pos) {
-    //         if (pos > 300) {
-    //             holdPosition = '上拉加载更多';
-    //         } else {
-    //             mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height());
-    //         }
-    //     },
-    //     //结束回调
-    //     onTouchEnd: function () {
-    //         // console.log(holdPosition, 'holdPosition');
-    //         // console.log($(window).height(), 'height')
-    //         if (holdPosition == '下拉刷新') {
-    //             // console.log('下拉刷新');
-    //         } else if (holdPosition == '上拉加载更多') {
-    //             if (loadingMore) {
-    //                 if (slideNumber == 2) {
-    //                     $('.swiper-wrapper').css({ transform: 'translate3d(0px, -2150.2px, 0px)' })
-    //                 }
-    //                 console.log('上拉加载');
-    //                 // if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
-    //                 //     console.log('进入');
-    //                 //100为loading高度
-    //                 console.log('回弹')
-    //                 //规避第二页下拉位置偏差问题
-    //                 if (slideNumber == 3) {
-    //                     mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 180);
-    //                 } else {
-    //                     mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 100);
-    //                 }
-    //                 // }
-    //                 //禁止拖动
-    //                 mySwiper.params.onlyExternal = true;
-    //                 //loading显示
-    //                 $('.preloader').addClass('visible');
-    //                 //调用增加数据方法
-    //                 setTimeout(function () {
-    //                     getNotifyInfo(roomId);
-    //                 }, slideNumber == 3 ? 500 : 500)
-    //             }
-
-    //         } else {
-    //             console.log('进入未知空间');
-    //         }
-    //     }
-    // });
-
-
     //监听接受消息
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
