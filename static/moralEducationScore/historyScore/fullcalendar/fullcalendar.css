@@ -890,7 +890,7 @@ NOTE: use percentage font sizes or else old IE chokes
 
 .fc-basic-view .fc-week-number,
 .fc-basic-view .fc-day-number {
-  padding: 2px; }
+  padding-top: .2rem; }
 
 .fc-basic-view th.fc-week-number,
 .fc-basic-view th.fc-day-number {

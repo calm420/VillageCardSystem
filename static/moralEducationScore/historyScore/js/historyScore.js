@@ -100,10 +100,10 @@ $(function () {
             title : "总分： "+scoreData.totalScore,
             index:1,
             start : date,
-            className : "event-bar",
+            className : "event-bar allScore",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(totalScoreItem);
 
@@ -115,7 +115,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(schoolOrderItem);
 
@@ -127,7 +127,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor :"rgba(0,0,0,0)",
         };
         events.push(gradeOrderItem);
 
@@ -139,7 +139,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(etiquetteItem);
 
@@ -151,7 +151,7 @@ $(function () {
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(healthyItem);
 
