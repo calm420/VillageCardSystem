@@ -7,12 +7,12 @@ $(function () {
     document.getElementsByName("historyScore")[0].id=skin;
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
-
+    simpleListener();
     InitializePage();
 
     //初始化页面元素
     function InitializePage() {
-        simpleListener();
+
         $('#calendar').fullCalendar({
             defaultView: 'month',
             height: 'auto',
@@ -75,12 +75,13 @@ $(function () {
         simpleMs.msgWsListener = {
             onError: function (errorMsg) {
                 // Toast.fail(errorMsg)
+                console.log("errorMsg",errorMsg);
             }, onWarn: function (warnMsg) {
-                // Toast.fail(warnMsg)
+                console.log("warnMsg",warnMsg);
             }, onMessage: function (info) {
                 console.log("info",info);
                 if(info.command=="refreshClassCardPage"){
-                    window.history.back(-1);
+                    goHome();
                 }
             }
         }
@@ -171,14 +172,7 @@ $(function () {
     }
 
     $('#historyGoBack').on('click',function(){
-        console.log('返回首页');
-        var data = {
-            method: 'finish',
-        };
-        Bridge.callHandler(data, null, function (error) {
-            window.history.back(-1);
-        });
-
+        goHome();
     })
 
     /**
@@ -193,6 +187,16 @@ $(function () {
         var minute = _time.getMinutes() < 10 ? "0" + _time.getMinutes() : _time.getMinutes();//分
         // var   second=_time.getSeconds();//秒
         return month + "/" + date + " " + hour + ":" + minute;
+    }
+
+    function goHome() {
+        console.log('返回首页');
+        var data = {
+            method: 'finish',
+        };
+        Bridge.callHandler(data, null, function (error) {
+            window.history.back(-1);
+        });
     }
 
 })

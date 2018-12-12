@@ -7,6 +7,9 @@ $(function(){
     var loadingMore = true;
     var classId = WebServiceUtil.GetQueryString("classId");
     var skin = WebServiceUtil.GetQueryString("skin");
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
     document.getElementsByName("homeworkModuleDiv")[0].id= skin;
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
@@ -106,7 +109,21 @@ $(function(){
         }
     });
 
-
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+                console.log("errorMsg",errorMsg);
+            }, onWarn: function (warnMsg) {
+                console.log("warnMsg",warnMsg);
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
 
 
     function getHomeworkData(){
@@ -172,14 +189,18 @@ $(function(){
     }
 
     $('#historyGoBack').on('click',function(){
+        goHome();
+
+    })
+
+    function goHome() {
         console.log('返回首页');
         var data = {
             method: 'finish',
         };
-
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });
+    }
 
-    })
 })

@@ -4,9 +4,9 @@
 var url = "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount=0;
 var totalStudent=new Array();
+var simpleMs;
 $(document).ready(function(){
     init();
-    simpleListener();
 });
 function init(){
     var locationHref = decodeURI(window.location.href);
@@ -20,8 +20,9 @@ function init(){
 
     var skin =getQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
-    var simpleMs = new SimpleConnection();
+    simpleMs = new SimpleConnection();
     simpleMs.connect();
+    simpleListener();
 }
 
 function simpleListener() {
