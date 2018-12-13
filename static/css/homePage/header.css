@@ -73,3 +73,6 @@
   margin: 1.44rem 0.7rem 0 1.44rem;
   max-width: 13rem;
 }
+img[src=""],img:not([src]){
+  opacity:0;
+}
