@@ -74,7 +74,8 @@ $(document).ready(function () {
                             DemeanorTimer = setInterval(function () {
                                 currentIndex++;
                                 $('#classDemeanor').css({transition: '2s'})
-                                $('#classDemeanor').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});;
+                                $('#classDemeanor').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
+                                ;
                                 setTimeout(function () {
                                     $('#classDemeanor').css({transition: ''});
                                     createDemeanor(DemeanorData);
@@ -145,16 +146,19 @@ $(document).ready(function () {
                 //释放点击
                 btnFilter = true;
                 createDemeanorBack(DemeanorData);
-                DemeanorTimer = setInterval(function(){
+                DemeanorTimer = setInterval(function () {
                     currentIndex++;
-                    $('#classDemeanor').css({transition:'2s'})
-                    console.log($('#classDemeanor').css('transition'),'style');
-                    $('#classDemeanor').css({transform: 'translate(-'+(offsetDemeanor + offsetDemeanor)+'px, 0px'},"slow",function(){alert('123');});;
-                    setTimeout(function(){
-                        $('#classDemeanor').css({transition:''});
+                    $('#classDemeanor').css({transition: '2s'})
+                    console.log($('#classDemeanor').css('transition'), 'style');
+                    $('#classDemeanor').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'}, "slow", function () {
+                        alert('123');
+                    });
+                    ;
+                    setTimeout(function () {
+                        $('#classDemeanor').css({transition: ''});
                         createDemeanor(DemeanorData);
-                    },2000);
-                },5000);
+                    }, 2000);
+                }, 5000);
             }, 2000);
         } else {
             console.log('阻止点击!!!');
@@ -194,7 +198,7 @@ $(document).ready(function () {
             if (image.substr(image.length - 3, 3) == 'mp4') {
                 // console.log(classDemeanor.imagePath,'mp4');
                 // var videoTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><i onClick=videoOnClick('" + classDemeanor.imagePath.split('?')[0] + "')>" + 12312 + "</i><video poster=" + imagePath[1] + " src=" + classDemeanor.imagePath.split('?')[0] + "></video></div>";
-                var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src="+imagePath[1]+"></div></div>";
+                var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src=" + imagePath[1] + "></div></div>";
                 var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
@@ -250,7 +254,7 @@ $(document).ready(function () {
             if (image.substr(image.length - 3, 3) == 'mp4') {
                 // console.log(classDemeanor.imagePath,'mp4');
                 // var videoTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><i onClick=videoOnClick('" + classDemeanor.imagePath.split('?')[0] + "')>" + 12312 + "</i><video poster=" + imagePath[1] + " src=" + classDemeanor.imagePath.split('?')[0] + "></video></div>";
-                var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src="+imagePath[1]+"></div></div>";
+                var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src=" + imagePath[1] + "></div></div>";
                 var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
@@ -285,7 +289,8 @@ $(document).ready(function () {
                 RewardTimer = setInterval(function () {
                     currentIndex_Reward++;
                     $('#classReward').css({transition: '2s'})
-                    $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});;
+                    $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
+                    ;
                     setTimeout(function () {
                         $('#classReward').css({transition: ''});
                         createReward(RewardData);
@@ -314,15 +319,18 @@ $(document).ready(function () {
                 //释放点击
                 btnFilter = true;
                 createRewardBack(RewardData);
-                RewardTimer = setInterval(function(){
+                RewardTimer = setInterval(function () {
                     currentIndex_Reward++;
-                    $('#classReward').css({transition:'2s'})
-                    $('#classReward').css({transform: 'translate(-'+(offsetDemeanor + offsetDemeanor)+'px, 0px'},"slow",function(){alert('123');});;
-                    setTimeout(function(){
-                        $('#classReward').css({transition:''});
+                    $('#classReward').css({transition: '2s'})
+                    $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'}, "slow", function () {
+                        alert('123');
+                    });
+                    ;
+                    setTimeout(function () {
+                        $('#classReward').css({transition: ''});
                         createReward(RewardData);
-                    },2000);
-                },5000);
+                    }, 2000);
+                }, 5000);
             }, 2000);
         } else {
             console.log('阻止点击!!!');
@@ -359,9 +367,9 @@ $(document).ready(function () {
             var image = imagePath[0];
             // classDemeanor.imagePath = imagePath[0];
             if (image.substr(image.length - 3, 3) == 'mp4') {
-                console.log(classDemeanor,'首帧图片');
-                console.log(imagePath[1],'首帧图片');
-                var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src="+imagePath[1]+"></div></div>";
+                console.log(classDemeanor, '首帧图片');
+                console.log(imagePath[1], '首帧图片');
+                var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src=" + imagePath[1] + "></div></div>";
                 // var videoTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><i onClick=videoOnClick('" + classDemeanor.imagePath.split('?')[0] + "')>" + 12312 + "</i><video poster=" + imagePath[1] + " src=" + classDemeanor.imagePath.split('?')[0] + "></video></div>";
                 var currentInner = $("#classReward")[0].innerHTML + imgTag;
                 $("#classReward")[0].innerHTML = currentInner;
@@ -460,9 +468,9 @@ $(document).ready(function () {
             var image = imagePath[0];
             // classDemeanor.imagePath = imagePath[0];
             if (image.substr(image.length - 3, 3) == 'mp4') {
-                console.log(classDemeanor,'首帧图片');
-                console.log(imagePath[1],'首帧图片');
-                var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src="+imagePath[1]+"></div></div>";
+                console.log(classDemeanor, '首帧图片');
+                console.log(imagePath[1], '首帧图片');
+                var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src=" + imagePath[1] + "></div></div>";
                 // var videoTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><i onClick=videoOnClick('" + classDemeanor.imagePath.split('?')[0] + "')>" + 12312 + "</i><video poster=" + imagePath[1] + " src=" + classDemeanor.imagePath.split('?')[0] + "></video></div>";
                 var currentInner = $("#classReward")[0].innerHTML + imgTag;
                 $("#classReward")[0].innerHTML = currentInner;
@@ -507,7 +515,8 @@ $(document).ready(function () {
                             RewardTimer = setInterval(function () {
                                 currentIndex_Reward++;
                                 $('#classReward').css({transition: '2s'})
-                                $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});;
+                                $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
+                                ;
                                 setTimeout(function () {
                                     $('#classReward').css({transition: ''});
                                     createReward(RewardData);
