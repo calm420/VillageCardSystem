@@ -37,6 +37,9 @@
   height: 2.22rem;
   float: left;
 }
+#header .header_weather .header_date3 img[src=""],#header .header_weather .header_date3 img:not([src]){
+  opacity:0;
+}
 #header .header_date2 {
   font-size: 0.56rem;
 }
@@ -72,7 +75,4 @@
   font-weight: bold;
   margin: 1.44rem 0.7rem 0 1.44rem;
   max-width: 13rem;
-}
-img[src=""],img:not([src]){
-  opacity:0;
 }
