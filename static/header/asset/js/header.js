@@ -13,6 +13,7 @@ $(function () {
     }
     viewClassRoom(roomId)
     makeTime();
+    debugger
     if(!!vertical) {
         $('.headTitle').width('70%')
         $('#weather').css('display','none')
