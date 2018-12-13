@@ -125,6 +125,9 @@
   overflow-y: auto;
   position: relative;
 }
+#classCardHomePage .notify_cont .swiper-container{
+  overflow: hidden !important;
+}
 #classCardHomePage .notify_cont li {
   height: 1.94rem;
   line-height: 1.94rem;
