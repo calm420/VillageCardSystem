@@ -89,6 +89,7 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
+                console.log(result,"re")
                 var rowData = result.response;
 
                 var wrapper = $('.swiper-wrapper');
