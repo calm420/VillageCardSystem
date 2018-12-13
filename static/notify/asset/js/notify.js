@@ -95,7 +95,7 @@ $(function () {
                 var wrapper = $('.swiper-wrapper');
                 // 数据为空
                 if (rowData.length == 0 && slideNumber == 1) {
-                    wrapper.append("<div class='emptyPage_content'><div class='empty_center'><div class='emptyPage_icon emptyPage_publicImg'></div><div class='emptyPage_text'>暂无数据</div></div></div>");
+                    wrapper.append("<div class='empty_center'><div class='empty_icon empty_notify'></div><div class='empty_text'>暂无数据</div></div>");
                 }
                 // return;
                 

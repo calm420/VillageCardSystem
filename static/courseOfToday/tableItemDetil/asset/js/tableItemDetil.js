@@ -2,7 +2,11 @@ $(function () {
     var roomId = getQueryString("roomId");
     var skin = getQueryString("skin");
     document.getElementsByName("tableItemDetil")[0].id = skin;
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
     viewCourseTable(roomId)
+    simpleListener();
+
 
     document.querySelector('#goback-home').addEventListener('click', function () {
         var data = {
@@ -30,6 +34,21 @@ $(function () {
                 // message.error(error);
             }
         });
+    }
+
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+            }, onWarn: function (warnMsg) {
+                // Toast.fail(warnMsg)
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
     }
 
     function buileTable(data) {
@@ -63,4 +82,15 @@ $(function () {
         if (r != null) return unescape(r[2]);
         return null;
     }
+
+    function goHome() {
+        console.log('返回首页');
+        var data = {
+            method: 'finish',
+        };
+        Bridge.callHandler(data, null, function (error) {
+            window.history.back(-1);
+        });
+    }
+
 })

@@ -1,0 +1,99 @@
+#calendar{
+    color: #2A3350;
+    font-size: .78rem;
+    line-height: initial;
+    height: calc(100% - 2.22rem);
+    overflow: hidden;
+}
+#calendar .fc-right{
+    height: 1.11rem;
+    padding: 0.44rem 0.92rem;
+}
+#calendar .fc-right>div{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+#calendar .fc-right>div h2{
+    font-size: .78rem;
+    padding: 0 0.58rem;
+}
+#calendar .fc-button{
+    height: 100% !important;
+    font-size: .67rem;
+    color: #485D9E;
+    line-height: 1.6;
+    box-shadow:none;
+    text-shadow:none;
+}
+#calendar .fc-button.fc-state-default,#calendar .fc-state-hover{
+    outline: none;
+    background-color: #F5F5F5;
+    border-color: #BFBFBF;
+    transition:unset;
+    -webkit-transition:unset;
+    background-position: 0 0;
+
+}
+#calendar .fc-button .fc-icon{
+   display: none;
+}
+#calendar .fc-button .fc-icon:after{
+    display: none;
+}
+#calendar .fc-button .fc-icon-left-single-arrow:after ,#calendar .fc-icon-right-single-arrow:after{
+    font-weight: normal;
+    font-size: 100%;
+    top: -7%;
+}
+#calendar .fc-right .fc-prev-button{
+    background: url("../images/icon_arrowLeft.png") no-repeat center center;
+    background-size: 100%;
+    width: 1rem;
+    border: 0;
+}
+#calendar .fc-right .fc-next-button{
+    background:url("../images/icon_arrowRight.png") no-repeat center center;
+    width: 1rem;
+    background-size: 100%;
+    border: 0;
+}
+#calendar .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 0;
+}
+#calendar .fc-row th{
+    padding: 0.58rem 0;
+}
+#calendar .fc-row th span
+{
+    line-height: initial;
+}
+#calendar .fc-day-number{
+    color: #888;
+}
+#calendar .fc-day-grid-event{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#calendar .fc-day-grid-event .fc-content{
+    margin-bottom: .72rem;
+}
+#calendar .fc-row .fc-content-skeleton td, #calendar .fc-row .fc-helper-skeleton td{
+    padding: 0 0.89rem;
+}
+#calendar .fc-view-container{
+    height: calc(100% - 2rem) !important;
+}
+#calendar .fc-view{
+     height: 100% !important;
+    overflow-y: auto;
+ }
+#calendar .event-bar.allScore{
+    font-size: 0.78rem;
+    color: #3672ED;
+    font-weight: bold;
+}
+#calendar .fc-day-grid-container{
+    overflow-y: hidden !important;
+}

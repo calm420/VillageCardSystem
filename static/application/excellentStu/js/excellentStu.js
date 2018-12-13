@@ -1,6 +1,10 @@
 $(function () {
     var article = {};
     article.attacheMents = [];
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
+
     InitializePage();
 
     function formatHM(nS) {
@@ -13,6 +17,22 @@ $(function () {
         var hmStr = hour + minutes;
         return hmStr;
     };
+
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+                console.log("errorMsg",errorMsg);
+            }, onWarn: function (warnMsg) {
+                console.log("warnMsg",warnMsg);
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
 
     function sendMessageTo(data) {
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -120,13 +140,17 @@ $(function () {
 
 
     $('#historyGoBack').on('click', function () {
+        goHome();
+    })
+
+    function goHome() {
+        console.log('返回首页');
         var data = {
             method: 'finish',
         };
-
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });
-    })
+    }
 
 })

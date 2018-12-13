@@ -56,8 +56,10 @@
   overflow-y: auto;
 }
 #noticeReadMore .editor_image{
-  max-width: 100% !important;
+  max-width: 100%;
   border: none !important;
+  display: block;
+  margin: 10px auto;
 }
 #noticeReadMore  pre{
   white-space: pre-wrap;

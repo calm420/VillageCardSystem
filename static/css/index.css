@@ -494,8 +494,10 @@ video::-webkit-media-controls-fullscreen-button {
   line-height: 1.3rem;
 }
 .notify_contModal .editor_image{
-  max-width: 100% !important;
+  max-width: 100%;
   border: none !important;
+  display: block;
+  margin: 10px auto;
 }
 /*首页通知end*/
 /* 公共空页面图start */

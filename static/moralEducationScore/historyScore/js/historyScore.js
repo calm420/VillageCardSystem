@@ -5,11 +5,14 @@ $(function () {
     var skin = getQueryString("skin");
     var events=[];
     document.getElementsByName("historyScore")[0].id=skin;
-
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
     InitializePage();
 
     //初始化页面元素
     function InitializePage() {
+
         $('#calendar').fullCalendar({
             defaultView: 'month',
             height: 'auto',
@@ -68,6 +71,22 @@ $(function () {
         });
     }
 
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+                console.log("errorMsg",errorMsg);
+            }, onWarn: function (warnMsg) {
+                console.log("warnMsg",warnMsg);
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
+
     /**
      * 绘制日期中的数据
      * @param scoreData
@@ -79,61 +98,61 @@ $(function () {
         var date = WebServiceUtil.formatYMD(scoreData.createTime);
         //总分
         var totalScoreItem={
-            title : "总分 "+scoreData.totalScore,
+            title : "总分： "+scoreData.totalScore,
             index:1,
             start : date,
-            className : "event-bar",
+            className : "event-bar allScore",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#fff",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(totalScoreItem);
 
         //全校排名
         var schoolOrderItem={
-            title : "全校排名 "+scoreData.schoolRank,
+            title : "全校排名： "+scoreData.schoolRank,
             index:2,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(schoolOrderItem);
 
         //年级排名
         var gradeOrderItem={
-            title : "年级排名 "+scoreData.clazzRank,
+            title : "年级排名： "+scoreData.clazzRank,
             index:3,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor :"rgba(0,0,0,0)",
         };
         events.push(gradeOrderItem);
 
         //礼仪
         var etiquetteItem={
-            title : "礼仪 "+scoreData.politeness,
+            title : "礼仪： "+scoreData.politeness,
             index:4,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(etiquetteItem);
 
         //健康
         var healthyItem={
-            title : "健康 "+scoreData.health,
+            title : "健康： "+scoreData.health,
             index:5,
             start : date,
             className : "event-bar",
             allDay :  isallDay,
             end : date,
-            backgroundColor : "#666",
+            backgroundColor : "rgba(0,0,0,0)",
         };
         events.push(healthyItem);
 
@@ -153,14 +172,7 @@ $(function () {
     }
 
     $('#historyGoBack').on('click',function(){
-        console.log('返回首页');
-        var data = {
-            method: 'finish',
-        };
-        Bridge.callHandler(data, null, function (error) {
-            window.history.back(-1);
-        });
-
+        goHome();
     })
 
     /**
@@ -175,6 +187,16 @@ $(function () {
         var minute = _time.getMinutes() < 10 ? "0" + _time.getMinutes() : _time.getMinutes();//分
         // var   second=_time.getSeconds();//秒
         return month + "/" + date + " " + hour + ":" + minute;
+    }
+
+    function goHome() {
+        console.log('返回首页');
+        var data = {
+            method: 'finish',
+        };
+        Bridge.callHandler(data, null, function (error) {
+            window.history.back(-1);
+        });
     }
 
 })
