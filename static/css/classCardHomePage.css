@@ -47,6 +47,7 @@
   background: #fff;
   border-radius: 6px;
   color: #2a3350;
+  height: 100%;
 }
 #classCardHomePage .home_cardCont {
   padding: 0.83rem;
@@ -123,6 +124,9 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+}
+#classCardHomePage .notify_cont .swiper-container{
+  overflow: hidden !important;
 }
 #classCardHomePage .notify_cont li {
   height: 1.94rem;
@@ -258,6 +262,13 @@
   width: 1.75rem;
   height: 1.75rem;
   background: url("../images/i-excellentStu.png");
+  display: inline-block;
+  background-size: 100% 100%;
+}
+#classCardHomePage .app_list_img .i-adminManage {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: url("../images/icon_admin.png");
   display: inline-block;
   background-size: 100% 100%;
 }

@@ -4,6 +4,7 @@
 var url = "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount=0;
 var totalStudent=new Array();
+var simpleMs;
 $(document).ready(function(){
     init();
 });
@@ -19,7 +20,26 @@ function init(){
 
     var skin =getQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
+    simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
 }
+
+function simpleListener() {
+    simpleMs.msgWsListener = {
+        onError: function (errorMsg) {
+            // Toast.fail(errorMsg)
+        }, onWarn: function (warnMsg) {
+            // Toast.fail(warnMsg)
+        }, onMessage: function (info) {
+            console.log("info",info);
+            if(info.command=="refreshClassCardPage"){
+                goHomePage();
+            }
+        }
+    }
+}
+
 function openTimeInterVal(classTableId){
     //开启定时器获取实到人数
     timer = setInterval(function () {
@@ -51,8 +71,8 @@ function getBraceletAttend(classTableId){
     }, "json");
 }
 function getBraceletAttendHandle(response){
-    // $("#imageTip"+4004).show();
-    // $("#signTip"+4004).remove();
+    // $("#imageTip"+157775).show();
+    // $("#signTip"+157775).remove();
     $("#attendCount").text(response.length);
     $("#noAttendCount").text(totalCount-response.length);
     if(response==null||response.length==0){
@@ -95,6 +115,9 @@ function getStudentByCourseTableItemHandle(response,classTableId){
         template.find(".signIcon").attr("id", "signTip"+user.colUid);
         $("#student_list_container").append(template.html());
         totalStudent.push(user.colUid);
+        template.find(".signIcon_green").attr("id", "imageTip"+-1);
+        template.find(".signIcon").attr("id", "signTip"+-1);
+
     }
     totalCount=response.length;
     $("#totalCount").text(response.length);

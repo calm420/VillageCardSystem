@@ -565,7 +565,7 @@ $(function () {
     }
 
     //监听接受消息
-    window.addEventListener('message', (e) => {
+    window.addEventListener('message', function(e)  {
         var res = JSON.parse(e.data);
         if (res.method == 'editor') {
             article = res.article;

@@ -63,11 +63,7 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
-                            var emptyDiv = `
-                                   <div class='empty_center'>
-                                     <div class='empty_icon empty_honor'></div>
-                                     <div class='empty_text'>暂无荣誉</div>
-                                    </div>`;
+                            var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
                             $("#classDemeanor")[0].innerHTML = emptyDiv;
                         } else {
                             currentIndex = -1;
@@ -500,10 +496,7 @@ $(document).ready(function () {
                     var response = result.response;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
-                            var emptyDiv = `<div class='empty_center'>
-                                     <div class='empty_icon empty_honor'></div>
-                                     <div class='empty_text'>暂无班级风采</div>
-                                    </div>`;
+                            var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
                             $("#classReward")[0].innerHTML = emptyDiv;
                         } else {
                             RewardData = [];

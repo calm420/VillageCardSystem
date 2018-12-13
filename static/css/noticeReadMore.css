@@ -50,4 +50,38 @@
   padding-top: 0.5rem;
   line-height: 1.1rem;
   word-wrap: break-word;
+  overflow: hidden;
+}
+#noticeReadMore .swiper-container{
+  overflow-y: auto;
+}
+#noticeReadMore .editor_image{
+  max-width: 100%;
+  border: none !important;
+  display: block;
+  margin: 10px auto;
+}
+#noticeReadMore  pre{
+  white-space: pre-wrap;
+}
+
+.swiper-wrapper{
+  /* transform: translate(0,0)!important; */
+}
+
+.preloader {
+  color: #000;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+  opacity: 1;
+  font-size: 25px;
+  /* background: red; */
+  /*background: rgba(f,f,0,1);*/
+  /*background: #cccccc;*/
+  /*display:none*/
+}
+.swiper-container{
+  overflow: auto;
 }

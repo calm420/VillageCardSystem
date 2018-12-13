@@ -9,10 +9,9 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var isDebug = false;
-
-    var webserviceUrl = isDebug ? "http://192.168.50.163:7091/" : "https://jiaoxue.maaee.com:9092/";
-    // var webserviceUrl = isDebug ? "http://192.168.1.100:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var isDebug = true;
+    // var webserviceUrl = isDebug ? "http://192.168.50.188:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = isDebug ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
 
 
     InitializePage();
@@ -25,6 +24,8 @@ $(document).ready(function () {
         var clazzId = getQueryString("clazzId");
         var roomId = getQueryString("roomId");
         var mac = getQueryString("mac");
+        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+        mac = mac.toLowerCase();
         var schoolId = getQueryString("schoolId");
         var pro = {
             "command": "braceletBoxConnect",
@@ -57,11 +58,11 @@ $(document).ready(function () {
         var schoolId = getQueryString("schoolId");
         ms.msgWsListener = {
             onError: function (errorMsg) {
-                // Toast.fail(errorMsg)
+                console.log("error at msListener:"+errorMsg);
             }, onWarn: function (warnMsg) {
-                // Toast.fail(warnMsg)
+                console.log("warnMsg at msListener:"+warnMsg);
             }, onMessage: function (info) {
-                console.log(info,"info")
+                console.log("info at msListener",info);
                 if(info.command == "braceletBoxConnect"){
                     if(info.data.playPushVideoStatus != undefined) {
                         var videoData = JSON.parse(info.data.playPushVideoStatus);
@@ -89,11 +90,13 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
+                if(info.command=="refreshClassCardPage"){
+                    window.location.reload();
+                }
             }
         }
     }

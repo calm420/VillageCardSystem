@@ -1,7 +1,9 @@
 $(function () {
     var schoolId = getQueryString("schoolId");
     var clazzId = getQueryString("clazzId");
-    var font = getQueryString('font')
+    var roomId = getQueryString("roomId");
+    var font = getQueryString('font');
+    var skin;
     $('html').css('font-size', font)
     InitializePage();
 
@@ -21,7 +23,7 @@ $(function () {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
-                var skin = commandInfo.data.skinName;
+                skin = commandInfo.data.skinName;
                 document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
@@ -44,12 +46,7 @@ $(function () {
                 console.log(result, "result");
                 if (result.msg == '调用成功' || result.success == true) {
                     if (result.response == null) {
-                        $(".mEScoreInfo").replaceWith(`<div class="mEScoreInfo home_cardCont">
-                        <div class="empty_center">
-                            <div class="empty_icon empty_moralEducationScore"></div>
-                            <div class="empty_text">暂无通知</div>
-                        </div>
-                    </div>`)
+                        $(".mEScoreInfo").replaceWith('<div class="mEScoreInfo home_cardCont"><div class="empty_center"><div class="empty_icon empty_moralEducationScore"></div><div class="empty_text">暂无评分</div></div></div>');
                     } else {
                         $(".schoolScore").html(result.response.schoolRank)
                         $(".gradeScore").html(result.response.clazzRank)
@@ -75,5 +72,13 @@ $(function () {
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+
+    $('#seeMoreHistory').on('click', function () {
+        var data = {
+            method: 'openNewPage',
+            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin,
+        };
+        window.parent.postMessage(JSON.stringify(data), '*');
+    });
 
 })

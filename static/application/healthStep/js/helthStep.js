@@ -5,6 +5,9 @@ $(function(){
     var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin,'skin');
     document.getElementsByName("helthStepDiv")[0].id= skin;
+    var simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
 
     $('#typeTitle').text(type == 'step' ? '步数排行榜' : '卡路里排行榜');
 
@@ -59,12 +62,34 @@ $(function(){
         });
     }
 
+    function simpleListener() {
+        simpleMs.msgWsListener = {
+            onError: function (errorMsg) {
+                // Toast.fail(errorMsg)
+                console.log("errorMsg",errorMsg);
+            }, onWarn: function (warnMsg) {
+                console.log("warnMsg",warnMsg);
+            }, onMessage: function (info) {
+                console.log("info",info);
+                if(info.command=="refreshClassCardPage"){
+                    goHome();
+                }
+            }
+        }
+    }
+
     $('#historyGoBack').on('click',function(){
+        goHome();
+    })
+
+    function goHome() {
+        console.log('返回首页');
         var data = {
             method: 'finish',
         };
         Bridge.callHandler(data, null, function (error) {
             window.history.back(-1);
         });
-    })
+    }
+
 })
