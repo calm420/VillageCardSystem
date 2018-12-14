@@ -7,7 +7,7 @@ var http = require('http');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
-
+//线上启动方式为https,发版前记得修改为false,只有本地调试时需要设置为true
 var isDebug = true;
 
 var argv = minimist(process.argv.slice(2), {

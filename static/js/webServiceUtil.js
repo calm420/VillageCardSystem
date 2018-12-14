@@ -1,5 +1,10 @@
+//请求api的debug设置,做本地调试,调用本地接口时,需要设置为true,否则为false
 WebServiceUtil.isDebug = false;
+//本地调试时,需要设置为true,保证ifream的跳转路径为本地地址
+WebServiceUtil.isDebug_ifream = true;
+//simple消息服务的debug设置,需要调用本地simple消息服务时,需要设置为true,否则为false
 WebServiceUtil.isDebug_simpleScoket = false;
+//message消息服务的debug设置,需要调用本地message消息服务时,需要设置为true,否则为false
 WebServiceUtil.isDebug_messageScoket = false;
 
 var localDomain = "192.168.50.71";   //请求地址

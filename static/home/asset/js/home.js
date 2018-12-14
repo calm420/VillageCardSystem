@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var webserviceUrl = WebServiceUtil.isDebug ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
 
 
     InitializePage();
