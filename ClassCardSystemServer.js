@@ -8,7 +8,7 @@ var https = require('https');
 var fs = require("fs");
 var path = require('path');
 
-var isDebug = true;
+var isDebug = false;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
