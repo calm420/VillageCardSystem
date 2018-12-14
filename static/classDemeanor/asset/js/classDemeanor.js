@@ -203,11 +203,11 @@ $(document).ready(function () {
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 }
@@ -259,11 +259,11 @@ $(document).ready(function () {
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG +'&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG +'&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 }
@@ -375,11 +375,11 @@ $(document).ready(function () {
                 $("#classReward")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG +'&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG +'&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 }
@@ -476,11 +476,11 @@ $(document).ready(function () {
                 $("#classReward")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 }
