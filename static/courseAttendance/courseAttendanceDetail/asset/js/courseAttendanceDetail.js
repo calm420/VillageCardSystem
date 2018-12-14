@@ -1,7 +1,8 @@
 /**
  * 本节考勤
  */
-var url = "https://www.maaee.com/Excoord_For_Education/webservice";
+// var url = "https://www.maaee.com/Excoord_For_Education/webservice";
+var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
 var totalCount=0;
 var totalStudent=new Array();
 var simpleMs;

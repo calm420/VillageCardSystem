@@ -9,7 +9,7 @@ $(document).ready(function () {
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://localhost:7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://192.168.43.169:7091/" : "https://jiaoxue.maaee.com:9092/";
 
 
     InitializePage();
@@ -30,7 +30,7 @@ $(document).ready(function () {
             "data": {
                 "type": "web",
                 "machine": mac,
-                "version": '1.0',
+                "version": '1.1',
                 "webDevice": WebServiceUtil.createUUID()
             }
         };
