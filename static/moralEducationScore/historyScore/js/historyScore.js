@@ -132,9 +132,9 @@ $(function () {
         };
         events.push(gradeOrderItem);
 
-        //礼仪
+        //礼貌
         var etiquetteItem={
-            title : "礼仪： "+scoreData.politeness,
+            title : "礼貌： "+scoreData.politeness,
             index:4,
             start : date,
             className : "event-bar",
@@ -144,9 +144,9 @@ $(function () {
         };
         events.push(etiquetteItem);
 
-        //健康
+        //卫生
         var healthyItem={
-            title : "健康： "+scoreData.health,
+            title : "卫生： "+scoreData.health,
             index:5,
             start : date,
             className : "event-bar",
