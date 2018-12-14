@@ -12,48 +12,50 @@
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
     <style>
         .preloader {
-                color: #000;
-                text-align: center;
-                line-height: 50px;
-                height: 50px;
-                width: 100%;
-                opacity: 1;
-                font-size: 25px;
-                }
-                .swiper-container{
-                overflow: auto;
-                }
-        </style>
+            color: #000;
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+            width: 100%;
+            opacity: 1;
+            font-size: 25px;
+        }
+
+        .swiper-container {
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="skin_default" class="no_bg" name="notifyDiv">
-        <div id="classCardHomePage" class="home_card">
-            <h3 id="notifySeeMore" class="home_title">
-                <span>通知</span>
-                <span class="home_titleMore">历史通知<i class="titleMore"></i></span>
-            </h3>
-            <!--分页-->
-            <div class="swiper notify_cont">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <!--填充数据 -->
-                    </div>
-                    <div class="preloader" style="display:none"> 上拉加载数据 </div>
+<div id="skin_default" class="no_bg" name="notifyDiv">
+    <div id="classCardHomePage" class="home_card">
+        <h3 id="notifySeeMore" class="home_title">
+            <span>通知</span>
+            <span class="home_titleMore">历史通知<i class="titleMore"></i></span>
+        </h3>
+        <!--分页-->
+        <div class="swiper notify_cont">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!--填充数据 -->
                 </div>
+                <div class="preloader" style="display:none"> 上拉加载数据</div>
             </div>
         </div>
     </div>
-    </div>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../js/webServiceUtil.js"></script>
-    <script type="text/javascript" src="./asset/js/notify.js"></script>
-    <script type="text/javascript">
-        function getContent(title, content) {
-            var data = { "method": 'notifyContentShow', "notifyTitle": title, "notifyContent": content };
-            window.parent.postMessage(JSON.stringify(data), '*');
-        }
-    </script>
+</div>
+</div>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/webServiceUtil.js"></script>
+<script type="text/javascript" src="./asset/js/notify.js"></script>
+<script type="text/javascript">
+    function getContent(obj) {
+        var data = {"method": 'notifyContentShow', "notifyTitle": obj.noticeTitle, "notifyContent": obj.noticeContent};
+        console.log(data);
+        window.parent.postMessage(JSON.stringify(data), '*');
+    }
+</script>
 </body>
 
 </html>
