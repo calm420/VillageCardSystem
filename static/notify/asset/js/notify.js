@@ -30,6 +30,7 @@ $(function () {
             // $('.swiper-container').css({transform: 'translate(0,-100px)'});
             if (loadFilter) {
                 loadFilter = false;
+                $(".preloader").show();
                 $('.preloader').text('正在加载...');
                 setTimeout(function () {
                     getNotifyInfo(roomId);
@@ -102,6 +103,7 @@ $(function () {
 
                 if (result.msg == '调用成功' || result.success == true) {
                     if (rowData.length == 0 && slideNumber != 1) {
+                        $(".preloader").show();
                         $('.preloader').text('无更多数据');
                         // wrapper.append("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
                         loadFilter = false;
@@ -109,7 +111,7 @@ $(function () {
                         rowData.forEach(function (v, i) {
                             var title = v.noticeTitle;
                             var content = v.noticeContent;
-                            content = content.replace(/\"/g, " ");
+                            content = content.replace(/\"/g, "");
                             wrapper.append(
                                 '<div>' +
                                 '                                    <li>' +

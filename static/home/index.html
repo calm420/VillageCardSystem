@@ -145,8 +145,11 @@
     //通知弹框
     function getNotifyData(notifyTitle, notifyContent) {
         document.getElementById('notifyMask').style.display = 'block';
+        notifyContent = '<div class="previewEditArea" contenteditable="false" style="line-height: 1.6; border: 1px solid rgb(255, 255, 255);">111</div><img class="editor_image" src="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" cover="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" style="border: 1px solid rgb(255, 255, 255);">'
         $(".notifyTitle").html(notifyTitle)
         $(".notifyContent").html(notifyContent)
+        console.log(notifyTitle)
+        console.log(notifyContent)
     }
     //通知关闭
     function closeNotifyMask() {
