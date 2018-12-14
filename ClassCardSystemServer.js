@@ -3,16 +3,16 @@ var cookieParser = require('cookie-parser')
 var express = require('express');
 var session = require('express-session')
 var minimist = require('minimist');
-var debug = false;
 var http = require('http');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
 
+var isDebug = true;
+
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: debug ? "http://localhost:7091" : 'https://jiaoxue.maaee.com:9092'
-        // as_uri: debug ? "http://192.168.50.72:7091" : 'https://jiaoxue.maaee.com:9092'
+        as_uri: isDebug ? "http://localhost:7091" : 'https://jiaoxue.maaee.com:9092'
     }
 });
 
@@ -34,7 +34,7 @@ app.use(sessionHandler);
 
 var asUrl = url.parse(argv.as_uri);
 var port = asUrl.port;
-if (debug) {
+if (isDebug) {
     http.createServer(app).listen(port, function () {
         console.log('Open ' + url.format(asUrl));
     });

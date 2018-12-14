@@ -1,10 +1,8 @@
-var isDebug = false;
-
 function SimpleConnection() {
     this.msgWsListener = null;
     this.REMOTE_URL = "wss://www.maaee.com:7891/Excoord_SimpleWsServer/simple";
     this.LOCAL_URL = "ws://192.168.50.15:8891/Excoord_SimpleWsServer/simple";
-    this.WS_URL = isDebug ? this.LOCAL_URL : this.REMOTE_URL;
+    this.WS_URL = WebServiceUtil.isDebug_simpleScoket ? this.LOCAL_URL : this.REMOTE_URL;
     this.ws = null;
     this.PING_COMMAND = "ping_0123456789_abcdefg";
     this.PONG_COMMAND = "pong_0123456789_abcdefg";

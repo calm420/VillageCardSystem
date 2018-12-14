@@ -1,77 +1,26 @@
-var isDebug = false;
+WebServiceUtil.isDebug = false;
+WebServiceUtil.isDebug_simpleScoket = false;
+WebServiceUtil.isDebug_messageScoket = false;
+
 var localDomain = "192.168.50.71";   //请求地址
-
-var isDebugLocal = false;
-var localUrl = "192.168.50.15";    //跳转地址http:
-
-var isDebugAr = false;
-var localDomainAr = "192.168.50.15";   //AR请求地址
-
-var isDebugYou = false;
-var localDomainYou = "192.168.50.15"
-
-//小蚂蚁AR webService地址
-const apiWebServiceURLOfLocalsAr = "https://" + localDomainAr + "/easyArRecWebservice";
-const apiWebServiceURLOfRemoteAr = "https://www.maaee.com/easyArRecWebservice";
-var apiWebServiceURLAr = isDebugAr ? apiWebServiceURLOfLocalsAr : apiWebServiceURLOfRemoteAr;
-
-//有样  webService地址
-const apiWebServiceURLOfLocalsY = "http://" + localDomainYou + ":6012/Excoord_LittleVideoApiServer/webservice";
-const apiWebServiceURLOfRemoteY = "http://www.maaee.com:6012/Excoord_LittleVideoApiServer/webservice";
-var youYangWebServiceURL = isDebugYou ? apiWebServiceURLOfLocalsY : apiWebServiceURLOfRemoteY;
 
 //小蚂蚁webService地址
 const apiWebServiceURLOfLocals = "http://" + localDomain + ":9006/Excoord_ApiServer/webservice";
 const apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";
-var apiWebServiceURL = isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
-
-//小蚂蚁mobile地址
-const mobileURLOfLocal = "http://" + localUrl + ":8091/#/";
-const mobileURLOfRemote = "http://jiaoxue.maaee.com:8091/#/";
+var apiWebServiceURL = WebServiceUtil.isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
 
 WebServiceUtil.SMALL_IMG = 'size=100x100';
 WebServiceUtil.MIDDLE_IMG = 'size=300x300';
 WebServiceUtil.LARGE_IMG = 'size=500x500';
 
-
 function WebServiceUtil() {
 
 };
 
-WebServiceUtil.mobileServiceURL = isDebugLocal ? mobileURLOfLocal : mobileURLOfRemote;
-
 WebServiceUtil.requestLittleAntApi = function (flag, data, listener) {
     $.ajax({
         type: "post",
-        url: flag ? apiWebServiceURL : apiWebServiceURLAr,
-        data: {params: data},
-        dataType: "json",
-        success: function (result) {
-            listener.onResponse(result);
-        }, error: function (error) {
-            listener.onError(error);
-        }
-    });
-}
-
-WebServiceUtil.ApiYouYang = function (data, listener) {
-    $.ajax({
-        type: "post",
-        url: youYangWebServiceURL,
-        data: {params: data},
-        dataType: "json",
-        success: function (result) {
-            listener.onResponse(result);
-        }, error: function (error) {
-            listener.onError(error);
-        }
-    });
-}
-
-WebServiceUtil.requestLittleAntApiAR = function (data, listener) {
-    $.ajax({
-        type: "post",
-        url: apiWebServiceURLAr,
+        url: apiWebServiceURL,
         data: {params: data},
         dataType: "json",
         success: function (result) {
