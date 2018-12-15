@@ -36,12 +36,13 @@ $(function(){
                             "                    </div>")
                     }else{
                         for(var k in res){
+                            console.log(res[k],"k")
                             var className = k == 0 ?'firstClass' : k == 1 ? 'secondClass' : k == 2 ? 'thirdClass' : 'otherClass';
                             var dataForm = type == 'step' ? res[k].sportStep : res[k].calorie.toFixed(2);
                             var dataType = type == 'step' ? '步' : '卡路里';
                             html += "<div class=\"photoItem\">\n" +
                                 "                                <div class=\"imgDiv\">\n" +
-                                "                                <img class=\"noomImg\" src="+res[k].users.avatar+" alt=\"\"/>\n" +
+                                "                                <img class=\"noomImg\" onerror=src=\"http://www.maaee.com:80/Excoord_For_Education/userPhoto/default_avatar.png\" src="+res[k].users.avatar+" alt=\"\"/>\n" +
                                 "                                <div\n" +
                                 "                            class="+className+" ></div>\n" +
                                 "                            <div class=\"border_img\"></div>\n" +
