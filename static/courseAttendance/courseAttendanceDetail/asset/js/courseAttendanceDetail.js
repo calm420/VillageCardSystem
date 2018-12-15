@@ -1,9 +1,11 @@
 /**
  * 本节考勤
  */
-var url = "https://www.maaee.com/Excoord_For_Education/webservice";
+// var url = "https://www.maaee.com/Excoord_For_Education/webservice";
+var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
 var totalCount=0;
 var totalStudent=new Array();
+var simpleMs;
 $(document).ready(function(){
     init();
 });
@@ -19,7 +21,26 @@ function init(){
 
     var skin =getQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
+    simpleMs = new SimpleConnection();
+    simpleMs.connect();
+    simpleListener();
 }
+
+function simpleListener() {
+    simpleMs.msgWsListener = {
+        onError: function (errorMsg) {
+            // Toast.fail(errorMsg)
+        }, onWarn: function (warnMsg) {
+            // Toast.fail(warnMsg)
+        }, onMessage: function (info) {
+            console.log("info",info);
+            if(info.command=="refreshClassCardPage"){
+                goHomePage();
+            }
+        }
+    }
+}
+
 function openTimeInterVal(classTableId){
     //开启定时器获取实到人数
     timer = setInterval(function () {

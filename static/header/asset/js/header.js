@@ -8,14 +8,14 @@ $(function () {
     var screenWidth = getQueryString('screenWidth')
     var screenHeight = getQueryString('screenHeight')
     var vertical = getQueryString('vertical')
-    if(!!font) {
+    if (!!font) {
         $('html').css('font-size', font)
     }
     viewClassRoom(roomId)
     makeTime();
-    if(!!vertical) {
+    if (!!vertical) {
         $('.headTitle').width('70%')
-        $('#weather').css('display','none')
+        $('#weather').css('display', 'none')
     }
 
 
@@ -23,12 +23,12 @@ $(function () {
      * 根据IP地址获取adcode
      * 调用查询天气函数
      */
-    try{
+    try {
         $.get('https://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
             abcode = res.adcode
             weatherInfo(res.adcode)
         })
-    } catch (e){
+    } catch (e) {
         console.log(e);
     }
 
@@ -81,6 +81,8 @@ $(function () {
             img.src = "./asset/images/rain_icon.png";
         } else if (data[0].dayweather.indexOf('雪') != -1) {
             img.src = "./asset/images/snow_icon.png";
+        } else if (data[0].dayweather.indexOf('霾') != -1) {
+            img.src = "./asset/images/haze_icon.png";
         }
 
         document.querySelector('#weather-img').appendChild(img);
@@ -231,10 +233,10 @@ $(function () {
     //监听接受消息
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
-        if(commandInfo.command == "setSkin"){
+        if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
-                document.getElementsByName("headerDiv")[0].id= skin;
+                document.getElementsByName("headerDiv")[0].id = skin;
             }
         }
     })

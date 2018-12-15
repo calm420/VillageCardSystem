@@ -1,77 +1,31 @@
-var isDebug = false;
-var localDomain = "192.168.50.15";   //请求地址
+//本地调试时,需要设置为true,保证ifream的跳转路径为本地地址,发版时一定要调整为false
+WebServiceUtil.isDebug_ifream = true;
+//请求api的debug设置,做本地调试,调用本地接口时,需要设置为true,否则为false,发版时一定要调整为false
+WebServiceUtil.isDebug = true;
+//simple消息服务的debug设置,需要调用本地simple消息服务时,需要设置为true,否则为false,发版时一定要调整为false
+WebServiceUtil.isDebug_simpleScoket = true;
+//message消息服务的debug设置,需要调用本地message消息服务时,需要设置为true,否则为false,发版时一定要调整为false
+WebServiceUtil.isDebug_messageScoket = true;
 
-var isDebugLocal = false;
-var localUrl = "192.168.50.15";    //跳转地址http:
-
-var isDebugAr = false;
-var localDomainAr = "192.168.50.15";   //AR请求地址
-
-var isDebugYou = false;
-var localDomainYou = "192.168.50.15"
-
-//小蚂蚁AR webService地址
-const apiWebServiceURLOfLocalsAr = "https://" + localDomainAr + "/easyArRecWebservice";
-const apiWebServiceURLOfRemoteAr = "https://www.maaee.com/easyArRecWebservice";
-var apiWebServiceURLAr = isDebugAr ? apiWebServiceURLOfLocalsAr : apiWebServiceURLOfRemoteAr;
-
-//有样  webService地址
-const apiWebServiceURLOfLocalsY = "http://" + localDomainYou + ":6012/Excoord_LittleVideoApiServer/webservice";
-const apiWebServiceURLOfRemoteY = "http://www.maaee.com:6012/Excoord_LittleVideoApiServer/webservice";
-var youYangWebServiceURL = isDebugYou ? apiWebServiceURLOfLocalsY : apiWebServiceURLOfRemoteY;
+var localDomain = "192.168.43.210";   //请求地址
 
 //小蚂蚁webService地址
 const apiWebServiceURLOfLocals = "http://" + localDomain + ":9006/Excoord_ApiServer/webservice";
 const apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";
-var apiWebServiceURL = isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
-
-//小蚂蚁mobile地址
-const mobileURLOfLocal = "http://" + localUrl + ":8091/#/";
-const mobileURLOfRemote = "http://jiaoxue.maaee.com:8091/#/";
+var apiWebServiceURL = WebServiceUtil.isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
 
 WebServiceUtil.SMALL_IMG = 'size=100x100';
 WebServiceUtil.MIDDLE_IMG = 'size=300x300';
 WebServiceUtil.LARGE_IMG = 'size=500x500';
 
-
 function WebServiceUtil() {
 
 };
 
-WebServiceUtil.mobileServiceURL = isDebugLocal ? mobileURLOfLocal : mobileURLOfRemote;
-
 WebServiceUtil.requestLittleAntApi = function (flag, data, listener) {
     $.ajax({
         type: "post",
-        url: flag ? apiWebServiceURL : apiWebServiceURLAr,
-        data: {params: data},
-        dataType: "json",
-        success: function (result) {
-            listener.onResponse(result);
-        }, error: function (error) {
-            listener.onError(error);
-        }
-    });
-}
-
-WebServiceUtil.ApiYouYang = function (data, listener) {
-    $.ajax({
-        type: "post",
-        url: youYangWebServiceURL,
-        data: {params: data},
-        dataType: "json",
-        success: function (result) {
-            listener.onResponse(result);
-        }, error: function (error) {
-            listener.onError(error);
-        }
-    });
-}
-
-WebServiceUtil.requestLittleAntApiAR = function (data, listener) {
-    $.ajax({
-        type: "post",
-        url: apiWebServiceURLAr,
+        url: apiWebServiceURL,
         data: {params: data},
         dataType: "json",
         success: function (result) {

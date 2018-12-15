@@ -1,7 +1,9 @@
 $(function () {
     var schoolId = getQueryString("schoolId");
     var clazzId = getQueryString("clazzId");
-    var font = getQueryString('font')
+    var roomId = getQueryString("roomId");
+    var font = getQueryString('font');
+    var skin;
     $('html').css('font-size', font)
     InitializePage();
 
@@ -21,7 +23,7 @@ $(function () {
         var commandInfo = JSON.parse(e.data);
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
-                var skin = commandInfo.data.skinName;
+                skin = commandInfo.data.skinName;
                 document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
@@ -70,5 +72,13 @@ $(function () {
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+
+    $('#seeMoreHistory').on('click', function () {
+        var data = {
+            method: 'openNewPage',
+            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin,
+        };
+        window.parent.postMessage(JSON.stringify(data), '*');
+    });
 
 })

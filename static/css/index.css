@@ -486,11 +486,18 @@ video::-webkit-media-controls-fullscreen-button {
   text-align: left;
 }
 .notify_contModal .am-modal-content .am-modal-body .cont {
+  text-align:justify;
   height: 100%;
   padding: 0 2.22rem 0 2.22rem;
   overflow-x: hidden;
   overflow-y: auto;
   line-height: 1.3rem;
+}
+.notify_contModal .editor_image{
+  max-width: 100%;
+  border: none !important;
+  display: block;
+  margin: 10px auto;
 }
 /*首页通知end*/
 /* 公共空页面图start */

@@ -22,7 +22,6 @@
     <script type="text/javascript" src="./asset/js/msg_websocket_connection.js?v=0.0.1"></script>
     <script type="text/javascript" src="../js/simple_websocket_connection.js"></script>
     <script type="text/javascript" src="./asset/js/home.js?v=0.0.3"></script>
-    <script type="text/javascript" src="http://maaee.com/Excoord_For_Education/jwplayer-7.1.4/jwplayer.js"></script>
 
 </head>
 
@@ -145,8 +144,11 @@
     //通知弹框
     function getNotifyData(notifyTitle, notifyContent) {
         document.getElementById('notifyMask').style.display = 'block';
+        // notifyContent = '<div class="previewEditArea" contenteditable="false" style="line-height: 1.6; border: 1px solid rgb(255, 255, 255);">111</div><img class="editor_image" src="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" cover="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" style="border: 1px solid rgb(255, 255, 255);">'
         $(".notifyTitle").html(notifyTitle)
         $(".notifyContent").html(notifyContent)
+        // console.log(notifyTitle)
+        // console.log(notifyContent)
     }
     //通知关闭
     function closeNotifyMask() {

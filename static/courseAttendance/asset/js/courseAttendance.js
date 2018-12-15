@@ -1,8 +1,8 @@
 /**
  * 本节考勤
  */
-var debug = false;
-var url = debug ? "http://192.168.50.15:9006/Excoord_ApiServer/webservice" : "https://www.maaee.com/Excoord_For_Education/webservice";
+var debug = true;
+var url = debug ? "http://192.168.43.210:9006/Excoord_ApiServer/webservice" : "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount = 0;
 var timerFlag = false;
 var skin;
