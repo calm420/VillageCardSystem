@@ -71,7 +71,7 @@ $(document).ready(function () {
                             $("#classDemeanor")[0].innerHTML = emptyDiv;
                         } else {
                             currentIndex = -1;
-                            DemeanorData = [];
+                            DemeanorData.splice(0);
                             clearInterval(DemeanorTimer);
                             DemeanorData = result.response;
                             if (DemeanorData.length > 3) {  //班级风采大于三张
@@ -111,6 +111,75 @@ $(document).ready(function () {
                             //     setTimeout(function () {
                             //         $('#classDemeanor').css({transition: ''});
                             //         createDemeanor(DemeanorData);
+                            //     }, 2000);
+                            // }, 5000);
+                        }
+                    }
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
+    }
+
+
+    function getClassRewardInfo(clazzId) {
+        var param = {
+            "method": 'getClassDemeanorInfo',
+            "clazzId": clazzId,
+            "type": 2
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.success == true && result.msg == "调用成功") {
+                    $("#classReward")[0].innerHTML = "";
+                    var response = result.response;
+                    if (response != null && response != undefined) {
+                        if (response.length === 0) {
+                            var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
+                            $("#classReward")[0].innerHTML = emptyDiv;
+                        } else {
+                            RewardData.splice(0);
+                            currentIndex_Reward = -1;
+                            clearInterval(RewardTimer);
+                            RewardData = result.response;
+                            if (RewardData.length > 3) { //班级荣誉大于三张
+                                $('#RewardBack').show();
+                                $('#RewardGo').show();
+                                createReward(RewardData, RewardData.length);
+                                RewardTimer = setInterval(function () {
+                                    //增加判断条件
+                                    if(RewardData.length > 3){
+                                        currentIndex_Reward++;
+                                        $('#classReward').css({ transition: '2s' })
+                                        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
+                                        setTimeout(function () {
+                                            $('#classReward').css({ transition: '' });
+                                            createReward(RewardData, RewardData.length);
+                                        }, 2000);
+                                    }else{
+                                        clearInterval(RewardTimer);
+                                        return;
+                                    }
+
+                                }, 5000);
+                            } else {
+                                clearInterval(RewardTimer);
+                                currentIndex_Reward = 0;
+                                $('#RewardBack').hide();
+                                $('#RewardGo').hide();
+                                createReward(RewardData, RewardData.length);
+                            }
+                            // createReward(RewardData);
+                            // RewardTimer = setInterval(function () {
+                            //     currentIndex_Reward++;
+                            //     $('#classReward').css({transition: '2s'})
+                            //     $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
+                            //     ;
+                            //     setTimeout(function () {
+                            //         $('#classReward').css({transition: ''});
+                            //         createReward(RewardData);
                             //     }, 2000);
                             // }, 5000);
                         }
@@ -254,7 +323,7 @@ $(document).ready(function () {
 
 
     function createDemeanor(data, length) {
-        var index = index = length > 3 ? 5 : length;
+        var index = length > 3 ? 5 : length;
         var startIndex = currentIndex;
         if (currentIndex > data.length - 1) {
             currentIndex = 0;
@@ -546,72 +615,6 @@ $(document).ready(function () {
         }
     }
 
-    function getClassRewardInfo(clazzId) {
-        var param = {
-            "method": 'getClassDemeanorInfo',
-            "clazzId": clazzId,
-            "type": 2
-        };
-        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
-            onResponse: function (result) {
-                if (result.success == true && result.msg == "调用成功") {
-                    $("#classReward")[0].innerHTML = "";
-                    var response = result.response;
-                    if (response != null && response != undefined) {
-                        if (response.length === 0) {
-                            var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
-                            $("#classReward")[0].innerHTML = emptyDiv;
-                        } else {
-                            RewardData = [];
-                            currentIndex_Reward = -1;
-                            clearInterval(RewardTimer);
-                            RewardData = result.response;
-                            if (RewardData.length > 3) { //班级荣誉大于三张
-                                $('#RewardBack').show();
-                                $('#RewardGo').show();
-                                createReward(RewardData, RewardData.length);
-                                RewardTimer = setInterval(function () {
-                                    currentIndex_Reward++;
-                                    //增加判断条件
-                                    if(RewardData.length > 3){
-                                        $('#classReward').css({ transition: '2s' })
-                                        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
-                                        setTimeout(function () {
-                                            $('#classReward').css({ transition: '' });
-                                            createReward(RewardData, RewardData.length);
-                                        }, 2000);
-                                    }else{
-                                        clearInterval(RewardTimer);
-                                        return;
-                                    }
 
-                                }, 5000);
-                            } else {
-                                clearInterval(RewardTimer);
-                                currentIndex = 0;
-                                $('#RewardBack').hide();
-                                $('#RewardGo').hide();
-                                createReward(RewardData, RewardData.length);
-                            }
-                            // createReward(RewardData);
-                            // RewardTimer = setInterval(function () {
-                            //     currentIndex_Reward++;
-                            //     $('#classReward').css({transition: '2s'})
-                            //     $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
-                            //     ;
-                            //     setTimeout(function () {
-                            //         $('#classReward').css({transition: ''});
-                            //         createReward(RewardData);
-                            //     }, 2000);
-                            // }, 5000);
-                        }
-                    }
-                }
-            },
-            onError: function (error) {
-                // message.error(error);
-            }
-        });
-    }
 
 });
