@@ -9,7 +9,7 @@ WebServiceUtil.isDebug_messageScoket = true;
 
 WebServiceUtil.localDomain = "192.168.43.210";   //请求地址
 
-WebServiceUtil.localDebugUrl = "192.168.43.169";   //本地调试的地址,嵌套ifream页面使用的地址
+WebServiceUtil.localDebugUrl = "192.168.43.210";   //本地调试的地址,嵌套ifream页面使用的地址
 
 
 //小蚂蚁webService地址
