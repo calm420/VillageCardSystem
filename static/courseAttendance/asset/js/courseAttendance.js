@@ -1,8 +1,8 @@
 /**
  * 本节考勤
  */
-var debug = true;
-var url = debug ? "http://192.168.43.210:9006/Excoord_ApiServer/webservice" : "https://www.maaee.com/Excoord_For_Education/webservice";
+// var debug = true;
+// var url = debug ? "http://192.168.43.210:9006/Excoord_ApiServer/webservice" : "https://www.maaee.com/Excoord_For_Education/webservice";
 var totalCount = 0;
 var timerFlag = false;
 var skin;
@@ -101,20 +101,23 @@ function getBraceletAttend(classTableId) {
         "method": 'getBraceletAttend',
         "cid": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (result.success == true) {
-            var response = result.response;
-            if (response != null) {
-                $("#attendCount").text(response.length);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.success == true) {
+                var response = result.response;
+                if (response != null) {
+                    $("#attendCount").text(response.length);
+                } else {
+                    $("#attendCount").text(0);
+                }
             } else {
                 $("#attendCount").text(0);
             }
-        } else {
-            $("#attendCount").text(0);
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
 }
 
 function getStudentByCourseTableItem(classTableId) {
@@ -122,20 +125,23 @@ function getStudentByCourseTableItem(classTableId) {
         "method": 'getStudentByCourseTableItem',
         "id": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (result.success == true) {
-            var response = result.response;
-            if (response != null) {
-                $("#totalCount").text(response.length);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.success == true) {
+                var response = result.response;
+                if (response != null) {
+                    $("#totalCount").text(response.length);
+                } else {
+                    $("#totalCount").text(0);
+                }
             } else {
                 $("#totalCount").text(0);
             }
-        } else {
-            $("#totalCount").text(0);
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
 }
 
 function sendMessageTo(data) {
