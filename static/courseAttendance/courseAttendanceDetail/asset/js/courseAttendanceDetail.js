@@ -2,7 +2,7 @@
  * 本节考勤
  */
 // var url = "https://www.maaee.com/Excoord_For_Education/webservice";
-var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
+// var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
 var totalCount=0;
 var totalStudent=new Array();
 var simpleMs;
@@ -62,14 +62,25 @@ function getBraceletAttend(classTableId){
         "method": 'getBraceletAttend',
         "cid": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (status == "success") {
-            var response=result.response;
-            getBraceletAttendHandle(response);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.response) {
+                var response=result.response;
+                getBraceletAttendHandle(response);
+            }
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
+    // $.post(url, {
+    //     params: JSON.stringify(param)
+    // }, function (result, status) {
+    //     if (status == "success") {
+    //         var response=result.response;
+    //         getBraceletAttendHandle(response);
+    //     }
+    // }, "json");
 }
 function getBraceletAttendHandle(response){
     // $("#imageTip"+157775).show();
@@ -94,14 +105,25 @@ function getStudentByCourseTableItem(classTableId){
         "method": 'getStudentByCourseTableItem',
         "id": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (status == "success") {
-            var response=result.response;
-            getStudentByCourseTableItemHandle(response,classTableId);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.response) {
+                var response=result.response;
+                getStudentByCourseTableItemHandle(response,classTableId);
+            }
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
+    // $.post(url, {
+    //     params: JSON.stringify(param)
+    // }, function (result, status) {
+    //     if (status == "success") {
+    //         var response=result.response;
+    //         getStudentByCourseTableItemHandle(response,classTableId);
+    //     }
+    // }, "json");
 }
 function getStudentByCourseTableItemHandle(response,classTableId){
     if(response==null||response.length==0){
