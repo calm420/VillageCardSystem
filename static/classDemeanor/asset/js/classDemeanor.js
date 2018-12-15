@@ -17,6 +17,9 @@ $(document).ready(function () {
     var offsetDemeanor = 0;
     //按钮节流阀
     var btnFilter = true;
+    //
+    var DemeanorFilter = false;
+    var RewardFilter = false;
 
     InitializePage();
 
@@ -27,7 +30,8 @@ $(document).ready(function () {
         var commandInfo = JSON.parse(e.data);
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == commandInfo.data.cid) {
-
+                DemeanorFilter = false;
+                RewardFilter = false;
                 clearInterval(DemeanorTimer);
                 clearInterval(RewardTimer);
                 getClassDemeanorInfo(clazzId);
@@ -88,6 +92,7 @@ $(document).ready(function () {
                                         setTimeout(function () {
                                             $('#classDemeanor').css({ transition: '' });
                                             createDemeanor(DemeanorData, DemeanorData.length);
+                                            DemeanorFilter = true;
                                         }, 2000);
                                     }else{
                                         clearInterval(DemeanorTimer);
@@ -157,6 +162,7 @@ $(document).ready(function () {
                                         setTimeout(function () {
                                             $('#classReward').css({ transition: '' });
                                             createReward(RewardData, RewardData.length);
+                                            RewardFilter = true;
                                         }, 2000);
                                     }else{
                                         clearInterval(RewardTimer);
@@ -215,8 +221,11 @@ $(document).ready(function () {
                     });
                     ;
                     setTimeout(function () {
-                        $('#classDemeanor').css({ transition: '' });
-                        createDemeanor(DemeanorData,DemeanorData.length);
+                        if(DemeanorFilter){
+                            $('#classDemeanor').css({ transition: '' });
+                            createDemeanor(DemeanorData,DemeanorData.length);
+                        }
+
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -254,10 +263,11 @@ $(document).ready(function () {
                     $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
                         // alert('123');
                     });
-                    ;
                     setTimeout(function () {
-                        $('#classDemeanor').css({ transition: '' });
-                        createDemeanor(DemeanorData,DemeanorData.length);
+                        if(DemeanorFilter){
+                            $('#classDemeanor').css({ transition: '' });
+                            createDemeanor(DemeanorData,DemeanorData.length);
+                        }
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -404,8 +414,10 @@ $(document).ready(function () {
                     $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
                     ;
                     setTimeout(function () {
-                        $('#classReward').css({ transition: '' });
-                        createReward(RewardData,RewardData.length);
+                        if(RewardFilter){
+                            $('#classReward').css({ transition: '' });
+                            createReward(RewardData,RewardData.length);
+                        }
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -439,8 +451,10 @@ $(document).ready(function () {
                     });
                     ;
                     setTimeout(function () {
-                        $('#classReward').css({ transition: '' });
-                        createReward(RewardData,RewardData.length);
+                        if(RewardFilter){
+                            $('#classReward').css({ transition: '' });
+                            createReward(RewardData,RewardData.length);
+                        }
                     }, 2000);
                 }, 5000);
             }, 2000);
