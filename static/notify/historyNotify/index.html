@@ -41,14 +41,10 @@
 </body>
 <script type="text/javascript">
 
-    //拖动偏移量
-    var holdPosition = 0;
-    //截流阀
     var loadFilter = true;
-    // var holdPosition =
     //页码
     var slideNumber = 1;
-    var skin = getQueryString("skin");
+    var skin = WebServiceUtil.GetQueryString("skin");
     var roomId;
     document.getElementsByName("historyNotify")[0].id = skin;
     var simpleMs = new SimpleConnection();
@@ -60,14 +56,9 @@
 
     $('.swiper-container').on('scroll', function (e) {
         var container = document.getElementsByClassName('swiper-container')[0];
-        // console.log(container);
         var scorllTop = container.scrollTop;
         var maxScroll = container.scrollHeight - container.offsetHeight;
-        // console.log(scorllTop,'scrollTop');
-        // console.log(maxScroll,'maxScroll');
         if (scorllTop >= maxScroll) {
-            // console.log('开始上拉');
-            // $('.swiper-container').css({transform: 'translate(0,-100px)'});
             if (loadFilter) {
                 loadFilter = false;
                 $('.preloader').text('正在加载...');
@@ -79,8 +70,6 @@
         }
 
     })
-
-
 
     function simpleListener() {
         simpleMs.msgWsListener = {
@@ -96,7 +85,6 @@
             }
         }
     }
-
 
     /**
    * li元素的点击事件
@@ -118,8 +106,6 @@
                 display: 'block'
             })
         }
-
-
     }
 
     /**
@@ -136,10 +122,9 @@
         return month + "/" + date + " " + hour + ":" + minute;
     }
 
-
     //初始化页面元素
     function InitializePage() {
-        roomId = getQueryString("roomId");
+        roomId = WebServiceUtil.GetQueryString("roomId");
         getNotifyInfo(roomId);
         simpleListener();
     }
@@ -199,18 +184,6 @@
                 $('body').html("查询出错:" + JSON.stringify(responseStr))
             }
         });
-    }
-
-    /**
-   * 获取地址栏参数
-   * @param name
-   * @returns {null}
-   * @constructor
-   */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
     }
 
     $('#historyGoBack').on('click', function () {

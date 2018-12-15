@@ -14,12 +14,10 @@ function init(){
     var locationSearch = locationHref.substr(locationHref.indexOf("?") + 1);
     var searchArray = locationSearch.split("&");
     var classTableId = searchArray[0].split('=')[1];
-
-   // var defaultId = searchArray[1].split('=')[1];
     getStudentByCourseTableItem(classTableId);
     openTimeInterVal(classTableId);
 
-    var skin =getQueryString("skin");
+    var skin =WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
     simpleMs = new SimpleConnection();
     simpleMs.connect();
@@ -148,14 +146,6 @@ function getStudentByCourseTableItemHandle(response,classTableId){
 }
 function sendMessageTo(data) {
     window.parent.postMessage(JSON.stringify(data), '*');
-}
-function getQueryString(name){
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null) {
-        return unescape(r[2]);
-    }
-    return null;
 }
 //监听接受消息
 window.addEventListener('message', function (e) {

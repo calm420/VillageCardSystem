@@ -1,9 +1,6 @@
 /**
  * 本节考勤
  */
-// var debug = true;
-// var url = debug ? "http://192.168.43.210:9006/Excoord_ApiServer/webservice" : "https://www.maaee.com/Excoord_For_Education/webservice";
-var totalCount = 0;
 var timerFlag = false;
 var skin;
 var timer;
@@ -13,27 +10,20 @@ $(document).ready(function () {
 });
 
 function init() {
-    //getStudentByCourseTableItem(35)
     $("#classTableA").hide();
     $("#classTableB").show();
-    var font = getQueryString('font')
+    var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     unbindGotoAttendDetail();
-   // gotoAttendDetail(1);
 }
 
-// function gotoAttendDetail() {
-//     parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId=35";
-// }
 function gotoAttendDetail(classTableId) {
     $('#gotoAttendDetail').unbind("click");
     $('#gotoAttendDetail').click(function () {
-        //parent.location.href="http://localhost:7091/courseAttendanceDetail/?classTableId="+classTableId;
         var data = {
             method: 'openNewPage',
             url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin,
         };
-
         window.parent.postMessage(JSON.stringify(data), '*');
     })
 }
@@ -46,8 +36,8 @@ function unbindGotoAttendDetail() {
 }
 
 function checkCourseOpenHandle(data) {
-    var roomId = getQueryString("roomId");
-    var schoolId = getQueryString("schoolId");
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
     if (data.command == 'brand_class_open') {
         var classTableId = data.data.classTableId;
         //获取应到人数
@@ -154,12 +144,3 @@ window.addEventListener('message', function (e) {
     var res = JSON.parse(e.data);
     checkCourseOpenHandle(res);
 })
-
-function getQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) {
-        return unescape(r[2]);
-    }
-    return null;
-}

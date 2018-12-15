@@ -2,12 +2,10 @@ $(function () {
     var abcode = null;
     var timer = null;
     var timeOffset = null;
-    var roomId = getQueryString("roomId");
-    var schoolId = getQueryString("schoolId");
-    var font = getQueryString("font");
-    var screenWidth = getQueryString('screenWidth')
-    var screenHeight = getQueryString('screenHeight')
-    var vertical = getQueryString('vertical')
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var font = WebServiceUtil.GetQueryString("font");
+    var vertical = WebServiceUtil.GetQueryString('vertical')
     if (!!font) {
         $('html').css('font-size', font)
     }
@@ -191,19 +189,6 @@ $(function () {
         timeString = months + dates + weeks;
 
         return timeString;
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
     /**

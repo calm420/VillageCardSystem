@@ -1,30 +1,24 @@
 
 
 $(document).ready(function () {
-    // alert("AAAA");
-    //alert(window.location.href);
-
     var ms = new MsgConnection();
-
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://192.168.1.118:7091/" : "https://jiaoxue.maaee.com:9092/";
-
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://"+WebServiceUtil.localDebugUrl+":7091/" : "https://jiaoxue.maaee.com:9092/";
 
     InitializePage();
-
 
     //初始化页面元素
     function InitializePage() {
         // clazzId=819&roomId=1&mac=14:1f:78:73:1e:c3&schoolId=9
         //获取基本的地址栏参数,标识班牌的学校\班级等信息
-        var clazzId = getQueryString("clazzId");
-        var roomId = getQueryString("roomId");
-        var mac = getQueryString("mac");
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
+        var roomId = WebServiceUtil.GetQueryString("roomId");
+        var mac = WebServiceUtil.GetQueryString("mac");
         //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
         mac = mac.toLowerCase();
-        var schoolId = getQueryString("schoolId");
+        var schoolId = WebServiceUtil.GetQueryString("schoolId");
         var pro = {
             "command": "braceletBoxConnect",
             "data": {
@@ -53,7 +47,7 @@ $(document).ready(function () {
 
 
     function msListener() {
-        var schoolId = getQueryString("schoolId");
+        var schoolId = WebServiceUtil.GetQueryString("schoolId");
         ms.msgWsListener = {
             onError: function (errorMsg) {
                 console.log("error at msListener:"+errorMsg);
@@ -134,14 +128,6 @@ $(document).ready(function () {
                 // message.error(error);
             }
         });
-    }
-
-
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
     window.addEventListener('message', function (e) {

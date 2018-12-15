@@ -40,9 +40,9 @@ $(document).ready(function () {
 
     //初始化页面元素
     function InitializePage() {
-        var clazzId = getQueryString("clazzId");
-        var schoolId = getQueryString("schoolId");
-        var font = getQueryString('font')
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
+        var schoolId = WebServiceUtil.GetQueryString("schoolId");
+        var font = WebServiceUtil.GetQueryString('font')
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
         localStorage.setItem("schoolId", schoolId);
@@ -530,19 +530,6 @@ $(document).ready(function () {
                 // message.error(error);
             }
         });
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
 });

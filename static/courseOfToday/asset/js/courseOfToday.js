@@ -1,7 +1,7 @@
 $(function () {
-    var roomId = getQueryString("roomId");
-    var schoolId = getQueryString("schoolId");
-    var font = getQueryString('font')
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     var skin;
 
@@ -76,18 +76,5 @@ $(function () {
                 // message.error(error);
             }
         });
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 })
