@@ -1,12 +1,11 @@
 $(function () {
-    var roomId = getQueryString("roomId");
-    var skin = getQueryString("skin");
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var skin = WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("tableItemDetil")[0].id = skin;
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
     viewCourseTable(roomId)
     simpleListener();
-
 
     document.querySelector('#goback-home').addEventListener('click', function () {
         var data = {
@@ -17,7 +16,6 @@ $(function () {
             console.log(error);
         });
     })
-
 
     function viewCourseTable(roomId) {
         var param = {
@@ -68,19 +66,6 @@ $(function () {
             tbody += trs
         }
         document.querySelector('tbody').innerHTML = tbody
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
     function goHome() {
