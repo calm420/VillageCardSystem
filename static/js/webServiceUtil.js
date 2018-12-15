@@ -12,7 +12,7 @@ WebServiceUtil.localDebugUrl = "192.168.43.169";   //本地调试的地址,嵌�
 
 //小蚂蚁webService地址
 var apiWebServiceURLOfLocals = "http://" + WebServiceUtil.localDomain + ":9006/Excoord_ApiServer/webservice";
-const apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";
+var apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";
 var apiWebServiceURL = WebServiceUtil.isDebug ? apiWebServiceURLOfLocals : apiWebServiceURLOfRemote;
 
 WebServiceUtil.SMALL_IMG = 'size=100x100';
