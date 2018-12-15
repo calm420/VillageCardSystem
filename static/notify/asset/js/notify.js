@@ -1,5 +1,5 @@
 $(function () {
-    var skin;
+    var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
@@ -58,11 +58,6 @@ $(function () {
         }
     })
 
-
-    //历史通知
-    // notifySeeMore = function () {
-    //     parent.location.href = "http://192.168.50.72:7091/notify/historyNotify/index.html?roomId=1&skin="+skin;
-    // }
     $('#notifySeeMore').on('click', function () {
         var data = {
             method: 'openNewPage',
@@ -70,7 +65,6 @@ $(function () {
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
-
 
     //初始化页面元素
     function InitializePage() {

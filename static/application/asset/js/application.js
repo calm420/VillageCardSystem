@@ -9,7 +9,7 @@ $(function () {
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     classId = WebServiceUtil.GetQueryString("clazzId");
-    var skin = 'skin_middleSchool';
+    var skin  = "skin_default";
 
     /**
      * 时间戳转年月日

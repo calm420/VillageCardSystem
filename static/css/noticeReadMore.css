@@ -1,87 +1,129 @@
 #noticeReadMore .am-list {
-  height: calc(100% - 2.22rem) !important;
+    height: calc(100% - 2.22rem) !important;
 }
+
 #noticeReadMore .am-list-body {
-  border-top: 0;
-  border-bottom: 0 !important;
+    border-top: 0;
+    border-bottom: 0 !important;
 }
 
 #noticeReadMore li {
-  padding: 1.11rem 0.83rem 0.83rem;
-  border-bottom: 1px #e5ebf7 solid;
+    padding: 1.11rem 0.83rem 0.83rem;
+    border-bottom: 1px #e5ebf7 solid;
 }
-#noticeReadMore li .title {
-  font-size: 0.78rem;
-  color: #2a3350;
-  margin: 0;
-  position: relative;
-  padding-left: 0.5rem;
-  font-weight: bold;
-  word-wrap: break-word;
-  font-style: normal;
-}
-#noticeReadMore  li .title::before {
-  content: '';
-  width: 0.2rem;
-  height: 0.2rem;
-  background-color: #7f5dff;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  margin-right: 0.38rem;
+#noticeReadMore #imagePlayerAr {
+  max-width: 90%;
+  max-height: 90%;
+  margin: 0 auto;
   position: absolute;
   top: 50%;
-  left: 0;
-  margin-top: -0.1rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-#noticeReadMore li .title .time {
-  position: absolute;
-  right: 0;
-  top: 0;
-  color: #444e6f;
-  font-size: 0.67rem;
-  font-weight: normal;
-}
-#noticeReadMore li .noticeContent {
-  font-size: 0.72rem;
-  color: #565c72;
-  position: relative;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  line-height: 1.1rem;
-  word-wrap: break-word;
-  overflow: hidden;
-}
-#noticeReadMore .swiper-container{
-  overflow-y: auto;
-}
-#noticeReadMore .editor_image{
-  max-width: 100%;
-  border: none !important;
+#noticeReadMore #videoPlayerMask .close {
   display: block;
-  margin: 10px auto;
-}
-#noticeReadMore  pre{
-  white-space: pre-wrap;
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  background:url("../images/icon_closeVideo.png") no-repeat;
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  font-size: 0;
+  cursor: pointer;
 }
 
-.swiper-wrapper{
-  /* transform: translate(0,0)!important; */
+#noticeReadMore #videoPlayerMask {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+}
+
+#noticeReadMore li .title {
+    font-size: 0.78rem;
+    color: #2a3350;
+    margin: 0;
+    position: relative;
+    padding-left: 0.5rem;
+    font-weight: bold;
+    word-wrap: break-word;
+    font-style: normal;
+}
+
+#noticeReadMore li .title::before {
+    content: '';
+    width: 0.2rem;
+    height: 0.2rem;
+    background-color: #7f5dff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 0.38rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -0.1rem;
+}
+
+#noticeReadMore li .title .time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #444e6f;
+    font-size: 0.67rem;
+    font-weight: normal;
+}
+
+#noticeReadMore li .noticeContent {
+    font-size: 0.72rem;
+    color: #565c72;
+    position: relative;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    line-height: 1.1rem;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+#noticeReadMore .swiper-container {
+    overflow-y: auto;
+}
+
+#noticeReadMore .editor_image {
+    max-width: 140px;
+    border: none !important;
+    display: block;
+    margin: 0 0 10px 0;
+}
+
+#noticeReadMore pre {
+    white-space: pre-wrap;
+}
+
+.swiper-wrapper {
+    /* transform: translate(0,0)!important; */
 }
 
 .preloader {
-  color: #000;
-  text-align: center;
-  line-height: 50px;
-  height: 50px;
-  width: 100%;
-  opacity: 1;
-  font-size: 25px;
-  /* background: red; */
-  /*background: rgba(f,f,0,1);*/
-  /*background: #cccccc;*/
-  /*display:none*/
+    color: #000;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    width: 100%;
+    opacity: 1;
+    font-size: 25px;
+    /* background: red; */
+    /*background: rgba(f,f,0,1);*/
+    /*background: #cccccc;*/
+    /*display:none*/
 }
-.swiper-container{
-  overflow: auto;
+
+.swiper-container {
+    overflow: auto;
 }
