@@ -27,7 +27,7 @@ $(function () {
                 document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
-        if (commandInfo.command == "moralEducation" && commandInfo.data.cid == clazzId) {
+        if (commandInfo.command == "moralEducation") {
             InitializePage();
         }
     })
