@@ -588,7 +588,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   height: 12px;
 }
 /* 这是针对缺省样式 (必须的) */

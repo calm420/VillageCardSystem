@@ -8,13 +8,7 @@ $(function () {
     simpleListener();
 
     document.querySelector('#goback-home').addEventListener('click', function () {
-        var data = {
-            method: 'finish',
-        };
-
-        Bridge.callHandler(data, null, function (error) {
-            console.log(error);
-        });
+        goHome()
     })
 
     function viewCourseTable(roomId) {
@@ -41,8 +35,8 @@ $(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-                console.log("info",info);
-                if(info.command=="refreshClassCardPage"){
+                console.log("info", info);
+                if (info.command == "refreshClassCardPage") {
                     goHome();
                 }
             }

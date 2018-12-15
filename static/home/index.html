@@ -74,11 +74,11 @@
                 <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
                 <img id="imagePlayerAr" src="" alt="">
             </div>
-            <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+            <div  id='imgPlayerMask' style="display: none">
                 <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
                 <img id="imagePlayer" src="" alt="">
             </div>
-            <div id='notifyMask' class="notifyMask" style="display: none">
+            <div id='notifyMask' onClick="closeNotifyMask()" class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
                     <div class="notify_contModal">
                         <div class="am-modal-content">
@@ -108,11 +108,16 @@
         document.getElementById('imgPlayerMask').style.display = 'block';
         document.getElementById('imagePlayer').src = src;
     }
-
-    function closePlayerImg() {
+    $("#imgPlayerMask").on("click",function(e){
+        e.stopPropagation();
+        e.preventDefault();
         document.getElementById('imagePlayer').src = "";
         document.getElementById('imgPlayerMask').style.display = 'none';
-    }
+    })
+    // function closePlayerImg() {
+    //     document.getElementById('imagePlayer').src = "";
+    //     document.getElementById('imgPlayerMask').style.display = 'none';
+    // }
     function closePlayerMask() {
         document.getElementById('imagePlayerAr').src = "";
         document.getElementById('videoPlayerMask').style.display = 'none';

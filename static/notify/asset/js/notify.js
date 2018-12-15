@@ -54,6 +54,7 @@ $(function () {
             }
         } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
             slideNumber = 1;
+            $(".swiper-wrapper").empty();
             InitializePage();
         }
     })
