@@ -2,7 +2,7 @@
  * 本节考勤
  */
 var timerFlag = false;
-var skin;
+var skin = "skin_default";
 var timer;
 $(document).ready(function () {
     init();

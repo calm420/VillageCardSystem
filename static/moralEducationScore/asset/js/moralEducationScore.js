@@ -3,20 +3,9 @@ $(function () {
     var clazzId = WebServiceUtil.GetQueryString("clazzId");
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font');
-    var skin;
+    var skin="skin_default";
     $('html').css('font-size', font)
     InitializePage();
-
-    formatHM = function (nS) {
-        var da = new Date(parseInt(nS));
-        var hour = da.getHours() + ":";
-        var minutes = da.getMinutes();
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        var hmStr = hour + minutes;
-        return hmStr;
-    };
 
     //监听接受消息
     window.addEventListener('message', function(e){
@@ -27,7 +16,7 @@ $(function () {
                 document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
-        if (commandInfo.command == "moralEducation" && commandInfo.data.cid == clazzId) {
+        if (commandInfo.command == "moralEducation") {
             InitializePage();
         }
     })
