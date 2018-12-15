@@ -1,11 +1,9 @@
 $(document).ready(function () {
     InitializePage();
-    var schoolId = getQueryString("schoolId");
-    var clazzId = getQueryString("clazzId");
-    var font = getQueryString('font')
-    var screenWidth = getQueryString('screenWidth')
-    var screenHeight = getQueryString('screenHeight')
-    var vertical = getQueryString('vertical')
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var clazzId = WebServiceUtil.GetQueryString("clazzId");
+    var font = WebServiceUtil.GetQueryString('font')
+    var vertical = WebServiceUtil.GetQueryString('vertical')
     $('html').css('font-size', font)
 
     //监听接受消息
@@ -25,7 +23,7 @@ $(document).ready(function () {
 
     //初始化页面元素
     function InitializePage() {
-        var clazzId = getQueryString("clazzId");
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
         getDutyInfo(clazzId);
         setTimeout(function () {
             if(!!vertical) {
@@ -77,19 +75,6 @@ $(document).ready(function () {
                 // message.error(error);
             }
         });
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
 });

@@ -1,7 +1,7 @@
 $(function () {
     var skin;
-    var roomId = getQueryString("roomId");
-    var font = getQueryString('font')
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     var loadFilter = true;
     //拖动偏移量
@@ -10,7 +10,7 @@ $(function () {
     //页码
     var slideNumber = 1;
     var loadingMore = true;
-    var schoolId = getQueryString("schoolId");
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
 
     //给定swiper固定高度
     $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
@@ -133,19 +133,6 @@ $(function () {
                 // message.error(error);
             }
         });
-    }
-
-    /**
-     * 获取地址栏参数
-     * @param name
-     * @returns {null}
-     * @constructor
-     */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
     }
 
 })

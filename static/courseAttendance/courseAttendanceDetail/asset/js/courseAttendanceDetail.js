@@ -2,7 +2,7 @@
  * 本节考勤
  */
 // var url = "https://www.maaee.com/Excoord_For_Education/webservice";
-var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
+// var url = "http://192.168.43.210:9006/Excoord_ApiServer/webservice";
 var totalCount=0;
 var totalStudent=new Array();
 var simpleMs;
@@ -14,12 +14,10 @@ function init(){
     var locationSearch = locationHref.substr(locationHref.indexOf("?") + 1);
     var searchArray = locationSearch.split("&");
     var classTableId = searchArray[0].split('=')[1];
-
-   // var defaultId = searchArray[1].split('=')[1];
     getStudentByCourseTableItem(classTableId);
     openTimeInterVal(classTableId);
 
-    var skin =getQueryString("skin");
+    var skin =WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
     simpleMs = new SimpleConnection();
     simpleMs.connect();
@@ -66,14 +64,25 @@ function getBraceletAttend(classTableId){
         "method": 'getBraceletAttend',
         "cid": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (status == "success") {
-            var response=result.response;
-            getBraceletAttendHandle(response);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.response) {
+                var response=result.response;
+                getBraceletAttendHandle(response);
+            }
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
+    // $.post(url, {
+    //     params: JSON.stringify(param)
+    // }, function (result, status) {
+    //     if (status == "success") {
+    //         var response=result.response;
+    //         getBraceletAttendHandle(response);
+    //     }
+    // }, "json");
 }
 function getBraceletAttendHandle(response){
     // $("#imageTip"+157775).show();
@@ -98,14 +107,25 @@ function getStudentByCourseTableItem(classTableId){
         "method": 'getStudentByCourseTableItem',
         "id": classTableId
     };
-    $.post(url, {
-        params: JSON.stringify(param)
-    }, function (result, status) {
-        if (status == "success") {
-            var response=result.response;
-            getStudentByCourseTableItemHandle(response,classTableId);
+    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+        onResponse: function (result) {
+            if (result.response) {
+                var response=result.response;
+                getStudentByCourseTableItemHandle(response,classTableId);
+            }
+        },
+        onError: function (error) {
+            // message.error(error);
         }
-    }, "json");
+    });
+    // $.post(url, {
+    //     params: JSON.stringify(param)
+    // }, function (result, status) {
+    //     if (status == "success") {
+    //         var response=result.response;
+    //         getStudentByCourseTableItemHandle(response,classTableId);
+    //     }
+    // }, "json");
 }
 function getStudentByCourseTableItemHandle(response,classTableId){
     if(response==null||response.length==0){
@@ -130,14 +150,6 @@ function getStudentByCourseTableItemHandle(response,classTableId){
 }
 function sendMessageTo(data) {
     window.parent.postMessage(JSON.stringify(data), '*');
-}
-function getQueryString(name){
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null) {
-        return unescape(r[2]);
-    }
-    return null;
 }
 //监听接受消息
 window.addEventListener('message', function (e) {

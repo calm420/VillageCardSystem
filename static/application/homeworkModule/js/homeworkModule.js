@@ -74,38 +74,6 @@ $(function(){
         },
         //结束回调
         onTouchEnd: function(){
-            // if (holdPosition == '下拉刷新') {
-            //     console.log('下拉刷新');
-            // }else if(holdPosition == '上拉加载更多'){
-            //     if(loadingMore){
-            //         if(slideNumber == 2){
-            //             $('.swiper-wrapper').css({transform:'translate3d(0px, -2150.2px, 0px)'})
-            //         }
-            //         console.log('上拉加载');
-            //         // if($(".swiper").height() - $(".swiper-wrapper").height() <= 0){
-            //         //     console.log('进入');
-            //             //100为loading高度
-            //         console.log('回弹')
-            //         //规避第二页下拉位置偏差问题
-            //         if(slideNumber == 3){
-            //             mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 180);
-            //         }else{
-            //             mySwiper.setWrapperTranslate($(".swiper").height() - $(".swiper-wrapper").height() - 100);
-            //         }
-            //         // }
-            //         //禁止拖动
-            //         mySwiper.params.onlyExternal=true;
-            //         //loading显示
-            //         $('.preloader').addClass('visible');
-            //         //调用增加数据方法
-            //         setTimeout(function(){
-            //             getHomeworkData();
-            //         },slideNumber == 3?500:500)
-            //     }
-            //
-            // }else{
-            //     console.log('进入未知空间');
-            // }
         }
     });
 

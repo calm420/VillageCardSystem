@@ -3,7 +3,7 @@
 function MsgConnection() {
     this.msgWsListener = null;
     this.REMOTE_URL = "wss://www.maaee.com:7887/Excoord_MessageServer/message";
-    this.LOCAL_URL = "ws://192.168.43.210:8887/Excoord_MessageServer/message";
+    this.LOCAL_URL = "ws://"+WebServiceUtil.localDomain+":8887/Excoord_MessageServer/message";
     this.WS_URL = WebServiceUtil.isDebug_messageScoket ? this.LOCAL_URL: this.REMOTE_URL;
     this.ws = null;
     this.PING_COMMAND = "ping_0123456789_abcdefg";

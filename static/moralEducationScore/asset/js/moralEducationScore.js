@@ -1,8 +1,8 @@
 $(function () {
-    var schoolId = getQueryString("schoolId");
-    var clazzId = getQueryString("clazzId");
-    var roomId = getQueryString("roomId");
-    var font = getQueryString('font');
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var clazzId = WebServiceUtil.GetQueryString("clazzId");
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var font = WebServiceUtil.GetQueryString('font');
     var skin;
     $('html').css('font-size', font)
     InitializePage();
@@ -60,17 +60,6 @@ $(function () {
                 // message.error(error);
             }
         });
-    }
-    /**
-    * 获取地址栏参数
-    * @param name
-    * @returns {null}
-    * @constructor
-    */
-    function getQueryString(parameterName) {
-        var reg = new RegExp("(^|&)" + parameterName + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
     }
 
     $('#seeMoreHistory').on('click', function () {
