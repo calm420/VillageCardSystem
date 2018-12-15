@@ -40,6 +40,10 @@ function simpleListener() {
 }
 
 function openTimeInterVal(classTableId){
+    if(timer > 0){
+        clearInterval(timer);
+        timer = -1;
+     }
     //开启定时器获取实到人数
     timer = setInterval(function () {
        getBraceletAttend(classTableId);
