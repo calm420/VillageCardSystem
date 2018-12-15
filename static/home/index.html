@@ -162,6 +162,8 @@
     }
     //通知关闭
     function closeNotifyMask() {
+        $(".notifyContent").empty();
+        $('.notifyContent').animate({ scrollTop: '0px' }, 100);
         document.getElementById('notifyMask').style.display = 'none';
     }
 
