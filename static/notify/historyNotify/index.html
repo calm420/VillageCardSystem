@@ -207,7 +207,8 @@
 
     $(document).on('click', '.editor_image', function (e) {
         console.log(e.currentTarget.currentSrc)
-        playImage(e.currentTarget.currentSrc)
+        var imgSrc = e.currentTarget.currentSrc.split("?");
+        playImage(imgSrc[0])
     })
 
     function playImage(src) {

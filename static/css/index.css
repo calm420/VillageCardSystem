@@ -461,6 +461,7 @@ video::-webkit-media-controls-fullscreen-button {
   margin: auto;
   position: relative;
 }
+
 .notify_contModal .am-modal-close {
   top: 15px;
 }
@@ -494,7 +495,8 @@ video::-webkit-media-controls-fullscreen-button {
   line-height: 1.3rem;
 }
 .notify_contModal .editor_image{
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 140px;
   border: none !important;
   display: block;
   margin: 10px auto;

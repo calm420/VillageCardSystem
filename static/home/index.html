@@ -74,6 +74,10 @@
                 <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
                 <img id="imagePlayerAr" src="" alt="">
             </div>
+            <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+                <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
+                <img id="imagePlayer" src="" alt="">
+            </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
                     <div class="notify_contModal">
@@ -100,7 +104,15 @@
         document.getElementById('videoPlayerMask').style.display = 'block';
         document.getElementById('imagePlayerAr').src = src;
     }
+    function playImages(src) {
+        document.getElementById('imgPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayer').src = src;
+    }
 
+    function closePlayerImg() {
+        document.getElementById('imagePlayer').src = "";
+        document.getElementById('imgPlayerMask').style.display = 'none';
+    }
     function closePlayerMask() {
         document.getElementById('imagePlayerAr').src = "";
         document.getElementById('videoPlayerMask').style.display = 'none';
@@ -155,6 +167,12 @@
     function closeNotifyMask() {
         document.getElementById('notifyMask').style.display = 'none';
     }
+
+    $(document).on('click', '.editor_image', function (e) {
+        var imgSrc = e.currentTarget.currentSrc.split("?");
+        console.log(imgSrc[0])
+        playImages(imgSrc[0])
+    })
 
 </script>
 
