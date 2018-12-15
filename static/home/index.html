@@ -74,11 +74,11 @@
                 <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
                 <img id="imagePlayerAr" src="" alt="">
             </div>
-            <div  id='imgPlayerMask' style="display: none">
+            <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
                 <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
                 <img id="imagePlayer" src="" alt="">
             </div>
-            <div id='notifyMask' onClick="closeNotifyMask()" class="notifyMask" style="display: none">
+            <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
                     <div class="notify_contModal">
                         <div class="am-modal-content">
@@ -108,16 +108,11 @@
         document.getElementById('imgPlayerMask').style.display = 'block';
         document.getElementById('imagePlayer').src = src;
     }
-    $("#imgPlayerMask").on("click",function(e){
-        e.stopPropagation();
-        e.preventDefault();
+
+    function closePlayerImg() {
         document.getElementById('imagePlayer').src = "";
         document.getElementById('imgPlayerMask').style.display = 'none';
-    })
-    // function closePlayerImg() {
-    //     document.getElementById('imagePlayer').src = "";
-    //     document.getElementById('imgPlayerMask').style.display = 'none';
-    // }
+    }
     function closePlayerMask() {
         document.getElementById('imagePlayerAr').src = "";
         document.getElementById('videoPlayerMask').style.display = 'none';
@@ -162,11 +157,8 @@
     //通知弹框
     function getNotifyData(notifyTitle, notifyContent) {
         document.getElementById('notifyMask').style.display = 'block';
-        // notifyContent = '<div class="previewEditArea" contenteditable="false" style="line-height: 1.6; border: 1px solid rgb(255, 255, 255);">111</div><img class="editor_image" src="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" cover="http://60.205.86.217/upload9/2018-12-13/11/852bd041-858a-4556-bc80-551e3744da9f.png" style="border: 1px solid rgb(255, 255, 255);">'
         $(".notifyTitle").html(notifyTitle)
         $(".notifyContent").html(notifyContent)
-        // console.log(notifyTitle)
-        // console.log(notifyContent)
     }
     //通知关闭
     function closeNotifyMask() {
@@ -175,7 +167,6 @@
 
     $(document).on('click', '.editor_image', function (e) {
         var imgSrc = e.currentTarget.currentSrc.split("?");
-        console.log(imgSrc[0])
         playImages(imgSrc[0])
     })
 
