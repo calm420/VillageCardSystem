@@ -3,7 +3,7 @@ $(function () {
     var clazzId = WebServiceUtil.GetQueryString("clazzId");
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font');
-    var skin;
+    var skin="skin_default";
     $('html').css('font-size', font)
     InitializePage();
 

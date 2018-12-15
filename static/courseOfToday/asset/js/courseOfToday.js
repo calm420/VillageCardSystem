@@ -3,7 +3,7 @@ $(function () {
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
-    var skin;
+    var skin = "skin_default";
 
     document.querySelector('.home_titleMore').addEventListener('click', function () {
         var data = {
