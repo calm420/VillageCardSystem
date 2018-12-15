@@ -83,6 +83,7 @@ $(document).ready(function () {
                                 $('#DemeanorGo').show();
                                 $('#classDemeanor').css({ transition: '' });
                                 createDemeanor(DemeanorData, DemeanorData.length);
+                                DemeanorFilter = true;
                                 DemeanorTimer = setInterval(function () {
                                     //加一层判断，后续考虑计时器是否未清
                                     if(DemeanorData.length > 3){
@@ -92,7 +93,7 @@ $(document).ready(function () {
                                         setTimeout(function () {
                                             $('#classDemeanor').css({ transition: '' });
                                             createDemeanor(DemeanorData, DemeanorData.length);
-                                            DemeanorFilter = true;
+                                            
                                         }, 2000);
                                     }else{
                                         clearInterval(DemeanorTimer);
@@ -104,6 +105,7 @@ $(document).ready(function () {
                                 currentIndex = 0;
                                 $('#DemeanorBack').hide();
                                 $('#DemeanorGo').hide();
+                                DemeanorFilter = true;
                                 createDemeanor(DemeanorData, DemeanorData.length);
 
                             }
@@ -153,6 +155,7 @@ $(document).ready(function () {
                                 $('#RewardBack').show();
                                 $('#RewardGo').show();
                                 createReward(RewardData, RewardData.length);
+                                RewardFilter = true;
                                 RewardTimer = setInterval(function () {
                                     //增加判断条件
                                     if(RewardData.length > 3){
@@ -162,7 +165,7 @@ $(document).ready(function () {
                                         setTimeout(function () {
                                             $('#classReward').css({ transition: '' });
                                             createReward(RewardData, RewardData.length);
-                                            RewardFilter = true;
+                                            
                                         }, 2000);
                                     }else{
                                         clearInterval(RewardTimer);
@@ -175,6 +178,7 @@ $(document).ready(function () {
                                 currentIndex_Reward = 0;
                                 $('#RewardBack').hide();
                                 $('#RewardGo').hide();
+                                RewardFilter = true;
                                 createReward(RewardData, RewardData.length);
                             }
                             // createReward(RewardData);
@@ -209,25 +213,29 @@ $(document).ready(function () {
                 // alert('123');
             });
             setTimeout(function () {
-                $('#classDemeanor').css({ transition: '' });
-                btnFilter = true;
-                createDemeanor(DemeanorData,DemeanorData.length);
-                DemeanorTimer = setInterval(function () {
-                    currentIndex++;
-                    $('#classDemeanor').css({ transition: '2s' })
-                    console.log($('#classDemeanor').css('transition'), 'style');
-                    $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                        // alert('123');
-                    });
-                    ;
-                    setTimeout(function () {
-                        if(DemeanorFilter){
-                            $('#classDemeanor').css({ transition: '' });
-                            createDemeanor(DemeanorData,DemeanorData.length);
-                        }
-
-                    }, 2000);
-                }, 5000);
+                if(DemeanorFilter){
+                    $('#classDemeanor').css({ transition: '' });
+                    btnFilter = true;
+                    createDemeanor(DemeanorData,DemeanorData.length);
+                    DemeanorTimer = setInterval(function () {
+                        currentIndex++;
+                        $('#classDemeanor').css({ transition: '2s' })
+                        console.log($('#classDemeanor').css('transition'), 'style');
+                        $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
+                            // alert('123');
+                        });
+                        ;
+                        setTimeout(function () {
+                                $('#classDemeanor').css({ transition: '' });
+                                createDemeanor(DemeanorData,DemeanorData.length);
+                        
+    
+                        }, 2000);
+                    }, 5000);
+                }else{
+                    btnFilter = true;
+                }
+                
             }, 2000);
         } else {
             console.log('阻止点击!!!');
@@ -249,27 +257,32 @@ $(document).ready(function () {
             clearInterval(DemeanorTimer);
             $('#classDemeanor').css({ transition: '2s' })
             $('#classDemeanor').css({ transform: 'translate(0px, 0px' }, "slow", function () {
-                alert('123');
+                // alert('123');
             });
             setTimeout(function () {
-                $('#classDemeanor').css({ transition: '' });
-                //释放点击
-                btnFilter = true;
-                createDemeanorBack(DemeanorData);
-                DemeanorTimer = setInterval(function () {
-                    currentIndex++;
-                    $('#classDemeanor').css({ transition: '2s' })
-                    console.log($('#classDemeanor').css('transition'), 'style');
-                    $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                        // alert('123');
-                    });
-                    setTimeout(function () {
-                        if(DemeanorFilter){
-                            $('#classDemeanor').css({ transition: '' });
-                            createDemeanor(DemeanorData,DemeanorData.length);
-                        }
-                    }, 2000);
-                }, 5000);
+                if(DemeanorFilter){
+                    $('#classDemeanor').css({ transition: '' });
+                    //释放点击
+                    btnFilter = true;
+                    createDemeanorBack(DemeanorData);
+                    DemeanorTimer = setInterval(function () {
+                        currentIndex++;
+                        $('#classDemeanor').css({ transition: '2s' })
+                        console.log($('#classDemeanor').css('transition'), 'style');
+                        $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
+                            // alert('123');
+                        });
+                        setTimeout(function () {
+                                $('#classDemeanor').css({ transition: '' });
+                                createDemeanor(DemeanorData,DemeanorData.length);
+                            
+                        }, 2000);
+                    }, 5000);
+                }else{
+                    // DemeanorFilter
+                    btnFilter = true;
+                }
+                
             }, 2000);
         } else {
             console.log('阻止点击!!!');
@@ -405,21 +418,24 @@ $(document).ready(function () {
             $('#classReward').css({ transition: '2s' })
             $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
             setTimeout(function () {
-                $('#classReward').css({ transition: '' });
-                btnFilter = true;
-                createReward(RewardData,RewardData.length);
-                RewardTimer = setInterval(function () {
-                    currentIndex_Reward++;
-                    $('#classReward').css({ transition: '2s' })
-                    $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
-                    ;
-                    setTimeout(function () {
-                        if(RewardFilter){
-                            $('#classReward').css({ transition: '' });
-                            createReward(RewardData,RewardData.length);
-                        }
-                    }, 2000);
-                }, 5000);
+                if(RewardFilter){
+                    $('#classReward').css({ transition: '' });
+                    btnFilter = true;
+                    createReward(RewardData,RewardData.length);
+                    RewardTimer = setInterval(function () {
+                        currentIndex_Reward++;
+                        $('#classReward').css({ transition: '2s' })
+                        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
+                        ;
+                        setTimeout(function () {
+                                $('#classReward').css({ transition: '' });
+                                createReward(RewardData,RewardData.length);
+                        }, 2000);
+                    }, 5000);
+                }else{
+                    btnFilter = true;
+                }
+                
             }, 2000);
         } else {
             console.log('阻止点击!!!');
@@ -439,24 +455,27 @@ $(document).ready(function () {
             $('#classReward').css({ transition: '2s' })
             $('#classReward').css({ transform: 'translate(0px, 0px' });
             setTimeout(function () {
-                $('#classReward').css({ transition: '' });
-                //释放点击
-                btnFilter = true;
-                createRewardBack(RewardData);
-                RewardTimer = setInterval(function () {
-                    currentIndex_Reward++;
-                    $('#classReward').css({ transition: '2s' })
-                    $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                        alert('123');
-                    });
-                    ;
-                    setTimeout(function () {
-                        if(RewardFilter){
-                            $('#classReward').css({ transition: '' });
-                            createReward(RewardData,RewardData.length);
-                        }
-                    }, 2000);
-                }, 5000);
+                if(RewardFilter){
+                    $('#classReward').css({ transition: '' });
+                    //释放点击
+                    btnFilter = true;
+                    createRewardBack(RewardData);
+                    RewardTimer = setInterval(function () {
+                        currentIndex_Reward++;
+                        $('#classReward').css({ transition: '2s' })
+                        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
+                            // alert('123');
+                        });
+                        ;
+                        setTimeout(function () {
+                                $('#classReward').css({ transition: '' });
+                                createReward(RewardData,RewardData.length);
+                        }, 2000);
+                    }, 5000);
+                }else{
+                    btnFilter = true;
+                }
+                
             }, 2000);
         } else {
             console.log('阻止点击!!!');
