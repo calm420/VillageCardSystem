@@ -7,17 +7,6 @@ $(function () {
     $('html').css('font-size', font)
     InitializePage();
 
-    formatHM = function (nS) {
-        var da = new Date(parseInt(nS));
-        var hour = da.getHours() + ":";
-        var minutes = da.getMinutes();
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        var hmStr = hour + minutes;
-        return hmStr;
-    };
-
     //监听接受消息
     window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
