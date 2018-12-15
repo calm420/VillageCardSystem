@@ -27,8 +27,12 @@ $(document).ready(function () {
         var commandInfo = JSON.parse(e.data);
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == commandInfo.data.cid) {
+
+                clearInterval(DemeanorTimer);
+                clearInterval(RewardTimer);
                 getClassDemeanorInfo(clazzId);
                 getClassRewardInfo(clazzId);
+
             }
         } else if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
@@ -76,15 +80,22 @@ $(document).ready(function () {
                                 $('#classDemeanor').css({ transition: '' });
                                 createDemeanor(DemeanorData, DemeanorData.length);
                                 DemeanorTimer = setInterval(function () {
-                                    currentIndex++;
-                                    $('#classDemeanor').css({ transition: '2s' })
-                                    $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
-                                    setTimeout(function () {
-                                        $('#classDemeanor').css({ transition: '' });
-                                        createDemeanor(DemeanorData, DemeanorData.length);
-                                    }, 2000);
+                                    //加一层判断，后续考虑计时器是否未清
+                                    if(DemeanorData.length > 3){
+                                        currentIndex++;
+                                        $('#classDemeanor').css({ transition: '2s' });
+                                        $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
+                                        setTimeout(function () {
+                                            $('#classDemeanor').css({ transition: '' });
+                                            createDemeanor(DemeanorData, DemeanorData.length);
+                                        }, 2000);
+                                    }else{
+                                        clearInterval(DemeanorTimer);
+                                    }
+
                                 }, 5000);
                             } else { //小于三张
+                                clearInterval(DemeanorTimer);
                                 currentIndex = 0;
                                 $('#DemeanorBack').hide();
                                 $('#DemeanorGo').hide();
@@ -120,7 +131,7 @@ $(document).ready(function () {
             clearInterval(DemeanorTimer);
             $('#classDemeanor').css({ transition: '2s' })
             $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                alert('123');
+                // alert('123');
             });
             setTimeout(function () {
                 $('#classDemeanor').css({ transition: '' });
@@ -131,7 +142,7 @@ $(document).ready(function () {
                     $('#classDemeanor').css({ transition: '2s' })
                     console.log($('#classDemeanor').css('transition'), 'style');
                     $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                        alert('123');
+                        // alert('123');
                     });
                     ;
                     setTimeout(function () {
@@ -172,7 +183,7 @@ $(document).ready(function () {
                     $('#classDemeanor').css({ transition: '2s' })
                     console.log($('#classDemeanor').css('transition'), 'style');
                     $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' }, "slow", function () {
-                        alert('123');
+                        // alert('123');
                     });
                     ;
                     setTimeout(function () {
@@ -561,14 +572,22 @@ $(document).ready(function () {
                                 createReward(RewardData, RewardData.length);
                                 RewardTimer = setInterval(function () {
                                     currentIndex_Reward++;
-                                    $('#classReward').css({ transition: '2s' })
-                                    $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
-                                    setTimeout(function () {
-                                        $('#classReward').css({ transition: '' });
-                                        createReward(RewardData, RewardData.length);
-                                    }, 2000);
+                                    //增加判断条件
+                                    if(RewardData.length > 3){
+                                        $('#classReward').css({ transition: '2s' })
+                                        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });;
+                                        setTimeout(function () {
+                                            $('#classReward').css({ transition: '' });
+                                            createReward(RewardData, RewardData.length);
+                                        }, 2000);
+                                    }else{
+                                        clearInterval(RewardTimer);
+                                        return;
+                                    }
+
                                 }, 5000);
                             } else {
+                                clearInterval(RewardTimer);
                                 currentIndex = 0;
                                 $('#RewardBack').hide();
                                 $('#RewardGo').hide();
