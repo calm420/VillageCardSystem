@@ -50,6 +50,7 @@ function checkCourseOpenHandle(data) {
     var schoolId = getQueryString("schoolId");
     if (data.command == 'brand_class_open') {
         var classTableId = data.data.classTableId;
+        
         //获取应到人数
         if (roomId == data.data.classroomId) {
             gotoAttendDetail(classTableId);
@@ -90,6 +91,10 @@ function checkCourseOpenHandle(data) {
 }
 
 function openTimeInterVal(classTableId) {
+    if(timer > 0){
+       clearInterval(timer);
+       timer = -1;
+    }
     //开启定时器获取实到人数
     timer = setInterval(function () {
         getBraceletAttend(classTableId);
