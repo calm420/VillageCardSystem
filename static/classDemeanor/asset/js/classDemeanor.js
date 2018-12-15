@@ -73,6 +73,7 @@ $(document).ready(function () {
                             if (DemeanorData.length > 3) {  //班级风采大于三张
                                 $('#DemeanorBack').show();
                                 $('#DemeanorGo').show();
+                                $('#classDemeanor').css({ transition: '' });
                                 createDemeanor(DemeanorData, DemeanorData.length);
                                 DemeanorTimer = setInterval(function () {
                                     currentIndex++;
@@ -124,7 +125,7 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('#classDemeanor').css({ transition: '' });
                 btnFilter = true;
-                createDemeanor(DemeanorData);
+                createDemeanor(DemeanorData,DemeanorData.length);
                 DemeanorTimer = setInterval(function () {
                     currentIndex++;
                     $('#classDemeanor').css({ transition: '2s' })
@@ -135,7 +136,7 @@ $(document).ready(function () {
                     ;
                     setTimeout(function () {
                         $('#classDemeanor').css({ transition: '' });
-                        createDemeanor(DemeanorData);
+                        createDemeanor(DemeanorData,DemeanorData.length);
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -176,7 +177,7 @@ $(document).ready(function () {
                     ;
                     setTimeout(function () {
                         $('#classDemeanor').css({ transition: '' });
-                        createDemeanor(DemeanorData);
+                        createDemeanor(DemeanorData,DemeanorData.length);
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -316,7 +317,7 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('#classReward').css({ transition: '' });
                 btnFilter = true;
-                createReward(RewardData);
+                createReward(RewardData,RewardData.length);
                 RewardTimer = setInterval(function () {
                     currentIndex_Reward++;
                     $('#classReward').css({ transition: '2s' })
@@ -324,7 +325,7 @@ $(document).ready(function () {
                     ;
                     setTimeout(function () {
                         $('#classReward').css({ transition: '' });
-                        createReward(RewardData);
+                        createReward(RewardData,RewardData.length);
                     }, 2000);
                 }, 5000);
             }, 2000);
@@ -359,7 +360,7 @@ $(document).ready(function () {
                     ;
                     setTimeout(function () {
                         $('#classReward').css({ transition: '' });
-                        createReward(RewardData);
+                        createReward(RewardData,RewardData.length);
                     }, 2000);
                 }, 5000);
             }, 2000);
