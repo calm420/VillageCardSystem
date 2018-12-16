@@ -112,6 +112,7 @@ function MsgConnection() {
         var pingCommand = connection.PING_COMMAND;
         connection.heartBeatTimeout = setTimeout(function () {
             if(connection.pingButNotRecievePongCount >=2 ){
+               clearInterval(connection.reconnectTimeout);
                connection.innerReconnect();
             }
             connection.pingButNotRecievePongCount = connection.pingButNotRecievePongCount + 1;
