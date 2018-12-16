@@ -8,11 +8,11 @@ var https = require('https');
 var fs = require("fs");
 var path = require('path');
 //只有本地调试时需要设置为true,线上启动方式为https,发版前记得修改为false,
-var isDebug = false;
+var isDebug = true;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: isDebug ? "http://192.168.43.169:7091" : 'https://jiaoxue.maaee.com:9092'
+        as_uri: isDebug ? "http://192.168.43.210:7091" : 'https://jiaoxue.maaee.com:9092'
 
     }
 });
@@ -46,4 +46,20 @@ if (isDebug) {
 }
 
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'static'),{maxAge:1000*60*60}));
+
+// app.get('/*', function (req, res) {
+//
+//
+//     var requestPath = req.path.toLowerCase();
+//     if(requestPath.endWith(".png")){
+//         console.log(req.path);
+//         res.setHeader("Cache-Control","max-age=31536000");
+//     }
+//     res.sendFile(path.join(__dirname, 'static', req.path));
+// });
+//
+// String.prototype.endWith=function(str){
+//     var reg=new RegExp(str+"$");
+//     return reg.test(this);
+// }
