@@ -92,9 +92,11 @@ function MsgConnection() {
 
     this.innerReconnect = function(){
         var connection = this;
-        connection.connect(connection.loginProtocol);
-        connection.reconnect();
-        console.log("重连中 ...");
+        if (connection.loginProtocol != null && !connection.connected && !connection.connecting) {
+            connection.connect(connection.loginProtocol);
+            connection.reconnect();
+            console.log("重连中 ...");
+        }
     }
 
     this.send = function (jsonProtocal) {
