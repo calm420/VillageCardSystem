@@ -22,6 +22,7 @@ function MsgConnection() {
         //监听消息
         connection.ws.onmessage = function (event) {
             connection.connecting = false;
+            connection.pingButNotRecievePongCount = 0;
             //如果服务器在发送ping命令,则赶紧回复PONG命令
             if (event.data == connection.PING_COMMAND) {
                 connection.send(connection.PONG_COMMAND);
@@ -61,6 +62,7 @@ function MsgConnection() {
         connection.ws.onopen = function (event) {
             connection.connecting = false;
             connection.connected = true;
+            connection.pingButNotRecievePongCount = 0;
             connection.send(loginProtocol);
             //	console.log("连接到服务器 ....");
         };
@@ -110,6 +112,7 @@ function MsgConnection() {
             if(connection.pingButNotRecievePongCount >=2 ){
                connection.innerReconnect();
             }
+            connection.pingButNotRecievePongCount = connection.pingButNotRecievePongCount + 1;
             connection.send(pingCommand);
             // console.log("客户端发送ping命令 , 希望服务器回答pong...");
             connection.heartBeat();
