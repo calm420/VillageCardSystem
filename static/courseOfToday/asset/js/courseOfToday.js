@@ -37,9 +37,9 @@ $(function () {
             if(!WebServiceUtil.isEmpty(res.data.classTableId)){
                 //重连开课
                 if (roomId == res.data.classroomId) {
-                    viewCourseTableItem(res.data)
-                    document.querySelector('#finish-class').style.display = 'none'
-                    document.querySelector('#begin-class').style.display = 'block'
+                    viewCourseTableItem(res.data);
+                    document.querySelector('#finish-class').style.display = 'none';
+                    document.querySelector('#begin-class').style.display = 'block';
                 }
             }else{
                 document.querySelector('#finish-class').style.display = 'block'

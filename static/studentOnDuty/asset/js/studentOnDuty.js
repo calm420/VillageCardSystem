@@ -40,6 +40,10 @@ $(document).ready(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 var weekOfTody = new Date().getDay();
+                if(weekOfTody == 0){
+                    weekOfTody = 7;
+                }
+                console.log(weekOfTody,"week")
                 $("#todyDuty")[0].innerHTML="";
                 $("#nextDuty")[0].innerHTML="";
                 if (result.success == true && result.msg == "调用成功") {

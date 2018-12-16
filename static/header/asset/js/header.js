@@ -13,7 +13,7 @@ $(function () {
     makeTime();
     if (!!vertical) {
         $('.headTitle').width('70%')
-        $('#weather').css('display', 'none')
+        // $('#weather').css('display', 'none')
     }
 
 
@@ -21,14 +21,14 @@ $(function () {
      * 根据IP地址获取adcode
      * 调用查询天气函数
      */
-    try {
-        $.get('https://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
-            abcode = res.adcode
-            weatherInfo(res.adcode)
-        })
-    } catch (e) {
-        console.log(e);
-    }
+    // try {
+    //     $.get('https://restapi.amap.com/v3/ip?key=fce57f3f5ed99a1b7925992439e5a224&ip=' + returnCitySN["cip"], function (res) {
+    //         abcode = res.adcode
+    //         weatherInfo(res.adcode)
+    //     })
+    // } catch (e) {
+    //     console.log(e);
+    // }
 
     /**
      * 获取网络时间
@@ -83,11 +83,11 @@ $(function () {
             img.src = "./asset/images/haze_icon.png";
         }
 
-        document.querySelector('#weather-img').appendChild(img);
-        document.querySelector('#weather-today .climate').innerHTML = data[0].dayweather
-        document.querySelector('#weather-tomorrow .climate').innerHTML = data[1].dayweather
-        document.querySelector('#weather-today .temperature').innerHTML = data[0].nighttemp + '℃~' + data[0].daytemp + '℃'
-        document.querySelector('#weather-tomorrow .temperature').innerHTML = data[1].nighttemp + '℃~' + data[1].daytemp + '℃'
+        // document.querySelector('#weather-img').appendChild(img);
+        // document.querySelector('#weather-today .climate').innerHTML = data[0].dayweather
+        // document.querySelector('#weather-tomorrow .climate').innerHTML = data[1].dayweather
+        // document.querySelector('#weather-today .temperature').innerHTML = data[0].nighttemp + '℃~' + data[0].daytemp + '℃'
+        // document.querySelector('#weather-tomorrow .temperature').innerHTML = data[1].nighttemp + '℃~' + data[1].daytemp + '℃'
     }
 
     /**
@@ -99,7 +99,7 @@ $(function () {
                 document.querySelector('#watch').innerText = set(time)
                 //每天刷新天气两次
                 if (set(time) == '00:10:00' || set(time) == '12:10:00') {
-                    weatherInfo(abcode)
+                    // weatherInfo(abcode)
                 }
                 //更新日期
                 if (set(time) == '00:10:00') {
