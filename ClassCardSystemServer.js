@@ -7,6 +7,7 @@ var http = require('http');
 var https = require('https');
 var fs = require("fs");
 var path = require('path');
+const compression = require('compression');
 //只有本地调试时需要设置为true,线上启动方式为https,发版前记得修改为false,
 var isDebug = true;
 
@@ -32,6 +33,7 @@ var sessionHandler = session({
     saveUninitialized: true
 });
 app.use(sessionHandler);
+app.use(compression());
 
 var asUrl = url.parse(argv.as_uri);
 var port = asUrl.port;
@@ -46,20 +48,9 @@ if (isDebug) {
 }
 
 
-app.use(express.static(path.join(__dirname, 'static'),{maxAge:1000*60*60}));
-
-// app.get('/*', function (req, res) {
-//
-//
-//     var requestPath = req.path.toLowerCase();
-//     if(requestPath.endWith(".png")){
-//         console.log(req.path);
-//         res.setHeader("Cache-Control","max-age=31536000");
-//     }
-//     res.sendFile(path.join(__dirname, 'static', req.path));
-// });
-//
-// String.prototype.endWith=function(str){
-//     var reg=new RegExp(str+"$");
-//     return reg.test(this);
-// }
+app.use(express.static(path.join(__dirname, 'static'),{
+    maxAge: '1y',
+    expires: '1y',
+    Etag: false,
+    lastModified: false
+}));
