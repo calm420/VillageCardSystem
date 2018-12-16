@@ -75,7 +75,7 @@ function SimpleConnection() {
     //每次重连间隔为10秒
     this.reconnect = function () {
         var connection = this;
-        if (!connection.connected && !connection.connecting) {
+        if (!connection.connecting) {
             connection.reconnectTimeout = setTimeout(function () {
                 connection.innerReconnect();
             }, 1000 * 10);
@@ -84,7 +84,7 @@ function SimpleConnection() {
 
     this.innerReconnect = function(){
         var connection = this;
-        if (connection.loginProtocol != null && !connection.connecting) {
+        if (!connection.connecting) {
             connection.connect(connection.loginProtocol);
             connection.reconnect();
             console.log("simple 重连中 ...");
