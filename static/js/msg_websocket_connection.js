@@ -83,7 +83,7 @@ function MsgConnection() {
     //每次重连间隔为20秒
     this.reconnect = function () {
         var connection = this;
-        if (connection.loginProtocol != null && !connection.connected && !connection.connecting) {
+        if (connection.loginProtocol != null && !connection.connecting) {
             connection.reconnectTimeout = setTimeout(function () {
                 connection.innerReconnect();
             }, 1000 * 10);
@@ -92,7 +92,7 @@ function MsgConnection() {
 
     this.innerReconnect = function(){
         var connection = this;
-        if (connection.loginProtocol != null && !connection.connected && !connection.connecting) {
+        if (connection.loginProtocol != null && !connection.connecting) {
             connection.connect(connection.loginProtocol);
             connection.reconnect();
             console.log("重连中 ...");
