@@ -13,6 +13,7 @@ function MsgConnection() {
     this.connecting = false;
     this.reconnectTimeout;
     this.heartBeatTimeout;
+    this.pingButNotRecievePongCount = 0;
     this.connect = function (loginProtocol) {
         var connection = this;
         connection.connecting = true;
@@ -82,12 +83,17 @@ function MsgConnection() {
         var connection = this;
         if (connection.loginProtocol != null && !connection.connected && !connection.connecting) {
             connection.reconnectTimeout = setTimeout(function () {
-                connection.connect(connection.loginProtocol);
-                connection.reconnect();
-                console.log("重连中 ...");
+                connection.innerReconnect();
             }, 1000 * 10);
         }
     };
+
+    this.innerReconnect = function(){
+        var connection = this;
+        connection.connect(connection.loginProtocol);
+        connection.reconnect();
+        console.log("重连中 ...");
+    }
 
     this.send = function (jsonProtocal) {
         var connection = this;
@@ -101,6 +107,9 @@ function MsgConnection() {
         var connection = this;
         var pingCommand = connection.PING_COMMAND;
         connection.heartBeatTimeout = setTimeout(function () {
+            if(connection.pingButNotRecievePongCount >=2 ){
+               connection.innerReconnect();
+            }
             connection.send(pingCommand);
             // console.log("客户端发送ping命令 , 希望服务器回答pong...");
             connection.heartBeat();
