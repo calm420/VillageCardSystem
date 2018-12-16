@@ -30,7 +30,7 @@ function MsgConnection() {
                 return;
             }
             if (event.data == connection.PONG_COMMAND) {
-                console.log("收到服务器的 pong");
+                //console.log("收到服务器的 pong");
                 return;
             }
             if (connection.msgWsListener != null) {
