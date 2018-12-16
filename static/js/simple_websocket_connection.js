@@ -10,6 +10,7 @@ function SimpleConnection() {
     this.connecting = false;
     this.reconnectTimeout;
     this.heartBeatTimeout;
+    this.pingButNotRecievePongCount = 0;
     this.connect = function () {
         var connection = this;
         connection.connecting = true;
@@ -17,6 +18,7 @@ function SimpleConnection() {
         //监听消息
         connection.ws.onmessage = function (event) {
             connection.connecting = false;
+            connection.pingButNotRecievePongCount = 0;
             //如果服务器在发送ping命令,则赶紧回复PONG命令
             if (event.data == connection.PING_COMMAND) {
                 connection.send(connection.PONG_COMMAND);
@@ -50,17 +52,16 @@ function SimpleConnection() {
             connection.connecting = false;
             connection.connected = false;
             connection.reconnect();
-            	// console.log("收到服务器的 onclose .");
         };
         // 打开WebSocket
         connection.ws.onopen = function (event) {
             connection.connecting = false;
             connection.connected = true;
-            	// console.log("连接到服务器 ....");
+            connection.pingButNotRecievePongCount = 0;
+            console.log("simple 连接到服务器 ....");
         };
         connection.ws.onerror = function (event) {
             connection.connecting = false;
-            	// console.log("收到服务器的 onerror ....");
         };
     };
 
@@ -71,15 +72,22 @@ function SimpleConnection() {
         connection.ws.close();
     };
 
-    //每次重连间隔为20秒
+    //每次重连间隔为10秒
     this.reconnect = function () {
         var connection = this;
         if (!connection.connected && !connection.connecting) {
             connection.reconnectTimeout = setTimeout(function () {
-                connection.connect();
-                connection.reconnect();
-                // console.log("重连中 ...");
+                connection.innerReconnect();
             }, 1000 * 10);
+        }
+    };
+
+    this.innerReconnect = function(){
+        var connection = this;
+        if (connection.loginProtocol != null && !connection.connecting) {
+            connection.connect(connection.loginProtocol);
+            connection.reconnect();
+            console.log("simple 重连中 ...");
         }
     };
 
@@ -95,8 +103,12 @@ function SimpleConnection() {
         var connection = this;
         var pingCommand = connection.PING_COMMAND;
         connection.heartBeatTimeout = setTimeout(function () {
+            if(connection.pingButNotRecievePongCount >=2 ){
+                clearInterval(connection.reconnectTimeout);
+                connection.innerReconnect();
+            }
+            connection.pingButNotRecievePongCount = connection.pingButNotRecievePongCount + 1;
             connection.send(pingCommand);
-            // console.log("客户端发送ping命令 , 希望服务器回答pong...");
             connection.heartBeat();
         }, 1000 * 10);
     };
