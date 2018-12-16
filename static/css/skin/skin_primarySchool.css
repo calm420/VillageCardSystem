@@ -103,7 +103,7 @@
   /* 滑轨两头的监听按钮颜色 */
 }
 #skin_primarySchool #classCardHomePage ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   height: 12px;
 }
 #skin_primarySchool #classCardHomePage ::-webkit-scrollbar-thumb {
