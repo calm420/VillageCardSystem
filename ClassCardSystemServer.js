@@ -9,11 +9,11 @@ var fs = require("fs");
 var path = require('path');
 const compression = require('compression');
 //只有本地调试时需要设置为true,线上启动方式为https,发版前记得修改为false,
-var isDebug = true;
+var isDebug = false;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: isDebug ? "http://192.168.43.210:7091" : 'https://jiaoxue.maaee.com:9092'
+        as_uri: isDebug ? "http://192.168.43.169:7091" : 'https://jiaoxue.maaee.com:9092'
 
     }
 });
