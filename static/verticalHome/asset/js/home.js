@@ -89,6 +89,9 @@ $(document).ready(function () {
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
+                if(info.command=="refreshClassCardPage"){
+                    window.location.reload();
+                }
             }
         }
     }
