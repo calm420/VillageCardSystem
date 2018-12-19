@@ -20,12 +20,12 @@
 #courseOfToday .classTableB .timeNode {
     font-size: 0.5rem;
     color: #3672ed;
-    margin-bottom: 0.56rem;
-    margin-top: 0.58rem;
+    margin-bottom: 0.46rem;
+    margin-top: 0.48rem;
 }
 
 #courseOfToday .classTableB .time {
-    margin-bottom: 1.11rem;
+    margin-bottom: 0.5rem;
     font-size: 0.83rem;
 }
 
