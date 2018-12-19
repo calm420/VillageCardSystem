@@ -9,7 +9,7 @@ $(function () {
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     classId = WebServiceUtil.GetQueryString("clazzId");
-    var skin  = "skin_default";
+    var skin = "skin_default";
 
     /**
      * 时间戳转年月日
@@ -26,32 +26,32 @@ $(function () {
     };
 
     //监听接受消息
-    window.addEventListener('message', function(e) {
+    window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
-        if(commandInfo.command == "setSkin"){
+        if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 skin = commandInfo.data.skinName;
-                document.getElementsByName("applicationDiv")[0].id= skin;
+                document.getElementsByName("applicationDiv")[0].id = skin;
             }
         }
     })
 
     //跳转蚁巢作业
-    $('#toHomeWorkModule').on('click',function(){
+    $('#toHomeWorkModule').on('click', function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId="+classId+"&skin="+skin,
+            url: "application/homeworkModule/index.html?classId=" + classId + "&skin=" + skin,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
 
     //跳转步数
-    $('#toStep').on('click',function(){
+    $('#toStep').on('click', function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/healthStep/index.html?classId="+classId+"&healthType=step&skin="+skin,
+            url: "application/healthStep/index.html?classId=" + classId + "&healthType=step&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -60,11 +60,11 @@ $(function () {
 
 
     //跳转卡路里
-    $('#toCalories').on('click',function(){
+    $('#toCalories').on('click', function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/healthStep/index.html?classId="+classId+"&healthType=calories&skin="+skin,
+            url: "application/healthStep/index.html?classId=" + classId + "&healthType=calories&skin=" + skin,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -72,17 +72,17 @@ $(function () {
     });
 
     //跳转早到之星
-    $('#toExcellentStu').on('click',function(){
+    $('#toExcellentStu').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "application/excellentStu/index.html?clazzId="+classId+"&skin="+skin,
+            url: "application/excellentStu/index.html?clazzId=" + classId + "&skin=" + skin,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
 
 
     //跳转家校
-    $('#toSchoolHome').on('click',function(){
+    $('#toSchoolHome').on('click', function () {
         var data = {
             method: 'gotoNFCbyKK',
         };
@@ -93,16 +93,26 @@ $(function () {
     });
 
 
-     //跳转管理员登录页面
-     $('#toAdmin').on('click',function(){
+    //跳转管理员登录页面
+    $('#toAdmin').on('click', function () {
         var data = {
             method: 'adminentrance',
         };
-        console.log(data,"data")
+        console.log(data, "data")
         Bridge.callHandler(data, null, function (error) {
 
         });
     });
+
+    $('#timeCheck').on('click', () => {
+        var data = {
+            method: 'timeCheck',
+        };
+        console.log(data, "data")
+        Bridge.callHandler(data, null, function (error) {
+
+        });
+    })
 
 
     //初始化页面元素
