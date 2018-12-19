@@ -1,5 +1,5 @@
 //本地调试时,需要设置为true,保证ifream的跳转路径为本地地址,发版时一定要调整为false
-WebServiceUtil.isDebug_ifream = false;
+WebServiceUtil.isDebug_ifream = true;
 //请求api的debug设置,做本地调试,调用本地接口时,需要设置为true,否则为false,发版时一定要调整为false
 WebServiceUtil.isDebug = false;
 //simple消息服务的debug设置,需要调用本地simple消息服务时,需要设置为true,否则为false,发版时一定要调整为false
@@ -9,7 +9,7 @@ WebServiceUtil.isDebug_messageScoket = false;
 
 WebServiceUtil.localDomain = "192.168.43.210";   //请求地址接口
 
-WebServiceUtil.localDebugUrl = "192.168.43.169";   //本地调试的地址,嵌套ifream页面使用的地址
+WebServiceUtil.localDebugUrl = "192.168.1.118";   //本地调试的地址,嵌套ifream页面使用的地址
 
 
 //小蚂蚁webService地址
