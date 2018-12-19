@@ -161,7 +161,7 @@
                             if (i == 0) {
                                 wrapper.append(
                                     '<li  >' +
-                                    '<p onClick = "onClick(' + i + ')" class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
+                                    '<p onClick = "onClick(' + i + ')" class="title"><span class="titleCont">' + v.noticeTitle + '</span><span class="time">' + v.createTime + '</span>' +
                                     '</p>' +
                                     '<div class="noticeContent" style="display:block"><pre>' + v.noticeContent + '</pre></div>' +
                                     '</li >'
@@ -169,7 +169,7 @@
                             } else {
                                 wrapper.append(
                                     '<li  >' +
-                                    '<p onClick = "onClick(' + i + ')" class="title">' + v.noticeTitle + '<span class="time">' + v.createTime + '</span>' +
+                                    '<p onClick = "onClick(' + i + ')" class="title"><span class="titleCont">' + v.noticeTitle + '<span></span><span class="time">' + v.createTime + '</span>' +
                                     '</p>' +
                                     '<div class="noticeContent" style="display:none"><pre>' + v.noticeContent + '</pre></div>' +
                                     '</li >'

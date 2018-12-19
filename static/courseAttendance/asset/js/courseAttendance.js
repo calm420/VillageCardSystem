@@ -59,17 +59,26 @@ function checkCourseOpenHandle(data) {
             clearInterval(timer)
             timerFlag = false;
         }
-    } else if (data.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(data.data.classTableId) == false) {
-        //重连开课
-        if (roomId == data.data.classroomId) {
-            $("#classTableA").show();
-            $("#classTableB").hide();
-            this.getStudentByCourseTableItem(data.data.classTableId);
-            gotoAttendDetail(data.data.classTableId);
-            if (!timerFlag) {
-                this.openTimeInterVal(data.data.classTableId);
+    } else if (data.command == 'braceletBoxConnect') {
+        if(!WebServiceUtil.isEmpty(data.data.classTableId)){
+            //重连开课
+            if (roomId == data.data.classroomId) {
+                $("#classTableA").show();
+                $("#classTableB").hide();
+                this.getStudentByCourseTableItem(data.data.classTableId);
+                gotoAttendDetail(data.data.classTableId);
+                if (!timerFlag) {
+                    this.openTimeInterVal(data.data.classTableId);
+                }
             }
+        }else{
+            unbindGotoAttendDetail();
+            $("#classTableA").hide();
+            $("#classTableB").show();
+            clearInterval(timer);
+            timerFlag = false;
         }
+
     } else if (data.command == 'setSkin') {
         //设置皮肤
         if (schoolId == data.data.schoolId) {

@@ -33,13 +33,19 @@ $(function () {
                 document.querySelector('#finish-class').style.display = 'block'
                 document.querySelector('#begin-class').style.display = 'none'
             }
-        } else if (res.command == 'braceletBoxConnect' && WebServiceUtil.isEmpty(res.data.classTableId) == false) {
-            //重连开课
-            if (roomId == res.data.classroomId) {
-                viewCourseTableItem(res.data)
-                document.querySelector('#finish-class').style.display = 'none'
-                document.querySelector('#begin-class').style.display = 'block'
+        } else if (res.command == 'braceletBoxConnect' ) {
+            if(!WebServiceUtil.isEmpty(res.data.classTableId)){
+                //重连开课
+                if (roomId == res.data.classroomId) {
+                    viewCourseTableItem(res.data);
+                    document.querySelector('#finish-class').style.display = 'none';
+                    document.querySelector('#begin-class').style.display = 'block';
+                }
+            }else{
+                document.querySelector('#finish-class').style.display = 'block'
+                document.querySelector('#begin-class').style.display = 'none'
             }
+
         } else if (res.command == 'setSkin') {
             //设置皮肤
             if (schoolId == res.data.schoolId) {

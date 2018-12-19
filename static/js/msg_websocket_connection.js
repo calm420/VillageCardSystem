@@ -30,7 +30,7 @@ function MsgConnection() {
                 return;
             }
             if (event.data == connection.PONG_COMMAND) {
-                console.log("收到服务器的 pong");
+                //console.log("收到服务器的 pong");
                 return;
             }
             if (connection.msgWsListener != null) {
@@ -56,7 +56,6 @@ function MsgConnection() {
             connection.connecting = false;
             connection.connected = false;
             connection.reconnect();
-            //	console.log("收到服务器的 onclose .");
         };
         // 打开WebSocket
         connection.ws.onopen = function (event) {
@@ -64,11 +63,10 @@ function MsgConnection() {
             connection.connected = true;
             connection.pingButNotRecievePongCount = 0;
             connection.send(loginProtocol);
-            //	console.log("连接到服务器 ....");
+            console.log("bracelet ws 连接到服务器 ...");
         };
         connection.ws.onerror = function (event) {
             connection.connecting = false;
-            //	console.log("收到服务器的 onerror ....");
         };
     };
 
@@ -95,7 +93,7 @@ function MsgConnection() {
         if (connection.loginProtocol != null && !connection.connecting) {
             connection.connect(connection.loginProtocol);
             connection.reconnect();
-            console.log("重连中 ...");
+            console.log("bracelet ws 重连中 ...");
         }
     }
 

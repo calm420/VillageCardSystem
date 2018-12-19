@@ -16,7 +16,9 @@
     margin-top: 0.83rem;
 }
 .vertical-firstLine, .vertical-firstLine .studentOnDuty-wrap, .vertical-firstLine .studentOnDuty_height, .vertical-firstLine .vertical-Today-course, .vertical-firstLine .course_height{
-    height: 12.78rem !important;
+    /*height: 12.78rem !important;*/
+    height: 11.07rem !important;
+
 }
 .vertical-firstLine #classCardHomePage .studentOnDuty_cont, .vertical-firstLine #courseOfToday .classTableA{
     height: 9.9rem !important;
@@ -32,32 +34,4 @@
 }
 .verticalHome .currentAttendance_height, .verticalHome .moralEducationScore_height, .verticalHome .moralEducationScore-wrap{
     height: 9.17rem !important;
-}
-
-
-/*班牌屏幕适配*/
-@media only screen and (min-width: 768px) and (max-width: 799px) {
-    html {
-        font-size: 36px;
-    }
-}
-@media only screen and (min-width: 800px) and (max-width: 1023px) {
-    html {
-        font-size: 36px;
-    }
-}
-@media only screen and (max-width: 1499px) and (min-width: 1024px) {
-    html {
-        font-size: 36px;
-    }
-}
-@media only screen and (min-width: 1500px) and (max-width: 1919px) {
-    html {
-        font-size: 36px;
-    }
-}
-@media only screen and (min-width: 1920px) {
-    html {
-        font-size: 36px;
-    }
 }
