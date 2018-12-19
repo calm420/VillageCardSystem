@@ -272,6 +272,15 @@
   display: inline-block;
   background-size: 100% 100%;
 }
+
+#classCardHomePage .app_list_img .i-watchTime {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: url("../images/watchTime.png");
+  display: inline-block;
+  background-size: 100% 100%;
+}
+
 #classCardHomePage .app_list_text {
   font-size: 0.61rem;
   width: 100%;
