@@ -79,7 +79,10 @@
     font-size: 0.67rem;
     font-weight: normal;
 }
-
+#noticeReadMore li .title .titleCont{
+    width: calc(100% - 4rem);
+    display: inline-block;
+}
 #noticeReadMore li .noticeContent {
     font-size: 0.72rem;
     color: #565c72;
