@@ -108,11 +108,11 @@
 
     //班级风采点击播放视频
     function playVideo(src) {
-//        console.log('播放视频');
+        //        console.log('播放视频');
         var data = {
             method: "startPlayer",
-            url:src,
-            isClick:true
+            url: src,
+            isClick: true
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
@@ -122,9 +122,9 @@
     //推送视频播放
     function playPushVideo(src) {
         var data = {
-            method:"startPlayer",
-            url:src,
-            isClick:false
+            method: "startPlayer",
+            url: src,
+            isClick: false
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
@@ -134,7 +134,7 @@
     //推送视频关闭
     function closePushVideoMask() {
         var data = {
-            method:"closePlayer",
+            method: "closePlayer",
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
