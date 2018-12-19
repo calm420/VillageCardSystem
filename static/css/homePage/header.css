@@ -19,7 +19,7 @@
   display: inline-block;
 }
 #header .header_weather {
-  padding-top: 0.53rem;
+  padding-top: -0.13rem;
   text-align: right;
 }
 #header .header_weather .header_date3 {
@@ -65,7 +65,7 @@
   margin-bottom: 0.3rem;
 }
 #header .headTitle {
-  width: 29.69rem;
+  width: 27.8rem;
   height: 3.61rem;
   display: inline-block;
 }

@@ -76,7 +76,7 @@
   height: 12.78rem;
 }
 #classCardHomePage .course_height {
-  height: 12.78rem;
+  height: 11.22rem;
 }
 #classCardHomePage .currentAttendance_height,
 #classCardHomePage .moralEducationScore_height {
@@ -87,13 +87,13 @@
   height: 11.78rem;
 }
 #classCardHomePage .studentOnDuty_height {
-  height: 12.78rem;
+  height: 11.22rem;
 }
 #classCardHomePage .currentAttendance_height .classTableA {
   height: 8.94rem;
 }
 #classCardHomePage .classDemeanor_height{
-  height: 16.139rem;
+  height: 14.579rem;
 }
 #classCardHomePage .health_height {
   padding-bottom: 0.83rem;
@@ -272,6 +272,15 @@
   display: inline-block;
   background-size: 100% 100%;
 }
+
+#classCardHomePage .app_list_img .i-watchTime {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: url("../images/watchTime.png");
+  display: inline-block;
+  background-size: 100% 100%;
+}
+
 #classCardHomePage .app_list_text {
   font-size: 0.61rem;
   width: 100%;
@@ -516,7 +525,7 @@
 
 .classReward {
   margin: 0.83rem 0 0 0;
-  height: 7.78rem !important;
+  height: 6.22rem !important;
 }
 
 #classDemeanorWrap .swiper-slide img,#classDemeanorWrap video{
@@ -577,7 +586,7 @@
   z-index: 10;
 }
 #classCardHomePage .studentOnDuty-wrap {
-  height: 12.78rem;
+  height: 11.22rem;
   width: 100%;
 }
 #classCardHomePage .moralEducationScore-wrap {

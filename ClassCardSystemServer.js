@@ -13,8 +13,7 @@ var isDebug = true;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: isDebug ? "http://192.168.1.43.210:7091" : 'https://jiaoxue.maaee.com:9092'
-
+        as_uri: isDebug ? "http://192.168.1.117:7091" : 'https://jiaoxue.maaee.com:9092'
     }
 });
 
@@ -47,10 +46,5 @@ if (isDebug) {
     });
 }
 
+app.use(express.static(path.join(__dirname, 'static')));
 
-app.use(express.static(path.join(__dirname, 'static'),{
-    maxAge: '1y',
-    expires: '1y',
-    Etag: false,
-    lastModified: false
-}));

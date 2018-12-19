@@ -637,21 +637,23 @@ video::-webkit-media-controls-fullscreen-button {
     }
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1023px) {
+@media only screen and (min-width: 800px) and (max-width: 1024px) {
     html {
         font-size: 15px;
     }
 }
 
-@media only screen and (max-width: 1499px) and (min-width: 1024px) {
+@media only screen and (max-width: 1499px) and (min-width: 1025px) {
     html {
-        font-size: 20px;
+        /*font-size: 20px;*/
+        font-size: 36px;
     }
 }
 
 @media only screen and (min-width: 1500px) and (max-width: 1919px) {
     html {
-        font-size: 28px;
+        /*font-size: 28px;*/
+        font-size: 36px;
     }
 }
 
