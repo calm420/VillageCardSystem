@@ -66,6 +66,19 @@ WebServiceUtil.formatYMD = function (nS) {
 };
 
 /**
+ * 时间戳转年月日
+ * @param nS
+ * @returns {string}
+ */
+WebServiceUtil.formatMD = function (nS) {
+    var da = new Date(parseInt(nS));
+    var month = da.getMonth() + 1;
+    var date = da.getDate();
+    var ymdStr = month+"月"+date+"日";
+    return ymdStr;
+};
+
+/**
  * 时间戳转年月
  * @param nS
  * @returns {string}
@@ -85,12 +98,15 @@ WebServiceUtil.formatYM = function (nS) {
  */
 WebServiceUtil.formatHM = function (nS) {
     var da = new Date(parseInt(nS));
-    var hour = da.getHours() + ":";
+    var hour = da.getHours();
     var minutes = da.getMinutes();
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
-    var hmStr = hour + minutes;
+    var hmStr = hour + ":"+ minutes;
     return hmStr;
 };
 
