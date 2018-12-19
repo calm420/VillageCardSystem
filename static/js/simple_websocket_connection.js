@@ -42,12 +42,10 @@ function SimpleConnection() {
                 }//INFO
                 else if (jsonMessage.statusCode == 1) {
                     var infoResult = jsonMessage.infoResult;
-                    var command = infoResult.command;
                     connection.msgWsListener.onMessage(infoResult);
                 }
             }
         };
-        // 打开WebSocket 
         connection.ws.onclose = function (event) {
             connection.connecting = false;
             connection.connected = false;
@@ -85,8 +83,7 @@ function SimpleConnection() {
     this.innerReconnect = function(){
         var connection = this;
         if (!connection.connecting) {
-            connection.connect(connection.loginProtocol);
-            connection.reconnect();
+            connection.connect();
             console.log("simple 重连中 ...");
         }
     };

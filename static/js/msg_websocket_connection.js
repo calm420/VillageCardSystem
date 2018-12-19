@@ -46,7 +46,6 @@ function MsgConnection() {
                 }//INFO
                 else if (jsonMessage.statusCode == 1) {
                     var infoResult = jsonMessage.infoResult;
-                    var command = infoResult.command;
                     connection.msgWsListener.onMessage(infoResult);
                 }
             }
@@ -92,7 +91,6 @@ function MsgConnection() {
         var connection = this;
         if (connection.loginProtocol != null && !connection.connecting) {
             connection.connect(connection.loginProtocol);
-            connection.reconnect();
             console.log("bracelet ws 重连中 ...");
         }
     }
