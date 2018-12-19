@@ -76,7 +76,7 @@
   height: 12.78rem;
 }
 #classCardHomePage .course_height {
-  height: 11.22rem;
+  height: 12.05rem;
 }
 #classCardHomePage .currentAttendance_height,
 #classCardHomePage .moralEducationScore_height {
@@ -87,13 +87,13 @@
   height: 11.78rem;
 }
 #classCardHomePage .studentOnDuty_height {
-  height: 11.22rem;
+  height: 12.05rem;
 }
 #classCardHomePage .currentAttendance_height .classTableA {
   height: 8.94rem;
 }
 #classCardHomePage .classDemeanor_height{
-  height: 14.579rem;
+  height: 15.409rem;
 }
 #classCardHomePage .health_height {
   padding-bottom: 0.83rem;
@@ -586,7 +586,7 @@
   z-index: 10;
 }
 #classCardHomePage .studentOnDuty-wrap {
-  height: 11.22rem;
+  height: 12.05rem;
   width: 100%;
 }
 #classCardHomePage .moralEducationScore-wrap {
