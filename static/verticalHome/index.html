@@ -68,10 +68,13 @@
                     </div>
                 </div>
             </div>
-
-            <div id='videoPlayerMask' style="display: none">
+            <div id='videoPlayerMask' onClick="closePlayerMask()" style="display: none">
                 <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
                 <img id="imagePlayerAr" src="" alt="">
+            </div>
+            <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+                <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
+                <img id="imagePlayer" src="" alt="">
             </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
@@ -108,11 +111,11 @@
 
     //班级风采点击播放视频
     function playVideo(src) {
-//        console.log('播放视频');
+        //        console.log('播放视频');
         var data = {
             method: "startPlayer",
-            url:src,
-            isClick:true
+            url: src,
+            isClick: true
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
@@ -122,9 +125,9 @@
     //推送视频播放
     function playPushVideo(src) {
         var data = {
-            method:"startPlayer",
-            url:src,
-            isClick:false
+            method: "startPlayer",
+            url: src,
+            isClick: false
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
@@ -134,7 +137,7 @@
     //推送视频关闭
     function closePushVideoMask() {
         var data = {
-            method:"closePlayer",
+            method: "closePlayer",
         };
         Bridge.callHandler(data, null, function (error) {
             console.log(error);
@@ -152,6 +155,20 @@
     function closeNotifyMask() {
         document.getElementById('notifyMask').style.display = 'none';
     }
+
+    function playImages(src) {
+        document.getElementById('imgPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayer').src = src;
+    }
+    function closePlayerImg() {
+        document.getElementById('imagePlayer').src = "";
+        document.getElementById('imgPlayerMask').style.display = 'none';
+    }
+    $(document).on('click', '.editor_image', function (e) {
+        var imgSrc = e.currentTarget.currentSrc.split("?");
+        playImages(imgSrc[0])
+    })
+
 
 </script>
 
