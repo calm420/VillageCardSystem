@@ -17,6 +17,8 @@ function init(){
 
     var skin =WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     simpleMs = new SimpleConnection();
     simpleMs.connect();
     simpleListener();

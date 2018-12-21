@@ -7,6 +7,8 @@ $(function(){
     var loadingMore = true;
     var classId = WebServiceUtil.GetQueryString("classId");
     var skin = WebServiceUtil.GetQueryString("skin");
+    var font = WebServiceUtil.GetQueryString('font')
+    $('html').css('font-size', font);
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
     simpleListener();

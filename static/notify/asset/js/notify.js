@@ -62,7 +62,7 @@ $(function () {
     $('#notifySeeMore').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "notify/historyNotify/index.html?roomId=" + roomId + "&skin=" + skin,
+            url: "notify/historyNotify/index.html?roomId=" + roomId + "&skin=" + skin +"&font=" +font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });

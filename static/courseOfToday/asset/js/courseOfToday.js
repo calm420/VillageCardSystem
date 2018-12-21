@@ -1,14 +1,14 @@
 $(function () {
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
-    var font = WebServiceUtil.GetQueryString('font')
-    $('html').css('font-size', font)
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     var skin = "skin_default";
 
     document.querySelector('.home_titleMore').addEventListener('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "courseOfToday/tableItemDetil/index.html?roomId=" + roomId + "&skin=" + skin,
+            url: "courseOfToday/tableItemDetil/index.html?roomId=" + roomId + "&skin=" + skin +"&font=" + font,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');

@@ -5,6 +5,8 @@ $(function () {
     var skin = WebServiceUtil.GetQueryString("skin");
     console.log(skin, 'skin');
     document.getElementsByName("helthStepDiv")[0].id = skin;
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
     simpleListener();
