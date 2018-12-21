@@ -76,24 +76,22 @@
   height: 12.78rem;
 }
 #classCardHomePage .course_height {
-  height: 11.22rem;
+  height: 12.05rem;
 }
 #classCardHomePage .currentAttendance_height,
 #classCardHomePage .moralEducationScore_height {
   height: 11.67rem;
   margin-top: 0.83rem;
 }
-#classCardHomePage .currentAttendance_height {
-  height: 11.78rem;
-}
+
 #classCardHomePage .studentOnDuty_height {
-  height: 11.22rem;
+  height: 12.05rem;
 }
 #classCardHomePage .currentAttendance_height .classTableA {
   height: 8.94rem;
 }
 #classCardHomePage .classDemeanor_height{
-  height: 14.579rem;
+  height: 15.409rem;
 }
 #classCardHomePage .health_height {
   padding-bottom: 0.83rem;
@@ -116,7 +114,7 @@
   margin-left: 0.83rem;
 }
 #classCardHomePage .font_title2 {
-  font-size: 0.67rem;
+  font-size: 0.76rem;
   color: #2a3350;
 }
 #classCardHomePage .notify_cont {
@@ -150,17 +148,27 @@
   position: relative;
 }
 #classCardHomePage .mEScoreInfoM {
+  /*text-align: center;*/
+  /*position: absolute;*/
+  /*top: 0.93rem;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  /*width: 100%;*/
+}
+#classCardHomePage .mEScore {
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  padding: 1.5rem 0;
+  /*text-align: center;*/
+  /*position: absolute;*/
+  /*top: 0.93rem;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  /*width: 100%;*/
 }
 #classCardHomePage .mEScoreInfoT {
-  width: calc(100% - 1.66rem);
-  position: absolute;
-  top: 0.83rem;
+  /*width: calc(100% - 1.66rem);*/
+  /*position: absolute;*/
+  /*top: 0.83rem;*/
 }
 /*#classCardHomePage .mEScoreInfoT > span{
   width: 50%;
@@ -171,15 +179,16 @@
   text-align: right;
 }*/
 #classCardHomePage .mEScoreInfoB {
-  width: calc(100% - 1.66rem);
-  position: absolute;
-  bottom: 0.83rem;
+  /*width: calc(100% - 1.66rem);*/
+  /*position: absolute;*/
+  /*bottom: 0.83rem;*/
+  margin-top: 0.54rem;
 }
 
 #classCardHomePage .blue_big {
   font-size: 2.22rem;
   color: #5091fe;
-  margin: 0 0.4rem;
+  /*margin: 0 0.4rem;*/
 }
 #classCardHomePage .class_mien1 {
   padding: 0.83rem 0 0 0;
@@ -586,7 +595,7 @@
   z-index: 10;
 }
 #classCardHomePage .studentOnDuty-wrap {
-  height: 11.22rem;
+  height: 12.05rem;
   width: 100%;
 }
 #classCardHomePage .moralEducationScore-wrap {

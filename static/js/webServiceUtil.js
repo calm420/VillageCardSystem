@@ -7,9 +7,9 @@ WebServiceUtil.isDebug_simpleScoket = false;
 //message消息服务的debug设置,需要调用本地message消息服务时,需要设置为true,否则为false,发版时一定要调整为false
 WebServiceUtil.isDebug_messageScoket = false;
 
-WebServiceUtil.localDomain = "192.168.43.210";   //请求地址接口
+WebServiceUtil.localDomain = "192.168.1.117";   //请求地址接口
 
-WebServiceUtil.localDebugUrl = "192.168.50.29";   //本地调试的地址,嵌套ifream页面使用的地址
+WebServiceUtil.localDebugUrl = "192.168.1.117";   //本地调试的地址,嵌套ifream页面使用的地址
 
 //小蚂蚁webService地址
 var apiWebServiceURLOfLocals = "http://" + WebServiceUtil.localDomain + ":9006/Excoord_ApiServer/webservice";
@@ -66,6 +66,19 @@ WebServiceUtil.formatYMD = function (nS) {
 };
 
 /**
+ * 时间戳转年月日
+ * @param nS
+ * @returns {string}
+ */
+WebServiceUtil.formatMD = function (nS) {
+    var da = new Date(parseInt(nS));
+    var month = da.getMonth() + 1;
+    var date = da.getDate();
+    var ymdStr = month+"月"+date+"日";
+    return ymdStr;
+};
+
+/**
  * 时间戳转年月
  * @param nS
  * @returns {string}
@@ -85,12 +98,15 @@ WebServiceUtil.formatYM = function (nS) {
  */
 WebServiceUtil.formatHM = function (nS) {
     var da = new Date(parseInt(nS));
-    var hour = da.getHours() + ":";
+    var hour = da.getHours();
     var minutes = da.getMinutes();
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
-    var hmStr = hour + minutes;
+    var hmStr = hour + ":"+ minutes;
     return hmStr;
 };
 
