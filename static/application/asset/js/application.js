@@ -104,7 +104,7 @@ $(function () {
         });
     });
 
-    $('#timeCheck').on('click', () => {
+    $('#timeCheck').on('click', function () {
         var data = {
             method: 'timeCheck',
         };
