@@ -4,6 +4,7 @@
 var timerFlag = false;
 var skin = "skin_default";
 var timer;
+var font = WebServiceUtil.GetQueryString('font');
 $(document).ready(function () {
     init();
 
@@ -12,8 +13,8 @@ $(document).ready(function () {
 function init() {
     $("#classTableA").hide();
     $("#classTableB").show();
-    var font = WebServiceUtil.GetQueryString('font')
-    $('html').css('font-size', font)
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     unbindGotoAttendDetail();
 }
 
@@ -22,7 +23,7 @@ function gotoAttendDetail(classTableId) {
     $('#gotoAttendDetail').click(function () {
         var data = {
             method: 'openNewPage',
-            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin,
+            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin + "&font=" + font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     })
@@ -102,20 +103,30 @@ function openTimeInterVal(classTableId) {
 
 function getBraceletAttend(classTableId) {
     var param = {
-        "method": 'getBraceletAttend',
+        "method": 'getBraceletAttendContainLate',
         "cid": classTableId
     };
     WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
         onResponse: function (result) {
             if (result.success == true) {
                 var response = result.response;
+                var lateCount=0;
                 if (response != null) {
                     $("#attendCount").text(response.length);
+                    for(var i=0;i<response.length;i++){
+                        var isLate=response[i].isLate;
+                        if(isLate==true){
+                            lateCount++;
+                        }
+                    }
+                    $("#lateCount").text(lateCount);
                 } else {
                     $("#attendCount").text(0);
+                    $("#lateCount").text(0);
                 }
             } else {
                 $("#attendCount").text(0);
+                $("#lateCount").text(0);
             }
         },
         onError: function (error) {

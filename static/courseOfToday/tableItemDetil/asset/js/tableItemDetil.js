@@ -2,6 +2,8 @@ $(function () {
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var skin = WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("tableItemDetil")[0].id = skin;
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
     viewCourseTable(roomId)
