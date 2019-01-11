@@ -12,8 +12,8 @@ $(document).ready(function () {
 function init() {
     $("#classTableA").hide();
     $("#classTableB").show();
-    var font = WebServiceUtil.GetQueryString('font')
-    $('html').css('font-size', font)
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     unbindGotoAttendDetail();
 }
 
@@ -22,7 +22,7 @@ function gotoAttendDetail(classTableId) {
     $('#gotoAttendDetail').click(function () {
         var data = {
             method: 'openNewPage',
-            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin,
+            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin + "&font=" + font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     })

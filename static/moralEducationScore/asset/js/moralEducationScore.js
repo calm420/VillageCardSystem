@@ -37,11 +37,15 @@ $(function () {
                     if (result.response == null) {
                         $(".mEScoreInfo").replaceWith('<div class="mEScoreInfo home_cardCont"><div class="empty_center"><div class="empty_icon empty_moralEducationScore"></div><div class="empty_text">暂无评分</div></div></div>');
                     } else {
-                        $(".schoolScore").html(result.response.schoolRank)
-                        $(".gradeScore").html(result.response.clazzRank)
-                        $(".sumSocre").html(result.response.totalScore)
-                        $(".ceremonyScore").html(result.response.politeness)
-                        $(".healthSocre").html(result.response.health)
+                        var response = result.response;
+                        var createTimeStr = WebServiceUtil.formatMD(response.createTime);
+                        console.log("createTimeStr",createTimeStr);
+                        $(".scoreDate").html(createTimeStr);
+                        $(".schoolScore").html(response.schoolRank)
+                        $(".gradeScore").html(response.clazzRank)
+                        $(".sumSocre").html(response.totalScore)
+                        $(".ceremonyScore").html(response.politeness)
+                        $(".healthSocre").html(response.health)
                     }
                 }
             },
@@ -54,7 +58,7 @@ $(function () {
     $('#seeMoreHistory').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin,
+            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin+"&font="+font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });

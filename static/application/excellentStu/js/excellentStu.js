@@ -57,6 +57,8 @@ $(function () {
         var skin = WebServiceUtil.GetQueryString("skin");
         console.log(skin, 'skin');
         document.getElementsByName("excellentStuDiv")[0].id = skin;
+        var font = WebServiceUtil.GetQueryString('font');
+        $('html').css('font-size', font);
         getExcellentStu(clazzId);
     }
 

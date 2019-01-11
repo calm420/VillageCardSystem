@@ -6,8 +6,8 @@ $(function () {
     article.attacheMents = [];
     InitializePage();
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
-    var font = WebServiceUtil.GetQueryString('font')
-    $('html').css('font-size', font)
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     classId = WebServiceUtil.GetQueryString("clazzId");
     var skin = "skin_default";
 
@@ -41,7 +41,7 @@ $(function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/homeworkModule/index.html?classId=" + classId + "&skin=" + skin,
+            url: "application/homeworkModule/index.html?classId=" + classId + "&skin=" + skin + "&font=" +font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
@@ -51,7 +51,7 @@ $(function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/healthStep/index.html?classId=" + classId + "&healthType=step&skin=" + skin,
+            url: "application/healthStep/index.html?classId=" + classId + "&healthType=step&skin=" + skin+ "&font=" +font,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -64,7 +64,7 @@ $(function () {
 
         var data = {
             method: 'openNewPage',
-            url: "application/healthStep/index.html?classId=" + classId + "&healthType=calories&skin=" + skin,
+            url: "application/healthStep/index.html?classId=" + classId + "&healthType=calories&skin=" + skin+ "&font=" +font,
         };
 
         window.parent.postMessage(JSON.stringify(data), '*');
@@ -75,7 +75,7 @@ $(function () {
     $('#toExcellentStu').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "application/excellentStu/index.html?clazzId=" + classId + "&skin=" + skin,
+            url: "application/excellentStu/index.html?clazzId=" + classId + "&skin=" + skin + "&font=" + font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });
@@ -120,4 +120,4 @@ $(function () {
 
     }
 
-})
+});
