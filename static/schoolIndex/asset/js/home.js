@@ -48,21 +48,7 @@ $(document).ready(function () {
                 console.log("warnMsg at msListener:"+warnMsg);
             }, onMessage: function (info) {
                 console.log("info at msListener",info);
-                if(info.command == "braceletBoxConnect"){
-                    if(info.data.playPushVideoStatus != undefined) {
-                        var videoData = JSON.parse(info.data.playPushVideoStatus);
-                        if(videoData.playStatus == "open" && videoData.schoolId == schoolId){
-                            playPushVideo(videoData.videoPath)
-                        }
-                    }
-                }
-                if (info.command == "playPushVideoStatus" && info.data.playStatus == "open" && info.data.schoolId == schoolId) {
-                    playPushVideo(info.data.videoPath)
-                } else if (info.command == "playPushVideoStatus" && info.data.playStatus == "close" && info.data.schoolId == schoolId) {
-                    closePushVideoMask()
-                }
-                document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
+                
             }
         }
     }
