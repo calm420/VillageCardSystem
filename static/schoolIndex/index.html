@@ -32,9 +32,14 @@
                 <iframe id="header" src=""></iframe>
             </div>
             <div class="home_content home_content_index">
-
+                <iframe
+                    src="http://192.168.50.72:7091/watchHtml/?clazzId=141&roomId=141&mac=14:1f:78:73:1c:bd&schoolId=10"
+                    frameborder="0"></iframe>
             </div>
-
+            <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+                <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
+                <img id="imagePlayer" src="" alt="">
+            </div>
             <div id='notifyMask' class="notifyMask" style="display: none">
                 <div class="am-modal-wrap ">
                     <div class="notify_contModal">
@@ -69,6 +74,19 @@
         $('.notifyContent').animate({ scrollTop: '0px' }, 100);
         document.getElementById('notifyMask').style.display = 'none';
     }
+
+    function playImages(src) {
+        document.getElementById('imgPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayer').src = src;
+    }
+    function closePlayerImg() {
+        document.getElementById('imagePlayer').src = "";
+        document.getElementById('imgPlayerMask').style.display = 'none';
+    }
+    $(document).on('click', '.editor_image', function (e) {
+        var imgSrc = e.currentTarget.currentSrc.split("?");
+        playImages(imgSrc[0])
+    })
 </script>
 
 </html>
