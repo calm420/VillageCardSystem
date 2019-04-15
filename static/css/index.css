@@ -800,3 +800,12 @@ video::-webkit-media-controls-fullscreen-button {
     max-height: 100vh;
     object-fit: contain;
 }
+
+#leftPanel {
+    width: 270px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}

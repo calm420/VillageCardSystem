@@ -199,6 +199,13 @@ $(function () {
         document.querySelector('#class-name').innerHTML = '浙江省丽水中学'
     }
 
+    $('#class-name').click(function () {
+        var data = {
+            method: 'viewClazzes'
+        };
+        window.parent.postMessage(JSON.stringify(data), '*');
+    });
+
     //监听接受消息
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);

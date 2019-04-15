@@ -1,11 +1,9 @@
-
-
 $(document).ready(function () {
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://"+WebServiceUtil.localDebugUrl+":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
 
     InitializePage();
 
@@ -43,12 +41,12 @@ $(document).ready(function () {
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
         ms.msgWsListener = {
             onError: function (errorMsg) {
-                console.log("error at msListener:"+errorMsg);
+                console.log("error at msListener:" + errorMsg);
             }, onWarn: function (warnMsg) {
-                console.log("warnMsg at msListener:"+warnMsg);
+                console.log("warnMsg at msListener:" + warnMsg);
             }, onMessage: function (info) {
-                console.log("info at msListener",info);
-                
+                console.log("info at msListener", info);
+
             }
         }
     }
@@ -65,7 +63,7 @@ $(document).ready(function () {
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
-                if(info.command=="refreshClassCardPage"){
+                if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
             }
@@ -91,7 +89,7 @@ $(document).ready(function () {
                             schoolId: schoolId,
                             clientWidth: clientWidth
                         };
-                        var commandJson = { command: 'setSkin', data: dateJson };
+                        var commandJson = {command: 'setSkin', data: dateJson};
                         document.querySelector('#header').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(commandJson), '*');
@@ -131,6 +129,8 @@ $(document).ready(function () {
             if (WebServiceUtil.isEmpty(res.src) == false) {
                 playImage(res.src);
             }
+        } else if (res.method == 'viewClazzes') {
+            console.log(1);
         }
 
     });
