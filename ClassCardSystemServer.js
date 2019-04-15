@@ -12,7 +12,7 @@ var isDebug = true;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: isDebug ? "http://192.168.50.39:7091" : 'https://jiaoxue.maaee.com:9092'
+        as_uri: isDebug ? "http://192.168.50.30:7091" : 'https://jiaoxue.maaee.com:9092'
     }
 });
 

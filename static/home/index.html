@@ -27,7 +27,7 @@
     <div id="skin_default" name="homeDiv">
 
         <div id="classCardHomePage">
-            <div>
+            <div id="topHeader">
                 <iframe id="header" src=""></iframe>
             </div>
             <div class="home_content home_content_index">
@@ -102,11 +102,11 @@
         document.getElementById('videoPlayerMask').style.display = 'block';
         document.getElementById('imagePlayerAr').src = src;
     }
+
     function playImages(src) {
         document.getElementById('imgPlayerMask').style.display = 'block';
         document.getElementById('imagePlayer').src = src;
     }
-
 
     function closePlayerMask() {
         document.getElementById('imagePlayerAr').src = "";
