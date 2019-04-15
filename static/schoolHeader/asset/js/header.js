@@ -199,7 +199,7 @@ $(function () {
         document.querySelector('#class-name').innerHTML = '浙江省丽水中学'
     }
 
-    $('#class-name').click(function () {
+    $('.changeBtn').click(function () {
         var data = {
             method: 'viewClazzes'
         };

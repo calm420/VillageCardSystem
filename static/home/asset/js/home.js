@@ -1,11 +1,9 @@
-
-
 $(document).ready(function () {
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
 
-    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://"+WebServiceUtil.localDebugUrl+":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
 
     InitializePage();
 
@@ -43,6 +41,12 @@ $(document).ready(function () {
             simpleListener();
             getBraceletBoxSkinBySchoolId(schoolId);
         }, 3000)
+
+        var visitType = WebServiceUtil.GetQueryString("visitType");
+
+        if (!!visitType && visitType == 0) {
+            $("#topHeader").css('display','none');
+        }
     }
 
 
@@ -50,15 +54,15 @@ $(document).ready(function () {
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
         ms.msgWsListener = {
             onError: function (errorMsg) {
-                console.log("error at msListener:"+errorMsg);
+                console.log("error at msListener:" + errorMsg);
             }, onWarn: function (warnMsg) {
-                console.log("warnMsg at msListener:"+warnMsg);
+                console.log("warnMsg at msListener:" + warnMsg);
             }, onMessage: function (info) {
-                console.log("info at msListener",info);
-                if(info.command == "braceletBoxConnect"){
-                    if(info.data.playPushVideoStatus != undefined) {
+                console.log("info at msListener", info);
+                if (info.command == "braceletBoxConnect") {
+                    if (info.data.playPushVideoStatus != undefined) {
                         var videoData = JSON.parse(info.data.playPushVideoStatus);
-                        if(videoData.playStatus == "open" && videoData.schoolId == schoolId){
+                        if (videoData.playStatus == "open" && videoData.schoolId == schoolId) {
                             playPushVideo(videoData.videoPath)
                         }
                     }
@@ -86,7 +90,7 @@ $(document).ready(function () {
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
-                if(info.command=="refreshClassCardPage"){
+                if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
             }
@@ -112,7 +116,7 @@ $(document).ready(function () {
                             schoolId: schoolId,
                             clientWidth: clientWidth
                         };
-                        var commandJson = { command: 'setSkin', data: dateJson };
+                        var commandJson = {command: 'setSkin', data: dateJson};
                         document.querySelector('#header').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(commandJson), '*');
                         document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(commandJson), '*');

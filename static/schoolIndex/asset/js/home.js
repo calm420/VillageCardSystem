@@ -61,10 +61,6 @@ $(document).ready(function () {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
                 console.log(info, "info")
-                document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
                 if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
@@ -109,6 +105,31 @@ $(document).ready(function () {
         });
     }
 
+    document.querySelector('#schoolMask').onclick = function () {
+        document.querySelector('#leftPanel').className = 'ding_leave';
+        document.querySelector('#schoolMask').style.display = 'none'
+    };
+
+    $('#clazzList>li').click(function () {
+        for (var i = 0; i < $('#clazzList>li').length; i++) {
+            $($('#clazzList>li')[i]).removeClass('active')
+        }
+        $(this).attr('class', 'active');
+        $('#schoolMask').click();
+        changeMainSrc()
+    });
+
+    function changeMainSrc() {
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
+        var roomId = WebServiceUtil.GetQueryString("roomId");
+        var mac = WebServiceUtil.GetQueryString("mac");
+        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+        mac = mac.toLowerCase();
+        var schoolId = WebServiceUtil.GetQueryString("schoolId");
+        var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+        $('#schoolContent').attr('src', src)
+    }
+
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
         console.log(res, "res")
@@ -133,7 +154,8 @@ $(document).ready(function () {
                 playImage(res.src);
             }
         } else if (res.method == 'viewClazzes') {
-            document.querySelector('#leftPanel').className = 'ding_enter'
+            document.querySelector('#leftPanel').className = 'ding_enter';
+            document.querySelector('#schoolMask').style.display = 'block'
         }
 
     });
