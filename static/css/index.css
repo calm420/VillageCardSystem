@@ -705,9 +705,11 @@ video::-webkit-media-controls-fullscreen-button {
 .noMoreData,
 .preloader {
     color: #565c72 !important;
-    font-size: 0.72rem !important;
+    font-size: 0.67rem !important;
     text-align: center !important;
     padding: .5rem 0 !important;
+    height: 30px!important;
+    line-height: 30px!important;
 }
 
 .notifyMask {
@@ -802,12 +804,21 @@ video::-webkit-media-controls-fullscreen-button {
 }
 
 #leftPanel {
-    width: 270px;
+    padding: 1.39rem 0;
+    box-sizing: border-box;
+    width: 15.83rem;
     height: 100%;
     position: fixed;
     top: 0;
-    left: -270px;
+    left: -15.83rem;
     background-color: #fff;
+    border-radius: 0 .33rem 0 0;
+}
+#leftPanel .schoolName{
+    background: url("../images/icon_watch_schoolList.png") no-repeat .8rem center;
+    font-size: 1rem;
+    padding-left: 2.53rem;
+    background-size: 1.19rem;
 }
 
 .ding_enter {
@@ -825,7 +836,7 @@ video::-webkit-media-controls-fullscreen-button {
         transform: translate(0, 0);
     }
     to {
-        transform: translate(270px, 0);
+        transform: translate(15.83rem, 0);
     }
 }
 
@@ -839,7 +850,7 @@ video::-webkit-media-controls-fullscreen-button {
 
 @keyframes moveLeave {
     from {
-        transform: translate(-270px, 0);
+        transform: translate(-15.83rem, 0);
     }
 
     to {
