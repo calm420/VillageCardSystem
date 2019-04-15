@@ -59,13 +59,13 @@ $(function () {
         }
     })
 
-    $('#notifySeeMore').on('click', function () {
-        var data = {
-            method: 'openNewPage',
-            url: "notify/historyNotify/index.html?roomId=" + roomId + "&skin=" + skin +"&font=" +font,
-        };
-        window.parent.postMessage(JSON.stringify(data), '*');
-    });
+    // $('#notifySeeMore').on('click', function () {
+    //     var data = {
+    //         method: 'openNewPage',
+    //         url: "notify/historyNotify/index.html?roomId=" + roomId + "&skin=" + skin +"&font=" +font,
+    //     };
+    //     window.parent.postMessage(JSON.stringify(data), '*');
+    // });
 
     //初始化页面元素
     function InitializePage() {
