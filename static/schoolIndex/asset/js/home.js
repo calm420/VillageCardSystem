@@ -59,6 +59,7 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
+                console.log(info,"info")
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
@@ -109,6 +110,7 @@ $(document).ready(function () {
 
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
+        console.log(res,"res")
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',
