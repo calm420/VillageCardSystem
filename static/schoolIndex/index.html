@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>小蚂蚁智慧班牌</title>
@@ -34,12 +35,40 @@
 
             </div>
 
+            <div id='notifyMask' class="notifyMask" style="display: none">
+                <div class="am-modal-wrap ">
+                    <div class="notify_contModal">
+                        <div class="am-modal-content">
+                            <span class="closeNotify am-modal-close" onClick="closeNotifyMask()">
+                                <span class="am-modal-close-x"></span>
+                            </span>
+                            <div class="am-modal-header">
+                                <div class="am-modal-title notifyTitle"></div>
+                            </div>
+                            <div class="am-modal-body">
+                                <div class="cont notifyContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
 <script type="text/javascript">
-
+    //通知弹框
+    function getNotifyData(notifyTitle, notifyContent) {
+        document.getElementById('notifyMask').style.display = 'block';
+        $(".notifyTitle").html(notifyTitle)
+        $(".notifyContent").html(notifyContent)
+    }
+    //通知关闭
+    function closeNotifyMask() {
+        $(".notifyContent").empty();
+        $('.notifyContent').animate({ scrollTop: '0px' }, 100);
+        document.getElementById('notifyMask').style.display = 'none';
+    }
 </script>
 
 </html>
