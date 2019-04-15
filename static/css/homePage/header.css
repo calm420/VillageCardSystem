@@ -12,7 +12,8 @@
   background: transparent;
   display: inline-block;
   margin-right: 0.83rem;
-  margin-top: 0.53rem;
+  /*margin-top: 0.53rem;*/
+  margin-top: 0.83rem;
   line-height: 1;
 }
 #header span {
@@ -80,9 +81,16 @@
 /*共享班牌*/
 .watchHome_card #header .headTitle{
   width: 23.67rem;
+  height: 3rem;
   box-sizing: border-box;
   position: relative;
-  padding-left: 2.83rem;
+  padding-left: 3.64rem;
+  margin-top: .42rem;
+}
+.watchHome_card #header .headTitleT{
+  line-height: 3rem;
+  margin: 0;
+  font-weight: normal;
 }
 .watchHome_card #header .changeBtn{
   font-size: .67rem;
@@ -104,7 +112,7 @@
   height: 2.25rem;
   border-radius: 50%;
   position: absolute;
-  left: .83rem;
+  left: .81rem;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);

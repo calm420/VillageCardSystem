@@ -813,6 +813,7 @@ video::-webkit-media-controls-fullscreen-button {
     left: -15.83rem;
     background-color: #fff;
     border-radius: 0 .33rem 0 0;
+    overflow: hidden;
 }
 #leftPanel .schoolName{
     background: url("../images/icon_watch_schoolList.png") no-repeat .8rem center;

@@ -28,7 +28,7 @@ $(document).ready(function () {
         };
 
         $("#header")[0].src = webserviceUrl + "schoolHeader?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
-        $('#schoolContent')[0].src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
+        $('#schoolContent')[0].src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         setTimeout(function () {
             ms.connect(pro);
             msListener();

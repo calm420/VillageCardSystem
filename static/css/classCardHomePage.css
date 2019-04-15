@@ -1,5 +1,6 @@
 #classCardHomePage {
   height: 100%;
+  width: 100%;
 }
 #classCardHomePage iframe {
   border: none;
@@ -754,7 +755,7 @@
 #leftPanel ul{
   margin-top: .45rem;
   overflow-y: auto;
-  height: calc(100% - 2.39rem);
+  height: calc(100% - 1.87rem);
 }
 #leftPanel li{
   height: 2.44rem;
