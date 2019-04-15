@@ -806,6 +806,43 @@ video::-webkit-media-controls-fullscreen-button {
     height: 100%;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -270px;
     background-color: #fff;
+}
+
+.ding_enter {
+    animation-name: moveTest;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    /*设置动画的播放状态  paused:暂停   running:播放*/
+    animation-play-state: running;
+}
+
+/*创建动画*/
+@keyframes moveTest {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(270px, 0);
+    }
+}
+
+.ding_leave {
+    animation-name: moveLeave;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes moveLeave {
+    from {
+        transform: translate(-270px, 0);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
 }

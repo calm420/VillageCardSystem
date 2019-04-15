@@ -28,6 +28,7 @@ $(document).ready(function () {
         };
 
         $("#header")[0].src = webserviceUrl + "schoolHeader?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
+        $('#schoolContent')[0].src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId;
         setTimeout(function () {
             ms.connect(pro);
             msListener();
@@ -59,7 +60,7 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-                console.log(info,"info")
+                console.log(info, "info")
                 document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
                 document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
@@ -110,7 +111,7 @@ $(document).ready(function () {
 
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
-        console.log(res,"res")
+        console.log(res, "res")
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',
@@ -132,7 +133,7 @@ $(document).ready(function () {
                 playImage(res.src);
             }
         } else if (res.method == 'viewClazzes') {
-            console.log(1);
+            document.querySelector('#leftPanel').className = 'ding_enter'
         }
 
     });
