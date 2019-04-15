@@ -156,6 +156,15 @@ $(document).ready(function () {
         } else if (res.method == 'viewClazzes') {
             document.querySelector('#leftPanel').className = 'ding_enter';
             document.querySelector('#schoolMask').style.display = 'block'
+        } else if(res.method == 'quitViewClazzes') {
+            var clazzId = WebServiceUtil.GetQueryString("clazzId");
+            var roomId = WebServiceUtil.GetQueryString("roomId");
+            var mac = WebServiceUtil.GetQueryString("mac");
+            //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+            mac = mac.toLowerCase();
+            var schoolId = WebServiceUtil.GetQueryString("schoolId");
+            var src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+            $('#schoolContent').attr('src', src)
         }
 
     });

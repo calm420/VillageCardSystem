@@ -206,6 +206,13 @@ $(function () {
         window.parent.postMessage(JSON.stringify(data), '*');
     });
 
+    $('.icon_school').click(function () {
+        var data = {
+            method: 'quitViewClazzes'
+        };
+        window.parent.postMessage(JSON.stringify(data), '*');
+    });
+
     //监听接受消息
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
