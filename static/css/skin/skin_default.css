@@ -27,3 +27,12 @@
 #skin_default .home_title{
   border-bottom: 1px solid #e5ebf7 !important;
 }
+
+/*共享班牌头部*/
+#skin_default .watchHome_card #header .headTitle {
+  background: url("../../images/icon_watch_header.png") no-repeat !important;
+  background-size: 100% 100% !important;
+}
+#skin_default .watchHome_card #header .headTitleT{
+  color: #fff;
+}
