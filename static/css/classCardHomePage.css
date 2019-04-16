@@ -786,3 +786,6 @@
 #leftPanel li.active::before{
   background-color: #3c58d9;
 }
+.watchHome_left .schoolInfo{
+  text-align: justify;
+}
