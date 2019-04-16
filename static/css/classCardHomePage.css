@@ -729,6 +729,7 @@
     top: 0;
 }
 .watchHome_right .listCont .item{
+    overflow: hidden;
     padding-left: 4.39rem;
     position: relative;
     margin-bottom: .83rem;
