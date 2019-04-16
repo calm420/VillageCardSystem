@@ -35,3 +35,33 @@
 .verticalHome .currentAttendance_height, .verticalHome .moralEducationScore_height, .verticalHome .moralEducationScore-wrap{
     height: 9.17rem !important;
 }
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 900px) {
+    html {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1024px) {
+    html {
+        font-size: 26px;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1079px) {
+    html {
+        font-size: 30px;
+    }
+}
+@media only screen and (min-width: 1080px) {
+    html {
+        font-size: 36px;
+    }
+}
+

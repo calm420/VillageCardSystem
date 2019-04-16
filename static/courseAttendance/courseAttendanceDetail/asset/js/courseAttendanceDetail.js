@@ -17,6 +17,8 @@ function init(){
 
     var skin =WebServiceUtil.GetQueryString("skin");
     document.getElementsByName("courseAttendanceDetailDiv")[0].id=skin;
+    var font = WebServiceUtil.GetQueryString('font');
+    $('html').css('font-size', font);
     simpleMs = new SimpleConnection();
     simpleMs.connect();
     simpleListener();
@@ -59,7 +61,7 @@ function goHomePage(){
 }
 function getBraceletAttend(classTableId){
     var param = {
-        "method": 'getBraceletAttend',
+        "method": 'getBraceletAttendContainLate',
         "cid": classTableId
     };
     WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
@@ -73,32 +75,36 @@ function getBraceletAttend(classTableId){
             // message.error(error);
         }
     });
-    // $.post(url, {
-    //     params: JSON.stringify(param)
-    // }, function (result, status) {
-    //     if (status == "success") {
-    //         var response=result.response;
-    //         getBraceletAttendHandle(response);
-    //     }
-    // }, "json");
 }
 function getBraceletAttendHandle(response){
     // $("#imageTip"+157775).show();
     // $("#signTip"+157775).remove();
-    $("#attendCount").text(response.length);
     $("#noAttendCount").text(totalCount-response.length);
     if(response==null||response.length==0){
         return
     }
+    var lateCount=0;
     for (var i = 0; i < response.length; i++) {
-        var user=response[i];
+        var user=response[i].user;
+        var isLate=response[i].isLate;
+        if(isLate==true){
+            lateCount++;
+        }
+        var punchTime=response[i].punchTime;
        for(var j=0;j<totalStudent.length;j++){
            if(user.colUid==totalStudent[j]){
-                $("#imageTip"+user.colUid).show();
-                $("#signTip"+user.colUid).remove();
+               if(isLate==true){
+                   $("#signTip"+user.colUid).addClass("signIcon-blue");
+                   $("#signTip"+user.colUid).text(punchTime);
+               }else{
+                   $("#imageTip"+user.colUid).show();
+                   $("#signTip"+user.colUid).remove();
+               }
+
            }
        }
     }
+    $("#lateCount").text(lateCount);
 }
 function getStudentByCourseTableItem(classTableId){
     var param = {

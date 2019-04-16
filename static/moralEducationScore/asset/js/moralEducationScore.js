@@ -58,7 +58,7 @@ $(function () {
     $('#seeMoreHistory').on('click', function () {
         var data = {
             method: 'openNewPage',
-            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin,
+            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin+"&font="+font,
         };
         window.parent.postMessage(JSON.stringify(data), '*');
     });

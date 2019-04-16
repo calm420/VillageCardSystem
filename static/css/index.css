@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.15;
-    font-size: 14px;
+    font-size: 12.5px;
 }
 
 body {
@@ -631,29 +631,25 @@ video::-webkit-media-controls-fullscreen-button {
 
 /*班牌屏幕适配*/
 
-@media only screen and (min-width: 768px) and (max-width: 799px) {
+/*@media only screen and (min-width: 768px) and (max-width: 799px) {*/
+    /*html {*/
+        /*font-size: 14.5px;*/
+    /*}*/
+/*}*/
+@media only screen and (min-width: 600px) and (max-width: 819px) {
     html {
-        font-size: 14.5px;
+    font-size: 12px;
     }
 }
-
-@media only screen and (min-width: 800px) and (max-width: 1024px) {
+@media only screen and (min-width: 820px) and (max-width: 1499px) {
     html {
-        font-size: 15px;
-    }
-}
-
-@media only screen and (max-width: 1499px) and (min-width: 1025px) {
-    html {
-        /*font-size: 20px;*/
-        font-size: 36px;
+        font-size: 22px;
     }
 }
 
 @media only screen and (min-width: 1500px) and (max-width: 1919px) {
     html {
-        /*font-size: 28px;*/
-        font-size: 36px;
+        font-size: 30px;
     }
 }
 
