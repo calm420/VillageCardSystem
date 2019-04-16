@@ -34,9 +34,38 @@ $(document).ready(function () {
             msListener();
             simpleListener();
             // getBraceletBoxSkinBySchoolId(schoolId);
+            getBraceletBoxListBySchoolId(schoolId)
         }, 3000)
     }
 
+    /**
+     * 根据学校id获取学校绑定的盒子
+     * schoolId
+     */
+    function getBraceletBoxListBySchoolId(schoolId) {
+        var param = {
+            "method": 'getBraceletBoxListBySchoolId',
+            "schoolId": schoolId,
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.msg == '调用成功' || result.success == true) {
+                    buildClazzList(result.response)
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
+    }
+
+    function buildClazzList(data) {
+        var str = '';
+        data.map(function (v, i) {
+            str += `<li class="classItem" onclick="clazzListClick(this,${JSON.stringify(v).replace(/\"/g,"'")})">${v.room.defaultBindedClazz.name}</li>`
+        });
+        $('#clazzList').html(str)
+    }
 
     function msListener() {
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
@@ -52,7 +81,6 @@ $(document).ready(function () {
         }
     }
 
-
     function simpleListener() {
         simpleMs.msgWsListener = {
             onError: function (errorMsg) {
@@ -67,7 +95,6 @@ $(document).ready(function () {
             }
         }
     }
-
 
     function getBraceletBoxSkinBySchoolId(schoolId) {
         var param = {
@@ -110,26 +137,6 @@ $(document).ready(function () {
         document.querySelector('#schoolMask').style.display = 'none'
     };
 
-    $('#clazzList>li').click(function () {
-        for (var i = 0; i < $('#clazzList>li').length; i++) {
-            $($('#clazzList>li')[i]).removeClass('active')
-        }
-        $(this).attr('class', 'active');
-        $('#schoolMask').click();
-        changeMainSrc()
-    });
-
-    function changeMainSrc() {
-        var clazzId = WebServiceUtil.GetQueryString("clazzId");
-        var roomId = WebServiceUtil.GetQueryString("roomId");
-        var mac = WebServiceUtil.GetQueryString("mac");
-        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
-        mac = mac.toLowerCase();
-        var schoolId = WebServiceUtil.GetQueryString("schoolId");
-        var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
-        $('#schoolContent').attr('src', src)
-    }
-
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
         console.log(res, "res")
@@ -156,7 +163,7 @@ $(document).ready(function () {
         } else if (res.method == 'viewClazzes') {
             document.querySelector('#leftPanel').className = 'ding_enter';
             document.querySelector('#schoolMask').style.display = 'block'
-        } else if(res.method == 'quitViewClazzes') {
+        } else if (res.method == 'quitViewClazzes') {
             var clazzId = WebServiceUtil.GetQueryString("clazzId");
             var roomId = WebServiceUtil.GetQueryString("roomId");
             var mac = WebServiceUtil.GetQueryString("mac");
@@ -170,3 +177,30 @@ $(document).ready(function () {
     });
 
 });
+
+function clazzListClick(e, obj) {
+    $(e).attr('class', 'active');
+    $('#schoolMask').click();
+    changeMainSrc(obj)
+}
+
+/*$('#clazzList>li').click(function () {
+    for (var i = 0; i < $('#clazzList>li').length; i++) {
+        $($('#clazzList>li')[i]).removeClass('active')
+    }
+    $(this).attr('class', 'active');
+    $('#schoolMask').click();
+    changeMainSrc()
+});*/
+
+function changeMainSrc(obj) {
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var clazzId = obj.room.defaultBindedClazz.id;
+    var roomId = obj.room.id;
+    var mac = obj.macAddress;
+    //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+    mac = mac.toLowerCase();
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
+    $('#schoolContent').attr('src', src)
+}
