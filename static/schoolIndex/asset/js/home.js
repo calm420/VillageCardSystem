@@ -126,7 +126,7 @@ $(document).ready(function () {
         //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
         mac = mac.toLowerCase();
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
-        var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+        var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
         $('#schoolContent').attr('src', src)
     }
 
@@ -163,7 +163,7 @@ $(document).ready(function () {
             //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
             mac = mac.toLowerCase();
             var schoolId = WebServiceUtil.GetQueryString("schoolId");
-            var src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+            var src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
             $('#schoolContent').attr('src', src)
         }
 
