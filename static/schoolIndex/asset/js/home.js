@@ -194,6 +194,9 @@ function clazzListClick(e, obj) {
 });*/
 
 function changeMainSrc(obj) {
+    console.log(obj.room.defaultBindedClazz.name,"obj")
+    var data = {"method": 'changeHeaderName', "name":obj.room.defaultBindedClazz.name};
+    document.getElementById('header').contentWindow.postMessage(JSON.stringify(data), '*');
     var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
     var clazzId = obj.room.defaultBindedClazz.id;
     var roomId = obj.room.id;
@@ -204,3 +207,5 @@ function changeMainSrc(obj) {
     var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
     $('#schoolContent').attr('src', src)
 }
+
+

@@ -9,11 +9,32 @@ $(function () {
     if (!!font) {
         $('html').css('font-size', font)
     }
-    viewClassRoom(roomId)
+    getSchoolById(schoolId)
     makeTime();
     if (!!vertical) {
         $('.headTitle').width('70%')
         // $('#weather').css('display', 'none')
+    }
+
+    function getSchoolById (schoolId) {
+        var param = {
+            "method": 'getSchoolById',
+            "id": schoolId,
+            "actionName": "sharedClassAction",
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.response.avatar) {
+                    $(".icon_school").attr("src", result.response.avatar);
+                    $(".headTitleT").html(result.response.name)
+                } else {
+                    $(".icon_school").attr("src", "")
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
     }
 
 
@@ -33,7 +54,7 @@ $(function () {
     /**
      * 获取网络时间
      */
-    function getCurrentTimeMillis(resolve) {
+    function getCurrentTimeMillis (resolve) {
         var param = {
             "method": 'getCurrentTimeMillis',
         };
@@ -54,7 +75,7 @@ $(function () {
      * 查询天气
      * @param adcode
      */
-    function weatherInfo(adcode) {
+    function weatherInfo (adcode) {
         $.get('https://restapi.amap.com/v3/weather/weatherInfo?key=fce57f3f5ed99a1b7925992439e5a224&city=' + adcode + '&extensions=all', function (res) {
             buildWether(res.forecasts[0].casts.splice(0, 2))
         })
@@ -64,7 +85,7 @@ $(function () {
      * 构建天气
      * @param data
      */
-    function buildWether(data) {
+    function buildWether (data) {
         var img = document.createElement("img");
 
         if (data[0].dayweather.indexOf('阴') != -1) {
@@ -93,7 +114,7 @@ $(function () {
     /**
      * 制作电子表
      */
-    function makeTime() {
+    function makeTime () {
         getCurrentTimeMillis(function (time) {
             timer = setInterval(function () {
                 document.querySelector('#watch').innerText = set(time)
@@ -139,7 +160,7 @@ $(function () {
      * @param time
      * @returns {string}
      */
-    function set(time) {
+    function set (time) {
         timeOffset = ((-1 * (new Date()).getTimezoneOffset()) - (8 * 60)) * 60000;
         now = new Date(time - timeOffset);
         return p(now.getHours()) + ':' + p(now.getMinutes()) + ':' + p(now.getSeconds())
@@ -150,14 +171,14 @@ $(function () {
      * @param s
      * @returns {string}
      */
-    function p(s) {
+    function p (s) {
         return s < 10 ? '0' + s : s;
     }
 
     /*
      设置日期的方法，针对年月日星期的显示
     */
-    function setTodayDate(today) {
+    function setTodayDate (today) {
         var months, dates, weeks, intMonths, intDates, intWeeks, today, timeString;
 
         intMonths = today.getMonth() + 1;//获得月份+1
@@ -191,14 +212,6 @@ $(function () {
         return timeString;
     }
 
-    /**
-     * 获取班级名称
-     * @param id
-     */
-    function viewClassRoom(id) {
-        document.querySelector('#class-name').innerHTML = '浙江省丽水中学'
-    }
-
     $('.changeBtn').click(function () {
         var data = {
             method: 'viewClazzes'
@@ -207,6 +220,7 @@ $(function () {
     });
 
     $('.icon_school').click(function () {
+        getSchoolById(schoolId)
         var data = {
             method: 'quitViewClazzes'
         };
@@ -215,13 +229,24 @@ $(function () {
 
     //监听接受消息
     window.addEventListener('message', function (e) {
+        console.log("890890")
         var commandInfo = JSON.parse(e.data);
+        console.log(commandInfo, "commandInfo")
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
                 document.getElementsByName("headerDiv")[0].id = skin;
             }
         }
+        if (commandInfo.method == "changeHeaderName") {
+            var headContent = commandInfo.name;
+            console.log(headContent,"headContent")
+            $(".headTitleT").html(headContent)
+        }
     })
+
+
+
+
 
 })
