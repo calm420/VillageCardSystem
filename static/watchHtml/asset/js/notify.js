@@ -62,6 +62,7 @@ $(function () {
             InitializePage();
         } else if (commandInfo.command == "classDemeanor" && commandInfo.data.cid == clazzId) {
             console.log('轮播图')
+            document.getElementById('classDemeanor').contentWindow.postMessage(commandInfo)
         }
     })
 

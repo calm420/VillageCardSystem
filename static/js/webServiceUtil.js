@@ -7,7 +7,7 @@ WebServiceUtil.isDebug_simpleScoket = true;
 //message消息服务的debug设置,需要调用本地message消息服务时,需要设置为true,否则为false,发版时一定要调整为false
 WebServiceUtil.isDebug_messageScoket = false;
 WebServiceUtil.localDomain = "192.168.50.15";   //请求地址接口
-WebServiceUtil.localDebugUrl = "192.168.50.39";   //本地调试的地址,嵌套ifream页面使用的地址
+WebServiceUtil.localDebugUrl = "192.168.50.30";   //本地调试的地址,嵌套ifream页面使用的地址
 
 //小蚂蚁webService地址
 var apiWebServiceURLOfLocals = "http://" + WebServiceUtil.localDomain + ":9006/Excoord_ApiServer/webservice";
