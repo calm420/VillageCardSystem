@@ -2,6 +2,7 @@ $(function () {
     var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font')
+    var clazzId = WebServiceUtil.GetQueryString('clazzId')
     $('html').css('font-size', font)
     var loadFilter = true;
     //拖动偏移量
@@ -59,8 +60,8 @@ $(function () {
             slideNumber = 1;
             $(".swiper-wrapper").empty();
             InitializePage();
-        } else if(commandInfo.command == "classDemeanor" && commandInfo.data.cid == roomId) {
-
+        } else if (commandInfo.command == "classDemeanor" && commandInfo.data.cid == clazzId) {
+            console.log('轮播图')
         }
     })
 
