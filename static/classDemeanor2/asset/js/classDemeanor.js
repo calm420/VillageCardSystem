@@ -53,8 +53,7 @@ $(document).ready(function () {
         var font = WebServiceUtil.GetQueryString('font')
         var visitType = WebServiceUtil.GetQueryString('visitType')
         if (!!visitType && visitType == 0) {
-            console.log(visitType, 'visitType');
-            $('.classReward').hide();
+            $('.classDemeanor').hide();
         }
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
@@ -203,8 +202,8 @@ $(document).ready(function () {
 
         }
         console.log(classDemeanors, '重新构建的数组');
-        var imageWidth = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.3;
-        var marginRight = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.05;
+        var imageWidth = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 1;
+        var marginRight = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 1;
         classDemeanors.forEach(function (classDemeanor) {
             var imagePath = classDemeanor.imagePath.split('&');
             var image = imagePath[0];
@@ -380,8 +379,8 @@ $(document).ready(function () {
 
         }
         console.log(classRewards, '重新构建的数组');
-        var imageWidth = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.3;
-        var marginRight = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.05;
+        var imageWidth = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 1;
+        var marginRight = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 1;
         classRewards.forEach(function (classDemeanor) {
             var imagePath = classDemeanor.imagePath.split('&');
             var image = imagePath[0];
