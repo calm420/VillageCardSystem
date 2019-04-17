@@ -5,7 +5,7 @@
 }
 #skin_default #header {
   background: url("../../images/bg_web_top.jpg") no-repeat !important;
-  background-size: 100% 100% !important;
+  background-size: 100% 101% !important;
 }
 #skin_default #header .headTitle {
   background: url("../../images/headTittle_bg.png") no-repeat !important;
