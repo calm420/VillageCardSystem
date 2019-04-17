@@ -94,6 +94,11 @@
     mac = mac.toLowerCase();
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
     $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor2?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
+
+
+    window.addEventListener('message', function (e) {
+        window.parent.postMessage(e.data, '*');
+    });
 </script>
 </body>
 

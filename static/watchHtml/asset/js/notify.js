@@ -2,6 +2,7 @@ $(function () {
     var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font')
+    var clazzId = WebServiceUtil.GetQueryString('clazzId')
     $('html').css('font-size', font)
     var loadFilter = true;
     //拖动偏移量
@@ -46,6 +47,9 @@ $(function () {
     //监听接受消息
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
+
+        console.log(commandInfo, '是的撒多所');
+
         // console.log("notify",commandInfo);
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
@@ -56,6 +60,8 @@ $(function () {
             slideNumber = 1;
             $(".swiper-wrapper").empty();
             InitializePage();
+        } else if (commandInfo.command == "classDemeanor" && commandInfo.data.cid == clazzId) {
+            console.log('轮播图')
         }
     })
 
@@ -68,7 +74,7 @@ $(function () {
     // });
 
     //初始化页面元素
-    function InitializePage () {
+    function InitializePage() {
         // $(".swiper-wrapper").empty();
         // setTimeout(function(){
         getNotifyInfo(roomId);
@@ -78,7 +84,7 @@ $(function () {
         // },1000)
     }
 
-    function getNotifyInfo (roomId) {
+    function getNotifyInfo(roomId) {
         var param = {
             "method": 'getClassBrandNoticeListByClassId',
             "classroomId": roomId,
@@ -132,7 +138,7 @@ $(function () {
         });
     }
 
-    function getSchoolById (schoolId) {
+    function getSchoolById(schoolId) {
         var param = {
             "method": 'getSchoolById',
             "id": schoolId,
@@ -142,7 +148,7 @@ $(function () {
             onResponse: function (result) {
                 if (result.response.synopsis) {
                     $(".schoolInfo").html(result.response.synopsis)
-                }else {
+                } else {
                     $(".schoolInfo").html("")
                 }
             },
@@ -151,27 +157,28 @@ $(function () {
             }
         });
     }
-    function getAllTeacherStyleList (schoolId) {
+
+    function getAllTeacherStyleList(schoolId) {
         var param = {
             "method": 'getAllTeacherStyleList',
             "schoolId": schoolId,
-            "pageNo":-1,
+            "pageNo": -1,
             "actionName": "sharedClassAction",
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result,"uio")
-                result.response.forEach(function(v,i){
-                    console.log(v,"V")
-                   $(".listCont").append(
-                       '<div class="item">'+
-                       '<img src='+v.avatar+' alt="">'+
-                       '<div class="text">'+
-                           '<span class="text_hidden teacherName">'+v.teacherName+'</span>'+
-                           '<div class="info">'+v.content+'</div>'+
-                       '</div>'+
-                   '</div>'
-                   )
+                console.log(result, "uio")
+                result.response.forEach(function (v, i) {
+                    console.log(v, "V")
+                    $(".listCont").append(
+                        '<div class="item">' +
+                        '<img src=' + v.avatar + ' alt="">' +
+                        '<div class="text">' +
+                        '<span class="text_hidden teacherName">' + v.teacherName + '</span>' +
+                        '<div class="info">' + v.content + '</div>' +
+                        '</div>' +
+                        '</div>'
+                    )
                 })
             },
             onError: function (error) {

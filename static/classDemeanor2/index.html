@@ -101,12 +101,10 @@ position: relative;
     <script type="text/javascript">
         function videoOnClick(src) {
             window.event? window.event.cancelBubble = true : e.stopPropagation();
-            console.log(src);
             var data={"method":'playVideo',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
         function imageOnClick(src){
-//            alert(src);
             var data={"method":'playImage',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }

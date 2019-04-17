@@ -727,12 +727,13 @@
     position: absolute;
     left: 0;
     top: 0;
+    object-fit: cover;
 }
 .watchHome_right .listCont .item{
-    overflow: hidden;
     padding-left: 4.39rem;
     position: relative;
     margin-bottom: .83rem;
+    height: 4.15rem;
 }
 .watchHome_right .listCont .item:last-child{
   margin-bottom: 0;
@@ -740,7 +741,7 @@
 .watchHome_right .listCont .teacherName{
     font-size: .67rem;
     width: 100%;
-    line-height: 1;
+    line-height: 1.2;
 }
 .watchHome_right .listCont .info{
     font-size: .56rem;

@@ -53,7 +53,7 @@ $(document).ready(function () {
         var font = WebServiceUtil.GetQueryString('font')
         var visitType = WebServiceUtil.GetQueryString('visitType')
         if (!!visitType && visitType == 0) {
-            $('.classDemeanor').hide();
+            $('.classReward').hide();
         }
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
@@ -82,7 +82,7 @@ $(document).ready(function () {
                             DemeanorData.splice(0);
                             clearInterval(DemeanorTimer);
                             DemeanorData = result.response;
-                            if (DemeanorData.length > 3) {  //班级风采大于三张
+                            // if (DemeanorData.length > 3) {  //班级风采大于三张
                                 $('#DemeanorBack').show();
                                 $('#DemeanorGo').show();
                                 $('#classDemeanor').css({transition: ''});
@@ -90,21 +90,21 @@ $(document).ready(function () {
                                 DemeanorFilter = true;
                                 DemeanorTimer = setInterval(function () {
                                     //加一层判断，后续考虑计时器是否未清
-                                    if (DemeanorData.length > 3) {
+                                    // if (DemeanorData.length > 3) {
                                         doDemeanorTranslageGo(true);
-                                    } else {
-                                        clearInterval(DemeanorTimer);
-                                    }
+                                    // } else {
+                                    //     clearInterval(DemeanorTimer);
+                                    // }
 
                                 }, 5000);
-                            } else { //小于三张
-                                clearInterval(DemeanorTimer);
-                                currentIndex = 0;
-                                $('#DemeanorBack').hide();
-                                $('#DemeanorGo').hide();
-                                DemeanorFilter = true;
-                                createDemeanor(DemeanorData, DemeanorData.length);
-                            }
+                            // } else { //小于三张
+                            //     clearInterval(DemeanorTimer);
+                            //     currentIndex = 0;
+                            //     $('#DemeanorBack').hide();
+                            //     $('#DemeanorGo').hide();
+                            //     DemeanorFilter = true;
+                            //     createDemeanor(DemeanorData, DemeanorData.length);
+                            // }
                         }
                     }
                 }
@@ -213,11 +213,11 @@ $(document).ready(function () {
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 }
@@ -225,17 +225,17 @@ $(document).ready(function () {
         })
         offsetDemeanor = parseInt($('.demeanor_item').css('marginRight').substring(0, $('.demeanor_item').css('marginRight').length - 2)) + parseInt($('.demeanor_item').css('width').substring(0, $('.demeanor_item').css('width').length - 2));
         $('#classDemeanor').css({width: ((offsetDemeanor * 5) + 10) + 'px'});
-        if (index > 3) {  //班级风采大于三张
+        // if (index > 3) {  //班级风采大于三张
             $('#classDemeanor').css({transform: 'translate3d(-' + offsetDemeanor + 'px, 0px, 0px)'});
             $('#classDemeanor').removeClass('classReward-Center');
-        } else {  //班级风采小于三张
-            if (index == 3) {
-                $('#classDemeanor').removeClass('classReward-Center');
-            } else {
-                $('#classDemeanor').addClass('classReward-Center');
-            }
-            $('#classDemeanor').css({transform: 'translate3d(0px, 0px, 0px)'});
-        }
+        // } else {  //班级风采小于三张
+        //     if (index == 3) {
+        //         $('#classDemeanor').removeClass('classReward-Center');
+        //     } else {
+        //         $('#classDemeanor').addClass('classReward-Center');
+        //     }
+        //     $('#classDemeanor').css({transform: 'translate3d(0px, 0px, 0px)'});
+        // }
 
     }
 
@@ -393,11 +393,11 @@ $(document).ready(function () {
                 $("#classReward")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 }

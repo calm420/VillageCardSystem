@@ -88,7 +88,9 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-                console.log(info, "info")
+
+                document.querySelector('#schoolContent').contentWindow.postMessage(JSON.stringify(info), '*');
+
                 if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
@@ -139,7 +141,6 @@ $(document).ready(function () {
 
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
-        console.log(res, "res")
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',
