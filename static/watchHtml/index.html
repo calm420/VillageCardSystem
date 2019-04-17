@@ -37,14 +37,11 @@
             <div class="watchHome_left commonCard">
                 <h1>校园简介</h1>
                 <div class="schoolInfo">
-                    西安理工大学附小创办于1972年，位于西安理工大学家属院内，现有在校生1700余名教师60多名，高级教师占教师总数的70%。四十多年来，学校非常重视教育教学质量的不断提高，连续多年受到上级主管部门的表彰奖励，是碑林区授予的教育教学质量“优异学校”之一，是陕西省政府授予的“绿色文明学校”，08年荣获省级“红旗大队”称号。
-
-                    多年来，在抓好教育教学的同时，学校把改善办学环境、加强硬件建设放在重要的位置之上。我们清醒地认识到，要办成现代化规模的学校，现代化管理、设备、环境是提高教育教学质量的基础和关键。近几年学校不断投入，先后投资200多万元更新设备，改造电路、更新学生计算机、语音室、多媒体教室、安装数字化教学终端、监控系统等，整洁明亮的教室，冬有暖气、夏有空调、教学网络计算机、70寸液晶电视、饮水机一应俱全，为学生学习提供了良好的条件。
                 </div>
             </div>
             <div class="watchHome_center">
                 <div class="banner">
-                    <img src="../images/middleSchool_classDemeanor.png" alt="">
+                    <iframe id="classDemeanor" class="home_card classDemeanor_height" src=""></iframe>
                 </div>
                 <div class="notifyCont commonCard">
                     <h1 id="notifySeeMore">
@@ -64,78 +61,7 @@
             <div class="watchHome_right commonCard">
                 <h1> 教师风采</h1>
                 <div class="listCont">
-                   <div class="item">
-                       <img src="../images/middleSchool_classDemeanor.png" alt="">
-                       <div class="text">
-                           <span class="text_hidden teacherName">王小二</span>
-                           <div class="info">
-                               大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                           </div>
-                       </div>
-                   </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="../images/middleSchool_classDemeanor.png" alt="">
-                        <div class="text">
-                            <span class="text_hidden teacherName">王小二</span>
-                            <div class="info">
-                                大学文化程度，中学高级教师，西安市课改工作先进个人，西安市教育改革创新先进个…
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -153,6 +79,15 @@
         console.log(data);
         window.parent.postMessage(JSON.stringify(data), '*');
     }
+
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var clazzId = WebServiceUtil.GetQueryString("clazzId");
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var mac = WebServiceUtil.GetQueryString("mac");
+    //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+    mac = mac.toLowerCase();
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
 </script>
 </body>
 

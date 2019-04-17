@@ -2,6 +2,12 @@
   height: 100%;
   width: 100%;
 }
+#classCardHomePage.noHeader .home_content_index{
+  height: 100% !important;
+  width: 100% !important;
+  padding:0 !important;
+  box-sizing: border-box;
+}
 #classCardHomePage iframe {
   border: none;
   width: 100%;
@@ -723,6 +729,7 @@
     top: 0;
 }
 .watchHome_right .listCont .item{
+    overflow: hidden;
     padding-left: 4.39rem;
     position: relative;
     margin-bottom: .83rem;
@@ -785,4 +792,7 @@
 }
 #leftPanel li.active::before{
   background-color: #3c58d9;
+}
+.watchHome_left .schoolInfo{
+  text-align: justify;
 }

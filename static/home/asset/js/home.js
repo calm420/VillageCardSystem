@@ -45,6 +45,9 @@ $(document).ready(function () {
         var visitType = WebServiceUtil.GetQueryString("visitType");
 
         if (!!visitType && visitType == 0) {
+            var font = WebServiceUtil.GetQueryString('font');
+            $('html').css('font-size', font);
+            $("#classCardHomePage").addClass('noHeader');
             $("#topHeader").css('display','none');
         }
     }
