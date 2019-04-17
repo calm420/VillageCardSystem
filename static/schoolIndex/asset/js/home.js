@@ -139,7 +139,6 @@ $(document).ready(function () {
 
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
-        console.log(res, "res")
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',

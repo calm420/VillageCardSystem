@@ -40,6 +40,14 @@
             <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
             <img id="imagePlayer" src="" alt="">
         </div>
+        <div onClick="closePlayerMask()" id='videoPlayerMask' style="display: none">
+            <div class="close_box" onClick="closePlayerMask()"><span class="close">关闭</span></div>
+            <img id="imagePlayerAr" src="" alt="">
+        </div>
+        <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+            <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
+            <img id="imagePlayer" src="" alt="">
+        </div>
         <div id='notifyMask' class="notifyMask" style="display: none">
             <div class="am-modal-wrap ">
                 <div class="notify_contModal">
@@ -69,6 +77,56 @@
 </body>
 
 <script type="text/javascript">
+    function playImage(src) {
+        document.getElementById('videoPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayerAr').src = src;
+    }
+
+    function playImages(src) {
+        document.getElementById('imgPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayer').src = src;
+    }
+
+    function closePlayerMask() {
+        document.getElementById('imagePlayerAr').src = "";
+        document.getElementById('videoPlayerMask').style.display = 'none';
+    }
+
+    //班级风采点击播放视频
+    function playVideo(src) {
+        //        console.log('播放视频');
+        var data = {
+            method: "startPlayer",
+            url: src,
+            isClick: true
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
+    //推送视频播放
+    function playPushVideo(src) {
+        var data = {
+            method: "startPlayer",
+            url: src,
+            isClick: false
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
+    //推送视频关闭
+    function closePushVideoMask() {
+        var data = {
+            method: "closePlayer",
+        };
+        Bridge.callHandler(data, null, function (error) {
+            console.log(error);
+        });
+    }
+
     //通知弹框
     function getNotifyData(notifyTitle, notifyContent) {
         document.getElementById('notifyMask').style.display = 'block';
