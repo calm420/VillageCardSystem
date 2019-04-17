@@ -88,7 +88,9 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-                console.log(info, "info")
+
+                document.querySelector('#schoolContent').contentWindow.postMessage(JSON.stringify(info), '*');
+
                 if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
