@@ -2,6 +2,7 @@ $(function () {
     var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font')
+    var clazzId = WebServiceUtil.GetQueryString('clazzId')
     $('html').css('font-size', font)
     var loadFilter = true;
     //拖动偏移量
@@ -59,6 +60,7 @@ $(function () {
             slideNumber = 1;
             $(".swiper-wrapper").empty();
             InitializePage();
+<<<<<<< HEAD
         } else if(commandInfo.command == "classDemeanor" && commandInfo.data.cid == roomId) {
 
         }else if(commandInfo.command == "updateSchool" && commandInfo.data.id == schoolId) {
@@ -67,6 +69,10 @@ $(function () {
             getAllTeacherStyleList(schoolId);
         }else if(commandInfo.command == "saveTeacherStyle" && commandInfo.data.id == schoolId) {
             getAllTeacherStyleList(schoolId);
+=======
+        } else if (commandInfo.command == "classDemeanor" && commandInfo.data.cid == clazzId) {
+            console.log('轮播图')
+>>>>>>> 5af808dba63d71389c0493ecb22b59acdff341b0
         }
     })
 
