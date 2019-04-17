@@ -6,6 +6,10 @@
   position: relative;
   padding-top: 9.55rem;
 }
+#excellentStu .excelStuCont {
+  overflow:auto;
+  height:calc(100% - 2.22rem);
+}
 #excellentStu .cont .left > div {
   height: 2.25rem;
   background-color: #eaeeff;

@@ -27,26 +27,14 @@ $(document).ready(function () {
             }
         };
 
-        $("#studentOnDuty")[0].src = webserviceUrl + "studentOnDuty?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#moralEducationScore")[0].src = webserviceUrl + "moralEducationScore?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#application")[0].src = webserviceUrl + "application?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#courseOfToday")[0].src = webserviceUrl + "courseOfToday?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#courseAttendance")[0].src = webserviceUrl + "courseAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
+        $("#header")[0].src = webserviceUrl + "schoolHeader?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
+        $('#schoolContent')[0].src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         setTimeout(function () {
             ms.connect(pro);
             msListener();
             simpleListener();
-            getBraceletBoxSkinBySchoolId(schoolId);
+            // getBraceletBoxSkinBySchoolId(schoolId);
         }, 3000)
-
-        var visitType = WebServiceUtil.GetQueryString("visitType");
-
-        if (!!visitType && visitType == 0) {
-            $("#topHeader").css('display','none');
-        }
     }
 
 
@@ -59,21 +47,7 @@ $(document).ready(function () {
                 console.log("warnMsg at msListener:" + warnMsg);
             }, onMessage: function (info) {
                 console.log("info at msListener", info);
-                if (info.command == "braceletBoxConnect") {
-                    if (info.data.playPushVideoStatus != undefined) {
-                        var videoData = JSON.parse(info.data.playPushVideoStatus);
-                        if (videoData.playStatus == "open" && videoData.schoolId == schoolId) {
-                            playPushVideo(videoData.videoPath)
-                        }
-                    }
-                }
-                if (info.command == "playPushVideoStatus" && info.data.playStatus == "open" && info.data.schoolId == schoolId) {
-                    playPushVideo(info.data.videoPath)
-                } else if (info.command == "playPushVideoStatus" && info.data.playStatus == "close" && info.data.schoolId == schoolId) {
-                    closePushVideoMask()
-                }
-                document.querySelector('#courseOfToday').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#courseAttendance').contentWindow.postMessage(JSON.stringify(info), '*');
+
             }
         }
     }
@@ -86,10 +60,7 @@ $(document).ready(function () {
             }, onWarn: function (warnMsg) {
                 // Toast.fail(warnMsg)
             }, onMessage: function (info) {
-                document.querySelector('#classDemeanor').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#studentOnDuty').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#notify').contentWindow.postMessage(JSON.stringify(info), '*');
-                document.querySelector('#moralEducationScore').contentWindow.postMessage(JSON.stringify(info), '*');
+                console.log(info, "info")
                 if (info.command == "refreshClassCardPage") {
                     window.location.reload();
                 }
@@ -134,8 +105,34 @@ $(document).ready(function () {
         });
     }
 
+    document.querySelector('#schoolMask').onclick = function () {
+        document.querySelector('#leftPanel').className = 'ding_leave';
+        document.querySelector('#schoolMask').style.display = 'none'
+    };
+
+    $('#clazzList>li').click(function () {
+        for (var i = 0; i < $('#clazzList>li').length; i++) {
+            $($('#clazzList>li')[i]).removeClass('active')
+        }
+        $(this).attr('class', 'active');
+        $('#schoolMask').click();
+        changeMainSrc()
+    });
+
+    function changeMainSrc() {
+        var clazzId = WebServiceUtil.GetQueryString("clazzId");
+        var roomId = WebServiceUtil.GetQueryString("roomId");
+        var mac = WebServiceUtil.GetQueryString("mac");
+        //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+        mac = mac.toLowerCase();
+        var schoolId = WebServiceUtil.GetQueryString("schoolId");
+        var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+        $('#schoolContent').attr('src', src)
+    }
+
     window.addEventListener('message', function (e) {
         var res = JSON.parse(e.data);
+        console.log(res, "res")
         if (res.method == 'openNewPage') {
             var data = {
                 method: 'openNewPage',
@@ -156,6 +153,18 @@ $(document).ready(function () {
             if (WebServiceUtil.isEmpty(res.src) == false) {
                 playImage(res.src);
             }
+        } else if (res.method == 'viewClazzes') {
+            document.querySelector('#leftPanel').className = 'ding_enter';
+            document.querySelector('#schoolMask').style.display = 'block'
+        } else if(res.method == 'quitViewClazzes') {
+            var clazzId = WebServiceUtil.GetQueryString("clazzId");
+            var roomId = WebServiceUtil.GetQueryString("roomId");
+            var mac = WebServiceUtil.GetQueryString("mac");
+            //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+            mac = mac.toLowerCase();
+            var schoolId = WebServiceUtil.GetQueryString("schoolId");
+            var src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0";
+            $('#schoolContent').attr('src', src)
         }
 
     });

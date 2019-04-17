@@ -12,7 +12,8 @@
   background: transparent;
   display: inline-block;
   margin-right: 0.83rem;
-  margin-top: 0.53rem;
+  /*margin-top: 0.53rem;*/
+  margin-top: 0.83rem;
   line-height: 1;
 }
 #header span {
@@ -75,4 +76,47 @@
   font-weight: bold;
   margin: 1.44rem 0.7rem 0 1.44rem;
   max-width: 13rem;
+}
+
+/*共享班牌*/
+.watchHome_card #header .headTitle{
+  width: 23.67rem;
+  height: 3rem;
+  box-sizing: border-box;
+  position: relative;
+  padding-left: 3.64rem;
+  margin-top: .42rem;
+}
+.watchHome_card #header .headTitleT{
+  line-height: 3rem;
+  margin: 0;
+  font-weight: normal;
+}
+.watchHome_card #header .changeBtn{
+  font-size: .67rem;
+  position: absolute;
+  padding:1rem;
+  right: 3.11rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.watchHome_card #header .changeBtn span{
+  text-decoration: underline;
+}
+.watchHome_card #header .headTitle .icon_school{
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  position: absolute;
+  left: .81rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>小蚂蚁智慧班牌</title>
+    <link rel="stylesheet" href="../css/index.css?v=1">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
+    <link rel="stylesheet" href="../css/homePage/header.css">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <script type="text/javascript" src="../js/webServiceUtil.js?v=5"></script>
+    <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./layer/layer.js"></script>
+    <script type="text/javascript" src="../js/msg_websocket_connection.js?v=0.0.2"></script>
+    <script type="text/javascript" src="../js/simple_websocket_connection.js?v=0.0.2"></script>
+    <script type="text/javascript" src="./asset/js/home.js?v=0.0.4"></script>
+
+</head>
+
+<body>
+<div id="skin_default" name="homeDiv">
+
+    <div id="classCardHomePage" class="watchHome_card">
+        <div>
+            <iframe id="header" src=""></iframe>
+        </div>
+        <div class="home_content home_content_index">
+            <iframe
+                    id="schoolContent"
+                    frameborder="0"></iframe>
+        </div>
+        <div onClick="closePlayerImg()" id='imgPlayerMask' style="display: none">
+            <div class="close_box" onClick="closePlayerImg()"><span class="close">关闭</span></div>
+            <img id="imagePlayer" src="" alt="">
+        </div>
+        <div id='notifyMask' class="notifyMask" style="display: none">
+            <div class="am-modal-wrap ">
+                <div class="notify_contModal">
+                    <div class="am-modal-content">
+                            <span class="closeNotify am-modal-close" onClick="closeNotifyMask()">
+                                <span class="am-modal-close-x"></span>
+                            </span>
+                        <div class="am-modal-header">
+                            <div class="am-modal-title notifyTitle"></div>
+                        </div>
+                        <div class="am-modal-body">
+                            <div class="cont notifyContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mask" id="schoolMask"></div>
+    <div id="leftPanel">
+        <div class="schoolName">浙江丽水中学</div>
+        <ul id="clazzList">
+            <li class="classItem active">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+            <li class="classItem">一年级测试班</li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    //通知弹框
+    function getNotifyData(notifyTitle, notifyContent) {
+        document.getElementById('notifyMask').style.display = 'block';
+        $(".notifyTitle").html(notifyTitle)
+        $(".notifyContent").html(notifyContent)
+    }
+
+    //通知关闭
+    function closeNotifyMask() {
+        $(".notifyContent").empty();
+        $('.notifyContent').animate({scrollTop: '0px'}, 100);
+        document.getElementById('notifyMask').style.display = 'none';
+    }
+
+    function playImages(src) {
+        document.getElementById('imgPlayerMask').style.display = 'block';
+        document.getElementById('imagePlayer').src = src;
+    }
+
+    function closePlayerImg() {
+        document.getElementById('imagePlayer').src = "";
+        document.getElementById('imgPlayerMask').style.display = 'none';
+    }
+
+    $(document).on('click', '.editor_image', function (e) {
+        var imgSrc = e.currentTarget.currentSrc.split("?");
+        playImages(imgSrc[0])
+    })
+</script>
+
+</html>

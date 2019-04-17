@@ -1,5 +1,6 @@
 #classCardHomePage {
   height: 100%;
+  width: 100%;
 }
 #classCardHomePage iframe {
   border: none;
@@ -83,7 +84,6 @@
   height: 11.67rem;
   margin-top: 0.83rem;
 }
-
 #classCardHomePage .studentOnDuty_height {
   height: 12.05rem;
 }
@@ -617,3 +617,172 @@
 /* ::-webkit-scrollbar-corner {
       background-color: none;
 } 横向滚动条和纵向滚动条相交处尖角的颜色 */
+
+/*共享班牌*/
+#classCardHomePage.watchHome_card .commonCard{
+    border-radius: .33rem;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,.85);
+    font-size: .67rem;
+    color: #333;
+    line-height: 1.5;
+    padding-bottom: .83rem;
+    padding-top: .83rem;
+}
+#classCardHomePage.watchHome_card #schoolContent{
+  height: 100%;
+}
+#classCardHomePage.watchHome_card .home_content_inner{
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0;
+}
+#classCardHomePage.watchHome_card .watchHome_left{
+    float: left;
+    width: 11.81rem;
+    height: 25.28rem;
+}
+.watchHome_card h1{
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0;
+    font-weight: normal;
+    line-height: 1;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 0.83rem;
+    margin-left: .83rem;
+}
+.watchHome_card .commonCard > div{
+    height: calc(100% - 1.87rem);
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 0 .83rem;
+}
+.watchHome_left h1{
+    background: url("../images/icon_watch_school.png") no-repeat left center;
+    background-size: .85rem;
+    padding-left: 1.45rem;
+}
+.watchHome_center{
+    float: left;
+    width: calc(100% - 25.28rem);
+    margin: 0 .83rem;
+}
+.watchHome_center h1{
+    background: url("../images/icon_watch_notify.png") no-repeat left center;
+    background-size:1.04rem;
+    padding-left: 1.6rem;
+    margin-bottom: 0.56rem;
+}
+.watchHome_center .banner{
+    height: 17.23rem;
+    margin-bottom: 0.83rem;
+    border-radius: .33rem;
+    overflow: hidden;
+}
+.watchHome_center .banner img{
+    width: 100%;
+    height: 100%;
+}
+.watchHome_card .notifyCont{
+    height: 7.22rem;
+}
+#classCardHomePage.watchHome_card .notify_cont{
+  height: calc(100% - 1.6rem);
+}
+#classCardHomePage.watchHome_card .notify_cont li{
+  padding: 0  ;
+  height: 1.44rem;
+  line-height: 1.44rem;
+  border-bottom:1px #999 dashed;
+  font-size: .67rem;
+  color: #333;
+}
+#classCardHomePage.watchHome_card .notify_cont li .notify_titleMore{
+  height: 1.44rem;
+  background: url("../images/next_s_icon.png") no-repeat center center;
+  background-size: .83rem;
+  margin-top: 0;
+}
+.watchHome_card .watchHome_right{
+    float: right;
+    width: 11.81rem;
+    height: 25.28rem;
+}
+.watchHome_right h1{
+    background: url("../images/icon_watch_teacher.png") no-repeat left center;
+    background-size:1.36rem;
+    padding-left:1.84rem;
+}
+.watchHome_right img{
+    width: 3.56rem;
+    height: 4.15rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.watchHome_right .listCont .item{
+    padding-left: 4.39rem;
+    position: relative;
+    margin-bottom: .83rem;
+}
+.watchHome_right .listCont .item:last-child{
+  margin-bottom: 0;
+}
+.watchHome_right .listCont .teacherName{
+    font-size: .67rem;
+    width: 100%;
+    line-height: 1;
+}
+.watchHome_right .listCont .info{
+    font-size: .56rem;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.5);
+  display: none;
+}
+#leftPanel ul{
+  margin-top: .45rem;
+  overflow-y: auto;
+  height: calc(100% - 1.87rem);
+}
+#leftPanel li{
+  height: 2.44rem;
+  line-height: 2.44rem;
+  font-size: .83rem;
+  padding-left: 2.53rem;
+  position: relative;
+}
+#leftPanel li::before{
+  content: '';
+  position: absolute;
+  left: 1.22rem;
+  width: 0.33rem;
+  height: 0.33rem;
+  background-color: rgba(35, 177, 243,0.2);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+#leftPanel li.active{
+  background-color: rgba(223, 242, 254,.6);
+  color: #0066FF;
+}
+#leftPanel li.active::before{
+  background-color: #3c58d9;
+}

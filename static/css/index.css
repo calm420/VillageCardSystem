@@ -705,9 +705,11 @@ video::-webkit-media-controls-fullscreen-button {
 .noMoreData,
 .preloader {
     color: #565c72 !important;
-    font-size: 0.72rem !important;
+    font-size: 0.67rem !important;
     text-align: center !important;
     padding: .5rem 0 !important;
+    height: 30px!important;
+    line-height: 30px!important;
 }
 
 .notifyMask {
@@ -799,4 +801,60 @@ video::-webkit-media-controls-fullscreen-button {
     max-width: 100vw;
     max-height: 100vh;
     object-fit: contain;
+}
+
+#leftPanel {
+    padding: 1.39rem 0;
+    box-sizing: border-box;
+    width: 15.83rem;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -15.83rem;
+    background-color: #fff;
+    border-radius: 0 .33rem 0 0;
+    overflow: hidden;
+}
+#leftPanel .schoolName{
+    background: url("../images/icon_watch_schoolList.png") no-repeat .8rem center;
+    font-size: 1rem;
+    padding-left: 2.53rem;
+    background-size: 1.19rem;
+}
+
+.ding_enter {
+    animation-name: moveTest;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    /*设置动画的播放状态  paused:暂停   running:播放*/
+    animation-play-state: running;
+}
+
+/*创建动画*/
+@keyframes moveTest {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(15.83rem, 0);
+    }
+}
+
+.ding_leave {
+    animation-name: moveLeave;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes moveLeave {
+    from {
+        transform: translate(-15.83rem, 0);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
 }
