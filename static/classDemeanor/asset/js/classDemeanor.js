@@ -51,6 +51,11 @@ $(document).ready(function () {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
         var font = WebServiceUtil.GetQueryString('font')
+        var visitType = WebServiceUtil.GetQueryString('visitType')
+        if (!!visitType && visitType == 0) {
+            console.log(visitType, 'visitType');
+            $('.classReward').hide();
+        }
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
         localStorage.setItem("schoolId", schoolId);
@@ -81,14 +86,14 @@ $(document).ready(function () {
                             if (DemeanorData.length > 3) {  //班级风采大于三张
                                 $('#DemeanorBack').show();
                                 $('#DemeanorGo').show();
-                                $('#classDemeanor').css({ transition: '' });
+                                $('#classDemeanor').css({transition: ''});
                                 createDemeanor(DemeanorData, DemeanorData.length);
                                 DemeanorFilter = true;
                                 DemeanorTimer = setInterval(function () {
                                     //加一层判断，后续考虑计时器是否未清
-                                    if(DemeanorData.length > 3){
+                                    if (DemeanorData.length > 3) {
                                         doDemeanorTranslageGo(true);
-                                    }else{
+                                    } else {
                                         clearInterval(DemeanorTimer);
                                     }
 
@@ -115,7 +120,7 @@ $(document).ready(function () {
     $('#DemeanorGo').on('click', function () {
         if (btnFilter) {
             isBackOrGoClicked = true;
-            if(clearBackOrGoTime){
+            if (clearBackOrGoTime) {
                 clearTimeout(clearBackOrGoTime);
             }
             doDemeanorTranslageGo(false);
@@ -129,7 +134,7 @@ $(document).ready(function () {
 
         if (btnFilter) {
             isBackOrGoClicked = true;
-            if(clearBackOrGoTime){
+            if (clearBackOrGoTime) {
                 clearTimeout(clearBackOrGoTime);
             }
             doDemeanorTranslageBack(false);
@@ -142,35 +147,35 @@ $(document).ready(function () {
     var isBackOrGoClicked = false;
     var clearBackOrGoTime;
 
-    function doDemeanorTranslageBack(){
+    function doDemeanorTranslageBack() {
         if (currentIndex < 0) {
             currentIndex = (DemeanorData.length - 1) + currentIndex;
         } else {
             currentIndex--;
         }
         btnFilter = false;
-        $('#classDemeanor').css({ transition: '2s' })
-        $('#classDemeanor').css({ transform: 'translate(0px, 0px' }, "slow");
+        $('#classDemeanor').css({transition: '2s'})
+        $('#classDemeanor').css({transform: 'translate(0px, 0px'}, "slow");
         setTimeout(function () {
-            $('#classDemeanor').css({ transition: '' });
-            createDemeanor(DemeanorData,DemeanorData.length);
+            $('#classDemeanor').css({transition: ''});
+            createDemeanor(DemeanorData, DemeanorData.length);
             btnFilter = true;
         }, 2000);
     }
 
-    function doDemeanorTranslageGo(auto){
-        if(auto && isBackOrGoClicked){
-            clearBackOrGoTime = setTimeout(function(){
+    function doDemeanorTranslageGo(auto) {
+        if (auto && isBackOrGoClicked) {
+            clearBackOrGoTime = setTimeout(function () {
                 isBackOrGoClicked = false;
-            },1000*10);
+            }, 1000 * 10);
             return;
         }
         currentIndex++;
         btnFilter = false;
-        $('#classDemeanor').css({ transition: '2s' });
-        $('#classDemeanor').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
+        $('#classDemeanor').css({transition: '2s'});
+        $('#classDemeanor').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
         setTimeout(function () {
-            $('#classDemeanor').css({ transition: '' });
+            $('#classDemeanor').css({transition: ''});
             createDemeanor(DemeanorData, DemeanorData.length);
             btnFilter = true;
         }, 2000);
@@ -220,9 +225,9 @@ $(document).ready(function () {
             }
         })
         offsetDemeanor = parseInt($('.demeanor_item').css('marginRight').substring(0, $('.demeanor_item').css('marginRight').length - 2)) + parseInt($('.demeanor_item').css('width').substring(0, $('.demeanor_item').css('width').length - 2));
-        $('#classDemeanor').css({ width: ((offsetDemeanor * 5) + 10) + 'px' });
+        $('#classDemeanor').css({width: ((offsetDemeanor * 5) + 10) + 'px'});
         if (index > 3) {  //班级风采大于三张
-            $('#classDemeanor').css({ transform: 'translate3d(-' + offsetDemeanor + 'px, 0px, 0px)' });
+            $('#classDemeanor').css({transform: 'translate3d(-' + offsetDemeanor + 'px, 0px, 0px)'});
             $('#classDemeanor').removeClass('classReward-Center');
         } else {  //班级风采小于三张
             if (index == 3) {
@@ -230,7 +235,7 @@ $(document).ready(function () {
             } else {
                 $('#classDemeanor').addClass('classReward-Center');
             }
-            $('#classDemeanor').css({ transform: 'translate3d(0px, 0px, 0px)' });
+            $('#classDemeanor').css({transform: 'translate3d(0px, 0px, 0px)'});
         }
 
     }
@@ -262,9 +267,9 @@ $(document).ready(function () {
                                 RewardFilter = true;
                                 RewardTimer = setInterval(function () {
                                     //增加判断条件
-                                    if(RewardData.length > 3){
+                                    if (RewardData.length > 3) {
                                         doRewardTranslageGo(true);
-                                    }else{
+                                    } else {
                                         clearInterval(RewardTimer);
                                         return;
                                     }
@@ -291,36 +296,36 @@ $(document).ready(function () {
     var clearRewardBackOrGoTime;
     var rewardBtnFilter = true;
 
-    function doRewardTranslageBack(){
+    function doRewardTranslageBack() {
         if (currentIndex_Reward < 0) {
             currentIndex_Reward = (RewardData.length - 1) + currentIndex_Reward;
         } else {
             currentIndex_Reward--;
         }
         rewardBtnFilter = false;
-        $('#classReward').css({ transition: '2s' })
-        $('#classReward').css({ transform: 'translate(0px, 0px' }, "slow");
+        $('#classReward').css({transition: '2s'})
+        $('#classReward').css({transform: 'translate(0px, 0px'}, "slow");
         setTimeout(function () {
-            $('#classReward').css({ transition: '' });
-            createReward(RewardData,RewardData.length);
+            $('#classReward').css({transition: ''});
+            createReward(RewardData, RewardData.length);
             rewardBtnFilter = true;
         }, 2000);
     }
 
-    function doRewardTranslageGo(auto){
-        if(auto && isRewardBackOrGoClicked){
-            clearRewardBackOrGoTime = setTimeout(function(){
+    function doRewardTranslageGo(auto) {
+        if (auto && isRewardBackOrGoClicked) {
+            clearRewardBackOrGoTime = setTimeout(function () {
                 isRewardBackOrGoClicked = false;
-            },1000*10);
+            }, 1000 * 10);
             return;
         }
         currentIndex_Reward++;
         rewardBtnFilter = false;
-        $('#classReward').css({ transition: '2s' });
-        $('#classReward').css({ transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px' });
+        $('#classReward').css({transition: '2s'});
+        $('#classReward').css({transform: 'translate(-' + (offsetDemeanor + offsetDemeanor) + 'px, 0px'});
         setTimeout(function () {
-            $('#classReward').css({ transition: '' });
-            createReward(RewardData,RewardData.length);
+            $('#classReward').css({transition: ''});
+            createReward(RewardData, RewardData.length);
             rewardBtnFilter = true;
         }, 2000);
     }
@@ -329,7 +334,7 @@ $(document).ready(function () {
     $('#RewardGo').on('click', function () {
         if (rewardBtnFilter) {
             isRewardBackOrGoClicked = true;
-            if(clearRewardBackOrGoTime){
+            if (clearRewardBackOrGoTime) {
                 clearTimeout(clearRewardBackOrGoTime);
             }
             doRewardTranslageGo(false);
@@ -343,7 +348,7 @@ $(document).ready(function () {
         if (rewardBtnFilter) {
             //阻止点击
             isRewardBackOrGoClicked = true;
-            if(clearRewardBackOrGoTime){
+            if (clearRewardBackOrGoTime) {
                 clearTimeout(clearRewardBackOrGoTime);
             }
             doRewardTranslageBack(false);
@@ -400,14 +405,14 @@ $(document).ready(function () {
             }
         })
         offsetDemeanor = parseInt($('.demeanor_itemTop').css('marginRight').substring(0, $('.demeanor_itemTop').css('marginRight').length - 2)) + parseInt($('.demeanor_itemTop').css('width').substring(0, $('.demeanor_itemTop').css('width').length - 2));
-        $('#classReward').css({ width: ((offsetDemeanor * 5) + 10) + 'px' });
-        if(index > 3){  //班级风采大于三张
+        $('#classReward').css({width: ((offsetDemeanor * 5) + 10) + 'px'});
+        if (index > 3) {  //班级风采大于三张
             $('#classReward').css({transform: 'translate3d(-' + offsetDemeanor + 'px, 0px, 0px)'});
             $('#classReward').removeClass('classReward-Center');
-        }else{  //班级风采小于三张
-            if(index == 3){
+        } else {  //班级风采小于三张
+            if (index == 3) {
                 $('#classReward').removeClass('classReward-Center');
-            }else{
+            } else {
                 $('#classReward').addClass('classReward-Center');
             }
             $('#classReward').css({transform: 'translate3d(0px, 0px, 0px)'});

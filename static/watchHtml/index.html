@@ -41,7 +41,7 @@
             </div>
             <div class="watchHome_center">
                 <div class="banner">
-                    <img src="../images/middleSchool_classDemeanor.png" alt="">
+                    <iframe id="classDemeanor" class="home_card classDemeanor_height" src=""></iframe>
                 </div>
                 <div class="notifyCont commonCard">
                     <h1 id="notifySeeMore">
@@ -61,7 +61,7 @@
             <div class="watchHome_right commonCard">
                 <h1> 教师风采</h1>
                 <div class="listCont">
-                   
+
                 </div>
             </div>
 
@@ -79,6 +79,15 @@
         console.log(data);
         window.parent.postMessage(JSON.stringify(data), '*');
     }
+
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var clazzId = WebServiceUtil.GetQueryString("clazzId");
+    var roomId = WebServiceUtil.GetQueryString("roomId");
+    var mac = WebServiceUtil.GetQueryString("mac");
+    //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
+    mac = mac.toLowerCase();
+    var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    $("#classDemeanor")[0].src = webserviceUrl + "classDemeanor?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
 </script>
 </body>
 
