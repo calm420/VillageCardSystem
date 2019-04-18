@@ -62,7 +62,7 @@ $(document).ready(function () {
     function buildClazzList(data) {
         var str = '';
         data.map(function (v, i) {
-            str += `<li class="classItem" onclick="clazzListClick(this,${JSON.stringify(v).replace(/\"/g,"'")})">${v.room.defaultBindedClazz.name}</li>`
+            str += `<li class="classItem" onclick="clazzListClick(this,${JSON.stringify(v).replace(/\"/g, "'")})">${v.room.defaultBindedClazz.name}</li>`
         });
         $('#clazzList').html(str)
     }
@@ -181,7 +181,10 @@ $(document).ready(function () {
 });
 
 function clazzListClick(e, obj) {
-    $(e).attr('class', 'active');
+    for (var i = 0; i < $('.classItem').length; i++) {
+        $($('.classItem')[i]).removeClass('active')
+    }
+    $(e).addClass('active');
     $('#schoolMask').click();
     changeMainSrc(obj)
 }
