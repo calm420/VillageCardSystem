@@ -90,6 +90,7 @@ $(document).ready(function () {
             }, onMessage: function (info) {
 
                 document.querySelector('#schoolContent').contentWindow.postMessage(JSON.stringify(info), '*');
+                document.querySelector('#header').contentWindow.postMessage(JSON.stringify(info), '*');
 
                 if (info.command == "refreshClassCardPage") {
                     window.location.reload();

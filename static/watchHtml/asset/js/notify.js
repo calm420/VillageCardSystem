@@ -48,9 +48,6 @@ $(function () {
     window.addEventListener('message', function (e) {
         var commandInfo = JSON.parse(e.data);
 
-        console.log(commandInfo, '是的撒多所');
-
-        // console.log("notify",commandInfo);
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 skin = commandInfo.data.skinName;
