@@ -27,7 +27,7 @@ $(document).ready(function () {
     window.addEventListener('message', function (e) {
         var clazzId = localStorage.getItem("clazzId");
         var schoolId = localStorage.getItem("schoolId");
-        var commandInfo = JSON.parse(e.data);
+        var commandInfo = e.data;
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == commandInfo.data.cid) {
                 DemeanorFilter = false;
