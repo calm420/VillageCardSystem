@@ -60,19 +60,15 @@ $(function () {
             slideNumber = 1;
             $(".swiper-wrapper").empty();
             InitializePage();
-<<<<<<< HEAD
-        } else if(commandInfo.command == "classDemeanor" && commandInfo.data.cid == roomId) {
-
-        }else if(commandInfo.command == "updateSchool" && commandInfo.data.id == schoolId) {
+        } else if(commandInfo.command == "updateSchool" && commandInfo.data.id == schoolId) {
             getSchoolById(schoolId);
         }else if(commandInfo.command == "updateTeacherStyle" && commandInfo.data.id == schoolId) {
             getAllTeacherStyleList(schoolId);
         }else if(commandInfo.command == "saveTeacherStyle" && commandInfo.data.id == schoolId) {
             getAllTeacherStyleList(schoolId);
-=======
         } else if (commandInfo.command == "classDemeanor" && commandInfo.data.cid == clazzId) {
             console.log('轮播图')
->>>>>>> 5af808dba63d71389c0493ecb22b59acdff341b0
+            document.getElementById('classDemeanor').contentWindow.postMessage(commandInfo, '*')
         }
     })
 
