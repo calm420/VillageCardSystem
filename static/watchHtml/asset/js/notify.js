@@ -53,7 +53,7 @@ $(function () {
                 skin = commandInfo.data.skinName;
                 document.getElementsByName("notifyDiv")[0].id = skin;
             }
-        } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId) {
+        } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId || commandInfo.data.classroomid == 0 ) {
             slideNumber = 1;
             $(".swiper-wrapper").empty();
             InitializePage();

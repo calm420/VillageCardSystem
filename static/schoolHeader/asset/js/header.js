@@ -231,7 +231,7 @@ $(function () {
     window.addEventListener('message', function (e) {
         console.log("890890")
         var commandInfo = JSON.parse(e.data);
-        console.log(commandInfo, "commandInfo")
+        console.log(commandInfo, "commandInfo2")
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
@@ -240,8 +240,10 @@ $(function () {
         }
         if (commandInfo.method == "changeHeaderName") {
             var headContent = commandInfo.name;
-            console.log(headContent,"headContent")
+            console.log(headContent, "headContent")
             $(".headTitleT").html(headContent)
+        } else if (commandInfo.command == "updateSchool" && commandInfo.data.id == schoolId) {
+            getSchoolById(schoolId);
         }
     })
 
