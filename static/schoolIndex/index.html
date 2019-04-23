@@ -14,14 +14,18 @@
     <link rel="stylesheet" href="../css/skin/skin_default.css">
     <link rel="stylesheet" href="../css/homePage/header.css">
     <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../js/webServiceUtil.js?v=5"></script>
     <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./layer/layer.js"></script>
     <script type="text/javascript" src="../js/msg_websocket_connection.js?v=0.0.2"></script>
     <script type="text/javascript" src="../js/simple_websocket_connection.js?v=0.0.2"></script>
     <script type="text/javascript" src="./asset/js/home.js?v=0.0.4"></script>
-
+     <script src="./asset/js/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        // var vConsole = new VConsole();
+    </script>
 </head>
 
 <body>
@@ -105,6 +109,8 @@
         });
     }
 
+
+
     //推送视频播放
     function playPushVideo(src) {
         var data = {
@@ -133,6 +139,8 @@
         $(".notifyTitle").html(notifyTitle)
         $(".notifyContent").html(notifyContent)
     }
+
+
 
     //通知关闭
     function closeNotifyMask() {

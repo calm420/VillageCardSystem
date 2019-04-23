@@ -62,6 +62,7 @@ $(document).ready(function () {
     function buildClazzList(data) {
         var str = '';
         data.map(function (v, i) {
+            console.log(v,'45454');
             str += `<li class="classItem" onclick="clazzListClick(this,${JSON.stringify(v).replace(/\"/g, "'")})">${v.room.defaultBindedClazz.name}</li>`
         });
         $('#clazzList').html(str)
