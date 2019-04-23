@@ -36,6 +36,28 @@ $(document).ready(function () {
             // getBraceletBoxSkinBySchoolId(schoolId);
             getBraceletBoxListBySchoolId(schoolId)
         }, 3000)
+
+        getSchoolById(schoolId)
+    }
+
+    function getSchoolById(schoolId) {
+        var param = {
+            "method": 'getSchoolById',
+            "id": schoolId,
+            "actionName": "sharedClassAction",
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                if (result.success) {
+                    $(".schoolName").html(result.response.name)
+                } else {
+                    $(".icon_school").attr("src", "")
+                }
+            },
+            onError: function (error) {
+                // message.error(error);
+            }
+        });
     }
 
     /**
@@ -62,7 +84,7 @@ $(document).ready(function () {
     function buildClazzList(data) {
         var str = '';
         data.map(function (v, i) {
-            str += `<li class="classItem" onclick="clazzListClick(this,${JSON.stringify(v).replace(/\"/g, "'")})">${v.room.defaultBindedClazz.name}</li>`
+            str += '<li class="classItem" data-v="' + JSON.stringify(v).replace(/\"/g, "'") + '" onclick="clazzListClick(this)">' + v.room.defaultBindedClazz.name + '</li>'
         });
         $('#clazzList').html(str)
     }
@@ -174,23 +196,24 @@ $(document).ready(function () {
             var schoolId = WebServiceUtil.GetQueryString("schoolId");
             var src = webserviceUrl + "watchHtml?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
             $('#schoolContent').attr('src', src)
+            clearClazz()
         }
 
     });
 
 });
 
-function clazzListClick(e, obj) {
+function clazzListClick(event) {
     for (var i = 0; i < $('.classItem').length; i++) {
         $($('.classItem')[i]).removeClass('active')
     }
-    $(e).addClass('active');
+    $(event).addClass('active');
     $('#schoolMask').click();
-    changeMainSrc(obj)
+    changeMainSrc(JSON.parse(event.dataset.v.replace(/\'/g, "\"")))
 }
 
 function changeMainSrc(obj) {
-    var data = {"method": 'changeHeaderName', "name":obj.room.defaultBindedClazz.name};
+    var data = {"method": 'changeHeaderName', "name": obj.room.defaultBindedClazz.name};
     document.getElementById('header').contentWindow.postMessage(JSON.stringify(data), '*');
     var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
     var clazzId = obj.room.defaultBindedClazz.id;
@@ -201,6 +224,12 @@ function changeMainSrc(obj) {
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
     var src = webserviceUrl + "home?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&visitType=0&font=" + $('html').css('font-size');
     $('#schoolContent').attr('src', src)
+}
+
+function clearClazz() {
+    for (var i = 0; i < $('.classItem').length; i++) {
+        $($('.classItem')[i]).removeClass('active')
+    }
 }
 
 

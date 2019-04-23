@@ -24,7 +24,7 @@ $(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                if (result.response.avatar) {
+                if (result.success) {
                     $(".icon_school").attr("src", result.response.avatar);
                     $(".headTitleT").html(result.response.name)
                 } else {
