@@ -246,9 +246,4 @@ $(function () {
             getSchoolById(schoolId);
         }
     })
-
-
-
-
-
 })
