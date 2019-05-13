@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>班级风采</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/classCardHomePage.css">
+    <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
+    <link rel="stylesheet" href="../css/skin/skin_default.css">
+
+
+    <style>
+.demeanor_item,.demeanor_itemTop{
+    /*width: 7.55rem;*/
+    height: 4.17rem;
+    display: inline-block;
+    position: relative;
+    /*margin-right: 0.83rem;*/
+    float: left;
+}
+.demeanor_itemTop{
+height: 6.22rem;
+}
+.demeanor_itemImage,.swiper-slideImage{
+width: 100%;
+height: 100%;
+}
+.demeanor_itemImage img, .swiper-slideImage img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+#classDemeanor,#classReward{
+   transition-timing-function: linear;
+}
+.classDemeanor,.classReward{
+position: relative;
+}
+.DemeanorBack, .DemeanorGo, .RewardBack, .RewardGo{
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin-top: 0.41rem;
+    outline: none;
+    width: 30px;
+    height: 45px;
+    border: none;
+    padding: 0;
+}
+.classReward-Center{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    width:100%!important;
+    box-shadow: none !important;
+    height: 100%;
+}
+.classReward-Center > div:last-child{
+    margin-right: 0 !important;
+}
+.DemeanorBack, .RewardBack{
+    left: 0;
+    background: url("../images/arrow-left.png") no-repeat left center;
+    background-size: 0.83rem;
+}
+.DemeanorGo, .RewardGo{
+    right:0;
+    background: url("../images/arrow-right.png") no-repeat right center;
+    background-size: 0.83rem;
+}
+.RewardBack, .RewardGo{
+    margin-top: 0;
+}
+    </style>
+    <script type="text/javascript">
+        function videoOnClick(src) {
+            window.event? window.event.cancelBubble = true : e.stopPropagation();
+            console.log(src);
+            var data={"method":'playVideo',"src":src};
+            window.parent.postMessage(JSON.stringify(data), '*');
+        }
+        function imageOnClick(src){
+//            alert(src);
+            var data={"method":'playImage',"src":src};
+            window.parent.postMessage(JSON.stringify(data), '*');
+        }
+    </script>
+</head>
+<body>
+<div id="skin_default" class="no_bg classDemeanorDiv" name="classDemeanorDiv">
+    <div id="classCardHomePage">
+        <div id="classDemeanorWrap">
+            <h3 class="home_title">乡村振兴</h3>
+            <div class="demeanor_margin">
+                <div class="classDemeanor">
+
+                    <div class="no_bg classDemeanorDiv" id="classDemeanor" style="transition: 2s;">
+
+                    </div>
+                    <button id="DemeanorBack" class="DemeanorBack"></button>
+                    <button id="DemeanorGo" class="DemeanorGo"></button>
+                </div>
+                <div class="classReward" style="display:none">
+                    <div class="no_bg" id="classReward">
+                    </div>
+                    <button id="RewardBack" class="RewardBack"></button>
+                     <button id="RewardGo" class="RewardGo"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/webServiceUtil.js"></script>
+<script type="text/javascript" src="./asset/js/countryRevitalization.js"></script>
+</html>
