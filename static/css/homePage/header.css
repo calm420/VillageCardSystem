@@ -4,6 +4,9 @@
   padding-bottom: 0.28rem;
   overflow: hidden;
   color: #fff;
+  position: relative;
+  z-index: 99;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4)
   /*width: 100%;*/
 }
 #header .header_date {
@@ -11,10 +14,13 @@
   margin-left: 1.67rem;
   background: transparent;
   display: inline-block;
-  margin-right: 0.83rem;
+  padding-right: 0.83rem;
   /*margin-top: 0.53rem;*/
-  margin-top: 0.83rem;
+  padding-top: 0.83rem;
   line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 #header span {
   display: inline-block;
@@ -66,16 +72,29 @@
   margin-bottom: 0.3rem;
 }
 #header .headTitle {
-  width: 27.8rem;
-  height: 3.61rem;
-  display: inline-block;
+  width: 13.17rem;
+  height: 3.14rem;
+  margin: .35rem auto 0;
 }
 #header .headTitleT {
-  font-size: 1rem;
-  color: #2a3350;
-  font-weight: bold;
-  margin: 1.44rem 0.7rem 0 1.44rem;
-  max-width: 13rem;
+  display: block;
+  font-size: 1.33rem;
+  color: #541E09;
+  line-height: 3.3rem;
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+#header .icon_home{
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2.78rem;
+  padding: 0 .83rem;
+  background: url("../../images/icon_home.png") no-repeat .83rem center;
+  background-size: 2.78rem;
 }
 
 /*共享班牌*/

@@ -13,7 +13,7 @@ $(function () {
         if(commandInfo.command == "setSkin"){
             if (schoolId == commandInfo.data.schoolId) {
                 skin = commandInfo.data.skinName;
-                document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
+                // document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
             }
         }
         if (commandInfo.command == "moralEducation") {

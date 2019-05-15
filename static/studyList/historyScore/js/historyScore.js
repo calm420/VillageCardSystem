@@ -2,7 +2,7 @@ $(function () {
     var clazzId = WebServiceUtil.GetQueryString("clazzId");
     var skin = WebServiceUtil.GetQueryString("skin");
     var events=[];
-    document.getElementsByName("historyScore")[0].id=skin;
+    // document.getElementsByName("historyScore")[0].id=skin;
     var font = WebServiceUtil.GetQueryString('font');
     $('html').css('font-size', font);
     var simpleMs = new SimpleConnection();
