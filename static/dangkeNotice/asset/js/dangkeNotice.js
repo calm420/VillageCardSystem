@@ -3,48 +3,6 @@ $(function () {
     var font = WebServiceUtil.GetQueryString('font');
     $('html').css('font-size', font);
     var skin = "skin_default";
-
-<<<<<<< HEAD
-    // /**
-    //  * 消息监听
-    //  */
-    // window.addEventListener('message', function (e) {
-    //     // debugger
-    //     var res = JSON.parse(e.data);
-    //     if (res.command == 'brand_class_open') {
-    //         //查看某个课表项(一接收到开课命令就获取当前开课)
-    //         if (roomId == res.data.classroomId) {
-    //             viewCourseTableItem(res.data)
-    //             document.querySelector('#finish-class').style.display = 'none'
-    //             document.querySelector('#begin-class').style.display = 'block'
-    //         }
-    //     } else if (res.command == 'brand_class_close') {
-    //         if (roomId == res.data.classroomId) {
-    //             //下课
-    //             document.querySelector('#finish-class').style.display = 'block'
-    //             document.querySelector('#begin-class').style.display = 'none'
-    //         }
-    //     } else if (res.command == 'braceletBoxConnect' ) {
-    //         if(!WebServiceUtil.isEmpty(res.data.classTableId)){
-    //             //重连开课
-    //             if (roomId == res.data.classroomId) {
-    //                 document.querySelector('#finish-class').style.display = 'none';
-    //                 document.querySelector('#begin-class').style.display = 'block';
-    //             }
-    //         }else{
-    //             document.querySelector('#finish-class').style.display = 'block'
-    //             document.querySelector('#begin-class').style.display = 'none'
-    //         }
-    //
-    //     } else if (res.command == 'setSkin') {
-    //         //设置皮肤
-    //         if (schoolId == res.data.schoolId) {
-    //             skin = res.data.skinName;
-    //             // document.getElementsByName("courseOfTodayDiv")[0].id = skin;
-    //         }
-    //     }
-    // });
-=======
     /**
      * 消息监听
      */
@@ -84,17 +42,12 @@ $(function () {
             }
         }
     });
->>>>>>> cb3449c7abdec33ebb570838e237b06bcd10a740
     getCourseTable(villageId);
     /**
      * 查看某个课表项
      * @param data
      */
     function getCourseTable(data) {
-<<<<<<< HEAD
-=======
-        debugger
->>>>>>> cb3449c7abdec33ebb570838e237b06bcd10a740
         var param = {
             "method": 'getVillageCourseList',
             "villageId": villageId,

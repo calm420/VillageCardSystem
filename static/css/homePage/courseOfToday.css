@@ -1,5 +1,5 @@
-#courseOfToday .classTableA {
-    padding: 0.83rem;
+#courseOfToday .classTableA,#courseOfToday .classTableB {
+    padding: 0.81rem 0.83rem;
     text-align: center;
     height: calc(100% - 1.72rem);
     position: relative;
@@ -7,10 +7,19 @@
     background-size: 100% 100%;
 }
 
-#courseOfToday .classTableB {
-    padding: 0 0.83rem;
-    position: relative;
-    text-align: center;
+
+#courseOfToday .classTableB .location,#courseOfToday .classTableB .time,#courseOfToday .classTableB .class_name,#courseOfToday .classTableB .terPic_name {
+    font-size: 0.67rem;
+    padding-bottom: .5rem;
+}
+#courseOfToday .classTableB img{
+    width: 2.78rem;
+    height: 3.89rem;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: .5rem;
+
 }
 
 #courseOfToday .classTableB .index {
@@ -25,10 +34,6 @@
     margin-top: 0.48rem;
 }
 
-#courseOfToday .classTableB .time {
-    margin-bottom: 0.5rem;
-    font-size: 0.83rem;
-}
 
 #courseOfToday .classTableB .name {
     color: #fff;
@@ -40,23 +45,4 @@
     display: inline-block;
 }
 
-#courseOfToday .classTableB .terPic {
-    margin-top: 0.8rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    text-align: center;
-}
 
-#courseOfToday .classTableB .terPic_name {
-    margin-top: 3.7rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    text-align: center;
-    font-size: 0.61rem;
-}
