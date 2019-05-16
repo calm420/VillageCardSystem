@@ -50,6 +50,8 @@ $(document).ready(function () {
                             str += '<li><img src=' + result.response[i].avatar + ' alt=""><span>' + result.response[i].userName + '</span></li>'
                             // str += '<li><img src='+src_1+' alt=""><span>'+result.response[i].userName+'</span></li>'
                         }
+                        document.getElementById("honor").style.display = 'block'
+                        document.getElementById("honorEmpty").style.display = 'none'
                         document.getElementById("honor").innerHTML = str
                     }
                 }
