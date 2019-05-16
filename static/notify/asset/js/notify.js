@@ -50,7 +50,7 @@ $(function () {
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 skin = commandInfo.data.skinName;
-                document.getElementsByName("notifyDiv")[0].id = skin;
+                // document.getElementsByName("notifyDiv")[0].id = skin;
             }
         } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId || commandInfo.data.classroomid == 0 ) {
             slideNumber = 1;

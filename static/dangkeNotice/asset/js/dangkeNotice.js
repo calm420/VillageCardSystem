@@ -41,7 +41,7 @@ $(function () {
             //设置皮肤
             if (schoolId == res.data.schoolId) {
                 skin = res.data.skinName;
-                document.getElementsByName("courseOfTodayDiv")[0].id = skin;
+                // document.getElementsByName("courseOfTodayDiv")[0].id = skin;
             }
         }
     })

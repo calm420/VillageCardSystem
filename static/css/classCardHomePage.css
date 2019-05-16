@@ -14,24 +14,58 @@
   display: block;
 }
 #classCardHomePage .home_right {
-  width: 13.33rem;
+  width: 11.72rem;
   float: right;
 }
 #classCardHomePage .home_left {
-  width: 11.67rem;
+  width: 11.72rem;
   float: left;
 }
 #classCardHomePage .home_center {
-  width: calc(100% - 26.66rem);
+  width: calc(100% - 25.1rem);
   float: left;
   margin: 0 0.83rem;
 }
 #classCardHomePage .home_title {
-  font-size: 0.72rem;
-  color: #2a3350;
-  padding: 0.56rem 0 0.33rem 0.83rem;
+  font-size: 0.83rem;
+  height: 1.67rem;
+  line-height: 1.67rem;
+  text-align: center;
   margin: 0;
+  font-weight: normal;
+  color: white;
+  position: relative;
 }
+
+#classCardHomePage .home_title::before{
+  content: '';
+  position: absolute;
+  left: 2.58rem;
+  top: 0;
+  width: .97rem;
+  height: 100%;
+  background: url("../images/icon_titleLeft.png") no-repeat left center;
+  background-size: 100%;
+}
+
+#classCardHomePage .home_title::after{
+  content: '';
+  position: absolute;
+  right: 2.58rem;
+  top: 0;
+  width: .97rem;
+  height: 100%;
+  background: url("../images/icon_titleRight.png") no-repeat left center;
+  background-size: 100%;
+}
+
+#classCardHomePage.application_height .home_title::before,[name=notifyDiv] #classCardHomePage .home_title::before{
+left: 4.6rem;
+}
+#classCardHomePage.application_height .home_title::after,[name=notifyDiv] #classCardHomePage .home_title::after{
+  right: 4.6rem;
+}
+
 #classCardHomePage .home_titleMore {
   padding-right: 0.83rem;
   float: right;
@@ -52,7 +86,7 @@
 }
 #classCardHomePage .home_card {
   background: #fff;
-  border-radius: 6px;
+  border-radius: .11rem;
   color: #2a3350;
   height: 100%;
 }
@@ -115,7 +149,7 @@
   margin-top: 0.83rem;
   width: calc(50% - 0.42rem);
   float: left;
-  margin-left: 0.83rem;
+  margin-right: 0.83rem;
 }
 #classCardHomePage .health_left {
   margin-left: 0.83rem;
@@ -125,7 +159,7 @@
   color: #2a3350;
 }
 #classCardHomePage .notify_cont {
-  height: 6.4rem;
+  height: calc(100% - 1.67rem);
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
@@ -136,8 +170,8 @@
 #classCardHomePage .notify_cont li {
   height: 1.94rem;
   line-height: 1.94rem;
-  border-bottom: 1px solid #e5ebf7;
-  padding: 0 0.83rem;
+  border-bottom: 1px dashed #999999;
+  margin: 0 0.83rem;
 }
 #classCardHomePage .notify_cont .swiper-slide:last-child>div li{
   border-bottom: none;
@@ -151,8 +185,11 @@
   color: #5091fe;
 }
 #classCardHomePage .mEScoreInfo {
-  height: calc(100% - 3.42rem);
+  height: calc(100% - 1.67rem);
   position: relative;
+  background: url("../images/mEScoreInfoBg.png") no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0.83rem;
 }
 #classCardHomePage .mEScoreInfoM {
   position: absolute;
@@ -300,8 +337,7 @@
   font-size: 0.61rem;
 }
 #classCardHomePage .demeanor_margin {
-  margin: 0 0.83rem;
-  height: 13.62rem;
+  height: 100%;
   position: relative;
 }
 #classCardHomePage .publicHome_left {
@@ -313,7 +349,7 @@
   margin-left: 0;
   margin-top: 0;
   width: 100%;
-  height: 100%;
+  height: 100%;.classTableA
   overflow: hidden;
 }
 #classCardHomePage .publicHome_left .notify_cont {
@@ -337,11 +373,10 @@
   margin-top: 0;
 }
 #classCardHomePage .studentOnDuty_cont {
-  height: calc(100% - 2.88rem);
+  height: calc(100% - 3.33rem);
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 0.56rem 0 0.56rem 0.83rem;
-  padding: 0 0.83rem 0 0;
+  padding: 0.83rem;
 }
 #classCardHomePage .studentOnDuty_today {
   color: #2a3350;
@@ -394,7 +429,7 @@
 }
 #classCardHomePage .home_content_index {
   height: calc(100% - 4.72rem) !important;
-  padding-top: 0;
+  padding-top: 0.83rem;
 }
 #classCardHomePage .index_health #health.home_content {
   width: 100%;
@@ -529,8 +564,7 @@
   height: 100%;
 }
 .classDemeanor {
-  padding: 0.83rem 0 0 0;
-  height: 4.17rem !important;
+  height: 100% !important;
 }
 
 .classReward {

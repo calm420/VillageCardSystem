@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
-                document.getElementsByName("studentOnDutyDiv")[0].id = skin;
+                // document.getElementsByName("studentOnDutyDiv")[0].id = skin;
             }
         }else if (commandInfo.command == "studentDuty") {
             if (clazzId == commandInfo.data.cid) {

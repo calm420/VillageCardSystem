@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 #skin_default #header {
-  background: url("../../images/bg_web_top.jpg") no-repeat !important;
+  background: url("../../images/bg_web_top.png") no-repeat !important;
   background-size: 100% 101% !important;
 }
 #skin_default #header .headTitle {
@@ -12,7 +12,7 @@
   background-size: 100% 100% !important;
 }
 #skin_default .home_content {
-  background: url("../../images/bg_web.jpg") no-repeat !important;
+  background: url("../../images/bg_web.png") no-repeat !important;
   background-size: 100% 100% !important;
 }
 #skin_default #courseOfToday,
@@ -24,9 +24,6 @@
 #skin_default #studentOnDuty {
   background: #fff !important;
 }
-#skin_default .home_title{
-  border-bottom: 1px solid #e5ebf7 !important;
-}
 
 /*共享班牌头部*/
 #skin_default .watchHome_card #header .headTitle {
@@ -35,4 +32,41 @@
 }
 #skin_default .watchHome_card #header .headTitleT{
   color: #fff;
+}
+#skin_default[name=studentOnDutyDiv] .home_title{
+  background: -webkit-linear-gradient(left, #F59F32 , #FE7747); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #F59F32, #FE7747); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #F59F32, #FE7747); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #F59F32 , #FE7747); /* 标准的语法 */
+}
+
+#skin_default[name=courseAttendanceDiv] .home_title{
+  background: -webkit-linear-gradient(left, #FF569B , #F7455F); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #FF569B, #F7455F); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #FF569B, #F7455F); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #FF569B , #F7455F); /* 标准的语法 */
+}
+#skin_default #moralEducationScore .home_title{
+  background: -webkit-linear-gradient(left, #31F2DF , #08EBB4); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #31F2DF, #08EBB4); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #31F2DF, #08EBB4); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #31F2DF , #08EBB4); /* 标准的语法 */
+}
+#skin_default .application_height .home_title{
+  background: -webkit-linear-gradient(left, #B379FF , #825AFF); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #B379FF, #825AFF); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #B379FF, #825AFF); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #B379FF , #825AFF); /* 标准的语法 */
+}
+#skin_default  #notifySeeMore.home_title{
+  background: -webkit-linear-gradient(left,#61BFFF , #2DA8F6); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #61BFFF, #2DA8F6); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #61BFFF, #2DA8F6); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #61BFFF , #2DA8F6); /* 标准的语法 */
+}
+#skin_default  .courseOfTody-newcont .home_title{
+  background: -webkit-linear-gradient(left, #55AEFE , #558AFA); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #55AEFE, #558AFA); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #55AEFE, #558AFA); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #55AEFE , #558AFA); /* 标准的语法 */
 }
