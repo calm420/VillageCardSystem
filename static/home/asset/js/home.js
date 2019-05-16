@@ -34,7 +34,6 @@ $(document).ready(function () {
         $("#classDemeanor")[0].src = webserviceUrl + "countryRevitalization?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#application")[0].src = webserviceUrl + "dripDeeds?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        // $("#courseOfToday")[0].src = webserviceUrl + "dangkeNotice?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#courseOfToday")[0].src = webserviceUrl  + "dangkeNotice?mac=" + mac + "&villageId=" + villageId + "&font=" + $('html').css('font-size');
         $("#courseAttendance")[0].src = webserviceUrl + "dangkeAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
