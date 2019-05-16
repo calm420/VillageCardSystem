@@ -34,7 +34,13 @@
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../js/webServiceUtil.js"></script>
 <script type="text/javascript" src="./asset/js/dripDeeds.js"></script>
-
+<script type="text/javascript">
+    function getContent(obj) {
+        var data = {"method": 'notifyContentShow', "notifyTitle": obj.articleTitle, "notifyContent": obj.articleContent};
+        console.log(data);
+        window.parent.postMessage(JSON.stringify(data), '*');
+    }
+</script>
 </body>
 
 </html>
