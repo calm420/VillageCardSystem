@@ -389,6 +389,11 @@ left: 3rem;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0.58rem .4rem .58rem .83rem;
+  position: relative;
+}
+#classCardHomePage .studentOnDuty_cont#honorEmpty{
+  background: white url("../images/honorEmpty.png") no-repeat;
+  background-size: 100% 100%;
 }
 
 #classCardHomePage .studentOnDuty_cont li{
