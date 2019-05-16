@@ -155,6 +155,10 @@ $(document).ready(function () {
             if (WebServiceUtil.isEmpty(res.src) == false) {
                 playImage(res.src);
             }
+        }else if ("dripDeeds" == res.method) {
+            if (WebServiceUtil.isEmpty(res.src) == false){
+                getNotifyData(res.articleTitle, res.articleContent);
+            }
         }
 
     });
