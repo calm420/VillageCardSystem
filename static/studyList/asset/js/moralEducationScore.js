@@ -4,6 +4,23 @@ $(function () {
     $('html').css('font-size', font)
     InitializePage();
 
+<<<<<<< HEAD
+=======
+    //监听接受消息
+    window.addEventListener('message', function(e){
+        var commandInfo = JSON.parse(e.data);
+        if(commandInfo.command == "setSkin"){
+            if (schoolId == commandInfo.data.schoolId) {
+                skin = commandInfo.data.skinName;
+                // document.getElementsByName("moralEducationScoreDiv")[0].id=skin;
+            }
+        }
+        if (commandInfo.command == "moralEducation") {
+            InitializePage();
+        }
+    })
+
+>>>>>>> eeaa2040e6be68f509791c3fd695c6f7c8438f60
     //初始化页面元素
     function InitializePage() {
         getMoralEducationInfo(villageId);

@@ -1,8 +1,10 @@
 .classTableA {
-  padding: 0.56rem 0.83rem;
+  padding: 0.83rem;
   text-align: center;
-  height: calc(100% - 2.85rem);
+  height: calc(100% - 3.33rem);
   position: relative;
+  background: url("../../images/classTableABg.png") no-repeat;
+  background-size: 100% 100%;
 }
 .classTableA .due {
   font-size: 0.67rem;

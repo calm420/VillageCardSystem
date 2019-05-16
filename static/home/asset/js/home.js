@@ -113,7 +113,7 @@ $(document).ready(function () {
                 if (result.msg == '调用成功' || result.success == true) {
                     if (WebServiceUtil.isEmpty(result.response) == false) {
                         console.log("===========>" + result.response.skinAttr);
-                        document.getElementsByName("homeDiv")[0].id = result.response.skinAttr;
+                        // document.getElementsByName("homeDiv")[0].id = result.response.skinAttr;
                         var clientWidth = document.body.clientWidth;
                         console.log("clientWidth", clientWidth);
                         var dateJson = {
