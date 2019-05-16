@@ -11,11 +11,14 @@ $(document).ready(function () {
 });
 
 function init() {
-    $("#classTableA").hide();
-    $("#classTableB").show();
+    // $("#classTableA").hide();
+    // $("#classTableB").show();
     var font = WebServiceUtil.GetQueryString('font');
+    // var villageId = WebServiceUtil.GetQueryString('villageId');
+    var villageId = 1;
     $('html').css('font-size', font);
-    unbindGotoAttendDetail();
+    // unbindGotoAttendDetail();
+    getStudentByCourseTableItem(villageId);
 }
 
 function gotoAttendDetail(classTableId) {
@@ -29,12 +32,12 @@ function gotoAttendDetail(classTableId) {
     })
 }
 
-function unbindGotoAttendDetail() {
-    $('#gotoAttendDetail').unbind("click");
-    $('#gotoAttendDetail').click(function () {
-        UiUtils.toast("还没上课呢...");
-    })
-}
+// function unbindGotoAttendDetail() {
+//     $('#gotoAttendDetail').unbind("click");
+//     $('#gotoAttendDetail').click(function () {
+//         UiUtils.toast("还没上课呢...");
+//     })
+// }
 
 function checkCourseOpenHandle(data) {
     var roomId = WebServiceUtil.GetQueryString("roomId");
@@ -47,14 +50,14 @@ function checkCourseOpenHandle(data) {
             gotoAttendDetail(classTableId);
             $("#classTableA").show();
             $("#classTableB").hide();
-            getStudentByCourseTableItem(classTableId);
+            getStudentByCourseTableItem(villageId);
             if (!timerFlag) {
                 this.openTimeInterVal(classTableId);
             }
         }
     } else if (data.command == 'brand_class_close') {
         if (roomId == data.data.classroomId) {
-            unbindGotoAttendDetail();
+            // unbindGotoAttendDetail();
             $("#classTableA").hide();
             $("#classTableB").show();
             clearInterval(timer)
@@ -66,14 +69,14 @@ function checkCourseOpenHandle(data) {
             if (roomId == data.data.classroomId) {
                 $("#classTableA").show();
                 $("#classTableB").hide();
-                this.getStudentByCourseTableItem(data.data.classTableId);
+                // this.getStudentByCourseTableItem(data.data.classTableId);
                 gotoAttendDetail(data.data.classTableId);
                 if (!timerFlag) {
                     this.openTimeInterVal(data.data.classTableId);
                 }
             }
         }else{
-            unbindGotoAttendDetail();
+            // unbindGotoAttendDetail();
             $("#classTableA").hide();
             $("#classTableB").show();
             clearInterval(timer);
@@ -135,20 +138,23 @@ function getBraceletAttend(classTableId) {
     });
 }
 
-function getStudentByCourseTableItem(classTableId) {
+
+function getStudentByCourseTableItem(villageId) {
     var param = {
-        "method": 'getStudentByCourseTableItem',
-        "id": classTableId
+        "method": 'getVillageAttendList',
+        "villageId": villageId
     };
     WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
         onResponse: function (result) {
             if (result.success == true) {
                 var response = result.response;
-                if (response != null) {
-                    $("#totalCount").text(response.length);
-                } else {
-                    $("#totalCount").text(0);
-                }
+                console.log(response,"response")
+                $(".peopleCount").text(response[0].peopleNumber)
+                // if (response != null) {
+                //     $("#totalCount").text(response.length);
+                // } else {
+                //     $("#totalCount").text(0);
+                // }
             } else {
                 $("#totalCount").text(0);
             }

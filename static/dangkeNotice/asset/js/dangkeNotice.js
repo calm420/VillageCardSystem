@@ -58,7 +58,7 @@ $(function () {
                     if(result.response.length > 0) {
                         console.log(JSON.stringify(result.response));
                         document.querySelector('.time').innerHTML = !!result.response[0].classTime?
-                            result.response[0].classTime:null;
+                        WebServiceUtil.formatHM(result.response[0].classTime):null;
                         document.querySelector('.location').innerHTML = !!result.response[0].classAddress?
                             result.response[0].classAddress:null;
                         document.querySelector('.img').src = !!result.response[0].backgroundImg?

@@ -1,6 +1,7 @@
 $(function () {
     var skin = "skin_default";
-    var roomId = WebServiceUtil.GetQueryString("roomId");
+    // var villageId = WebServiceUtil.GetQueryString("villageId");
+    var villageId =1;
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     var loadFilter = true;
@@ -30,11 +31,11 @@ $(function () {
             // $('.swiper-container').css({transform: 'translate(0,-100px)'});
             if (loadFilter) {
                 loadFilter = false;
-                $(".preloader").show();
-                $('.preloader').text('正在加载...');
-                setTimeout(function () {
-                    getNotifyInfo(roomId);
-                }, 500)
+                $(".preloader").hide();
+                // $('.preloader').text('正在加载...');
+                // setTimeout(function () {
+                //     getNotifyInfo(villageId);
+                // }, 500)
 
 
             }
@@ -71,16 +72,15 @@ $(function () {
     function InitializePage() {
         // $(".swiper-wrapper").empty();
         // setTimeout(function(){
-        getNotifyInfo(roomId);
+        getNotifyInfo(villageId);
 
         // },1000)
     }
 
-    function getNotifyInfo(roomId) {
+    function getNotifyInfo(villageId) {
         var param = {
-            "method": 'getClassBrandNoticeListByClassId',
-            "classroomId": roomId,
-            "pageNo": slideNumber
+            "method": 'getVillageNoticeList',
+            "villageId": villageId,
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {

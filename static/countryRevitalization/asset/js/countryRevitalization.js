@@ -34,8 +34,8 @@ $(document).ready(function () {
                 RewardFilter = false;
                 clearInterval(DemeanorTimer);
                 clearInterval(RewardTimer);
-                getClassDemeanorInfo(clazzId);
-                getClassRewardInfo(clazzId);
+                // selectUploadFile(villageId);
+                selectUploadFile(villageId);
 
             }
         } else if (commandInfo.command == "setSkin") {
@@ -50,6 +50,8 @@ $(document).ready(function () {
     function InitializePage() {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
+        // var villageId = WebServiceUtil.GetQueryString("villageId");
+        var villageId = 1;
         var font = WebServiceUtil.GetQueryString('font')
         var visitType = WebServiceUtil.GetQueryString('visitType')
         if (!!visitType && visitType == 0) {
@@ -59,21 +61,25 @@ $(document).ready(function () {
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
         localStorage.setItem("schoolId", schoolId);
-        getClassDemeanorInfo(clazzId);
-        getClassRewardInfo(clazzId);
+        selectUploadFile(villageId);
+        // selectUploadFile(villageId);
     }
 
-    function getClassDemeanorInfo(clazzId) {
+    function selectUploadFile(villageId) {
         var param = {
-            "method": 'getClassDemeanorInfo',
-            "clazzId": clazzId,
-            "type": 1
+            "method": 'selectUploadFile',
+            "villageId": villageId,
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.success == true && result.msg == "调用成功") {
                     $("#classDemeanor")[0].innerHTML = "";
-                    var response = result.response;
+                    var arr = [];
+                    for(var i = 0;i < result.response.length;i++){
+                        var item = result.response[i]
+                        arr.push(item.url)
+                    }
+                    var response = arr;
                     if (response != null && response != undefined) {
                         if (response.length === 0) {
                             var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
@@ -82,7 +88,8 @@ $(document).ready(function () {
                             currentIndex = -1;
                             DemeanorData.splice(0);
                             clearInterval(DemeanorTimer);
-                            DemeanorData = result.response;
+                            DemeanorData = response;
+                            console.log(DemeanorData,"DemeanorData")
                             if (DemeanorData.length > 3) {  //班级风采大于三张
                                 $('#DemeanorBack').show();
                                 $('#DemeanorGo').show();
@@ -131,7 +138,6 @@ $(document).ready(function () {
     });
 
     $('#DemeanorBack').on('click', function () {
-
         if (btnFilter) {
             isBackOrGoClicked = true;
             if (clearBackOrGoTime) {
@@ -206,19 +212,20 @@ $(document).ready(function () {
         var imageWidth = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.3;
         var marginRight = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.05;
         classDemeanors.forEach(function (classDemeanor) {
-            var imagePath = classDemeanor.imagePath.split('&');
+            var imagePath = classDemeanors;
             var image = imagePath[0];
+            console.log(image,"image")
             if (image.substr(image.length - 3, 3) == 'mp4') {
                 var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=videoOnClick('" + image.split('?')[0] + "')><i onClick=videoOnClick('" + image.split('?')[0] + "')></i><img src=" + imagePath[1] + "></div></div>";
                 var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + classDemeanor + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + classDemeanor + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 }
@@ -240,57 +247,57 @@ $(document).ready(function () {
 
     }
 
-    function getClassRewardInfo(clazzId) {
-        var param = {
-            "method": 'getClassDemeanorInfo',
-            "clazzId": clazzId,
-            "type": 2
-        };
-        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
-            onResponse: function (result) {
-                if (result.success == true && result.msg == "调用成功") {
-                    $("#classReward")[0].innerHTML = "";
-                    var response = result.response;
-                    if (response != null && response != undefined) {
-                        if (response.length === 0) {
-                            var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
-                            $("#classReward")[0].innerHTML = emptyDiv;
-                        } else {
-                            RewardData.splice(0);
-                            currentIndex_Reward = -1;
-                            clearInterval(RewardTimer);
-                            RewardData = result.response;
-                            if (RewardData.length > 3) { //班级荣誉大于三张
-                                $('#RewardBack').show();
-                                $('#RewardGo').show();
-                                createReward(RewardData, RewardData.length);
-                                RewardFilter = true;
-                                RewardTimer = setInterval(function () {
-                                    //增加判断条件
-                                    if (RewardData.length > 3) {
-                                        doRewardTranslageGo(true);
-                                    } else {
-                                        clearInterval(RewardTimer);
-                                        return;
-                                    }
-                                }, 5000);
-                            } else {
-                                clearInterval(RewardTimer);
-                                currentIndex_Reward = 0;
-                                $('#RewardBack').hide();
-                                $('#RewardGo').hide();
-                                RewardFilter = true;
-                                createReward(RewardData, RewardData.length);
-                            }
-                        }
-                    }
-                }
-            },
-            onError: function (error) {
+    // function selectUploadFile(villageId) {
+    //     var param = {
+    //         "method": 'selectUploadFile',
+    //         "villageId": villageId,
+    //     };
+    //     WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+    //         onResponse: function (result) {
+    //             if (result.success == true && result.msg == "调用成功") {
+    //                 $("#classReward")[0].innerHTML = "";
+    //                 var response = result.response;
+    //                 if (response != null && response != undefined) {
+    //                     if (response.length === 0) {
+    //                         var emptyDiv = '<div class=\'empty_center\'><div class=\'empty_icon empty_honor\'></div><div class=\'empty_text\'></div></div>';
+    //                         $("#classReward")[0].innerHTML = emptyDiv;
+    //                     } else {
+    //                         RewardData.splice(0);
+    //                         currentIndex_Reward = -1;
+    //                         clearInterval(RewardTimer);
+    //                         RewardData = result.response;
+    //                         console.log(DemeanorData,"DemeanorData")
+    //                         if (RewardData.length > 3) { //班级荣誉大于三张
+    //                             $('#RewardBack').show();
+    //                             $('#RewardGo').show();
+    //                             createReward(RewardData, RewardData.length);
+    //                             RewardFilter = true;
+    //                             RewardTimer = setInterval(function () {
+    //                                 //增加判断条件
+    //                                 if (RewardData.length > 3) {
+    //                                     doRewardTranslageGo(true);
+    //                                 } else {
+    //                                     clearInterval(RewardTimer);
+    //                                     return;
+    //                                 }
+    //                             }, 5000);
+    //                         } else {
+    //                             clearInterval(RewardTimer);
+    //                             currentIndex_Reward = 0;
+    //                             $('#RewardBack').hide();
+    //                             $('#RewardGo').hide();
+    //                             RewardFilter = true;
+    //                             createReward(RewardData, RewardData.length);
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         },
+    //         onError: function (error) {
 
-            }
-        });
-    }
+    //         }
+    //     });
+    // }
 
     var isRewardBackOrGoClicked = false;
     var clearRewardBackOrGoTime;
@@ -383,7 +390,7 @@ $(document).ready(function () {
         var imageWidth = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.3;
         var marginRight = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.05;
         classRewards.forEach(function (classDemeanor) {
-            var imagePath = classDemeanor.imagePath.split('&');
+            var imagePath = classDemeanor;
             var image = imagePath[0];
             if (image.substr(image.length - 3, 3) == 'mp4') {
                 console.log(classDemeanor, '首帧图片');
