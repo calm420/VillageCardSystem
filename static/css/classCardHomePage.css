@@ -388,17 +388,15 @@ left: 3rem;
 #classCardHomePage .studentOnDuty_cont {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.58rem .18px .58rem .83rem;
-  display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
+  padding: 0.58rem .4rem .58rem .83rem;
 }
 
 #classCardHomePage .studentOnDuty_cont li{
   width: 2.28rem;
   height: 3.06rem;
   margin-bottom: .28rem;
-  margin-right: .65rem;
+  margin-right: .28rem;
+  float: left;
 }
 #classCardHomePage .studentOnDuty_cont li img{
   width: 100%;

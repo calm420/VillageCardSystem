@@ -1,34 +1,13 @@
 .classTableA {
-  padding: 0.83rem;
+  padding:3.08rem 0.83rem 0.83rem;
   text-align: center;
   position: relative;
   background:white url("../../images/classTableABg.png") no-repeat;
   background-size: 100% 100%;
+  font-size: .83rem;
 }
-.classTableA .due {
-  font-size: 0.67rem;
-  margin-top: 0.86rem;
-}
-.classTableA .due .number {
-  color: #5091fe;
-  font-size: 2.22rem;
-}
-.classTableA .due2 .font_title2 {
-  font-size: 0.67rem;
-  color: #2a3350;
-}
-.classTableA .due3 {
-  font-size: 0.67rem;
-  line-height:1;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-}
-.classTableA .due3 .number {
-  color: #5091fe;
-  font-size: 2.22rem;
-  margin: 0 0.4rem;
+
+.classTableA span{
+  color: #F74661;
+  font-size: 1.67rem;
 }
