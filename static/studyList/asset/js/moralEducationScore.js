@@ -39,6 +39,8 @@ $(function () {
                         for (let i = 0; i < result.response.length; i++) {
                             str += '<li><span>'+result.response[i].gradeName+'</span><span>'+result.response[i].sum+'</span></li>'
                         }
+                        document.getElementById("studyList").style.display = 'block'
+                        document.getElementById("studyListEmpty").style.display = 'none'
                         document.getElementById("studyList").innerHTML = str
                     }
                 }
