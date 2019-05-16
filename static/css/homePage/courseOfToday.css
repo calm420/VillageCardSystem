@@ -1,9 +1,9 @@
 #courseOfToday .classTableA {
     padding: 0.83rem;
     text-align: center;
-    height: calc(100% - 3.33rem);
+    height: calc(100% - 1.72rem);
     position: relative;
-    background: url("../../images/courseOfTodyBg.png") no-repeat;
+    background:white url("../../images/courseOfTodyBg.png") no-repeat;
     background-size: 100% 100%;
 }
 

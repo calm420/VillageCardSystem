@@ -10,7 +10,12 @@ WebServiceUtil.isDebug_messageScoket = false;
 // WebServiceUtil.localDomain = "47.93.156.90";   //请求地址接口
 WebServiceUtil.localDomain = "192.168.50.71";   //请求地址接口
 
+<<<<<<< HEAD
 WebServiceUtil.localDebugUrl = "192.168.50.139";   //本地调试的地址,嵌套ifream页面使用的地址
+=======
+
+WebServiceUtil.localDebugUrl = "192.168.50.71";   //本地调试的地址,嵌套ifream页面使用的地址
+>>>>>>> f8ecf87f3d9ba40645f8d7f4eebcff4a2b1eeaf7
 
 
 //小蚂蚁webService地址
