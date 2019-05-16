@@ -14,8 +14,8 @@ $(document).ready(function () {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var roomId = WebServiceUtil.GetQueryString("roomId");
         var mac = WebServiceUtil.GetQueryString("mac");
-        // var villageId = WebServiceUtil.GetQueryString("villageId");
-        var villageId = 9;
+        var villageId = WebServiceUtil.GetQueryString("villageId");
+        // var villageId = 9;
         //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
         mac = mac.toLowerCase();
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
