@@ -13,6 +13,7 @@ var isDebug = true;
 var argv = minimist(process.argv.slice(2), {
     default: {
         as_uri: isDebug ? "http://127.0.0.1:7091" : 'https://jiaoxue.maaee.com:9092'
+
     }
 });
 

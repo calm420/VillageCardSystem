@@ -84,7 +84,7 @@ function checkCourseOpenHandle(data) {
         //设置皮肤
         if (schoolId == data.data.schoolId) {
             skin = data.data.skinName;
-            document.getElementsByName("courseAttendanceDiv")[0].id = skin;
+            // document.getElementsByName("courseAttendanceDiv")[0].id = skin;
         }
     }
 

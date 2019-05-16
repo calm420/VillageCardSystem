@@ -221,7 +221,7 @@ $(function () {
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 var skin = commandInfo.data.skinName;
-                document.getElementsByName("headerDiv")[0].id = skin;
+                // document.getElementsByName("headerDiv")[0].id = skin;
             }
         }
     })

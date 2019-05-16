@@ -20,8 +20,14 @@
 <div id="skin_default" class="no_bg" name="applicationDiv">
     <div id="classCardHomePage" class="application_height home_card">
         <h3 class="home_title">点滴事迹</h3>
-        <div class="application_cont">
-          点滴事迹
+        <!--分页-->
+        <div class="swiper notify_cont">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!--填充数据 -->
+                </div>
+                <div class="preloader" style="display:none"> 上拉加载数据</div>
+            </div>
         </div>
     </div>
 </div>
@@ -30,7 +36,7 @@
 <script type="text/javascript" src="./asset/js/dripDeeds.js"></script>
 <script type="text/javascript">
     function getContent(obj) {
-        var data = {"method": 'notifyContentShow', "notifyTitle": obj.noticeTitle, "notifyContent": obj.noticeContent};
+        var data = {"method": 'notifyContentShow', "notifyTitle": obj.articleTitle, "notifyContent": obj.articleContent};
         console.log(data);
         window.parent.postMessage(JSON.stringify(data), '*');
     }

@@ -7,9 +7,15 @@ WebServiceUtil.isDebug_simpleScoket = false;
 //message消息服务的debug设置,需要调用本地message消息服务时,需要设置为true,否则为false,发版时一定要调整为false
 WebServiceUtil.isDebug_messageScoket = false;
 
-WebServiceUtil.localDomain = "47.93.156.90";   //请求地址接口
+// WebServiceUtil.localDomain = "47.93.156.90";   //请求地址接口
+WebServiceUtil.localDomain = "192.168.50.71";   //请求地址接口
 
-WebServiceUtil.localDebugUrl = "127.0.0.1";   //本地调试的地址,嵌套ifream页面使用的地址
+
+WebServiceUtil.localDebugUrl = "192.168.50.71";   //本地调试的地址,嵌套ifream页面使用的地址
+
+WebServiceUtil.localDebugUrl = "192.168.50.71";   //本地调试的地址,嵌套ifream页面使用的地址
+
+
 
 //小蚂蚁webService地址
 var apiWebServiceURLOfLocals = "http://" + WebServiceUtil.localDomain + ":6013/Excoord_VillageVideoApiServer/webservice";
