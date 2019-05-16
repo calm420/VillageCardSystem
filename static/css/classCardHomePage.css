@@ -91,13 +91,16 @@ left: 3rem;
   margin-top: 0.6rem;
 }
 #classCardHomePage .home_card {
-  background: #fff;
   border-radius: .11rem;
   color: #2a3350;
   height: 100%;
 }
 #classCardHomePage .home_cardCont {
-  padding: 0.83rem;
+  background-color: white;
+  margin: 0 .05rem .05rem .05rem;
+  border-radius: .11rem;
+  box-sizing: border-box;
+  height: calc(100% - 1.72rem);
 }
 #classCardHomePage .home_contfont {
   font-size: 0.61rem;
@@ -118,9 +121,6 @@ left: 3rem;
 }
 #classCardHomePage .studentOnDuty_name {
   width: 100%;
-}
-#classCardHomePage .studentOnDuty_height {
-  height: 12.78rem;
 }
 #classCardHomePage .course_height {
   height: 12.05rem;
@@ -165,10 +165,10 @@ left: 3rem;
   color: #2a3350;
 }
 #classCardHomePage .notify_cont {
-  height: calc(100% - 1.67rem);
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+  background-color: white;
 }
 #classCardHomePage .notify_cont .swiper-container{
   overflow: hidden !important;
@@ -191,11 +191,12 @@ left: 3rem;
   color: #5091fe;
 }
 #classCardHomePage .mEScoreInfo {
-  height: calc(100% - 1.67rem);
   position: relative;
-  background: url("../images/mEScoreInfoBg.png") no-repeat;
+  background:white url("../images/mEScoreInfoBg.png") no-repeat;
   background-size: 100% 100%;
-  padding: 0 0.83rem;
+  padding: 0 .83rem .83rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #classCardHomePage .mEScoreInfoM {
   position: absolute;
@@ -227,6 +228,15 @@ left: 3rem;
   width: calc(100% - 1.66rem);
   position: absolute;
   bottom: 0.53rem;
+}
+#classCardHomePage .mEScoreInfo li{
+  font-size: .67rem;
+  color: #333;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-radius: .11rem;
 }
 
 #classCardHomePage .blue_big {
@@ -379,10 +389,40 @@ left: 3rem;
   margin-top: 0;
 }
 #classCardHomePage .studentOnDuty_cont {
-  height: calc(100% - 3.33rem);
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.83rem;
+  padding: 0.58rem .18px .58rem .83rem;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
+#classCardHomePage .studentOnDuty_cont li{
+  width: 2rem;
+  margin-bottom: .28rem;
+  margin-right: .65rem;
+}
+#classCardHomePage .studentOnDuty_cont li img{
+  width: 100%;
+  height: 2rem;
+  object-fit: cover;
+  display: block;
+}
+#classCardHomePage .studentOnDuty_cont li span{
+  display: block;
+  width: 100%;
+  height: .78rem;
+  line-height: .78rem;
+  color: white;
+  font-size: .5rem;
+  text-align: center;
+  background: -webkit-linear-gradient(left, #F59F32 , #FE7747);
+  background: -o-linear-gradient(right, #F59F32, #FE7747);
+  background: -moz-linear-gradient(right, #F59F32, #FE7747);
+  background: linear-gradient(to right, #F59F32 , #FE7747);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 #classCardHomePage .studentOnDuty_today {
   color: #2a3350;
@@ -568,6 +608,7 @@ left: 3rem;
 }
 #classDemeanorWrap{
   height: 100%;
+  background-color: white;
 }
 .classDemeanor {
   height: 100% !important;
