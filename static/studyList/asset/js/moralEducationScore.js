@@ -37,7 +37,7 @@ $(function () {
                     } else {
                         let str = '';
                         for (let i = 0; i < result.response.length; i++) {
-                            str += '<li><span>第'+(i+1)+'名</span><span>'+result.response[i].gradeName+'</span><span>'+result.response[i].sum+'</span></li>'
+                            str += '<li><span>'+result.response[i].gradeName+'</span><span>'+result.response[i].sum+'</span></li>'
                         }
                         document.getElementById("studyList").innerHTML = str
                     }
