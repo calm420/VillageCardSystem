@@ -1,9 +1,6 @@
 $(function () {
-    var schoolId = WebServiceUtil.GetQueryString("schoolId");
-    var clazzId = WebServiceUtil.GetQueryString("clazzId");
-    var roomId = WebServiceUtil.GetQueryString("roomId");
     var font = WebServiceUtil.GetQueryString('font');
-    var skin="skin_default";
+    var villageId = WebServiceUtil.GetQueryString("villageId");
     $('html').css('font-size', font)
     InitializePage();
 
@@ -23,12 +20,12 @@ $(function () {
 
     //初始化页面元素
     function InitializePage() {
-        getMoralEducationInfo(clazzId);
+        getMoralEducationInfo(villageId);
     }
-    function getMoralEducationInfo(clazzId) {
+    function getMoralEducationInfo(villageId) {
         var param = {
-            "method": "getMoralEducationInfo",
-            "clazzId": clazzId,
+            "method": "getLearningList",
+            "villageId": villageId,
         }
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
@@ -37,15 +34,11 @@ $(function () {
                     if (result.response == null) {
                         $(".mEScoreInfo").replaceWith('<div class="mEScoreInfo home_cardCont"><div class="empty_center"><div class="empty_icon empty_moralEducationScore"></div><div class="empty_text">暂无评分</div></div></div>');
                     } else {
-                        var response = result.response;
-                        var createTimeStr = WebServiceUtil.formatMD(response.createTime);
-                        console.log("createTimeStr",createTimeStr);
-                        $(".scoreDate").html(createTimeStr);
-                        $(".schoolScore").html(response.schoolRank)
-                        $(".gradeScore").html(response.clazzRank)
-                        $(".sumSocre").html(response.totalScore)
-                        $(".ceremonyScore").html(response.politeness)
-                        $(".healthSocre").html(response.health)
+                        let str = '';
+                        for (let i = 0; i < result.response.length; i++) {
+                            str += '<li><span>第'+(i+1)+'名</span><span>'+result.response[i].gradeName+'</span><span>'+result.response[i].sum+'</span></li>'
+                        }
+                        document.getElementById("studyList").innerHTML = str
                     }
                 }
             },
@@ -54,13 +47,4 @@ $(function () {
             }
         });
     }
-
-    $('#seeMoreHistory').on('click', function () {
-        var data = {
-            method: 'openNewPage',
-            url: "moralEducationScore/historyScore/index.html?roomId=" + roomId + "&clazzId=" + clazzId + "&schoolId=" + schoolId+"&skin="+skin+"&font="+font,
-        };
-        window.parent.postMessage(JSON.stringify(data), '*');
-    });
-
 })
