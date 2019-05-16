@@ -13,6 +13,7 @@ WebServiceUtil.localDomain = "192.168.50.71";   //请求地址接口
 
 WebServiceUtil.localDebugUrl = "192.168.50.39";   //本地调试的地址,嵌套ifream页面使用的地址
 
+
 //小蚂蚁webService地址
 var apiWebServiceURLOfLocals = "http://" + WebServiceUtil.localDomain + ":6013/Excoord_VillageVideoApiServer/webservice";
 var apiWebServiceURLOfRemote = "https://www.maaee.com/Excoord_For_Education/webservice";

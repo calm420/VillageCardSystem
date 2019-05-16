@@ -14,8 +14,8 @@ $(document).ready(function () {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var roomId = WebServiceUtil.GetQueryString("roomId");
         var mac = WebServiceUtil.GetQueryString("mac");
-        // var villageId = WebServiceUtil.GetQueryString("villageId");
-        var villageId = 9;
+        var villageId = WebServiceUtil.GetQueryString("villageId");
+        // var villageId = 9;
         //mac地址约定到后台时全部转为了小写,所以这里再做一次,保证是小写
         mac = mac.toLowerCase();
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
@@ -34,7 +34,7 @@ $(document).ready(function () {
         $("#classDemeanor")[0].src = webserviceUrl + "countryRevitalization?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#application")[0].src = webserviceUrl + "dripDeeds?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#courseOfToday")[0].src = webserviceUrl + "dangkeNotice?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
+        $("#courseOfToday")[0].src = webserviceUrl  + "dangkeNotice?mac=" + mac + "&villageId=" + villageId + "&font=" + $('html').css('font-size');
         $("#courseAttendance")[0].src = webserviceUrl + "dangkeAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
         setTimeout(function () {
