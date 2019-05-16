@@ -56,9 +56,11 @@ $(function () {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
                     if(result.response.length > 0) {
-                        console.log(JSON.stringify(result.response));
-                        document.querySelector('.time').innerHTML = !!result.response[0].classTime?
-                        WebServiceUtil.formatHM(result.response[0].classTime):null;
+                        if(!!result.response[0].classTime && !!result.response[0].endTime) {
+                            var schduleTime = WebServiceUtil.formatHM(result.response[0].classTime) + " - " +
+                                WebServiceUtil.formatHM(result.response[0].endTime);
+                            document.querySelector('.time').innerHTML = schduleTime;
+                        }
                         document.querySelector('.location').innerHTML = !!result.response[0].classAddress?
                             result.response[0].classAddress:null;
                         document.querySelector('.img').src = !!result.response[0].backgroundImg?
