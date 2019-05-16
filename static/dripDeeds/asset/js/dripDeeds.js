@@ -50,7 +50,7 @@ $(function () {
         if (commandInfo.command == "setSkin") {
             if (schoolId == commandInfo.data.schoolId) {
                 skin = commandInfo.data.skinName;
-                // document.getElementsByName("notifyDiv")[0].id = skin;
+                document.getElementsByName("notifyDiv")[0].id = skin;
             }
         } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId || commandInfo.data.classroomid == 0 ) {
             slideNumber = 1;
@@ -76,10 +76,12 @@ $(function () {
         // },1000)
     }
 
-    function getNotifyInfo(roomId) {
+
+    function getNotifyInfo(villageId) {
         var param = {
-            "method": 'getClassBrandNoticeListByClassId',
-            "classroomId": roomId,
+            "method": 'getArticleInfoListByVillageId',
+            // "villageId": villageId,
+            "villageId": 1,
             "pageNo": slideNumber
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
@@ -103,15 +105,15 @@ $(function () {
                         loadFilter = false;
                     } else {
                         rowData.forEach(function (v, i) {
-                            var title = v.noticeTitle;
-                            var content = v.noticeContent;
+                            // var title = v.articleTitle;
+                            // var content = v.articleContent;
                             var notiObj = JSON.stringify(v).replace(/\"/g, "'");//row的是一个对象
-                            content = content.replace(/\"/g, " ");
+                            // content = content.replace(/\"/g, " ");
                             wrapper.append(
                                 '<div>' +
                                 '                                    <li>' +
                                 '                                        <span class="notify_list text_hidden"\n' +
-                                '                                                onClick="getContent(' + notiObj + ')">' + (v.type == 2 ? "[全校通知] " : '') + v.noticeTitle + '</span>' +
+                                '                                                onClick="getContent(' + notiObj + ')">' + ('') + v.articleTitle + '</span>' +
                                 '                                        <i class="titleMore notify_titleMore"></i>' +
                                 '                                    </li>' +
                                 '                                </div>'
