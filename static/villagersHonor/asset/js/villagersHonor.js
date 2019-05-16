@@ -43,8 +43,8 @@ $(document).ready(function () {
                 var str = '';
                 // var src_1 = 'https://avatar-static.segmentfault.com/546/141/54614191-5a7e3527a5cc4_big64';
                 for (let i = 0; i < result.response.length; i++) {
-                    str += '<li><span>'+(i+1)+'</span><span>'+result.response[i].userName+'</span><img src='+result.response[i].avatar+' alt=""></li>'
-                    // str += '<li><span>'+(i+1)+'</span><span>'+result.response[i].userName+'</span><img src='+src_1+' alt=""></li>'
+                    str += '<li><img src='+result.response[i].avatar+' alt=""><span>'+result.response[i].userName+'</span></li>'
+                    // str += '<li><img src='+src_1+' alt=""><span>'+result.response[i].userName+'</span></li>'
                 }
                 document.getElementById("honor").innerHTML = str
             },
