@@ -4,8 +4,7 @@ $(function () {
     $('html').css('font-size', font)
     InitializePage();
 
-<<<<<<< HEAD
-=======
+
     //监听接受消息
     window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
@@ -20,7 +19,6 @@ $(function () {
         }
     })
 
->>>>>>> eeaa2040e6be68f509791c3fd695c6f7c8438f60
     //初始化页面元素
     function InitializePage() {
         getMoralEducationInfo(villageId);
