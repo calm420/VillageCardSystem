@@ -12,16 +12,19 @@
 
 
     <style>
+        .classDemeanor{
+            height:17.22rem !important;
+        }
 .demeanor_item,.demeanor_itemTop{
     /*width: 7.55rem;*/
-    height: 4.17rem;
+    height:17.22rem !important;
     display: inline-block;
     position: relative;
     /*margin-right: 0.83rem;*/
     float: left;
 }
 .demeanor_itemTop{
-height: 6.22rem;
+    height:17.22rem !important;
 }
 .demeanor_itemImage,.swiper-slideImage{
 width: 100%;
@@ -37,6 +40,11 @@ object-fit: cover;
 }
 .classDemeanor,.classReward{
 position: relative;
+    height: 17.23rem !important;
+    margin: 0 !important;
+}
+.classDemeanor{
+    padding: 0;
 }
 .DemeanorBack, .DemeanorGo, .RewardBack, .RewardGo{
     position: absolute;
@@ -76,28 +84,30 @@ position: relative;
     margin-right: 0 !important;
 }
 .DemeanorBack, .RewardBack{
-    left:0.83rem;
+    left: 0;
     background: url("../images/arrow-left.png") no-repeat left center;
     background-size: 0.83rem;
 }
 .DemeanorGo, .RewardGo{
-    right:0.83rem;
+    right:0;
     background: url("../images/arrow-right.png") no-repeat right center;
     background-size: 0.83rem;
 }
 .RewardBack, .RewardGo{
     margin-top: 0;
 }
+.demeanor_margin{
+    margin: 0 !important;
+    height:100% !important;
+}
     </style>
     <script type="text/javascript">
         function videoOnClick(src) {
             window.event? window.event.cancelBubble = true : e.stopPropagation();
-            console.log(src);
             var data={"method":'playVideo',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
         function imageOnClick(src){
-           // alert(src);
             var data={"method":'playImage',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
@@ -116,8 +126,9 @@ position: relative;
                     <button id="DemeanorBack" class="DemeanorBack"></button>
                     <button id="DemeanorGo" class="DemeanorGo"></button>
                 </div>
-                <div class="classReward" style="display:none">
+                <div class="classReward">
                     <div class="no_bg" id="classReward">
+
                     </div>
                     <button id="RewardBack" class="RewardBack"></button>
                      <button id="RewardGo" class="RewardGo"></button>
