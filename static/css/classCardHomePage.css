@@ -119,15 +119,13 @@ left: 3rem;
 #classCardHomePage .studentOnDuty_name {
   width: 100%;
 }
-#classCardHomePage .course_height {
-  height: 13.06rem;
-}
-#classCardHomePage .currentAttendance_height,
+
+#classCardHomePage .course_height,
 #classCardHomePage .moralEducationScore_height {
   height: 10.45rem;
   margin-top: 0.89rem;
 }
-#classCardHomePage .studentOnDuty_height {
+#classCardHomePage .studentOnDuty_height,#classCardHomePage .currentAttendance_height {
   height: 13.06rem;
 }
 #classCardHomePage .currentAttendance_height .classTableA {

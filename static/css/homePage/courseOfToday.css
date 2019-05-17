@@ -10,15 +10,15 @@
 
 #courseOfToday .classTableB .location,#courseOfToday .classTableB .time,#courseOfToday .classTableB .class_name,#courseOfToday .classTableB .terPic_name {
     font-size: 0.67rem;
-    padding-bottom: .5rem;
+    padding-bottom: .33rem;
 }
 #courseOfToday .classTableB img{
-    width: 2.78rem;
-    height: 3.89rem;
+    width: 2.06rem;
+    height: 2.87rem;
     object-fit: cover;
     display: block;
     margin: 0 auto;
-    padding-bottom: .5rem;
+    padding-bottom: .33rem;
 
 }
 
