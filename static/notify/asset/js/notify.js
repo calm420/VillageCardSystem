@@ -1,7 +1,6 @@
 $(function () {
     var skin = "skin_default";
-    // var villageId = WebServiceUtil.GetQueryString("villageId");
-    var villageId =1;
+    var villageId = WebServiceUtil.GetQueryString("villageId");
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     var loadFilter = true;
