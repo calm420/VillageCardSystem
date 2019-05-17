@@ -177,6 +177,8 @@ left: 3rem;
   line-height: 1.7rem;
   border-bottom: 1px dashed #999999;
   margin: 0 0.83rem;
+  color: #333;
+  font-size: .67rem;
 }
 #classCardHomePage .notify_cont .swiper-slide:last-child>div li{
   border-bottom: none;
