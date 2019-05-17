@@ -33,34 +33,34 @@
 }
 
 #skin_default[name=courseAttendanceDiv]{
-  background: -webkit-linear-gradient(left, #2BE5D3 , #06D7A4); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(right, #2BE5D3, #06D7A4); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(right, #2BE5D3, #06D7A4); /* Firefox 3.6 - 15 */
-  background: linear-gradient(to right, #2BE5D3 , #06D7A4); /* 标准的语法 */
+  background: -webkit-linear-gradient(left, #65CFC5 , #15D5A6); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #65CFC5, #15D5A6); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #65CFC5, #15D5A6); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #65CFC5 , #15D5A6); /* 标准的语法 */
 }
 #skin_default[name=moralEducationScoreDiv]{
-  background: -webkit-linear-gradient(left, #FF569B , #F7455F); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(right, #FF569B, #F7455F); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(right, #FF569B, #F7455F); /* Firefox 3.6 - 15 */
-  background: linear-gradient(to right, #FF569B , #F7455F); /* 标准的语法 */
+  background: -webkit-linear-gradient(left, #55AEFE , #558AFA); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #55AEFE, #558AFA); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #55AEFE, #558AFA); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #55AEFE , #558AFA); /* 标准的语法 */
 }
 #skin_default[name=applicationDiv]{
-  background: -webkit-linear-gradient(left, #B379FF , #825AFF); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(right, #B379FF, #825AFF); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(right, #B379FF, #825AFF); /* Firefox 3.6 - 15 */
-  background: linear-gradient(to right, #B379FF , #825AFF); /* 标准的语法 */
-}
-#skin_default[name=notifyDiv]{
   background: -webkit-linear-gradient(left,#61BFFF , #2DA8F6); /* Safari 5.1 - 6.0 */
   background: -o-linear-gradient(right, #61BFFF, #2DA8F6); /* Opera 11.1 - 12.0 */
   background: -moz-linear-gradient(right, #61BFFF, #2DA8F6); /* Firefox 3.6 - 15 */
   background: linear-gradient(to right, #61BFFF , #2DA8F6); /* 标准的语法 */
 }
+#skin_default[name=notifyDiv]{
+  background: -webkit-linear-gradient(left, #B379FF , #825AFF); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #B379FF, #825AFF); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #B379FF, #825AFF); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #B379FF , #825AFF); /* 标准的语法 */
+}
 #skin_default[name=courseOfTodayDiv]{
-  background: -webkit-linear-gradient(left, #55AEFE , #558AFA); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(right, #55AEFE, #558AFA); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(right, #55AEFE, #558AFA); /* Firefox 3.6 - 15 */
-  background: linear-gradient(to right, #55AEFE , #558AFA); /* 标准的语法 */
+  background: -webkit-linear-gradient(left, #F24937 , #F11414); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #F24937, #F11414); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #F24937, #F11414); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #F24937 , #F11414); /* 标准的语法 */
 }
 
 #skin_default[name=classDemeanorDiv]{
