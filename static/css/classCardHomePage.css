@@ -80,16 +80,12 @@ left: 3rem;
   font-weight: normal;
 }
 #classCardHomePage i.titleMore {
-  background: url("../images/next_s_icon.png") no-repeat;
+  background: url("../images/next_s_icon.png") no-repeat center center;
+  background-size: .83rem;
   width: 0.83rem;
-  height: 0.83rem;
+  height: 100%;
   display: inline-block;
-  background-size: 100% 100%;
   float: right;
-  margin-top: -2px;
-}
-#classCardHomePage i.notify_titleMore {
-  margin-top: 0.6rem;
 }
 #classCardHomePage .home_card {
   border-radius: .11rem;
@@ -124,35 +120,35 @@ left: 3rem;
   width: 100%;
 }
 #classCardHomePage .course_height {
-  height: 12.05rem;
+  height: 13.06rem;
 }
 #classCardHomePage .currentAttendance_height,
 #classCardHomePage .moralEducationScore_height {
-  height: 11.67rem;
-  margin-top: 0.83rem;
+  height: 10.45rem;
+  margin-top: 0.89rem;
 }
 #classCardHomePage .studentOnDuty_height {
-  height: 12.05rem;
+  height: 13.06rem;
 }
 #classCardHomePage .currentAttendance_height .classTableA {
   height: 8.94rem;
 }
 #classCardHomePage .classDemeanor_height{
-  height: 15.409rem;
+  height: 16.67rem;
 }
 #classCardHomePage .health_height {
   padding-bottom: 0.83rem;
   width: 100%;
 }
 #classCardHomePage .notify_height {
-  height: 8.33rem;
+  height: 6.9rem;
   margin-top: 0.83rem;
   float: left;
   width: calc(50% - 0.42rem);
   overflow: hidden;
 }
 #classCardHomePage .application_height {
-  height: 8.33rem;
+  height: 6.9rem;
   margin-top: 0.83rem;
   width: calc(50% - 0.42rem);
   float: left;
@@ -175,8 +171,8 @@ left: 3rem;
   overflow: hidden !important;
 }
 #classCardHomePage .notify_cont li {
-  height: 1.94rem;
-  line-height: 1.94rem;
+  height: 1.7rem;
+  line-height: 1.7rem;
   border-bottom: 1px dashed #999999;
   margin: 0 0.83rem;
 }
@@ -351,7 +347,7 @@ left: 3rem;
 }
 #classCardHomePage .notify_list {
   width: calc(100% - 1rem);
-  font-size: 0.61rem;
+  font-size: 0.67rem;
 }
 #classCardHomePage .demeanor_margin {
   height: 100%;
@@ -392,16 +388,20 @@ left: 3rem;
 #classCardHomePage .studentOnDuty_cont {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.58rem .18px .58rem .83rem;
-  display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
+  padding: 0.58rem .4rem .58rem .83rem;
+  position: relative;
+}
+#classCardHomePage .studentOnDuty_cont#honorEmpty{
+  background: white url("../images/honorEmpty.png") no-repeat;
+  background-size: 100% 100%;
 }
 
 #classCardHomePage .studentOnDuty_cont li{
-  width: 2rem;
+  width: 2.28rem;
+  height: 3.06rem;
   margin-bottom: .28rem;
-  margin-right: .65rem;
+  margin-right: .28rem;
+  float: left;
 }
 #classCardHomePage .studentOnDuty_cont li img{
   width: 100%;
@@ -678,11 +678,11 @@ left: 3rem;
   z-index: 10;
 }
 #classCardHomePage .studentOnDuty-wrap {
-  height: 12.05rem;
+  height: 13.06rem;
   width: 100%;
 }
 #classCardHomePage .moralEducationScore-wrap {
-  height: 11.67rem;
+  height: 10.45rem;
 }
 .iframe-body{
   background: transparent;

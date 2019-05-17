@@ -40,13 +40,21 @@ $(document).ready(function () {
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 console.log(result)
-                var str = '';
-                // var src_1 = 'https://avatar-static.segmentfault.com/546/141/54614191-5a7e3527a5cc4_big64';
-                for (let i = 0; i < result.response.length; i++) {
-                    str += '<li><img src='+result.response[i].avatar+' alt=""><span>'+result.response[i].userName+'</span></li>'
-                    // str += '<li><img src='+src_1+' alt=""><span>'+result.response[i].userName+'</span></li>'
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (result.response.length === 0) {
+
+                    }else {
+                        var str = '';
+                        // var src_1 = 'https://avatar-static.segmentfault.com/546/141/54614191-5a7e3527a5cc4_big64';
+                        for (let i = 0; i < result.response.length; i++) {
+                            str += '<li><img src=' + result.response[i].avatar + ' alt=""><span>' + result.response[i].userName + '</span></li>'
+                            // str += '<li><img src='+src_1+' alt=""><span>'+result.response[i].userName+'</span></li>'
+                        }
+                        document.getElementById("honor").style.display = 'block'
+                        document.getElementById("honorEmpty").style.display = 'none'
+                        document.getElementById("honor").innerHTML = str
+                    }
                 }
-                document.getElementById("honor").innerHTML = str
             },
             onError: function (error) {
                 // message.error(error);
