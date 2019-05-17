@@ -2,11 +2,8 @@ $(document).ready(function () {
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
-
     var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
-
     InitializePage();
-
     //初始化页面元素
     function InitializePage() {
         // clazzId=819&roomId=1&mac=14:1f:78:73:1e:c3&schoolId=9
@@ -28,24 +25,21 @@ $(document).ready(function () {
                 "webDevice": WebServiceUtil.createUUID()
             }
         };
-
         $("#studentOnDuty")[0].src = webserviceUrl + "villagersHonor?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#moralEducationScore")[0].src = webserviceUrl + "studyList?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#classDemeanor")[0].src = webserviceUrl + "countryRevitalization?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#notify")[0].src = webserviceUrl + "notify?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#application")[0].src = webserviceUrl + "dripDeeds?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
+        $("#classDemeanor")[0].src = webserviceUrl + "countryRevitalization?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
+        $("#notify")[0].src = webserviceUrl + "notify?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
+        $("#application")[0].src = webserviceUrl + "dripDeeds?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
         $("#courseOfToday")[0].src = webserviceUrl  + "dangkeNotice?mac=" + mac + "&villageId=" + villageId + "&font=" + $('html').css('font-size');
-        $("#courseAttendance")[0].src = webserviceUrl + "dangkeAttendance?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
-        $("#header")[0].src = webserviceUrl + "header?clazzId=" + clazzId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
+        $("#courseAttendance")[0].src = webserviceUrl + "dangkeAttendance?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&font=" + $('html').css('font-size');
+        $("#header")[0].src = webserviceUrl + "header?villageId=" + villageId + "&roomId=" + roomId + "&mac=" + mac + "&schoolId=" + schoolId + "&v=0.0.1";
         setTimeout(function () {
             ms.connect(pro);
             msListener();
             simpleListener();
             getBraceletBoxSkinBySchoolId(schoolId);
         }, 3000)
-
         var visitType = WebServiceUtil.GetQueryString("visitType");
-
         if (!!visitType && visitType == 0) {
             var font = WebServiceUtil.GetQueryString('font');
             $('html').css('font-size', font);

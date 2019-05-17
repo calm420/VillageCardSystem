@@ -47,7 +47,7 @@ $(function () {
      * 查看某个课表项
      * @param data
      */
-    function getCourseTable(data) {
+    function getCourseTable(villageId) {
         var param = {
             "method": 'getVillageCourseList',
             "villageId": villageId,

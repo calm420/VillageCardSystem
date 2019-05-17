@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <title>本节考勤</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <title>应用</title>
+    <link rel="stylesheet" href="../css/index.css?v=5">
     <link rel="stylesheet" href="../css/classCardHomePage.css">
     <link rel="stylesheet" href="../css/skin/skin_middleSchool.css">
     <link rel="stylesheet" href="../css/skin/skin_primarySchool.css">
     <link rel="stylesheet" href="../css/skin/skin_default.css">
-    <link rel="stylesheet" href="../css/homePage/currentAttendance.css">
+    <script src="https://www.maaee.com/Excoord_PhoneService/js/jsbridge.js?v=18"></script>
 </head>
-<body class="iframe-body">
-<div id="skin_default" class="no_bg" name="courseAttendanceDiv">
-    <div id="classCardHomePage">
-        <h3 class="home_title">
-            <span>党课考勤</span>
-        </h3>
-        <div class="classTableA home_cardCont" id="classTableA">
-          <div>
-              签到
-              <span class="peopleCount"></span>
-              人
-          </div>
-        </div>
-         <div class="classTableA home_cardCont" id="classTableB" style="display: none;">
-            <div class="empty_center">
-                <div class="empty_icon empty_currentAttendance"></div>
-                <div class="empty_text">暂无考勤</div>
+
+<body>
+
+<div id="skin_default" class="no_bg" name="applicationDiv">
+    <div id="classCardHomePage" class="application_height home_card">
+        <h3 class="home_title"><span>村史村情</span></h3>
+        <!--分页-->
+        <div class="swiper notify_cont home_cardCont">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!--填充数据 -->
+                </div>
+                <div class="preloader" style="display:none"> 上拉加载数据</div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../js/webServiceUtil.js"></script>
-<script type="text/javascript" src="./asset/js/courseAttendance.js?v=1"></script>
-<script type="text/javascript" src="../js/layer.js"></script>
-<script type="text/javascript" src="../js/uiutils.js"></script>
+<script type="text/javascript" src="./asset/js/courseAttendance.js"></script>
+<script type="text/javascript">
+    function getContent(obj) {
+        var data = {"method": 'notifyContentShow', "notifyTitle": obj.title, "notifyContent": obj.content};
+        console.log(data);
+        window.parent.postMessage(JSON.stringify(data), '*');
+    }
+</script>
 </body>
+
 </html>

@@ -1,15 +1,24 @@
+function backHome(){
+    var data = {
+        method: 'backHome',
+    };
+    console.log(data,"data")
+    Bridge.callHandler(data, null, function (error) {
+    });
+}
 $(function () {
     var abcode = null;
     var timer = null;
     var timeOffset = null;
     var roomId = WebServiceUtil.GetQueryString("roomId");
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
+    var villageId = WebServiceUtil.GetQueryString("villageId");
     var font = WebServiceUtil.GetQueryString("font");
     var vertical = WebServiceUtil.GetQueryString('vertical')
     if (!!font) {
         $('html').css('font-size', font)
     }
-    viewClassRoom(roomId)
+    viewClassRoom(villageId)
     makeTime();
     if (!!vertical) {
         $('.headTitle').width('70%')
@@ -195,10 +204,10 @@ $(function () {
      * 获取班级名称
      * @param id
      */
-    function viewClassRoom(id) {
+    function viewClassRoom(villageId) {
         var param = {
             "method": 'viewClassRoom',
-            "id": id,
+            "id": villageId,
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
@@ -225,5 +234,7 @@ $(function () {
             }
         }
     })
+
+  
 
 })

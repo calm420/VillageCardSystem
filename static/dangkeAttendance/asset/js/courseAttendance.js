@@ -1,177 +1,122 @@
-/**
- * 本节考勤
- */
-var timerFlag = false;
-var skin = "skin_default";
-var timer;
-var font = WebServiceUtil.GetQueryString('font');
-$(document).ready(function () {
-    init();
-
-});
-
-function init() {
-    // $("#classTableA").hide();
-    // $("#classTableB").show();
-    var font = WebServiceUtil.GetQueryString('font');
-    // var villageId = WebServiceUtil.GetQueryString('villageId');
-    var villageId = 1;
-    $('html').css('font-size', font);
-    // unbindGotoAttendDetail();
-    getStudentByCourseTableItem(villageId);
-}
-
-function gotoAttendDetail(classTableId) {
-    $('#gotoAttendDetail').unbind("click");
-    $('#gotoAttendDetail').click(function () {
-        var data = {
-            method: 'openNewPage',
-            url: "courseAttendance/courseAttendanceDetail/index.html?classTableId=" + classTableId + "&skin=" + skin + "&font=" + font,
-        };
-        window.parent.postMessage(JSON.stringify(data), '*');
-    })
-}
-
-// function unbindGotoAttendDetail() {
-//     $('#gotoAttendDetail').unbind("click");
-//     $('#gotoAttendDetail').click(function () {
-//         UiUtils.toast("还没上课呢...");
-//     })
-// }
-
-function checkCourseOpenHandle(data) {
+$(function () {
+    var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
+    var villageId = WebServiceUtil.GetQueryString("villageId");
+    var font = WebServiceUtil.GetQueryString('font')
+    $('html').css('font-size', font)
+    var loadFilter = true;
+    //拖动偏移量
+    var holdPosition = 0;
+    // var holdPosition =
+    //页码
+    var slideNumber = 1;
+    var loadingMore = true;
     var schoolId = WebServiceUtil.GetQueryString("schoolId");
-    if (data.command == 'brand_class_open') {
-        var classTableId = data.data.classTableId;
-        
-        //获取应到人数
-        if (roomId == data.data.classroomId) {
-            gotoAttendDetail(classTableId);
-            $("#classTableA").show();
-            $("#classTableB").hide();
-            getStudentByCourseTableItem(villageId);
-            if (!timerFlag) {
-                this.openTimeInterVal(classTableId);
+
+    //给定swiper固定高度
+    $(".swiper").height($('.inner_bg').height() - $('.navBar').height());
+    // $(".swiper-container").height($('.inner_bg').height() - $('.navBar').height())
+    InitializePage();
+
+
+    $('.swiper').on('scroll', function (e) {
+        var container = document.getElementsByClassName('swiper')[0];
+        console.log(container);
+        var scorllTop = container.scrollTop;
+        var maxScroll = container.scrollHeight - container.offsetHeight;
+        // console.log(scorllTop,'scrollTop');
+        // console.log(maxScroll,'maxScroll');
+        if (scorllTop >= maxScroll) {
+            // console.log('开始上拉');
+            // $('.swiper-container').css({transform: 'translate(0,-100px)'});
+            if (loadFilter) {
+                loadFilter = false;
+                $(".preloader").show();
+                $('.preloader').text('正在加载...');
+                setTimeout(function () {
+                    getVillageVillageNewsByVillageId(villageId);
+                }, 500)
+
+
             }
+
         }
-    } else if (data.command == 'brand_class_close') {
-        if (roomId == data.data.classroomId) {
-            // unbindGotoAttendDetail();
-            $("#classTableA").hide();
-            $("#classTableB").show();
-            clearInterval(timer)
-            timerFlag = false;
+
+    })
+
+    //监听接受消息
+    window.addEventListener('message', function (e) {
+        var commandInfo = JSON.parse(e.data);
+        // console.log("notify",commandInfo);
+        if (commandInfo.command == "setSkin") {
+            if (schoolId == commandInfo.data.schoolId) {
+                skin = commandInfo.data.skinName;
+                document.getElementsByName("notifyDiv")[0].id = skin;
+            }
+        } else if (commandInfo.command == "classBrandNotice" && commandInfo.data.classroomid == roomId || commandInfo.data.classroomid == 0 ) {
+            slideNumber = 1;
+            $(".swiper-wrapper").empty();
+            InitializePage();
         }
-    } else if (data.command == 'braceletBoxConnect') {
-        if(!WebServiceUtil.isEmpty(data.data.classTableId)){
-            //重连开课
-            if (roomId == data.data.classroomId) {
-                $("#classTableA").show();
-                $("#classTableB").hide();
-                // this.getStudentByCourseTableItem(data.data.classTableId);
-                gotoAttendDetail(data.data.classTableId);
-                if (!timerFlag) {
-                    this.openTimeInterVal(data.data.classTableId);
+    })
+
+    //初始化页面元素
+    function InitializePage() {
+            getVillageVillageNewsByVillageId(villageId);
+    }
+
+
+    function getVillageVillageNewsByVillageId(villageId) {
+        var param = {
+            "method": 'getVillageVillageNewsByVillageId',
+            "villageId": villageId,
+            "pageNo": slideNumber
+        };
+        WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
+            onResponse: function (result) {
+                console.log(result,"re")
+                var rowData = result.response;
+                var wrapper = $('.swiper-wrapper');
+                // 数据为空
+                if (rowData.length == 0 && slideNumber == 1) {
+                    wrapper.append("<div class='empty_center'><div class='empty_icon empty_notify'></div><div class='empty_text'>暂无数据</div></div>");
                 }
-            }
-        }else{
-            // unbindGotoAttendDetail();
-            $("#classTableA").hide();
-            $("#classTableB").show();
-            clearInterval(timer);
-            timerFlag = false;
-        }
+                // return;
 
-    } else if (data.command == 'setSkin') {
-        //设置皮肤
-        if (schoolId == data.data.schoolId) {
-            skin = data.data.skinName;
-            // document.getElementsByName("courseAttendanceDiv")[0].id = skin;
-        }
-    }
 
-}
+                if (result.msg == '调用成功' || result.success == true) {
+                    if (rowData.length == 0 && slideNumber != 1) {
+                        $(".preloader").show();
+                        $('.preloader').text('无更多数据');
+                        // wrapper.append("<div class='noMoreData'>无更多数据</div>", 'swiper-slide');
+                        loadFilter = false;
+                    } else {
+                        rowData.forEach(function (v, i) {
+                            // var title = v.articleTitle;
+                            // var content = v.articleContent;
+                            var notiObj = JSON.stringify(v).replace(/\"/g, "'");//row的是一个对象
+                            // content = content.replace(/\"/g, " ");
+                            wrapper.append(
+                                '<div>' +
+                                '                                    <li>' +
+                                '                                        <span class="notify_list text_hidden"\n' +
+                                '                                                onClick="getContent(' + notiObj + ')">' + ('') + v.title + '</span>' +
+                                '                                        <i class="titleMore notify_titleMore"></i>' +
+                                '                                    </li>' +
+                                '                                </div>'
+                            )
 
-function openTimeInterVal(classTableId) {
-    if(timer > 0){
-       clearInterval(timer);
-       timer = -1;
-    }
-    //开启定时器获取实到人数
-    timer = setInterval(function () {
-        getBraceletAttend(classTableId);
-    }, 10000)
-}
-
-function getBraceletAttend(classTableId) {
-    var param = {
-        "method": 'getBraceletAttendContainLate',
-        "cid": classTableId
-    };
-    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
-        onResponse: function (result) {
-            if (result.success == true) {
-                var response = result.response;
-                var lateCount=0;
-                if (response != null) {
-                    $("#attendCount").text(response.length);
-                    for(var i=0;i<response.length;i++){
-                        var isLate=response[i].isLate;
-                        if(isLate==true){
-                            lateCount++;
-                        }
+                        })
+                        slideNumber++;
+                        loadFilter = true;
                     }
-                    $("#lateCount").text(lateCount);
-                } else {
-                    $("#attendCount").text(0);
-                    $("#lateCount").text(0);
+
                 }
-            } else {
-                $("#attendCount").text(0);
-                $("#lateCount").text(0);
+            },
+            onError: function (error) {
+                // message.error(error);
             }
-        },
-        onError: function (error) {
-            // message.error(error);
-        }
-    });
-}
+        });
+    }
 
-
-function getStudentByCourseTableItem(villageId) {
-    var param = {
-        "method": 'getVillageAttendList',
-        "villageId": villageId
-    };
-    WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
-        onResponse: function (result) {
-            if (result.success == true) {
-                var response = result.response;
-                console.log(response,"response")
-                $(".peopleCount").text(response[0].peopleNumber)
-                // if (response != null) {
-                //     $("#totalCount").text(response.length);
-                // } else {
-                //     $("#totalCount").text(0);
-                // }
-            } else {
-                $("#totalCount").text(0);
-            }
-        },
-        onError: function (error) {
-            // message.error(error);
-        }
-    });
-}
-
-function sendMessageTo(data) {
-    window.parent.postMessage(JSON.stringify(data), '*');
-}
-
-//监听接受消息
-window.addEventListener('message', function (e) {
-    // console.log(e);
-    var res = JSON.parse(e.data);
-    checkCourseOpenHandle(res);
 })

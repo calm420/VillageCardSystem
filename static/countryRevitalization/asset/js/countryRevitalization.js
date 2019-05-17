@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // var startIndex = 0;
     //班级风采
     var DemeanorData = [];
@@ -50,6 +49,7 @@ $(document).ready(function () {
     function InitializePage() {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
+        var villageId = WebServiceUtil.GetQueryString("villageId");
         var font = WebServiceUtil.GetQueryString('font')
         var visitType = WebServiceUtil.GetQueryString('visitType')
         if (!!visitType && visitType == 0) {
@@ -58,14 +58,14 @@ $(document).ready(function () {
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
         localStorage.setItem("schoolId", schoolId);
-        selectUploadFile(clazzId);
+        selectUploadFile(villageId);
         getClassRewardInfo(clazzId);
     }
 
-    function selectUploadFile(clazzId) {
+    function selectUploadFile(villageId) {
         var param = {
             "method": 'selectUploadFile',
-            "villageId": 1,
+            "villageId": villageId,
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {

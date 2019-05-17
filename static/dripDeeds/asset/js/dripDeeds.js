@@ -1,6 +1,7 @@
 $(function () {
     var skin = "skin_default";
     var roomId = WebServiceUtil.GetQueryString("roomId");
+    var villageId = WebServiceUtil.GetQueryString("villageId");
     var font = WebServiceUtil.GetQueryString('font')
     $('html').css('font-size', font)
     var loadFilter = true;
@@ -33,7 +34,7 @@ $(function () {
                 $(".preloader").show();
                 $('.preloader').text('正在加载...');
                 setTimeout(function () {
-                    getNotifyInfo(roomId);
+                    getNotifyInfo(villageId);
                 }, 500)
 
 
@@ -71,7 +72,7 @@ $(function () {
     function InitializePage() {
         // $(".swiper-wrapper").empty();
         // setTimeout(function(){
-        getNotifyInfo(roomId);
+        getNotifyInfo(villageId);
 
         // },1000)
     }
@@ -80,8 +81,7 @@ $(function () {
     function getNotifyInfo(villageId) {
         var param = {
             "method": 'getArticleInfoListByVillageId',
-            // "villageId": villageId,
-            "villageId": 1,
+            "villageId": villageId,
             "pageNo": slideNumber
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
