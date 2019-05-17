@@ -12,7 +12,7 @@ var isDebug = false;
 
 var argv = minimist(process.argv.slice(2), {
     default: {
-        as_uri: isDebug ? "http://47.93.156.90:6091" : 'http://47.93.156.90:6091'
+        as_uri: isDebug ? "http://localhost:6091" : 'http://localhost:6091'
     }
 });
 
