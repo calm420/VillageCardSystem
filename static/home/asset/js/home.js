@@ -2,7 +2,7 @@ $(document).ready(function () {
     var ms = new MsgConnection();
     var simpleMs = new SimpleConnection();
     simpleMs.connect();
-    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":7091/" : "https://jiaoxue.maaee.com:9092/";
+    var webserviceUrl = WebServiceUtil.isDebug_ifream ? "http://" + WebServiceUtil.localDebugUrl + ":6091/" : "https://jiaoxue.maaee.com:9092/";
     InitializePage();
     //初始化页面元素
     function InitializePage() {

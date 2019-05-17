@@ -16,7 +16,7 @@ $(document).ready(function () {
             }
         }else if (commandInfo.command == "studentDuty") {
             if (clazzId == commandInfo.data.cid) {
-                getDutyInfo(clazzId);
+                getDutyInfo(villageId);
             }
         }
     })
@@ -39,19 +39,23 @@ $(document).ready(function () {
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
-                console.log(result)
+                console.log(result);
                 if (result.msg == '调用成功' || result.success == true) {
                     if (result.response.length === 0) {
 
                     }else {
                         var str = '';
                         // var src_1 = 'https://avatar-static.segmentfault.com/546/141/54614191-5a7e3527a5cc4_big64';
-                        for (let i = 0; i < result.response.length; i++) {
-                            str += '<li><img src=' + result.response[i].avatar + ' alt=""><span>' + result.response[i].userName + '</span></li>'
+                        for (var i = 0; i < result.response.length; i++) {
+                            if(result.response[i].avatar === undefined){
+                                str += '<li><img src=' + '../../../images/default-avatar.jpg' + ' alt=""><span>' + result.response[i].userName + '</span></li>'
+                            }else {
+                                str += '<li><img src=' + result.response[i].avatar + ' alt=""><span>' + result.response[i].userName + '</span></li>'
+                            }
                             // str += '<li><img src='+src_1+' alt=""><span>'+result.response[i].userName+'</span></li>'
                         }
-                        document.getElementById("honor").style.display = 'block'
-                        document.getElementById("honorEmpty").style.display = 'none'
+                        document.getElementById("honor").style.display = 'block';
+                        document.getElementById("honorEmpty").style.display = 'none';
                         document.getElementById("honor").innerHTML = str
                     }
                 }
