@@ -93,12 +93,10 @@
     <script type="text/javascript">
         function videoOnClick(src) {
             window.event? window.event.cancelBubble = true : e.stopPropagation();
-            console.log(src);
             var data={"method":'playVideo',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
         function imageOnClick(src){
-           // alert(src);
             var data={"method":'playImage',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
@@ -117,8 +115,9 @@
                     <button id="DemeanorBack" class="DemeanorBack"></button>
                     <button id="DemeanorGo" class="DemeanorGo"></button>
                 </div>
-                <div class="classReward" style="display:none">
+                <div class="classReward" style="display:none;">
                     <div class="no_bg" id="classReward">
+
                     </div>
                     <button id="RewardBack" class="RewardBack"></button>
                      <button id="RewardGo" class="RewardGo"></button>
