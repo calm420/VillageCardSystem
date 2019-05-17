@@ -175,7 +175,7 @@ left: 3rem;
 #classCardHomePage .notify_cont li {
   height: 1.7rem;
   line-height: 1.7rem;
-  border-bottom: 1px dashed #999999;
+  border-bottom: 1px solid #999999;
   margin: 0 0.83rem;
   color: #333;
   font-size: .67rem;
