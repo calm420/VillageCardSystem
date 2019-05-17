@@ -165,6 +165,10 @@ left: 3rem;
   position: relative;
   background-color: white;
 }
+#classCardHomePage .notify_cont.classTableA{
+  background:white url("../images/classTableABg.png") no-repeat;
+  background-size: 100% 100%;
+}
 #classCardHomePage .notify_cont .swiper-container{
   overflow: hidden !important;
 }
