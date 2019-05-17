@@ -627,8 +627,8 @@ left: 3rem;
 #classDemeanorWrap .swiper-slide i{
   background:url("../images/videoClick.png") no-repeat;
   background-size: 100%;
-  width: 36px;
-  height: 36px;
+  width: 2rem;
+  height: 2rem;
   display: block;
   position: absolute;
   top:50%;
