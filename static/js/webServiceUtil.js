@@ -20,7 +20,7 @@ var apiWebServiceURL = WebServiceUtil.isDebug ? apiWebServiceURLOfLocals : apiWe
 
 WebServiceUtil.SMALL_IMG = 'size=100x100';
 WebServiceUtil.MIDDLE_IMG = 'size=300x300';
-WebServiceUtil.LARGE_IMG = 'size=500x500';
+WebServiceUtil.LARGE_IMG = 'size=600x600';
 
 function WebServiceUtil() {
 
