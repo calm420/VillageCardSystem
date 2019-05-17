@@ -16,7 +16,7 @@ $(document).ready(function () {
             }
         }else if (commandInfo.command == "studentDuty") {
             if (clazzId == commandInfo.data.cid) {
-                getDutyInfo(clazzId);
+                getDutyInfo(villageId);
             }
         }
     })
@@ -46,7 +46,7 @@ $(document).ready(function () {
                     }else {
                         var str = '';
                         // var src_1 = 'https://avatar-static.segmentfault.com/546/141/54614191-5a7e3527a5cc4_big64';
-                        for (let i = 0; i < result.response.length; i++) {
+                        for (var i = 0; i < result.response.length; i++) {
                             if(result.response[i].avatar === undefined){
                                 str += '<li><img src=' + '../../../images/default-avatar.jpg' + ' alt=""><span>' + result.response[i].userName + '</span></li>'
                             }else {
