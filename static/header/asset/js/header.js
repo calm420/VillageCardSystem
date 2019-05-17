@@ -18,7 +18,7 @@ $(function () {
     if (!!font) {
         $('html').css('font-size', font)
     }
-    viewClassRoom(villageId)
+    getVillageInfoByVillageId(villageId)
     makeTime();
     if (!!vertical) {
         $('.headTitle').width('70%')
@@ -204,18 +204,16 @@ $(function () {
      * 获取班级名称
      * @param id
      */
-    function viewClassRoom(villageId) {
+    function getVillageInfoByVillageId(villageId) {
         var param = {
-            "method": 'viewClassRoom',
-            "id": villageId,
+            "method": 'getVillageInfoByVillageId',
+            "villageId": villageId,
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
                 if (result.msg == '调用成功' || result.success == true) {
                     if (WebServiceUtil.isEmpty(result.response) == false) {
-                        if (WebServiceUtil.isEmpty(result.response) == false && WebServiceUtil.isEmpty(result.response.defaultBindedClazz) == false) {
-                            document.querySelector('#class-name').innerHTML = result.response.defaultBindedClazz.name
-                        }
+                        document.querySelector('#class-name').innerHTML = result.response.villageName
                     }
                 }
             },

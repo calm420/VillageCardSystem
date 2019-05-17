@@ -4,7 +4,6 @@ $(function () {
     $('html').css('font-size', font)
     InitializePage();
 
-
     //监听接受消息
     window.addEventListener('message', function(e){
         var commandInfo = JSON.parse(e.data);
