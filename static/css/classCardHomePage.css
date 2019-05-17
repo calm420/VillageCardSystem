@@ -93,7 +93,7 @@ left: 3rem;
   height: 100%;
 }
 #classCardHomePage .home_cardCont {
-  background-color: white;
+  /*background-color: white;*/
   margin: 0 .05rem .05rem .05rem;
   border-radius: .11rem;
   box-sizing: border-box;
@@ -612,7 +612,6 @@ left: 3rem;
 }
 #classDemeanorWrap{
   height: 100%;
-  background-color: white;
 }
 .classDemeanor {
   height: 100% !important;
