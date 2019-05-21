@@ -175,7 +175,7 @@ left: 3rem;
 #classCardHomePage .notify_cont li {
   height: 1.7rem;
   line-height: 1.7rem;
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid #d8d8d8;
   margin: 0 0.83rem;
   color: #333;
   font-size: .67rem;
@@ -193,9 +193,9 @@ left: 3rem;
 }
 #classCardHomePage .mEScoreInfo {
   position: relative;
-  background:white url("../images/mEScoreInfoBg.png") no-repeat;
+  background:white url("../images/courseOfTodyBg.png") no-repeat;
   background-size: 100% 100%;
-  padding: 0 .83rem .83rem;
+  padding: 0.2rem .83rem 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -236,10 +236,31 @@ left: 3rem;
   display: flex;
   display: -webkit-flex;
   justify-content: space-between;
-  padding-top: 1rem;
   border-radius: .11rem;
+  padding-left: 1.3rem;
+  line-height: 1.7rem;
+  height: 1.7rem;
 }
-
+#classCardHomePage .mEScoreInfo li:first-child{
+  background: url("../images/num01.png") no-repeat left center;
+  background-size: .67rem;
+}
+#classCardHomePage .mEScoreInfo li:nth-child(2){
+  background: url("../images/num02.png") no-repeat left center;
+  background-size: .67rem;
+}
+#classCardHomePage .mEScoreInfo li:nth-child(3){
+  background: url("../images/num03.png") no-repeat left center;
+  background-size: .67rem;
+}
+#classCardHomePage .mEScoreInfo li:nth-child(4){
+  background: url("../images/num04.png") no-repeat left center;
+  background-size: .67rem;
+}
+#classCardHomePage .mEScoreInfo li:nth-child(5){
+  background: url("../images/num05.png") no-repeat left center;
+  background-size: .67rem;
+}
 #classCardHomePage .blue_big {
   font-size: 2.22rem;
   color: #5091fe;
