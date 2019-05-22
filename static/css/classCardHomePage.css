@@ -375,8 +375,12 @@ left: 3rem;
   font-size: 0.67rem;
 }
 #classCardHomePage .demeanor_margin {
-  height: 100%;
+  height: calc(100% - 1.72rem);
+  box-sizing: border-box;
   position: relative;
+  background-color: white;
+  padding: 0 0.83rem .83rem;
+  margin: 0 .05rem .05rem;
 }
 #classCardHomePage .publicHome_left {
   width: 13.61rem;
@@ -634,13 +638,9 @@ left: 3rem;
 #classDemeanorWrap{
   height: 100%;
 }
-.classDemeanor {
-  height: 100% !important;
-}
 
 .classReward {
   margin: 0.83rem 0 0 0;
-  height: 6.22rem !important;
 }
 
 #classDemeanorWrap .swiper-slide img,#classDemeanorWrap video{

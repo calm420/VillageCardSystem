@@ -13,15 +13,10 @@
 
     <style>
 .demeanor_item,.demeanor_itemTop{
-    /*width: 7.55rem;*/
-    height: 4.17rem;
     display: inline-block;
     position: relative;
     /*margin-right: 0.83rem;*/
     float: left;
-}
-.demeanor_itemTop{
-height: 6.22rem;
 }
 .demeanor_itemImage,.swiper-slideImage{
 width: 100%;
@@ -34,9 +29,20 @@ object-fit: cover;
 }
 #classDemeanor,#classReward{
    transition-timing-function: linear;
+    height: 100%;
 }
 .classDemeanor,.classReward{
-position: relative;
+    position: relative;
+    overflow: hidden;
+}
+.classDemeanor{
+    padding: 0.83rem 0 0 0;
+}
+.classDemeanor,.demeanor_item{
+    height: 4.95rem !important;
+}
+.classReward,.demeanor_itemTop{
+    height: 7.51rem!important;
 }
 .DemeanorBack, .DemeanorGo, .RewardBack, .RewardGo{
     position: absolute;
@@ -107,7 +113,7 @@ position: relative;
 <div id="skin_default" class="no_bg classDemeanorDiv" name="classDemeanorDiv">
     <div id="classCardHomePage">
         <div id="classDemeanorWrap">
-            <h3 class="home_title">乡村振兴</h3>
+            <h3 class="home_title"><span>乡村振兴</span></h3>
             <div class="demeanor_margin">
                 <div class="classDemeanor">
 
