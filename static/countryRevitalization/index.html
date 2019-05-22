@@ -12,88 +12,92 @@
 
 
     <style>
-        .classDemeanor{
-                height:14.95rem !important;
-            background: #333;
-            position: relative;
-        }
-        .demeanor_item,.demeanor_itemTop{
-            /*width: 7.55rem;*/
-            height:14.95rem  !important;
-            display: inline-block;
-            position: relative;
-            /*margin-right: 0.83rem;*/
-            float: left;
-        }
-        .demeanor_itemTop{
-            height:14.95rem  !important;
-        }
-        .demeanor_itemImage,.swiper-slideImage{
-            width: 100%;
-            height: 100%;
-        }
-        .demeanor_itemImage img, .swiper-slideImage img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .DemeanorBack, .DemeanorGo, .RewardBack, .RewardGo{
-            position: absolute;
-            top: 50%;
-            z-index: 999;
-            transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -webkit-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            outline: none;
-            width: 2rem;
-            height: 3rem;
-            border: none;
-            padding: 0;
-        }
-        .classReward-Center{
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            text-align: center;
-            width:100%!important;
-            box-shadow: none !important;
-            height: 100%;
-        }
-        .classReward-Center > div:last-child{
-            margin-right: 0 !important;
-        }
-        .DemeanorBack, .RewardBack{
-            left: 0;
-            background: url("../images/arrow-left.png") no-repeat left center;
-            background-size: 0.83rem;
-        }
-        .DemeanorGo, .RewardGo{
-            right:0;
-            background: url("../images/arrow-right.png") no-repeat right center;
-            background-size: 0.83rem;
-        }
-        .RewardBack, .RewardGo{
-            margin-top: 0;
-        }
+.demeanor_item,.demeanor_itemTop{
+    /*width: 7.55rem;*/
+    height: 4.17rem;
+    display: inline-block;
+    position: relative;
+    /*margin-right: 0.83rem;*/
+    float: left;
+}
+.demeanor_itemTop{
+height: 6.22rem;
+}
+.demeanor_itemImage,.swiper-slideImage{
+width: 100%;
+height: 100%;
+}
+.demeanor_itemImage img, .swiper-slideImage img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+#classDemeanor,#classReward{
+   transition-timing-function: linear;
+}
+.classDemeanor,.classReward{
+position: relative;
+}
+.DemeanorBack, .DemeanorGo, .RewardBack, .RewardGo{
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin-top: 0.41rem;
+    outline: none;
+    width: 30px;
+    height: 45px;
+    border: none;
+    padding: 0;
+}
+.classReward-Center{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    width:100%!important;
+    box-shadow: none !important;
+    height: 100%;
+}
+.classReward-Center > div:last-child{
+    margin-right: 0 !important;
+}
+.DemeanorBack, .RewardBack{
+    left: 0;
+    background: url("../images/arrow-left.png") no-repeat left center;
+    background-size: 0.83rem;
+}
+.DemeanorGo, .RewardGo{
+    right:0;
+    background: url("../images/arrow-right.png") no-repeat right center;
+    background-size: 0.83rem;
+}
+.RewardBack, .RewardGo{
+    margin-top: 0;
+}
     </style>
     <script type="text/javascript">
         function videoOnClick(src) {
             window.event? window.event.cancelBubble = true : e.stopPropagation();
+            console.log(src);
             var data={"method":'playVideo',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
         function imageOnClick(src){
+//            alert(src);
             var data={"method":'playImage',"src":src};
             window.parent.postMessage(JSON.stringify(data), '*');
         }
@@ -103,8 +107,8 @@
 <div id="skin_default" class="no_bg classDemeanorDiv" name="classDemeanorDiv">
     <div id="classCardHomePage">
         <div id="classDemeanorWrap">
-            <h3 class="home_title"><span>乡村振兴</span></h3>
-            <div class="demeanor_margin home_cardCont">
+            <h3 class="home_title">乡村振兴</h3>
+            <div class="demeanor_margin">
                 <div class="classDemeanor">
 
                     <div class="no_bg classDemeanorDiv" id="classDemeanor" style="transition: 2s;">
@@ -113,7 +117,7 @@
                     <button id="DemeanorBack" class="DemeanorBack"></button>
                     <button id="DemeanorGo" class="DemeanorGo"></button>
                 </div>
-                <div class="classReward" style="display:none;">
+                <div class="classReward">
                     <div class="no_bg" id="classReward">
 
                     </div>

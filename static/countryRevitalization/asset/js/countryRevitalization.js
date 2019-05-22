@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     // var startIndex = 0;
     //班级风采
     var DemeanorData = [];
@@ -26,15 +27,15 @@ $(document).ready(function () {
     window.addEventListener('message', function (e) {
         var clazzId = localStorage.getItem("clazzId");
         var schoolId = localStorage.getItem("schoolId");
-        var commandInfo = e.data;
+        var commandInfo = JSON.parse(e.data);
         if (commandInfo.command == 'classDemeanor') {
             if (clazzId == commandInfo.data.cid) {
                 DemeanorFilter = false;
                 RewardFilter = false;
                 clearInterval(DemeanorTimer);
                 clearInterval(RewardTimer);
-                getClassDemeanorInfo(clazzId);
-                getClassRewardInfo(clazzId);
+                selectUploadFile(villageId);
+                selectUploadFileXia(villageId);
 
             }
         } else if (commandInfo.command == "setSkin") {
@@ -49,23 +50,25 @@ $(document).ready(function () {
     function InitializePage() {
         var clazzId = WebServiceUtil.GetQueryString("clazzId");
         var schoolId = WebServiceUtil.GetQueryString("schoolId");
-        var villageId = WebServiceUtil.GetQueryString("villageId");
         var font = WebServiceUtil.GetQueryString('font')
         var visitType = WebServiceUtil.GetQueryString('visitType')
+        var villageId = WebServiceUtil.GetQueryString('villageId')
         if (!!visitType && visitType == 0) {
+            console.log(visitType, 'visitType');
             $('.classReward').hide();
         }
         $('html').css('font-size', font)
         localStorage.setItem("clazzId", clazzId);
         localStorage.setItem("schoolId", schoolId);
         selectUploadFile(villageId);
-        getClassRewardInfo(clazzId);
+        selectUploadFileXia(villageId);
     }
 
     function selectUploadFile(villageId) {
         var param = {
             "method": 'selectUploadFile',
             "villageId": villageId,
+            "status": 0
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
@@ -81,7 +84,7 @@ $(document).ready(function () {
                             DemeanorData.splice(0);
                             clearInterval(DemeanorTimer);
                             DemeanorData = result.response;
-                            // if (DemeanorData.length > 3) {  //班级风采大于三张
+                            if (DemeanorData.length > 3) {  //班级风采大于三张
                                 $('#DemeanorBack').show();
                                 $('#DemeanorGo').show();
                                 $('#classDemeanor').css({transition: ''});
@@ -89,21 +92,21 @@ $(document).ready(function () {
                                 DemeanorFilter = true;
                                 DemeanorTimer = setInterval(function () {
                                     //加一层判断，后续考虑计时器是否未清
-                                    // if (DemeanorData.length > 3) {
+                                    if (DemeanorData.length > 3) {
                                         doDemeanorTranslageGo(true);
-                                    // } else {
-                                    //     clearInterval(DemeanorTimer);
-                                    // }
+                                    } else {
+                                        clearInterval(DemeanorTimer);
+                                    }
 
                                 }, 5000);
-                            // } else { //小于三张
-                            //     clearInterval(DemeanorTimer);
-                            //     currentIndex = 0;
-                            //     $('#DemeanorBack').hide();
-                            //     $('#DemeanorGo').hide();
-                            //     DemeanorFilter = true;
-                            //     createDemeanor(DemeanorData, DemeanorData.length);
-                            // }
+                            } else { //小于三张
+                                clearInterval(DemeanorTimer);
+                                currentIndex = 0;
+                                $('#DemeanorBack').hide();
+                                $('#DemeanorGo').hide();
+                                DemeanorFilter = true;
+                                createDemeanor(DemeanorData, DemeanorData.length);
+                            }
                         }
                     }
                 }
@@ -201,8 +204,8 @@ $(document).ready(function () {
 
         }
         console.log(classDemeanors, '重新构建的数组');
-        var imageWidth = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 1;
-        var marginRight = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 1;
+        var imageWidth = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.3;
+        var marginRight = parseInt($('.classDemeanor').css('width').substring(0, $('.classDemeanor').css('width').length - 2)) * 0.05;
         classDemeanors.forEach(function (classDemeanor) {
             var imagePath = classDemeanor.url.split('&');
             var image = imagePath[0];
@@ -212,11 +215,11 @@ $(document).ready(function () {
                 $("#classDemeanor")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image  + '?v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image  + '?v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_item' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classDemeanor")[0].innerHTML + imgTag;
                     $("#classDemeanor")[0].innerHTML = currentInner;
                 }
@@ -224,25 +227,25 @@ $(document).ready(function () {
         })
         offsetDemeanor = parseInt($('.demeanor_item').css('marginRight').substring(0, $('.demeanor_item').css('marginRight').length - 2)) + parseInt($('.demeanor_item').css('width').substring(0, $('.demeanor_item').css('width').length - 2));
         $('#classDemeanor').css({width: ((offsetDemeanor * 5) + 10) + 'px'});
-        // if (index > 3) {  //班级风采大于三张
+        if (index > 3) {  //班级风采大于三张
             $('#classDemeanor').css({transform: 'translate3d(-' + offsetDemeanor + 'px, 0px, 0px)'});
             $('#classDemeanor').removeClass('classReward-Center');
-        // } else {  //班级风采小于三张
-        //     if (index == 3) {
-        //         $('#classDemeanor').removeClass('classReward-Center');
-        //     } else {
-        //         $('#classDemeanor').addClass('classReward-Center');
-        //     }
-        //     $('#classDemeanor').css({transform: 'translate3d(0px, 0px, 0px)'});
-        // }
+        } else {  //班级风采小于三张
+            if (index == 3) {
+                $('#classDemeanor').removeClass('classReward-Center');
+            } else {
+                $('#classDemeanor').addClass('classReward-Center');
+            }
+            $('#classDemeanor').css({transform: 'translate3d(0px, 0px, 0px)'});
+        }
 
     }
 
-    function getClassRewardInfo(clazzId) {
+    function selectUploadFileXia(villageId) {
         var param = {
-            "method": 'getClassDemeanorInfo',
-            "clazzId": clazzId,
-            "type": 2
+            "method": 'selectUploadFile',
+            "villageId": villageId,
+            "status": 1
         };
         WebServiceUtil.requestLittleAntApi(true, JSON.stringify(param), {
             onResponse: function (result) {
@@ -378,10 +381,10 @@ $(document).ready(function () {
 
         }
         console.log(classRewards, '重新构建的数组');
-        var imageWidth = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 1;
-        var marginRight = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 1;
+        var imageWidth = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.3;
+        var marginRight = parseInt($('.classReward').css('width').substring(0, $('.classReward').css('width').length - 2)) * 0.05;
         classRewards.forEach(function (classDemeanor) {
-            var imagePath = classDemeanor.imagePath.split('&');
+            var imagePath = classDemeanor.url.split('&');
             var image = imagePath[0];
             if (image.substr(image.length - 3, 3) == 'mp4') {
                 console.log(classDemeanor, '首帧图片');
@@ -392,11 +395,11 @@ $(document).ready(function () {
                 $("#classReward")[0].innerHTML = currentInner;
             } else {
                 if (image.indexOf('?') == -1) {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '?' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 } else {
-                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.LARGE_IMG + '&v=1' + "></div></div>";
+                    var imgTag = "<div class='swiper-slide demeanor_itemTop' style='width:" + imageWidth + "px;margin-right:" + marginRight + "px'><div class='demeanor_itemImage' onClick=imageOnClick('" + image.split('?')[0] + "')><img class='imageOnClick' id='" + classDemeanor.id + "' src=" + image + '&' + WebServiceUtil.MIDDLE_IMG + '&v=1' + "></div></div>";
                     var currentInner = $("#classReward")[0].innerHTML + imgTag;
                     $("#classReward")[0].innerHTML = currentInner;
                 }
